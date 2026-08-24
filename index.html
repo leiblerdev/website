@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leibler · We build frontier models for you.</title>
+<meta name="description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
+<link rel="canonical" href="https://leibler.dev/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Leibler">
+<meta property="og:title" content="Leibler · We build frontier models for you.">
+<meta property="og:description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
+<meta property="og:url" content="https://leibler.dev/">
+<meta property="og:image" content="https://leibler.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leibler · We build frontier models for you.">
+<meta name="twitter:description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
+<meta name="twitter:image" content="https://leibler.dev/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script src="/assets/js/hero.js" defer></script>
+<script src="/assets/js/figures.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/og.png","email":"krrish@leibler.dev","founder":{"@id":"https://leibler.dev/#krrish"}},
+{"@type":"Person","@id":"https://leibler.dev/#krrish","name":"Krrish Agarwalla","url":"https://kkrrish.tech","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://kkrrish.tech"]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What happens to my data?","acceptedAnswer":{"@type":"Answer","text":"Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request."}},
+{"@type":"Question","name":"Who owns the fine-tuned weights?","acceptedAnswer":{"@type":"Answer","text":"You do. The models are built from your traces, for you, and deploy on your infrastructure or ours."}},
+{"@type":"Question","name":"What if quality drops below the bar?","acceptedAnswer":{"@type":"Answer","text":"It doesn't ship. Every release is graded against your frontier model on your own inputs, and anything below the bar is held back."}},
+{"@type":"Question","name":"How is this different from just using a cheaper model?","acceptedAnswer":{"@type":"Answer","text":"A cheaper model doesn't clear your bar. The harness proves, on your traces, which tasks it can and can't take before anything runs in production."}},
+{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Bring one task. In thirty minutes we'll tell you what it takes and whether a smaller model clears the bar."}}
+]}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mono">
+  <div class="wrap nav">
+    <a class="brand" href="/">leibler<span>.dev</span></a>
+    <nav><a href="#how">How it works</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap hero">
+    <p class="prompt"><b>leibler</b> is a lab that helps you own your intelligence.</p>
+    <h1>We build frontier models <span class="g">for you.</span></h1>
+    <p class="sub">Our harness grades your traces against your frontier model, post-trains smaller frontier models until they clear that bar, and deploys them optimized for your traffic. Each task goes to the model that is best on it and cheapest to run. Every new trace makes the next round better. <b>Higher quality, lower bill.</b></p>
+    <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="#how">How it works</a></div>
+    <pre class="snip"><span class="c"># one line to integrate</span>
+<b>import</b> leibler
+<b>from</b> openai <b>import</b> OpenAI
+client = leibler.wrap(OpenAI())</pre>
+  </section>
+
+  <section class="wrap sec" id="bar">
+    <div class="h"><span class="n">00</span><h2>The bar never moves. The model climbs to it.</h2></div>
+    <p class="lead">Your frontier model sets the bar. A small student tries the task; what clears the bar trains the next student. When it clears reliably, it graduates.</p>
+    <div class="diagram">
+      <canvas id="cv" role="img" aria-label="Animated diagram: a student model's outputs scatter below a fixed quality bar; with each iteration the outputs that clear the bar train the student, until the task clears the bar reliably and graduates"></canvas>
+      <div class="read mono"><span>task <b id="r-task">ticket_classification</b></span><span>iteration <b id="r-iter">01</b></span><span>clearing the bar <b id="r-pass">0%</b></span><span>graduated <b id="r-grad">0</b> of 4</span></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="how">
+    <div class="h"><span class="n">01</span><h2>How it works</h2></div>
+    <div class="step"><div><h3><span>01</span>Evaluate</h3><p>Plug in the wrapper or send a week of traces. In 48 hours you know which of your tasks a smaller model can already handle.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+      <text class="lbl" x="8" y="14">tasks from your traces</text>
+      <text class="lbl" x="8" y="34">classify</text><text class="lbl" x="8" y="56">summarize</text><text class="lbl" x="8" y="78">extract</text><text class="lbl" x="8" y="100">draft reply</text>
+      <g fill="#1f1f1f"><rect x="80" y="27" width="120" height="6"></rect><rect x="80" y="49" width="120" height="6"></rect><rect x="80" y="71" width="120" height="6"></rect><rect x="80" y="93" width="120" height="6"></rect></g>
+      <rect class="eB" x="80" y="27" width="104" height="6" fill="#fff"></rect>
+      <rect class="eB" x="80" y="49" width="94" height="6" fill="#fff" style="animation-delay: .3s"></rect>
+      <rect class="eB" x="80" y="71" width="62" height="6" fill="#3a3a3a" style="animation-delay: .6s"></rect>
+      <rect class="eB" x="80" y="93" width="110" height="6" fill="#fff" style="animation-delay: .9s"></rect>
+      <line class="st" x1="166" y1="20" x2="166" y2="104"></line><text class="lbl" x="166" y="14" text-anchor="middle" fill="#fff">bar</text>
+      <g class="f1l"><text class="lbl" x="208" y="34" fill="#fff">pass</text><text class="lbl" x="208" y="56" fill="#fff">pass</text><text class="lbl" x="208" y="78">fail</text><text class="lbl" x="208" y="100" fill="#fff">pass</text></g>
+    </svg></div></div>
+    <div class="step"><div><h3><span>02</span>Build</h3><p>For the tasks that fail, we post-train a model on your traces until it clears the bar.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+      <circle class="dim" cx="44" cy="66" r="26"></circle><circle class="st spin flow" cx="44" cy="66" r="26"></circle><circle class="st f2ring" cx="44" cy="66" r="26"></circle><circle class="st" cx="44" cy="66" r="7"></circle>
+      <text class="lbl" x="44" y="110" text-anchor="middle">student</text>
+      <text class="lbl" x="8" y="16">your task, played as episodes</text>
+      <g class="dim"><rect x="100" y="24" width="20" height="20"></rect><rect x="120" y="24" width="20" height="20"></rect><rect x="140" y="24" width="20" height="20"></rect><rect x="160" y="24" width="20" height="20"></rect><rect x="180" y="24" width="20" height="20"></rect><rect x="200" y="24" width="20" height="20"></rect><rect x="100" y="44" width="20" height="20"></rect><rect x="120" y="44" width="20" height="20"></rect><rect x="140" y="44" width="20" height="20"></rect><rect x="160" y="44" width="20" height="20"></rect><rect x="180" y="44" width="20" height="20"></rect><rect x="200" y="44" width="20" height="20"></rect><rect x="100" y="64" width="20" height="20"></rect><rect x="120" y="64" width="20" height="20"></rect><rect x="140" y="64" width="20" height="20"></rect><rect x="160" y="64" width="20" height="20"></rect><rect x="180" y="64" width="20" height="20"></rect><rect x="200" y="64" width="20" height="20"></rect></g>
+      <rect class="st goal" x="200" y="64" width="20" height="20" fill="#fff"></rect><text class="lbl" x="210" y="98" text-anchor="middle" fill="#fff">bar</text>
+      <path class="dim flow f2r" d="M130 82 C 130 108, 60 108, 44 92"></path>
+      <polyline class="st att c1" pathLength="100" points="110,34 130,34 130,54 110,54 110,74 130,74"></polyline>
+      <polyline class="st att c2" pathLength="100" points="110,34 130,34 150,34 170,34 170,54 190,54 190,74"></polyline>
+      <polyline class="st att c3" pathLength="100" points="110,34 150,34 170,34 170,54 210,54 210,74"></polyline>
+      <circle class="f2d c1" r="3" fill="#fff" style="offset-path: path('M110 34 L130 34 L130 54 L110 54 L110 74 L130 74')"></circle>
+      <circle class="f2d c2" r="3" fill="#fff" style="offset-path: path('M110 34 L130 34 L150 34 L170 34 L170 54 L190 54 L190 74')"></circle>
+      <circle class="f2d c3" r="3" fill="#fff" style="offset-path: path('M110 34 L150 34 L170 34 L170 54 L210 54 L210 74')"></circle>
+      <text class="lbl f2t c1" x="80" y="116">ep 1: wanders, no reward</text>
+      <text class="lbl f2t c2" x="80" y="116">ep 2: closer, retrain</text>
+      <text class="lbl f2t c3" x="80" y="116" fill="#fff">ep 3: clears the bar</text>
+    </svg></div></div>
+    <div class="step"><div><h3><span>03</span>Serve</h3><p>We deploy it in production, tuned for your traffic. Our cloud, yours, a VPC, or on-prem.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+      <text class="lbl" x="8" y="14">requests</text>
+      <g class="dim"><path d="M8 30 H 80"></path><path d="M8 45 H 80"></path><path d="M8 60 H 80"></path><path d="M8 75 H 80"></path><path d="M8 90 H 80"></path></g>
+      <circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 30 H 80'); animation-delay: 0.00s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 45 H 80'); animation-delay: 0.15s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 60 H 80'); animation-delay: 0.30s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 75 H 80'); animation-delay: 0.45s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 90 H 80'); animation-delay: 0.60s"></circle>
+      <rect class="st sBbox" x="80" y="24" width="32" height="72" fill="#fff"></rect>
+      <text class="lbl sBb" x="110" y="14" text-anchor="middle">batch</text>
+      <text class="lbl sBl" x="110" y="14" text-anchor="middle" fill="#fff">one forward pass</text>
+      <g class="dim"><path d="M112 60 C 150 60, 150 30, 186 30"></path><path d="M112 60 C 150 60, 150 45, 186 45"></path><path d="M112 60 C 150 60, 150 60, 186 60"></path><path d="M112 60 C 150 60, 150 75, 186 75"></path><path d="M112 60 C 150 60, 150 90, 186 90"></path></g>
+      <circle class="sBout" r="2.4" fill="#fff" style="offset-path: path('M112 60 C 150 60, 150 30, 186 30')"></circle><circle class="sBout" r="2.4" fill="#fff" style="offset-path: path('M112 60 C 150 60, 150 45, 186 45')"></circle><circle class="sBout" r="2.4" fill="#fff" style="offset-path: path('M112 60 C 150 60, 150 60, 186 60')"></circle><circle class="sBout" r="2.4" fill="#fff" style="offset-path: path('M112 60 C 150 60, 150 75, 186 75')"></circle><circle class="sBout" r="2.4" fill="#fff" style="offset-path: path('M112 60 C 150 60, 150 90, 186 90')"></circle>
+      <text class="lbl" x="232" y="14" text-anchor="end">responses</text>
+      <text class="lbl" x="8" y="116">quantized · batched · custom kernels</text>
+    </svg></div></div>
+    <div class="step"><div><h3><span>04</span>Route</h3><p>You apply the routing plan in your own config.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+      <text class="lbl" x="8" y="14">tasks</text>
+      <text class="lbl" x="8" y="31">classify</text><text class="lbl" x="8" y="53">summarize</text><text class="lbl" x="8" y="75">extract</text><text class="lbl" x="8" y="97">draft reply</text>
+      <path class="st rBl" pathLength="100" d="M78 28 H120 C 140 28, 150 32, 170 34" style="animation-delay: 0.0s"></path><path class="st rBl" pathLength="100" d="M78 50 H120 C 140 50, 150 40, 170 40" style="animation-delay: 0.6s"></path><path class="dim" pathLength="100" d="M78 72 H120 C 140 72, 150 88, 170 90" style="animation-delay: 1.2s"></path><path class="st rBl" pathLength="100" d="M78 94 H120 C 140 94, 150 46, 170 46" style="animation-delay: 1.8s"></path>
+      <circle class="rBd" r="2.4" fill="#fff" style="offset-path: path('M78 28 H120 C 140 28, 150 32, 170 34'); animation-delay: 0.0s"></circle><circle class="rBd" r="2.4" fill="#fff" style="offset-path: path('M78 50 H120 C 140 50, 150 40, 170 40'); animation-delay: 0.6s"></circle><circle class="rBd" r="2.4" fill="#6b6b6b" style="offset-path: path('M78 72 H120 C 140 72, 150 88, 170 90'); animation-delay: 1.2s"></circle><circle class="rBd" r="2.4" fill="#fff" style="offset-path: path('M78 94 H120 C 140 94, 150 46, 170 46'); animation-delay: 1.8s"></circle>
+      <line class="st" x1="120" y1="18" x2="120" y2="104" stroke-dasharray="2 4"></line><text class="lbl" x="120" y="14" text-anchor="middle" fill="#fff">bar</text>
+      <rect class="st" x="170" y="22" width="62" height="32"></rect><text class="lbl" x="178" y="42" fill="#fff">smaller</text>
+      <rect class="dim" x="170" y="76" width="62" height="28"></rect><text class="lbl" x="178" y="94">frontier</text>
+      <text class="lbl" x="8" y="116">graded once, routed in your config</text>
+    </svg></div></div>
+  </section>
+
+  <section class="wrap sec" id="proof">
+    <div class="h"><span class="n">02</span><h2>Proof.</h2></div>
+    <p class="lead">In 48 hours you get this for your own tasks. Here is one plan, from traces to shipped models, graded against the customer's own frontier model, which never moved.</p>
+    <table class="proof">
+      <thead><tr><th>task</th><th>clears the bar</th><th>cost vs frontier</th></tr></thead>
+      <tbody>
+        <tr><td>summarize_call_notes</td><td>96%</td><td>18× cheaper</td></tr>
+        <tr><td>ticket_classification</td><td>100%</td><td>22× cheaper</td></tr>
+        <tr><td>extract_invoice_fields</td><td>98%</td><td>15× cheaper</td></tr>
+        <tr><td>draft_customer_reply</td><td>91%</td><td>10× cheaper</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Nothing ships below the bar. Every release is re-graded against it first.</p>
+  </section>
+
+  <section class="wrap sec" id="data">
+    <div class="h"><span class="n">03</span><h2>Your data stays yours.</h2></div>
+    <p class="lead">A customer's traces train only that customer's models. Nothing is pooled across customers, and everything is deleted on request. Trace capture is fire-and-forget. It can't add latency to or break your calls.</p>
+  </section>
+
+  <section class="wrap sec" id="faq">
+    <div class="h"><span class="n">04</span><h2>Questions</h2></div>
+    <div class="faq">
+      <details>
+        <summary>What happens to my data?</summary>
+        <p>Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request.</p>
+      </details>
+      <details>
+        <summary>Who owns the fine-tuned weights?</summary>
+        <p>You do. The models are built from your traces, for you, and deploy on your infrastructure or ours.</p>
+      </details>
+      <details>
+        <summary>What if quality drops below the bar?</summary>
+        <p>It doesn't ship. Every release is graded against your frontier model on your own inputs, and anything below the bar is held back.</p>
+      </details>
+      <details>
+        <summary>How is this different from just using a cheaper model?</summary>
+        <p>A cheaper model doesn't clear your bar. The harness proves, on your traces, which tasks it can and can't take before anything runs in production.</p>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>Bring one task. In thirty minutes we'll tell you what it takes and whether a smaller model clears the bar.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="wrap close" id="close">
+    <h2>Bring one task.</h2>
+    <p>Thirty minutes. We tell you whether a smaller model can clear the bar on it, and what it takes.</p>
+    <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="mailto:krrish@leibler.dev">krrish@leibler.dev</a></div>
+    <p class="cred">Krrish Agarwalla · post-training research at Stanford and LMU Munich</p>
+  </section>
+</main>
+<footer class="wrap mono"><span>leibler.dev</span><span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a> · <a href="/team">team</a> · <a href="/llms.txt">llms.txt</a></span></footer>
+</body>
+</html>

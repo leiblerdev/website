@@ -1,0 +1,44 @@
+# Leibler
+
+> Leibler (leibler.dev) is an AI lab that builds frontier-quality models for individual companies. Its harness grades a customer's own LLM traces against the frontier model they already use, task by task, post-trains smaller frontier models until they match or beat that bar, deploys them optimized for the customer's traffic, and routes each task to the model that is best on it and cheapest to run. New traces feed the next round, so the models keep improving. The result is higher output quality at a lower inference bill.
+
+Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for grading, post-training, optimizing, deploying, and routing; the deliverable is a model that clears the customer's own quality bar, running in production.
+
+## How it works
+
+1. Collect: the customer adds a one-line SDK wrapper (`import leibler; client = leibler.wrap(OpenAI())`) or sends a week of LLM traces.
+2. Evaluate: the harness clusters traces into tasks and grades candidate models against the customer's current frontier model on the customer's own inputs. Within 48 hours the customer has a pass rate per task and a routing plan.
+3. Post-train: for tasks no existing model clears, the harness post-trains a smaller frontier model on the customer's traces until it matches or beats the frontier on the same grader. A customer's data trains only that customer's models.
+4. Deploy: the harness deploys the models in production, optimized for the customer's traffic (quantization, batching, caching, custom kernels, hardware matched to load), in Leibler's cloud, the customer's cloud, a VPC, or on-prem. Every release is graded against the same bar before it ships.
+5. Route: each task runs on the model that is best on it and cheapest to run. The customer applies the routing plan in their own configuration.
+6. Loop: new traces feed the next round of grading and post-training. Plans and models are re-graded when new models are released, so savings do not drift back.
+
+## Key facts
+
+- Quality is the fixed constraint. Nothing ships below the customer's frontier model's score on the customer's own inputs ("the bar").
+- Customer data is never pooled across customers and is deleted on request.
+- Trace capture is fire-and-forget and cannot add latency to or break the customer's calls.
+- Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
+- How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
+- Founder: Krrish Agarwalla. Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
+
+## Glossary
+
+- Trace: one LLM call with its prompt, response, token usage, cost, and latency.
+- Task: a cluster of similar traces sharing an intent; the unit that is graded, post-trained, and routed.
+- The bar: the customer's current frontier model's score on the customer's own inputs. Fixed; models climb to it.
+- Harness: Leibler's end-to-end system. It replays traces through candidate models, grades them against the bar, post-trains smaller frontier models, optimizes and deploys them, and routes traffic.
+- Routing plan: per task, which model clears the bar, the recommended traffic allocation, and the projected saving.
+
+## Pages
+
+- [Home](https://leibler.dev/): what Leibler does, an animated explanation of the bar and the training loop, and the four steps.
+- [Team](https://leibler.dev/team): who is behind Leibler.
+- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founder.
+- [Founder's site](https://kkrrish.tech): Krrish Agarwalla.
+
+## Optional
+
+- [llms.txt](https://leibler.dev/llms.txt): this file.
+
+Last updated: 2026-08-24
