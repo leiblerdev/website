@@ -1,8 +1,8 @@
 /* leibler.dev */
   :root { --bg: #000; --fg: #fff; --fg-2: #a3a3a3; --fg-3: #8a8a8a; --line: #1f1f1f; --line-2: #2e2e2e; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { color-scheme: dark; scroll-behavior: smooth; }
-  body { min-height: 100vh; display: flex; flex-direction: column; background: var(--bg); color: var(--fg); font-family: "Geist Mono", ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  html { color-scheme: dark; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--bg); color: var(--fg); font-family: "Geist Mono", ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   main { flex: 1; }
   a { color: inherit; text-decoration: none; }
   a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
@@ -68,11 +68,12 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
   h1, h2, h3 { letter-spacing: -0.02em; font-weight: 500; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; padding-left: max(28px, env(safe-area-inset-left)); padding-right: max(28px, env(safe-area-inset-right)); }
   header { border-bottom: 1px solid var(--line); }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 56px; font-size: 13px; }
   .nav nav { display: flex; gap: 24px; align-items: center; color: var(--fg-2); }
   .nav .btn { min-height: 34px; font-family: inherit; font-size: 13px; border-radius: 4px; }
+  @media (pointer: coarse) { .nav .btn { min-height: 40px; } .nav nav a, footer a { padding: 8px 0; display: inline-block; } }
   .brand { color: #fff; } .brand span { color: var(--fg-3); }
   .btn { font-family: inherit; border-radius: 4px; }
   .hero { padding: 96px 0 80px; }
@@ -91,7 +92,10 @@
   .lead { color: var(--fg-2); max-width: 66ch; line-height: 1.7; margin-left: 64px; }
   .diagram { margin: 32px 0 0 64px; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
   .diagram canvas { display: block; width: 100%; height: 420px; }
-  @media (max-width: 720px) { .wrap { padding: 0 20px; } .hero { padding: 56px 0 56px; } .sec { padding: 52px 0; } .close { padding: 64px 0; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: 300px; } .snip { margin-top: 36px; } .read { font-size: 12px; gap: 10px 16px; } }
+  @media (max-width: 720px) { .wrap { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); } .hero { padding: 56px 0 56px; } .sec { padding: 52px 0; } .close { padding: 64px 0; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: 300px; } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { font-size: 12px; gap: 10px 16px; padding: 12px 14px; } .nav { height: 52px; } }
+  @media (max-width: 400px) { .nav nav { gap: 14px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .diagram canvas { height: 260px; } .close h2 { font-size: 24px; } }
+  @media (min-width: 721px) and (max-width: 900px) { .step { grid-template-columns: 1fr 200px; gap: 24px; } .step .fig { width: 200px; } }
+  @media (max-height: 480px) and (orientation: landscape) { .hero { padding: 40px 0; } .diagram canvas { height: 260px; } }
   .step { margin-left: 64px; display: grid; grid-template-columns: 1fr 240px; gap: 32px; padding: 28px 0; border-top: 1px dashed var(--line-2); align-items: center; }
   .step:last-child { border-bottom: 1px dashed var(--line-2); }
   .step h3 { font-size: 17px; margin-bottom: 8px; } .step h3 span { color: var(--fg-3); margin-right: 12px; }

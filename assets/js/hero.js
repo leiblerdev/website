@@ -9,7 +9,7 @@
     var o = { cv: cv, ctx: cv.getContext('2d'), W: 0, H: 0,
       el: { task: document.getElementById('r-task' + sfx), iter: document.getElementById('r-iter' + sfx), pass: document.getElementById('r-pass' + sfx), grad: document.getElementById('r-grad' + sfx) } };
     o.resize = function () { var d = Math.min(window.devicePixelRatio || 1, 1.5); o.W = cv.clientWidth; o.H = cv.clientHeight; cv.width = o.W * d; cv.height = o.H * d; o.ctx.setTransform(d, 0, 0, d, 0, 0); };
-    o.resize(); window.addEventListener('resize', o.resize);
+    o.resize(); window.addEventListener('resize', function () { o.resize(); if (o.redraw) o.redraw(); });
     o.mono = function (px) { o.ctx.font = px + 'px "Geist Mono", ui-monospace, monospace'; };
     return o;
   }
@@ -31,13 +31,13 @@
   (function () {
     var o = setup('cv', ''); if (!o) return;
     var ctx = o.ctx, state, t = 0, taskIx = 0, iter, mu, sigma, paths = [], graduated = [], ring = 0, N = 34, P = 40;
-    function narrow() { return o.W < 600; }
+    function narrow() { return o.W < 760; }
     function qToY(q) { return o.H * 0.86 - q * (o.H * 0.86 - o.H * 0.12); }
     function sx() { return o.W * (narrow() ? 0.12 : 0.10); } function ex() { return o.W * (narrow() ? 0.90 : 0.66); } function sy() { return o.H * 0.5; }
     function start(ix) { taskIx = ix; iter = 1; mu = 0.42 + Math.random() * 0.08; sigma = 0.16; o.el.task.textContent = TASKS[ix]; o.el.iter.textContent = '01'; o.el.pass.textContent = '0%'; roll(); }
     function roll() {
-      paths = []; var n = 0;
-      for (var i = 0; i < N; i++) {
+      paths = []; var n = 0, count = narrow() ? 22 : N;
+      for (var i = 0; i < count; i++) {
         var q = Math.max(0.05, Math.min(0.98, mu + gauss() * sigma)), pass = q >= BAR_Q; if (pass) n++;
         var pts = [], y0 = sy(), y1 = qToY(q), w = 0, wob = (0.25 + Math.random() * 0.5) * o.H * 0.12;
         for (var k = 0; k <= P; k++) { var u = k / P; w += gauss() * 0.35; var env = Math.sin(u * Math.PI); pts.push({ x: sx() + (ex() - sx()) * u, y: y0 + (y1 - y0) * ease(u) + w * wob * env * 0.3 }); }
@@ -47,8 +47,8 @@
     }
     function step(dt) {
       t += dt; ring = Math.max(0, ring - dt * 1.2);
-      if (state === 'rise' && t > 1.6) { state = 'hold'; t = 0; o.el.pass.textContent = Math.round(100 * paths.n / N) + '%'; }
-      else if (state === 'hold' && t > 0.9) { if (paths.n / N >= 0.98) { state = 'graduate'; t = 0; } else { state = 'return'; t = 0; } }
+      if (state === 'rise' && t > 1.6) { state = 'hold'; t = 0; o.el.pass.textContent = Math.round(100 * paths.n / paths.length) + '%'; }
+      else if (state === 'hold' && t > 0.9) { if (paths.n / paths.length >= 0.98) { state = 'graduate'; t = 0; } else { state = 'return'; t = 0; } }
       else if (state === 'return' && t > 1.0) { ring = 1; iter++; mu = mu + (0.86 - mu) * 0.38; sigma = Math.max(0.05, sigma * 0.82); o.el.iter.textContent = (iter < 10 ? '0' : '') + iter; roll(); }
       else if (state === 'graduate' && t > 1.5) { graduated.push(TASKS[taskIx]); o.el.grad.textContent = graduated.length; if (graduated.length >= TASKS.length) { state = 'done'; t = 0; } else start(taskIx + 1); }
       else if (state === 'done' && t > 3) { graduated = []; o.el.grad.textContent = '0'; start(0); }
@@ -82,7 +82,7 @@
       if (narrow()) { ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'right'; ctx.fillText('graduated ' + graduated.length + ' of ' + TASKS.length, W * 0.94, H * 0.12); } else shelf(o, graduated);
       if (state === 'done') { ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.font = '500 13px "Geist Mono", ui-monospace, monospace'; ctx.fillText(narrow() ? 'Four tasks, one bar.' : 'Four tasks cleared the same bar. Small models, your weights.', W * (narrow() ? 0.5 : 0.39), H * 0.5); }
     }
-    start(0); run(o, step, draw);
+    o.redraw = draw; start(0); run(o, step, draw);
   })();
 
 })();
