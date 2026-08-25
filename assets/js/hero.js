@@ -8,7 +8,7 @@
     var cv = document.getElementById(id); if (!cv) return null;
     var o = { cv: cv, ctx: cv.getContext('2d'), W: 0, H: 0,
       el: { task: document.getElementById('r-task' + sfx), iter: document.getElementById('r-iter' + sfx), pass: document.getElementById('r-pass' + sfx), grad: document.getElementById('r-grad' + sfx) } };
-    o.resize = function () { var d = Math.min(window.devicePixelRatio || 1, 1.5); o.W = cv.clientWidth; o.H = cv.clientHeight; cv.width = o.W * d; cv.height = o.H * d; o.ctx.setTransform(d, 0, 0, d, 0, 0); };
+    o.resize = function () { var d = Math.min(window.devicePixelRatio || 1, 2); o.W = cv.clientWidth; o.H = cv.clientHeight; cv.width = o.W * d; cv.height = o.H * d; o.ctx.setTransform(d, 0, 0, d, 0, 0); };
     o.resize(); window.addEventListener('resize', function () { o.resize(); if (o.redraw) o.redraw(); });
     o.mono = function (px) { o.ctx.font = px + 'px "Geist Mono", ui-monospace, monospace'; };
     return o;

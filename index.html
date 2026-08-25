@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Leibler · We build frontier models for you.</title>
 <meta name="description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
 <link rel="canonical" href="https://leibler.dev/">
@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css">
-<script src="/assets/js/hero.js" defer></script>
-<script src="/assets/js/figures.js" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=20260825">
+<script src="/assets/js/hero.js?v=20260825" defer></script>
+<script src="/assets/js/figures.js?v=20260825" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/og.png","email":"krrish@leibler.dev","founder":{"@id":"https://leibler.dev/#krrish"}},
@@ -36,8 +36,8 @@
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What happens to my data?","acceptedAnswer":{"@type":"Answer","text":"Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request."}},
 {"@type":"Question","name":"Who owns the fine-tuned weights?","acceptedAnswer":{"@type":"Answer","text":"You do. The models are built from your traces, for you, and deploy on your infrastructure or ours."}},
-{"@type":"Question","name":"What if quality drops below the bar?","acceptedAnswer":{"@type":"Answer","text":"It doesn't ship. Every release is graded against your frontier model on your own inputs, and anything below the bar is held back."}},
-{"@type":"Question","name":"How is this different from just using a cheaper model?","acceptedAnswer":{"@type":"Answer","text":"A cheaper model doesn't clear your bar. The harness proves, on your traces, which tasks it can and can't take before anything runs in production."}},
+{"@type":"Question","name":"What if quality drops below the bar?","acceptedAnswer":{"@type":"Answer","text":"It doesn't ship. Every release is graded against the bar first; anything below it is held back."}},
+{"@type":"Question","name":"How is this different from just using a cheaper model?","acceptedAnswer":{"@type":"Answer","text":"On its own it doesn't clear your bar. We prove on your traces which tasks it can take before anything ships."}},
 {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Bring one task. In thirty minutes we'll tell you what it takes and whether a smaller model clears the bar."}}
 ]}]}
 </script>
@@ -47,7 +47,7 @@
 <header class="mono">
   <div class="wrap nav">
     <a class="brand" href="/">leibler<span>.dev</span></a>
-    <nav><a href="#how">How it works</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></nav>
+    <nav><a class="hide-s" href="#how">How it works</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></nav>
   </div>
 </header>
 
@@ -55,7 +55,7 @@
   <section class="wrap hero">
     <p class="prompt"><b>leibler</b> is a lab that helps you own your intelligence.</p>
     <h1>We build frontier models <span class="g">for you.</span></h1>
-    <p class="sub">Our harness grades your traces against your frontier model, post-trains smaller frontier models until they clear that bar, and deploys them optimized for your traffic. Each task goes to the model that is best on it and cheapest to run. Every new trace makes the next round better. <b>Higher quality, lower bill.</b></p>
+    <p class="sub">We train smaller models on your traces until they clear your bar, then run them for you. <b>Higher quality, lower bill.</b></p>
     <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="#how">How it works</a></div>
     <pre class="snip"><span class="c"># one line to integrate</span>
 <b>import</b> leibler
@@ -65,7 +65,7 @@ client = leibler.wrap(OpenAI())</pre>
 
   <section class="wrap sec" id="bar">
     <div class="h"><span class="n">00</span><h2>The bar never moves. The model climbs to it.</h2></div>
-    <p class="lead">Your frontier model sets the bar. A small student tries the task; what clears the bar trains the next student. When it clears reliably, it graduates.</p>
+    <p class="lead">Your frontier model sets the bar. A smaller model trains on its passing attempts until it clears reliably.</p>
     <div class="diagram">
       <canvas id="cv" role="img" aria-label="Animated diagram: a student model's outputs scatter below a fixed quality bar; with each iteration the outputs that clear the bar train the student, until the task clears the bar reliably and graduates"></canvas>
       <div class="read mono"><span>task <b id="r-task">ticket_classification</b></span><span>iteration <b id="r-iter">01</b></span><span>clearing the bar <b id="r-pass">0%</b></span><span>graduated <b id="r-grad">0</b> of 4</span></div>
@@ -74,7 +74,7 @@ client = leibler.wrap(OpenAI())</pre>
 
   <section class="wrap sec" id="how">
     <div class="h"><span class="n">01</span><h2>How it works</h2></div>
-    <div class="step"><div><h3><span>01</span>Evaluate</h3><p>Plug in the wrapper or send a week of traces. In 48 hours you know which of your tasks a smaller model can already handle.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+    <div class="step"><div><h3><span>01</span>Evaluate</h3><p>Add the wrapper or send a week of traces. In 48 hours you know which tasks a smaller model already handles.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
       <text class="lbl" x="8" y="14">tasks from your traces</text>
       <text class="lbl" x="8" y="34">classify</text><text class="lbl" x="8" y="56">summarize</text><text class="lbl" x="8" y="78">extract</text><text class="lbl" x="8" y="100">draft reply</text>
       <g fill="#1f1f1f"><rect x="80" y="27" width="120" height="6"></rect><rect x="80" y="49" width="120" height="6"></rect><rect x="80" y="71" width="120" height="6"></rect><rect x="80" y="93" width="120" height="6"></rect></g>
@@ -85,7 +85,7 @@ client = leibler.wrap(OpenAI())</pre>
       <line class="st" x1="166" y1="20" x2="166" y2="104"></line><text class="lbl" x="166" y="14" text-anchor="middle" fill="#fff">bar</text>
       <g class="f1l"><text class="lbl" x="208" y="34" fill="#fff">pass</text><text class="lbl" x="208" y="56" fill="#fff">pass</text><text class="lbl" x="208" y="78">fail</text><text class="lbl" x="208" y="100" fill="#fff">pass</text></g>
     </svg></div></div>
-    <div class="step"><div><h3><span>02</span>Build</h3><p>For the tasks that fail, we post-train a model on your traces until it clears the bar.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+    <div class="step"><div><h3><span>02</span>Build</h3><p>For the rest, we post-train a model on your traces until it clears the bar.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
       <circle class="dim" cx="44" cy="66" r="26"></circle><circle class="st spin flow" cx="44" cy="66" r="26"></circle><circle class="st f2ring" cx="44" cy="66" r="26"></circle><circle class="st" cx="44" cy="66" r="7"></circle>
       <text class="lbl" x="44" y="110" text-anchor="middle">student</text>
       <text class="lbl" x="8" y="16">your task, played as episodes</text>
@@ -128,8 +128,8 @@ client = leibler.wrap(OpenAI())</pre>
 
   <section class="wrap sec" id="proof">
     <div class="h"><span class="n">02</span><h2>Proof.</h2></div>
-    <p class="lead">In 48 hours you get this for your own tasks. Here is one plan, from traces to shipped models, graded against the customer's own frontier model, which never moved.</p>
-    <table class="proof">
+    <p class="lead">One customer's plan, graded against their own frontier model. In 48 hours you get the same for your tasks.</p>
+    <div class="tbl"><table class="proof">
       <thead><tr><th>task</th><th>clears the bar</th><th>cost vs frontier</th></tr></thead>
       <tbody>
         <tr><td>summarize_call_notes</td><td>96%</td><td>18× cheaper</td></tr>
@@ -137,13 +137,13 @@ client = leibler.wrap(OpenAI())</pre>
         <tr><td>extract_invoice_fields</td><td>98%</td><td>15× cheaper</td></tr>
         <tr><td>draft_customer_reply</td><td>91%</td><td>10× cheaper</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p class="note">Nothing ships below the bar. Every release is re-graded against it first.</p>
   </section>
 
   <section class="wrap sec" id="data">
     <div class="h"><span class="n">03</span><h2>Your data stays yours.</h2></div>
-    <p class="lead">A customer's traces train only that customer's models. Nothing is pooled across customers, and everything is deleted on request. Trace capture is fire-and-forget. It can't add latency to or break your calls.</p>
+    <p class="lead">Your traces train only your models, are never pooled, and are deleted on request. Capture can't slow or break your calls.</p>
   </section>
 
   <section class="wrap sec" id="faq">
@@ -159,11 +159,11 @@ client = leibler.wrap(OpenAI())</pre>
       </details>
       <details>
         <summary>What if quality drops below the bar?</summary>
-        <p>It doesn't ship. Every release is graded against your frontier model on your own inputs, and anything below the bar is held back.</p>
+        <p>It doesn't ship. Every release is graded against the bar first; anything below it is held back.</p>
       </details>
       <details>
         <summary>How is this different from just using a cheaper model?</summary>
-        <p>A cheaper model doesn't clear your bar. The harness proves, on your traces, which tasks it can and can't take before anything runs in production.</p>
+        <p>On its own it doesn't clear your bar. We prove on your traces which tasks it can take before anything ships.</p>
       </details>
       <details>
         <summary>What does it cost?</summary>
