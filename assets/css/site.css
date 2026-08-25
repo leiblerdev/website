@@ -75,7 +75,7 @@
   .nav nav { display: flex; gap: 24px; align-items: center; color: var(--fg-2); }
   .nav nav a, .brand { white-space: nowrap; }
   .nav .btn { min-height: 34px; font-family: inherit; font-size: 13px; border-radius: 4px; }
-  @media (pointer: coarse) { .nav .btn { min-height: 40px; } .nav nav a:not(.btn), footer a { padding: 8px 0; display: inline-block; } }
+  @media (pointer: coarse) { .nav .btn { min-height: 40px; } .nav nav a:not(.btn) { padding: 8px 0; } footer a { padding: 8px 0; display: inline-block; } }
   .brand { color: #fff; } .brand span { color: var(--fg-3); }
   .btn { font-family: inherit; border-radius: 4px; }
   .hero { padding-top: 96px; padding-bottom: 80px; }
@@ -94,18 +94,12 @@
   .lead { color: var(--fg-2); max-width: 66ch; line-height: 1.7; margin-left: 64px; }
   .diagram { margin: 32px 0 0 64px; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
   .diagram canvas { display: block; width: 100%; height: 420px; }
-  @media (max-width: 720px) { .wrap { padding-left: 24px; padding-right: 24px; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); } .hero { padding-top: 56px; padding-bottom: 56px; } .sec { padding-top: 52px; padding-bottom: 52px; } .close { padding-top: 64px; padding-bottom: 64px; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: clamp(300px, 92vw, 340px); } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { font-size: 12px; gap: 10px 16px; padding: 12px 14px; } .nav { height: 52px; } }
-  @media (max-width: 560px) { .nav nav { gap: 14px; } .nav .hide-s { display: none; } .nav .btn { padding: 0 12px; } }
-  @media (max-width: 400px) { .nav nav { gap: 12px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .close h2 { font-size: 24px; } }
-  @media (min-width: 721px) and (max-width: 900px) { .step { grid-template-columns: 1fr 200px; gap: 24px; } .step .fig { width: 200px; } }
-  @media (max-height: 480px) and (orientation: landscape) { .hero { padding-top: 40px; padding-bottom: 40px; } .diagram canvas { height: 260px; } }
   .step { margin-left: 64px; display: grid; grid-template-columns: 1fr 240px; gap: 32px; padding: 28px 0; border-top: 1px dashed var(--line-2); align-items: center; }
   .step:last-child { border-bottom: 1px dashed var(--line-2); }
   .step h3 { font-size: 17px; margin-bottom: 8px; } .step h3 span { color: var(--fg-3); margin-right: 12px; }
   .step p { color: var(--fg-2); line-height: 1.7; max-width: 62ch; }
   .step .fig { width: 240px; max-width: 100%; aspect-ratio: 2 / 1; justify-self: end; } .step .fig svg { width: 100%; height: 100%; overflow: visible; }
-  @media (max-width: 720px) { .step { grid-template-columns: 1fr; } .step .fig { justify-self: start; } }
-  .close { border-top: 1px solid var(--line); padding-top: 96px; padding-bottom: 96px; }
+  .close { border-top: 1px solid var(--line); padding-top: 96px; padding-bottom: 56px; }
   .close h2 { font-size: clamp(26px, 4vw, 44px); line-height: 1.15; max-width: 22ch; margin-bottom: 16px; }
   .close p { color: var(--fg-2); max-width: 60ch; margin-bottom: 28px; line-height: 1.7; }
   footer { border-top: 1px solid var(--line); padding-top: 24px; padding-bottom: 24px; font-size: 12.5px; color: var(--fg-3); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -115,7 +109,6 @@
   .person img { display: block; width: 120px; height: 120px; border: 1px solid var(--line-2); border-radius: 4px; object-fit: cover; }
   .person h3 span { color: var(--fg-3); margin-left: 12px; }
   .person .links { margin-top: 14px; font-size: 13px; } .person .links a { color: #fff; }
-  @media (max-width: 720px) { .person { grid-template-columns: 1fr; } }
   /* 404 */
   .nf { padding-top: 120px; padding-bottom: 120px; } .nf h1 { margin: 0 0 16px; } .nf p { color: var(--fg-2); margin-bottom: 24px; }
 
@@ -142,5 +135,13 @@
   /* close extras */
   .cred { margin-top: 20px; color: var(--fg-3); font-size: 12.5px; }
 
+  /* responsive: keep these last so they win over the desktop rules above */
+  @media (max-width: 720px) { .wrap { padding-left: 24px; padding-right: 24px; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); } .hero { padding-top: 56px; padding-bottom: 56px; } .sec { padding-top: 52px; padding-bottom: 52px; } .close { padding-top: 64px; padding-bottom: 40px; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: clamp(300px, 92vw, 340px); } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { display: grid; grid-template-columns: auto 1fr; font-size: 12px; gap: 10px 20px; padding: 12px 16px; } .read span:first-child { grid-column: 1 / -1; } .nav { height: 52px; } }
+  @media (max-width: 560px) { .nav nav { gap: 14px; } .nav .hide-s { display: none; } .nav .btn { padding: 0 12px; } }
+  @media (max-width: 400px) { .nav nav { gap: 12px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .close h2 { font-size: 24px; } }
+  @media (min-width: 721px) and (max-width: 900px) { .step { grid-template-columns: 1fr 200px; gap: 24px; } .step .fig { width: 200px; } }
+  @media (max-height: 480px) and (orientation: landscape) { .hero { padding-top: 40px; padding-bottom: 40px; } .diagram canvas { height: 260px; } }
+  @media (max-width: 720px) { .step { grid-template-columns: 1fr; } .step .fig { justify-self: start; } }
+  @media (max-width: 720px) { .person { grid-template-columns: 1fr; } }
   @media (max-width: 720px) { .tbl, .note, .faq { margin-left: 0; } }
-  @media (max-width: 560px) { .proof { font-size: 12px; } .proof th, .proof td { padding: 10px 8px; } .proof td:first-child { overflow-wrap: anywhere; } }
+  @media (max-width: 560px) { .proof { font-size: 12px; } .proof th, .proof td { padding: 10px 8px; } .proof th, .proof td { vertical-align: top; } }
