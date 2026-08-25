@@ -69,16 +69,16 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
   h1, h2, h3 { letter-spacing: -0.02em; font-weight: 500; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; padding-left: max(28px, env(safe-area-inset-left)); padding-right: max(28px, env(safe-area-inset-right)); }
+  .wrap { max-width: 960px; margin: 0 auto; padding-left: 28px; padding-right: 28px; padding-left: max(28px, env(safe-area-inset-left)); padding-right: max(28px, env(safe-area-inset-right)); }
   header { border-bottom: 1px solid var(--line); }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 56px; font-size: 13px; }
   .nav nav { display: flex; gap: 24px; align-items: center; color: var(--fg-2); }
   .nav nav a, .brand { white-space: nowrap; }
   .nav .btn { min-height: 34px; font-family: inherit; font-size: 13px; border-radius: 4px; }
-  @media (pointer: coarse) { .nav .btn { min-height: 40px; } .nav nav a, footer a { padding: 8px 0; display: inline-block; } }
+  @media (pointer: coarse) { .nav .btn { min-height: 40px; } .nav nav a:not(.btn), footer a { padding: 8px 0; display: inline-block; } }
   .brand { color: #fff; } .brand span { color: var(--fg-3); }
   .btn { font-family: inherit; border-radius: 4px; }
-  .hero { padding: 96px 0 80px; }
+  .hero { padding-top: 96px; padding-bottom: 80px; }
   .prompt { color: var(--fg-3); font-size: 13px; }
   .prompt b { color: #fff; font-weight: 500; }
   h1 { font-size: clamp(30px, 4.6vw, 58px); line-height: 1.12; margin: 36px 0 24px; max-width: 24ch; }
@@ -87,28 +87,28 @@
   .cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
   .snip { margin-top: 56px; max-width: 100%; overflow-x: auto; padding: 18px 20px; border: 1px solid var(--line-2); border-radius: 6px; font-size: 14px; line-height: 1.8; color: var(--fg-2); display: inline-block; min-width: min(100%, 420px); }
   .snip b { color: #fff; font-weight: 500; } .snip .c { color: var(--fg-3); }
-  .sec { border-top: 1px solid var(--line); padding: 72px 0; }
+  .sec { border-top: 1px solid var(--line); padding-top: 72px; padding-bottom: 72px; }
   .h { display: flex; gap: 24px; align-items: baseline; margin-bottom: 28px; }
   .h .n { color: var(--fg-3); font-size: 13px; min-width: 40px; }
   .h h2 { font-size: clamp(22px, 3vw, 32px); line-height: 1.2; }
   .lead { color: var(--fg-2); max-width: 66ch; line-height: 1.7; margin-left: 64px; }
   .diagram { margin: 32px 0 0 64px; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
   .diagram canvas { display: block; width: 100%; height: 420px; }
-  @media (max-width: 720px) { .wrap { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); } .hero { padding: 56px 0 56px; } .sec { padding: 52px 0; } .close { padding: 64px 0; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: clamp(250px, 80vw, 320px); } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { font-size: 12px; gap: 10px 16px; padding: 12px 14px; } .nav { height: 52px; } }
+  @media (max-width: 720px) { .wrap { padding-left: 24px; padding-right: 24px; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); } .hero { padding-top: 56px; padding-bottom: 56px; } .sec { padding-top: 52px; padding-bottom: 52px; } .close { padding-top: 64px; padding-bottom: 64px; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: clamp(300px, 92vw, 340px); } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { font-size: 12px; gap: 10px 16px; padding: 12px 14px; } .nav { height: 52px; } }
   @media (max-width: 560px) { .nav nav { gap: 14px; } .nav .hide-s { display: none; } .nav .btn { padding: 0 12px; } }
   @media (max-width: 400px) { .nav nav { gap: 12px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .close h2 { font-size: 24px; } }
   @media (min-width: 721px) and (max-width: 900px) { .step { grid-template-columns: 1fr 200px; gap: 24px; } .step .fig { width: 200px; } }
-  @media (max-height: 480px) and (orientation: landscape) { .hero { padding: 40px 0; } .diagram canvas { height: 260px; } }
+  @media (max-height: 480px) and (orientation: landscape) { .hero { padding-top: 40px; padding-bottom: 40px; } .diagram canvas { height: 260px; } }
   .step { margin-left: 64px; display: grid; grid-template-columns: 1fr 240px; gap: 32px; padding: 28px 0; border-top: 1px dashed var(--line-2); align-items: center; }
   .step:last-child { border-bottom: 1px dashed var(--line-2); }
   .step h3 { font-size: 17px; margin-bottom: 8px; } .step h3 span { color: var(--fg-3); margin-right: 12px; }
   .step p { color: var(--fg-2); line-height: 1.7; max-width: 62ch; }
   .step .fig { width: 240px; max-width: 100%; aspect-ratio: 2 / 1; justify-self: end; } .step .fig svg { width: 100%; height: 100%; overflow: visible; }
   @media (max-width: 720px) { .step { grid-template-columns: 1fr; } .step .fig { justify-self: start; } }
-  .close { border-top: 1px solid var(--line); padding: 96px 0; }
+  .close { border-top: 1px solid var(--line); padding-top: 96px; padding-bottom: 96px; }
   .close h2 { font-size: clamp(26px, 4vw, 44px); line-height: 1.15; max-width: 22ch; margin-bottom: 16px; }
   .close p { color: var(--fg-2); max-width: 60ch; margin-bottom: 28px; line-height: 1.7; }
-  footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 12.5px; color: var(--fg-3); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer { border-top: 1px solid var(--line); padding-top: 24px; padding-bottom: 24px; font-size: 12.5px; color: var(--fg-3); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
   /* team page */
   .person { margin-left: 0; grid-template-columns: 120px 1fr; gap: 28px; align-items: start; }
@@ -117,7 +117,7 @@
   .person .links { margin-top: 14px; font-size: 13px; } .person .links a { color: #fff; }
   @media (max-width: 720px) { .person { grid-template-columns: 1fr; } }
   /* 404 */
-  .nf { padding: 120px 0; } .nf h1 { margin: 0 0 16px; } .nf p { color: var(--fg-2); margin-bottom: 24px; }
+  .nf { padding-top: 120px; padding-bottom: 120px; } .nf h1 { margin: 0 0 16px; } .nf p { color: var(--fg-2); margin-bottom: 24px; }
 
   /* proof table */
   .tbl { margin: 32px 0 0 64px; overflow-x: auto; -webkit-overflow-scrolling: touch; }

@@ -32,14 +32,24 @@
     var o = setup('cv', ''); if (!o) return;
     var ctx = o.ctx, state, t = 0, taskIx = 0, iter, mu, sigma, paths = [], graduated = [], ring = 0, N = 34, P = 40;
     function narrow() { return o.W < 760; }
-    function qToY(q) { return o.H * 0.86 - q * (o.H * 0.86 - o.H * 0.12); }
-    function sx() { return o.W * (narrow() ? 0.12 : 0.10); } function ex() { return o.W * (narrow() ? 0.90 : 0.66); } function sy() { return o.H * 0.5; }
+    // on phones the plot uses the top of the canvas and the task list sits underneath it
+    function PH() { return narrow() ? o.H - 104 : o.H; }
+    function qToY(q) { var h = PH(); return h * 0.86 - q * (h * 0.86 - h * 0.12); }
+    function sx() { return o.W * (narrow() ? 0.12 : 0.10); } function ex() { return o.W * (narrow() ? 0.90 : 0.66); } function sy() { return PH() * 0.5; }
+    function slot(i) { return { x: o.W * 0.06, y: PH() + 40 + i * 19 }; }
+    function shelfNarrow(graduated) {
+      var W = o.W, top = PH(), pad = W * 0.06;
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(pad, top); ctx.lineTo(W - pad, top); ctx.stroke();
+      ctx.fillStyle = '#8a8a8a'; o.mono(11); ctx.textAlign = 'left'; ctx.fillText('graduated \u00b7 yours', pad, top + 20);
+      ctx.textAlign = 'right'; ctx.fillText(graduated.length + ' of ' + TASKS.length, W - pad, top + 20); ctx.textAlign = 'left';
+      TASKS.forEach(function (name, i) { var done = graduated.indexOf(name) >= 0, q = slot(i); ctx.fillStyle = done ? '#fff' : '#3a3a3a'; ctx.beginPath(); ctx.arc(q.x + 3, q.y - 4, 3, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = done ? '#a3a3a3' : '#4a4a4a'; ctx.fillText(name, q.x + 13, q.y); });
+    }
     function start(ix) { taskIx = ix; iter = 1; mu = 0.42 + Math.random() * 0.08; sigma = 0.16; o.el.task.textContent = TASKS[ix]; o.el.iter.textContent = '01'; o.el.pass.textContent = '0%'; roll(); }
     function roll() {
       paths = []; var n = 0, count = narrow() ? 22 : N;
       for (var i = 0; i < count; i++) {
         var q = Math.max(0.05, Math.min(0.98, mu + gauss() * sigma)), pass = q >= BAR_Q; if (pass) n++;
-        var pts = [], y0 = sy(), y1 = qToY(q), w = 0, wob = (0.25 + Math.random() * 0.5) * o.H * 0.12;
+        var pts = [], y0 = sy(), y1 = qToY(q), w = 0, wob = (0.25 + Math.random() * 0.5) * PH() * 0.12;
         for (var k = 0; k <= P; k++) { var u = k / P; w += gauss() * 0.35; var env = Math.sin(u * Math.PI); pts.push({ x: sx() + (ex() - sx()) * u, y: y0 + (y1 - y0) * ease(u) + w * wob * env * 0.3 }); }
         paths.push({ pts: pts, pass: pass, q: q, d: Math.random() * 0.4 });
       }
@@ -70,7 +80,7 @@
         for (var i = 1; i <= m; i++) ctx.lineTo(p.pts[i].x, p.pts[i].y);
         ctx.strokeStyle = 'rgba(255,255,255,' + a + ')'; ctx.stroke();
         if (frac >= 1 && state !== 'rise') { var e = p.pts[P]; ctx.beginPath(); ctx.arc(e.x, e.y, 2.4, 0, Math.PI * 2); ctx.fillStyle = 'rgba(255,255,255,' + a + ')'; ctx.fill(); }
-        if (state === 'graduate') { var k3 = ease(Math.min(1, t / 1.2)), gy = narrow() ? H * 0.12 : H * 0.24 + graduated.length * 30 - 4, gx = narrow() ? W * 0.92 : W * 0.765, e2 = p.pts[P]; if (p.pass) { ctx.beginPath(); ctx.arc(e2.x + (gx - e2.x) * k3, e2.y + (gy - e2.y) * k3, 2.2, 0, Math.PI * 2); ctx.fillStyle = 'rgba(255,255,255,' + (0.9 * (1 - k3 * 0.5)) + ')'; ctx.fill(); } }
+        if (state === 'graduate') { var k3 = ease(Math.min(1, t / 1.2)), gy = narrow() ? slot(taskIx).y - 4 : H * 0.24 + graduated.length * 30 - 4, gx = narrow() ? slot(taskIx).x + 3 : W * 0.765, e2 = p.pts[P]; if (p.pass) { ctx.beginPath(); ctx.arc(e2.x + (gx - e2.x) * k3, e2.y + (gy - e2.y) * k3, 2.2, 0, Math.PI * 2); ctx.fillStyle = 'rgba(255,255,255,' + (0.9 * (1 - k3 * 0.5)) + ')'; ctx.fill(); } }
       });
       // student
       var s = { x: sx(), y: sy() };
@@ -78,9 +88,9 @@
       ctx.beginPath(); ctx.arc(s.x, s.y, 12, 0, Math.PI * 2); ctx.fillStyle = '#000'; ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke(); ctx.lineWidth = 1;
       ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'center'; ctx.fillText('student', s.x, s.y + 32);
       var cap = narrow() ? { rise: 'rollouts', hold: 'graded against the bar', 'return': 'passes retrain the student', graduate: 'graduated' }[state] : { rise: 'the student rolls out attempts', hold: 'each attempt is graded against the bar', 'return': 'attempts that cleared it train the next version', graduate: 'the task clears the bar reliably and graduates' }[state];
-      if (cap) { ctx.textAlign = 'left'; ctx.fillText(cap, bx0, H * 0.955); }
-      if (narrow()) { ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'right'; ctx.fillText('graduated ' + graduated.length + ' of ' + TASKS.length, W * 0.94, H * 0.12); } else shelf(o, graduated);
-      if (state === 'done') { ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.font = '500 13px "Geist Mono", ui-monospace, monospace'; ctx.fillText(narrow() ? 'Four tasks, one bar.' : 'Four tasks cleared the same bar. Small models, your weights.', W * (narrow() ? 0.5 : 0.39), H * 0.5); }
+      if (cap) { ctx.textAlign = 'left'; ctx.fillText(cap, bx0, PH() * 0.955); }
+      if (narrow()) shelfNarrow(graduated); else shelf(o, graduated);
+      if (state === 'done') { ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.font = '500 13px "Geist Mono", ui-monospace, monospace'; ctx.fillText(narrow() ? 'Four tasks, one bar.' : 'Four tasks cleared the same bar. Small models, your weights.', W * (narrow() ? 0.5 : 0.39), PH() * 0.5); }
     }
     o.redraw = draw; start(0); run(o, step, draw);
   })();
