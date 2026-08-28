@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Leibler · Kullback</title>
-<meta name="description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces, verifies the rebuild by replay, and grades any model in it on what it changed.">
+<meta name="description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces and checks the rebuild by replay. The claim it exists to earn: a 2B model post-trained in that environment performs on the real tasks.">
 <link rel="canonical" href="https://leibler.dev/kullback">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Leibler">
 <meta property="og:title" content="Leibler · Kullback">
-<meta property="og:description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces, verifies the rebuild by replay, and grades any model in it on what it changed.">
+<meta property="og:description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces and checks the rebuild by replay. The claim it exists to earn: a 2B model post-trained in that environment performs on the real tasks.">
 <meta property="og:url" content="https://leibler.dev/kullback">
 <meta property="og:image" content="https://leibler.dev/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Leibler · Kullback">
-<meta name="twitter:description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces, verifies the rebuild by replay, and grades any model in it on what it changed.">
+<meta name="twitter:description" content="Kullback is Leibler's open-source harness. It rebuilds your environment from your agent traces and checks the rebuild by replay. The claim it exists to earn: a 2B model post-trained in that environment performs on the real tasks.">
 <meta name="twitter:image" content="https://leibler.dev/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="/assets/css/kullback.css?v=20260828a">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Kullback","codeRepository":"https://github.com/leiblerdev/kullback","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"Python","author":{"@type":"Organization","name":"Leibler","url":"https://leibler.dev/"},"description":"Open-source harness that rebuilds an agent's environment from its traces and grades any model in it on end state."}
+{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Kullback","codeRepository":"https://github.com/leiblerdev/kullback","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"Python","author":{"@type":"Organization","name":"Leibler","url":"https://leibler.dev/"},"description":"Open-source harness that rebuilds an agent's environment from its traces and checks the rebuild by replay."}
 </script>
 </head>
 <body>
@@ -45,8 +45,8 @@
 <main id="main">
   <section class="wrap kb-hero">
     <p class="prompt"><b>kullback</b> is the open-source harness behind Leibler.</p>
-    <h1><span class="w" style="--i:0">Your</span> <span class="w" style="--i:1">traces</span> <span class="w" style="--i:2">in.</span><br><span class="w" style="--i:3">A</span> <span class="w" style="--i:4">verified</span> <span class="w" style="--i:5">environment</span> <span class="w" style="--i:6">out.</span></h1>
-    <p class="sub">Traces are the logs your agent already writes. Kullback reads them, rebuilds the tools, data and rules the agent used, replays the logs to prove the copy is faithful, then scores any model inside that copy on what it changed.</p>
+    <h1><span class="w" style="--i:0">Your</span> <span class="w" style="--i:1">traces</span> <span class="w" style="--i:2">in.</span><br><span class="w" style="--i:3">An</span> <span class="w" style="--i:4">environment</span> <span class="w" style="--i:5">out.</span></h1>
+    <p class="sub">Traces are the logs your agent already writes. Kullback reads them, rebuilds the tools, data and rules the agent used, and replays the logs to check the rebuild. The claim we are working toward, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.</p>
     <div class="cta"><a class="btn btn-w" href="https://github.com/leiblerdev/kullback"><svg class="gh" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="btn btn-o" href="https://github.com/leiblerdev/kullback/blob/main/docs/design-philosophy.md">Design philosophy</a></div>
   </section>
 
@@ -90,7 +90,7 @@
   </section>
 
   <section class="wrap kb-sec rv" id="checked">
-    <h2>Checked by replay before any model is scored.</h2>
+    <h2>What has been measured so far.</h2>
     <p>Measured on Sierra's public retail traces (tau2), where the real tools and database exist to compare against. Seen: runs used for the build. Held out: runs the build never saw.</p>
     <div class="kb-tbl"><table class="proof">
       <thead><tr><th>check</th><th>seen</th><th>held out</th></tr></thead>
@@ -111,8 +111,8 @@
   </section>
 
   <section class="wrap kb-close rv">
-    <h2>The rebuild is measured.<br>Scoring models in it is next.</h2>
-    <p>Generated tool code, verifiers on real tasks, and runs of candidate models. The numbers get published either way.</p>
+    <h2>One claim to earn.<br>A 2B model, post-trained in this.</h2>
+    <p>Not claimed yet. Next: the same rebuild on domains it has never seen, then a 2B parameter model post-trained on trajectories the verifier passed, measured on the real held-out tasks. The numbers get published either way.</p>
     <div class="cta"><a class="btn btn-w" href="https://github.com/leiblerdev/kullback"><svg class="gh" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Follow on GitHub</a><a class="btn btn-o" href="/#how">How Leibler uses it</a></div>
   </section>
 </main>

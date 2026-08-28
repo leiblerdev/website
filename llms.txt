@@ -20,7 +20,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 - Trace capture is fire-and-forget and cannot add latency to or break the customer's calls.
 - Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
 - How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
-- Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and grades any model in it on end state.
+- Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and checks the rebuild by replay. The claim it is built to earn, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.
 - Founder: Krrish Agarwalla. Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
 
 ## Glossary
@@ -28,7 +28,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 - Trace: one LLM call with its prompt, response, token usage, cost, and latency.
 - Task: a cluster of similar traces sharing an intent; the unit that is graded, post-trained, and routed.
 - The bar: the customer's current frontier model's score on the customer's own inputs. Fixed; models climb to it.
-- Kullback: the open-source Builder and Runner of the harness; turns traces into a verified environment and grades runs in it.
+- Kullback: the open-source Builder and Runner of the harness; turns traces into an environment checked by replay, and runs other models in it.
 - Harness: Leibler's end-to-end system. It replays traces through candidate models, grades them against the bar, post-trains smaller frontier models, optimizes and deploys them, and routes traffic.
 - Routing plan: per task, which model clears the bar, the recommended traffic allocation, and the projected saving.
 
