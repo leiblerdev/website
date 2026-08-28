@@ -27,6 +27,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css?v=20260825c">
+<link rel="stylesheet" href="/assets/css/kullback.css?v=20260828a">
+<script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Kullback","codeRepository":"https://github.com/leiblerdev/kullback","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"Python","author":{"@type":"Organization","name":"Leibler","url":"https://leibler.dev/"},"description":"Open-source harness that rebuilds an agent's environment from its traces and grades any model in it on end state."}
 </script>
@@ -35,52 +37,87 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="mono">
   <div class="wrap nav">
-    <a class="brand" href="/">leibler<span>.dev</span></a>
-    <nav><a class="hide-s" href="/#how">How it works</a><a href="/kullback">Kullback</a><a class="btn btn-w" href="https://github.com/leiblerdev/kullback">GitHub</a></nav>
+    <a class="brand" href="/"><img class="mark" src="/assets/img/logo/logo-mark.svg" width="24" height="24" alt="">leibler<span>.dev</span></a>
+    <nav><a class="hide-s" href="/#how">How it works</a><a href="/kullback">Kullback</a><a class="btn btn-w" href="https://github.com/leiblerdev/kullback"><svg class="gh" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="wrap hero" style="padding-bottom: 40px;">
-    <p class="prompt"><b>kullback</b> is the open-source half of the harness.</p>
-    <h1>Your traces in, a verified environment out.</h1>
-    <p class="sub">Kullback rebuilds the world your agent works in from the traces it already produced, checks the rebuild by replaying those traces, and grades any model in it on what it changed. Apache-2.0, on <a href="https://github.com/leiblerdev/kullback">GitHub</a>.</p>
+  <section class="wrap kb-hero">
+    <p class="prompt"><b>kullback</b> is the open-source harness behind Leibler.</p>
+    <h1><span class="w" style="--i:0">Your</span> <span class="w" style="--i:1">traces</span> <span class="w" style="--i:2">in.</span><br><span class="w" style="--i:3">A</span> <span class="w" style="--i:4">verified</span> <span class="w" style="--i:5">environment</span> <span class="w" style="--i:6">out.</span></h1>
+    <p class="sub">Traces are the logs your agent already writes. Kullback reads them, rebuilds the tools, data and rules the agent used, replays the logs to prove the copy is faithful, then scores any model inside that copy on what it changed.</p>
+    <div class="cta"><a class="btn btn-w" href="https://github.com/leiblerdev/kullback"><svg class="gh" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="btn btn-o" href="https://github.com/leiblerdev/kullback/blob/main/docs/design-philosophy.md">Design philosophy</a></div>
   </section>
 
-  <section class="wrap sec" style="padding-top: 0; border-top: 0;" id="what">
-    <div class="h"><span class="n">01</span><h2>What it builds.</h2></div>
-    <p class="lead">From a week of traces: the rows your runs touched, one function per tool that behaves the way the real tool was observed to behave, your policy rules compiled into checks, a simulated user who knows what the real user knew, and a verifier per task.</p>
-    <p class="note">Every value points back to the byte in your trace it came from. Nothing in the environment exists without a trace behind it.</p>
+  <section class="wrap loop rv" aria-labelledby="loop-cap">
+      <svg class="h" viewBox="0 0 720 190" role="img" aria-label="The Kullback loop: traces build an environment, models run in it, verdicts come from code over end state, the report goes back to you, and new traces feed the next build">
+      <defs><marker id="kb-ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="arrow" d="M0 0 L8 4 L0 8 z"/></marker></defs>
+      <path class="ln" d="M60 70 H660"/><path class="fl" d="M60 70 H660"/>
+      <path class="ln" d="M660 70 C 660 178, 210 178, 210 84" marker-end="url(#kb-ah)"/><path class="fl" d="M660 70 C 660 178, 210 178, 210 84"/>
+      <text class="arc-l" x="435" y="166" text-anchor="middle">new traces, fixes, disputes</text>
+      <g class="nd" style="--d:0.0s"><circle cx="60" cy="70" r="5"/><circle class="on" cx="60" cy="70" r="5"/><text x="60" y="48" text-anchor="middle">traces</text><text class="cap" x="60" y="30" text-anchor="middle">your runs</text></g>
+      <g class="nd" style="--d:1.2s"><circle cx="210" cy="70" r="5"/><circle class="on" cx="210" cy="70" r="5"/><text x="210" y="48" text-anchor="middle">build</text><text class="cap" x="210" y="30" text-anchor="middle">tools, state, checks</text></g>
+      <g class="nd" style="--d:2.4s"><circle cx="360" cy="70" r="5"/><circle class="on" cx="360" cy="70" r="5"/><text x="360" y="48" text-anchor="middle">run</text><text class="cap" x="360" y="30" text-anchor="middle">any model</text></g>
+      <g class="nd" style="--d:3.6s"><circle cx="510" cy="70" r="5"/><circle class="on" cx="510" cy="70" r="5"/><circle class="ring" cx="510" cy="70" r="5"/><text x="510" y="48" text-anchor="middle">verdict</text><text class="cap" x="510" y="30" text-anchor="middle">code, end state</text></g>
+      <g class="nd" style="--d:4.8s"><circle cx="660" cy="70" r="5"/><circle class="on" cx="660" cy="70" r="5"/><text x="660" y="48" text-anchor="middle">report</text><text class="cap" x="660" y="30" text-anchor="middle">you decide</text></g>
+      <circle class="dot" r="3" style="offset-path: path('M60 70 H660 C 660 178, 210 178, 210 84')"/>
+      </svg>
+      <svg class="v" viewBox="-30 0 370 400" aria-hidden="true">
+      <path class="ln" d="M70 24 V344"/><path class="fl" d="M70 24 V344"/>
+      <path class="ln" d="M70 344 C -30 344, -30 104, 56 104" marker-end="url(#kb-ah)"/><path class="fl" d="M70 344 C -30 344, -30 104, 56 104"/>
+      <text class="arc-l" x="70" y="386">loops back: new traces, fixes, disputes</text>
+      <g class="nd" style="--d:0.0s"><circle cx="70" cy="24" r="5"/><circle class="on" cx="70" cy="24" r="5"/><text x="92" y="28">traces</text><text class="cap" x="92" y="46">your runs</text></g>
+      <g class="nd" style="--d:1.2s"><circle cx="70" cy="104" r="5"/><circle class="on" cx="70" cy="104" r="5"/><text x="92" y="108">build</text><text class="cap" x="92" y="126">tools, state, checks</text></g>
+      <g class="nd" style="--d:2.4s"><circle cx="70" cy="184" r="5"/><circle class="on" cx="70" cy="184" r="5"/><text x="92" y="188">run</text><text class="cap" x="92" y="206">any model</text></g>
+      <g class="nd" style="--d:3.6s"><circle cx="70" cy="264" r="5"/><circle class="on" cx="70" cy="264" r="5"/><circle class="ring" cx="70" cy="264" r="5"/><text x="92" y="268">verdict</text><text class="cap" x="92" y="286">code, end state</text></g>
+      <g class="nd" style="--d:4.8s"><circle cx="70" cy="344" r="5"/><circle class="on" cx="70" cy="344" r="5"/><text x="92" y="348">report</text><text class="cap" x="92" y="366">you decide</text></g>
+      <circle class="dot" r="3" style="offset-path: path('M70 24 V344 C -30 344, -30 104, 56 104')"/>
+      </svg>
+    <p class="loop-cap" id="loop-cap">The loop. <b>Code decides pass or fail from the final data, not from the transcript.</b> A judge model can take a pass away, never give one.</p>
   </section>
 
-  <section class="wrap sec" id="verified">
-    <div class="h"><span class="n">02</span><h2>How it is checked.</h2></div>
-    <p class="lead">Before any model is graded, the rebuild has to reproduce the recorded runs, on runs it never saw. First measurement, on Sierra's public tau2 retail traces, where the real tools and database exist to compare against.</p>
-    <div class="tbl"><table class="proof">
-      <thead><tr><th>check</th><th>result</th><th>held out</th></tr></thead>
+  <section class="wrap kb-sec rv" id="what">
+    <h2>What a week of traces turns into.</h2>
+    <ul class="kb-list">
+      <li class="rv" style="--d:.05s"><b>Data.</b> The records your runs touched, with the values they saw.</li>
+      <li class="rv" style="--d:.12s"><b>Tools.</b> One function per tool, behaving the way the real one did in the logs.</li>
+      <li class="rv" style="--d:.19s"><b>Rules.</b> Your policy, turned into checks the code can run.</li>
+      <li class="rv" style="--d:.26s"><b>User.</b> A simulated user who knows only what the real one knew.</li>
+      <li class="rv" style="--d:.33s"><b>Verifier.</b> One per task. It looks at the final data and says pass or fail.</li>
+    </ul>
+    <p class="kb-note">Every value points back to the line in your trace it came from. Nothing is invented.</p>
+  </section>
+
+  <section class="wrap kb-sec rv" id="checked">
+    <h2>Checked by replay before any model is scored.</h2>
+    <p>Measured on Sierra's public retail traces (tau2), where the real tools and database exist to compare against. Seen: runs used for the build. Held out: runs the build never saw.</p>
+    <div class="kb-tbl"><table class="proof">
+      <thead><tr><th>check</th><th>seen</th><th>held out</th></tr></thead>
       <tbody>
-        <tr><td>tool signatures vs the real tools.py</td><td>15/15</td><td></td></tr>
-        <tr><td>starting state vs the real db.json</td><td>252/252 rows</td><td></td></tr>
-        <tr><td>recorded writes reproduced</td><td>37/37</td><td>20/20</td></tr>
-        <tr><td>recorded reads reproduced</td><td>125/125</td><td>65/65</td></tr>
-        <tr><td>recorded errors reproduced</td><td>6/6</td><td>4/4</td></tr>
+        <tr><td>tool signatures</td><td><span data-n="15">0</span>/15</td><td></td></tr>
+        <tr><td>starting rows</td><td><span data-n="252">0</span>/252</td><td></td></tr>
+        <tr><td>writes</td><td><span data-n="37">0</span>/37</td><td><span data-n="20">0</span>/20</td></tr>
+        <tr><td>reads</td><td><span data-n="125">0</span>/125</td><td><span data-n="65">0</span>/65</td></tr>
+        <tr><td>errors</td><td><span data-n="6">0</span>/6</td><td><span data-n="4">0</span>/4</td></tr>
       </tbody>
     </table></div>
-    <p class="note">Verdicts are code over end state. A judge model can narrow the bar, never award a pass. Runs that needed a model stand-in for any tool are reported, never counted.</p>
+    <p class="kb-note">Runs where a model had to stand in for a missing tool are shown in the report, never counted as passes.</p>
   </section>
 
-  <section class="wrap sec" id="open">
-    <div class="h"><span class="n">03</span><h2>What is public.</h2></div>
-    <p class="lead">The code, the design, the decision log with every choice and the alternative it beat, 29 research reports, and the list of what is not built yet. Contributions go through pull requests; the maintainer reviews every one.</p>
-    <p class="links"><a href="https://github.com/leiblerdev/kullback">github.com/leiblerdev/kullback</a> · <a href="https://github.com/leiblerdev/kullback/blob/main/docs/design-philosophy.md">design philosophy</a> · <a href="https://github.com/leiblerdev/kullback/blob/main/SLICE_RESULTS.md">first results</a></p>
+  <section class="wrap kb-sec rv" id="open">
+    <h2>All of it is public.</h2>
+    <p class="kb-links">The <a href="https://github.com/leiblerdev/kullback">code</a>, the <a href="https://github.com/leiblerdev/kullback/blob/main/docs/design-philosophy.md">design</a>, a decision log with every choice and the alternative it beat, 29 research reports, and the <a href="https://github.com/leiblerdev/kullback/blob/main/SLICE_RESULTS.md">first results</a>. Apache-2.0. Pull requests welcome; the maintainer reviews every one.</p>
   </section>
 
-  <section class="wrap sec" id="next">
-    <div class="h"><span class="n">04</span><h2>Where it stands.</h2></div>
-    <p class="lead">The offline half is measured. The live half, compiled tool bodies, verifiers on real tasks and candidate runs, is next, and the numbers will be published either way.</p>
+  <section class="wrap kb-close rv">
+    <h2>The rebuild is measured.<br>Scoring models in it is next.</h2>
+    <p>Generated tool code, verifiers on real tasks, and runs of candidate models. The numbers get published either way.</p>
+    <div class="cta"><a class="btn btn-w" href="https://github.com/leiblerdev/kullback"><svg class="gh" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Follow on GitHub</a><a class="btn btn-o" href="/#how">How Leibler uses it</a></div>
   </section>
 </main>
 
 <footer class="wrap mono"><span>leibler.dev</span><span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a> · <a href="/team">team</a> · <a href="https://github.com/leiblerdev/kullback">kullback</a> · <a href="/llms.txt">llms.txt</a></span></footer>
+<script src="/assets/js/kullback.js?v=20260828a" defer></script>
 </body>
 </html>
