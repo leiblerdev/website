@@ -49,7 +49,7 @@ html.js .kb-hero .cta { animation-delay: 820ms; }
 .kb-close { border-top: 1px solid var(--line); padding-top: 80px; padding-bottom: 56px; }
 .kb-close h2 { font-size: clamp(24px, 3.4vw, 38px); line-height: 1.15; max-width: 30ch; margin-bottom: 14px; }
 .kb-close p { color: var(--fg-2); max-width: 60ch; line-height: 1.7; }
-.kb-close .cta { margin-top: 24px; }
+.kb-close .cta { margin-top: 0; }
 
 /* scroll reveal */
 html.js .rv { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
