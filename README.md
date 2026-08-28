@@ -1,17 +1,25 @@
 # leibler.dev
 
-Static site. No build step.
+Static site, no build step. Everything Vercel serves is under `public/`; everything else is tooling.
 
-- `index.html`, `team.html`, `404.html`: pages. Shared styles in `assets/css/site.css`, scripts in `assets/js/`.
-- `llms.txt`, `robots.txt`, `sitemap.xml`, `favicon.svg`, `apple-touch-icon.png`, `og.png`: root files.
-- `vercel.json`: clean URLs (`/team` serves `team.html`), cache and security headers.
-- `/assets/*` is cached for a year as immutable, so every change to `site.css` or the JS must bump the `?v=` query on the asset links in all three HTML files, or returning visitors keep the old files.
+```
+public/
+  index.html  kullback.html  team.html  404.html     pages (clean URLs: /kullback serves kullback.html)
+  robots.txt  sitemap.xml  llms.txt                  root files crawlers expect
+  assets/css/    site.css (shared), kullback.css
+  assets/js/     hero.js, figures.js, kullback.js
+  assets/img/    photos, og.png, logo/ (every logo variant, see logo/README.md)
+  assets/icons/  favicon.svg, favicon-32.png, apple-touch-icon.png
+tools/serve.py   local preview
+vercel.json      output directory, clean URLs, cache and security headers
+```
+
+`/assets/*` is cached for a year as immutable (icons and og.png for a week), so every change to a CSS or JS file must bump the `?v=` query on its links in all four pages, or returning visitors keep the old file.
 
 ## Preview
 
-    python3 serve.py 8765     # http://localhost:8765, mimics clean URLs and the 404 page
+    python3 tools/serve.py 8765     # http://localhost:8765, mimics clean URLs and the 404 page
 
 ## Deploy
 
-Vercel project root: this folder (`website`). Framework preset: Other. No build command, output directory `.`.
-Then add `leibler.dev` under Domains and point DNS at Vercel.
+Vercel project root: this repository. Framework preset: Other, no build command; `vercel.json` sets the output directory to `public`. Every push to `main` deploys. Check the site at 360px wide before pushing.

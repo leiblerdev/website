@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -12,7 +13,7 @@
       ]
     },
     {
-      "source": "/(og.png|apple-touch-icon.png|favicon.svg|favicon-32.png)",
+      "source": "/assets/(icons/.*|img/og.png)",
       "headers": [
         {
           "key": "Cache-Control",
