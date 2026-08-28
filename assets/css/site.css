@@ -145,3 +145,4 @@
   @media (max-width: 720px) { .person { grid-template-columns: 1fr; } }
   @media (max-width: 720px) { .tbl, .note, .faq { margin-left: 0; } }
   @media (max-width: 560px) { .proof { font-size: 12px; } .proof th, .proof td { padding: 10px 8px; } .proof th, .proof td { vertical-align: top; } }
+  .step p a { color: #fff; border-bottom: 1px solid var(--line-2); transition: border-color 150ms ease; } .step p a:hover { border-color: #fff; }
