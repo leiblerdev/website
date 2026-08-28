@@ -59,5 +59,27 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/og.png",
+      "destination": "/assets/img/og.png",
+      "permanent": true
+    },
+    {
+      "source": "/favicon.svg",
+      "destination": "/assets/icons/favicon.svg",
+      "permanent": true
+    },
+    {
+      "source": "/favicon-32.png",
+      "destination": "/assets/icons/favicon-32.png",
+      "permanent": true
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "destination": "/assets/icons/apple-touch-icon.png",
+      "permanent": true
+    }
   ]
 }
