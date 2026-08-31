@@ -9,7 +9,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 1. Collect: the customer adds a one-line SDK wrapper (`import leibler; client = leibler.wrap(OpenAI())`) or sends a week of LLM traces.
 2. Evaluate: the harness clusters traces into tasks and grades candidate models against the customer's current frontier model on the customer's own inputs. Within 48 hours the customer has a pass rate per task and a routing plan.
 3. Post-train: for tasks no existing model clears, the harness post-trains a smaller frontier model on the customer's traces until it matches or beats the frontier on the same grader. A customer's data trains only that customer's models.
-4. Deploy: the harness deploys the models in production, optimized for the customer's traffic (quantization, batching, caching, custom kernels, hardware matched to load), in Leibler's cloud, the customer's cloud, a VPC, or on-prem. Every release is graded against the same bar before it ships.
+4. Deploy: the harness deploys the models in production, optimized for the customer's traffic (quantization, batching, caching, custom kernels, hardware matched to load), in Leibler's cloud, the customer's cloud, a VPC, on-prem, or on the customer's own hardware with whichever provider they are comfortable with. Every release is graded against the same bar before it ships.
 5. Route: each task runs on the model that is best on it and cheapest to run. The customer applies the routing plan in their own configuration.
 6. Loop: new traces feed the next round of grading and post-training. Plans and models are re-graded when new models are released, so savings do not drift back.
 
@@ -21,7 +21,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 - Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
 - How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
 - Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and checks the rebuild by replay. The claim it is built to earn, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.
-- Founder: Krrish Agarwalla. Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
+- Founders: Krrish Agarwalla and Jonas Walcher. Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich. Jonas researches models and infrastructure for personalized AI agents at Stanford HAI, and ships agents that run in production at venture-backed startups and German industrials.
 
 ## Glossary
 
@@ -36,7 +36,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 
 - [Home](https://leibler.dev/): what Leibler does, an animated explanation of the bar and the training loop, and the four steps.
 - [Team](https://leibler.dev/team): who is behind Leibler.
-- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founder.
+- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founders.
 - [Founder's site](https://kkrrish.tech): Krrish Agarwalla.
 - [Kullback](https://leibler.dev/kullback): the open-source harness, what it builds and how it is checked.
 - [Kullback on GitHub](https://github.com/leiblerdev/kullback): source, design, decision log, research.
@@ -45,4 +45,4 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 
 - [llms.txt](https://leibler.dev/llms.txt): this file.
 
-Last updated: 2026-08-24
+Last updated: 2026-08-31

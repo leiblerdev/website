@@ -26,13 +26,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v=20260828a">
+<link rel="stylesheet" href="/assets/css/site.css?v=20260831a">
 <script src="/assets/js/hero.js?v=20260825c" defer></script>
 <script src="/assets/js/figures.js?v=20260825c" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/assets/img/og.png","email":"krrish@leibler.dev","founder":{"@id":"https://leibler.dev/#krrish"}},
+{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/assets/img/og.png","email":"krrish@leibler.dev","founder":[{"@id":"https://leibler.dev/#krrish"},{"@id":"https://leibler.dev/#jonas"}]},
 {"@type":"Person","@id":"https://leibler.dev/#krrish","name":"Krrish Agarwalla","url":"https://kkrrish.tech","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://kkrrish.tech"]},
+{"@type":"Person","@id":"https://leibler.dev/#jonas","name":"Jonas Walcher","url":"https://www.linkedin.com/in/jonas-walcher-75ab44200/","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://www.linkedin.com/in/jonas-walcher-75ab44200/"]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What happens to my data?","acceptedAnswer":{"@type":"Answer","text":"Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request."}},
 {"@type":"Question","name":"Who owns the fine-tuned weights?","acceptedAnswer":{"@type":"Answer","text":"You do. The models are built from your traces, for you, and deploy on your infrastructure or ours."}},
@@ -47,7 +48,7 @@
 <header class="mono">
   <div class="wrap nav">
     <a class="brand" href="/">leibler<span>.dev</span></a>
-    <nav><a class="hide-s" href="#how">How it works</a><a class="hide-s" href="/kullback">Kullback</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></nav>
+    <nav><a class="hide-s" href="#how">How it works</a><a href="/kullback">Kullback</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book<span class="long"> a call</span></a></nav>
   </div>
 </header>
 
@@ -102,7 +103,7 @@ client = leibler.wrap(OpenAI())</pre>
       <text class="lbl f2t c2" x="80" y="116">ep 2: closer, retrain</text>
       <text class="lbl f2t c3" x="80" y="116" fill="#fff">ep 3: clears the bar</text>
     </svg></div></div>
-    <div class="step"><div><h3><span>03</span>Serve</h3><p>We deploy it in production, tuned for your traffic. Our cloud, yours, a VPC, or on-prem.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
+    <div class="step"><div><h3><span>03</span>Serve</h3><p>We deploy it in production, tuned for your traffic. Our cloud, yours, a VPC, or on-prem, and on your own hardware with the provider you are comfortable with.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
       <text class="lbl" x="8" y="14">requests</text>
       <g class="dim"><path d="M8 30 H 80"></path><path d="M8 45 H 80"></path><path d="M8 60 H 80"></path><path d="M8 75 H 80"></path><path d="M8 90 H 80"></path></g>
       <circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 30 H 80'); animation-delay: 0.00s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 45 H 80'); animation-delay: 0.15s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 60 H 80'); animation-delay: 0.30s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 75 H 80'); animation-delay: 0.45s"></circle><circle class="sBin" r="2.4" fill="#fff" style="offset-path: path('M8 90 H 80'); animation-delay: 0.60s"></circle>

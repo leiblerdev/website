@@ -73,3 +73,4 @@ html.js .rv.in { opacity: 1; transform: none; }
 .brand { display: inline-flex; align-items: center; gap: 9px; }
 .brand .mark { width: 24px; height: 24px; border-radius: 5px; border: 1px solid var(--line-2); }
 .btn .gh { flex: none; }
+@media (max-width: 350px) { .nav .brand .mark { display: none; } }

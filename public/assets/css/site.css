@@ -137,8 +137,9 @@
 
   /* responsive: keep these last so they win over the desktop rules above */
   @media (max-width: 720px) { .wrap { padding-left: 24px; padding-right: 24px; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); } .hero { padding-top: 56px; padding-bottom: 56px; } .sec { padding-top: 52px; padding-bottom: 52px; } .close { padding-top: 64px; padding-bottom: 40px; } .h { gap: 16px; margin-bottom: 20px; } .h .n { min-width: 28px; } .lead, .diagram, .step { margin-left: 0; } .diagram canvas { height: clamp(300px, 92vw, 340px); } .snip { margin-top: 36px; padding: 14px 16px; font-size: 13px; } .read { display: grid; grid-template-columns: auto 1fr; font-size: 12px; gap: 10px 20px; padding: 12px 16px; } .read span:first-child { grid-column: 1 / -1; } .nav { height: 52px; } }
-  @media (max-width: 560px) { .nav nav { gap: 14px; } .nav .hide-s { display: none; } .nav .btn { padding: 0 12px; } }
-  @media (max-width: 400px) { .nav nav { gap: 12px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .close h2 { font-size: 24px; } }
+  @media (max-width: 560px) { .nav { font-size: 12px; } .nav nav { gap: 12px; } .nav .hide-s { display: none; } .nav .btn { padding: 0 12px; font-size: 12px; } }
+  @media (max-width: 400px) { .nav nav { gap: 10px; } h1 { font-size: 27px; } .cta .btn { width: 100%; } .close h2 { font-size: 24px; } }
+  @media (max-width: 350px) { .nav .btn .long { display: none; } }
   @media (min-width: 721px) and (max-width: 900px) { .step { grid-template-columns: 1fr 200px; gap: 24px; } .step .fig { width: 200px; } }
   @media (max-height: 480px) and (orientation: landscape) { .hero { padding-top: 40px; padding-bottom: 40px; } .diagram canvas { height: 260px; } }
   @media (max-width: 720px) { .step { grid-template-columns: 1fr; } .step .fig { justify-self: start; } }
