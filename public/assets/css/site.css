@@ -107,7 +107,6 @@
   /* team page */
   .person { margin-left: 0; grid-template-columns: 120px 1fr; gap: 28px; align-items: start; }
   .person img { display: block; width: 120px; height: 120px; border: 1px solid var(--line-2); border-radius: 4px; object-fit: cover; }
-  .person h3 span { color: var(--fg-3); margin-left: 12px; }
   .person .links { margin-top: 14px; font-size: 13px; } .person .links a { color: #fff; }
   /* 404 */
   .nf { padding-top: 120px; padding-bottom: 120px; } .nf h1 { margin: 0 0 16px; } .nf p { color: var(--fg-2); margin-bottom: 24px; }
