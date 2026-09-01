@@ -31,9 +31,8 @@
 <script src="/assets/js/figures.js?v=20260825c" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/assets/img/og.png","email":"krrish@leibler.dev","founder":[{"@id":"https://leibler.dev/#krrish"},{"@id":"https://leibler.dev/#jonas"}]},
+{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/assets/img/og.png","email":"krrish@leibler.dev","founder":{"@id":"https://leibler.dev/#krrish"}},
 {"@type":"Person","@id":"https://leibler.dev/#krrish","name":"Krrish Agarwalla","url":"https://kkrrish.tech","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://kkrrish.tech"]},
-{"@type":"Person","@id":"https://leibler.dev/#jonas","name":"Jonas Walcher","url":"https://www.linkedin.com/in/jonas-walcher-75ab44200/","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://www.linkedin.com/in/jonas-walcher-75ab44200/"]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What happens to my data?","acceptedAnswer":{"@type":"Answer","text":"Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request."}},
 {"@type":"Question","name":"Who owns the fine-tuned weights?","acceptedAnswer":{"@type":"Answer","text":"You do. The models are built from your traces, for you, and deploy on your infrastructure or ours."}},

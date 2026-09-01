@@ -21,7 +21,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 - Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
 - How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
 - Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and checks the rebuild by replay. The claim it is built to earn, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.
-- Founders: Krrish Agarwalla and Jonas Walcher. Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich. Jonas researches models and infrastructure for personalized AI agents at Stanford HAI, and ships agents that run in production at venture-backed startups and German industrials.
+- Founder: Krrish Agarwalla. Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
 
 ## Glossary
 
@@ -36,7 +36,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 
 - [Home](https://leibler.dev/): what Leibler does, an animated explanation of the bar and the training loop, and the four steps.
 - [Team](https://leibler.dev/team): who is behind Leibler.
-- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founders.
+- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founder.
 - [Founder's site](https://kkrrish.tech): Krrish Agarwalla.
 - [Kullback](https://leibler.dev/kullback): the open-source harness, what it builds and how it is checked.
 - [Kullback on GitHub](https://github.com/leiblerdev/kullback): source, design, decision log, research.
@@ -45,4 +45,4 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 
 - [llms.txt](https://leibler.dev/llms.txt): this file.
 
-Last updated: 2026-08-31
+Last updated: 2026-09-02
