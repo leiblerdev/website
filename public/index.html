@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Leibler · Your traces are your next model.</title>
-<meta name="description" content="For AI-native app teams at volume: send a week of LLM logs, get a per-task plan in 48h for which tasks a 10–20× cheaper model already handles, and your own post-trained model for the rest. Built with your engineers, running on your infra.">
+<title>Leibler · We build frontier models for you.</title>
+<meta name="description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
 <link rel="canonical" href="https://leibler.dev/">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Leibler">
-<meta property="og:title" content="Leibler · Your traces are your next model.">
-<meta property="og:description" content="For AI-native app teams at volume: send a week of LLM logs, get a per-task plan in 48h for which tasks a 10–20× cheaper model already handles, and your own post-trained model for the rest. Built with your engineers, running on your infra.">
+<meta property="og:title" content="Leibler · We build frontier models for you.">
+<meta property="og:description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
 <meta property="og:url" content="https://leibler.dev/">
 <meta property="og:image" content="https://leibler.dev/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Leibler · Your traces are your next model.">
-<meta name="twitter:description" content="For AI-native app teams at volume: send a week of LLM logs, get a per-task plan in 48h for which tasks a 10–20× cheaper model already handles, and your own post-trained model for the rest. Built with your engineers, running on your infra.">
+<meta name="twitter:title" content="Leibler · We build frontier models for you.">
+<meta name="twitter:description" content="Your frontier model's quality, at a fraction of the bill. Leibler post-trains smaller models on your traces until they clear your bar, then runs them optimized for your traffic.">
 <meta name="twitter:image" content="https://leibler.dev/assets/img/og.png">
 <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
@@ -47,30 +47,24 @@
 <header class="mono">
   <div class="wrap nav">
     <a class="brand" href="/">leibler<span>.dev</span></a>
-    <nav><a class="hide-s" href="#how">How it works</a><a class="hide-s" href="#case-study">Case study</a><a href="/kullback">Kullback</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book<span class="long"> a call</span></a></nav>
+    <nav><a class="hide-s" href="#how">How it works</a><a href="/kullback">Kullback</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book<span class="long"> a call</span></a></nav>
   </div>
 </header>
 
 <main id="main">
   <section class="wrap hero">
-    <p class="prompt"><b>leibler</b> is for AI-native app teams at volume — high traces, ready for the next level.</p>
-    <h1>Your traces are <span class="g">your next model.</span></h1>
-    <p class="sub"><b>TL;DR:</b> Send us a week of your LLM logs. In 48 hours we tell you which tasks a 10–20× cheaper model already handles without quality loss. For the rest, we post-train <b>your own model</b> until it clears your bar — built with your engineers, running on your infra. You own the weights.</p>
-    <p class="sub" style="margin-top:12px">Hiring AI engineers? This is how your team stops babysitting the frontier bill and ships your own intelligence instead.</p>
-    <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="#case-study">See a case study</a><a class="btn btn-o" href="#how">How it works</a></div>
+    <p class="prompt"><b>leibler</b> is a lab that helps you own your intelligence.</p>
+    <h1>We build frontier models <span class="g">for you.</span></h1>
+    <p class="sub">We post-train smaller models on your tasks until they clear your bar, then run them for you. <b>Higher quality, lower bill.</b></p>
+    <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="#how">How it works</a></div>
     <pre class="snip"><span class="c"># one line to integrate</span>
 <b>import</b> leibler
 <b>from</b> openai <b>import</b> OpenAI
 client = leibler.wrap(OpenAI())</pre>
   </section>
 
-  <section class="wrap sec" id="who">
-    <div class="h"><span class="n">00</span><h2>Built for teams with volume.</h2></div>
-    <p class="lead">AI-native, application layer, high volume of traces — and ready for the next level. If your founders are hiring LLM engineers to cut cost, own quality, and ship faster, start here: one task, one eval, 48 hours. If you're pre-volume or credit-cushioned, we're not for you yet.</p>
-  </section>
-
   <section class="wrap sec" id="bar">
-    <div class="h"><span class="n">01</span><h2>The bar never moves. The model climbs to it.</h2></div>
+    <div class="h"><span class="n">00</span><h2>The bar never moves. The model climbs to it.</h2></div>
     <p class="lead">Your frontier model sets the bar. A smaller model trains on its passing attempts until it clears reliably.</p>
     <div class="diagram">
       <canvas id="cv" role="img" aria-label="Animated diagram: a student model's outputs scatter below a fixed quality bar; with each iteration the outputs that clear the bar train the student, until the task clears the bar reliably and graduates"></canvas>
@@ -79,7 +73,7 @@ client = leibler.wrap(OpenAI())</pre>
   </section>
 
   <section class="wrap sec" id="how">
-    <div class="h"><span class="n">02</span><h2>How it works</h2></div>
+    <div class="h"><span class="n">01</span><h2>How it works</h2></div>
     <div class="step"><div><h3><span>01</span>Evaluate</h3><p>Add the wrapper or send a week of traces. We <a href="/kullback">rebuild your environment</a> from them, verified against the traces, plus synthetic data. In 48 hours you know which tasks a smaller model already handles.</p></div><div class="fig" aria-hidden="true"><svg viewBox="0 0 240 120">
       <text class="lbl" x="8" y="14">tasks from your traces</text>
       <text class="lbl" x="8" y="34">classify</text><text class="lbl" x="8" y="56">summarize</text><text class="lbl" x="8" y="78">extract</text><text class="lbl" x="8" y="100">draft reply</text>
@@ -132,23 +126,8 @@ client = leibler.wrap(OpenAI())</pre>
     </svg></div></div>
   </section>
 
-  <section class="wrap sec" id="case-study">
-    <div class="h"><span class="n">03</span><h2>Case study: from traces to production in 4 steps.</h2></div>
-    <p class="lead"><b>Setup:</b> support agent doing ticket_classification → draft_customer_reply → send. 12k traces/week on a frontier model. User feedback silent — nobody clicks thumbs-down, they just stop reopening. <b>Flow:</b> (1) traces in → (2) we rebuild the environment (tools, inbox state, must-mention checks) → (3) replay 3 candidate models + post-train a small model in that env → (4) ship behind your config, re-graded every release. Full walkthrough coming as a 90-sec video — <a href="https://cal.com/krrish-agarwalla/30min">book a call to see the raw replay</a>.</p>
-    <div class="tbl"><table class="proof">
-      <thead><tr><th>task</th><th>frontier bar</th><th>small model after post-train</th><th>cost vs frontier</th></tr></thead>
-      <tbody>
-        <tr><td>ticket_<wbr>classification</td><td>100%</td><td>100%</td><td>22× cheaper</td></tr>
-        <tr><td>summarize_<wbr>call_<wbr>notes</td><td>100%</td><td>96%</td><td>18× cheaper</td></tr>
-        <tr><td>extract_<wbr>invoice_<wbr>fields</td><td>100%</td><td>98%</td><td>15× cheaper</td></tr>
-        <tr><td>draft_<wbr>customer_<wbr>reply*</td><td>100%</td><td>91%</td><td>10× cheaper</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note">*Stitched check: drafted correctly <b>and</b> sent to the right recipient with the required clause — draft-only scores 0. Nothing below the bar ships. Graded on the customer's own traces, re-checked on every release so savings don't drift back.</p>
-  </section>
-
   <section class="wrap sec" id="proof">
-    <div class="h"><span class="n">04</span><h2>Proof.</h2></div>
+    <div class="h"><span class="n">02</span><h2>Proof.</h2></div>
     <p class="lead">One customer's plan, graded against their own frontier model. In 48 hours you get the same for your tasks.</p>
     <div class="tbl"><table class="proof">
       <thead><tr><th>task</th><th>clears the bar</th><th>cost vs frontier</th></tr></thead>
@@ -163,26 +142,18 @@ client = leibler.wrap(OpenAI())</pre>
   </section>
 
   <section class="wrap sec" id="data">
-    <div class="h"><span class="n">05</span><h2>Your data stays yours.</h2></div>
+    <div class="h"><span class="n">03</span><h2>Your data stays yours.</h2></div>
     <p class="lead">Your traces train only your models, are never pooled, and are deleted on request. Capture can't slow or break your calls.</p>
   </section>
 
   <section class="wrap sec" id="kullback">
-    <div class="h"><span class="n">06</span><h2>Open source. Works with your engineers.</h2></div>
-    <p class="lead">Kullback, the harness that rebuilds your environment from traces and checks the rebuild by replay, is Apache-2.0 on <a href="https://github.com/leiblerdev/kullback">GitHub</a>. Your team can inspect every check, run it on your own infra (our cloud, yours, VPC, on-prem), and keep the weights. We build with your engineers, not around them. <a href="/kullback">What it builds, what is measured, and the one claim it is out to earn.</a></p>
+    <div class="h"><span class="n">04</span><h2>Open source.</h2></div>
+    <p class="lead">Kullback, the harness that rebuilds your environment from traces and checks the rebuild by replay, is Apache-2.0 on <a href="https://github.com/leiblerdev/kullback">GitHub</a>. <a href="/kullback">What it builds, what is measured, and the one claim it is out to earn.</a></p>
   </section>
 
   <section class="wrap sec" id="faq">
-    <div class="h"><span class="n">07</span><h2>Questions</h2></div>
+    <div class="h"><span class="n">05</span><h2>Questions</h2></div>
     <div class="faq">
-      <details>
-        <summary>We're hiring AI engineers. How does this help?</summary>
-        <p>That's exactly who this is for. Instead of hiring to babysit prompts and the frontier bill, your team gets a per-task eval plus your own post-trained model that clears the bar — built with them, on your infra, weights yours. Bring one task, we'll show your engineers the eval in 48 hours.</p>
-      </details>
-      <details>
-        <summary>We already have engineers who train our own models. Why you?</summary>
-        <p>Keep them — we build with them. Kullback is open source, the environment and every check is inspectable, weights are yours, and it deploys on your infra. We do the trace→environment→post-train loop your team doesn't have time for, and hand it over.</p>
-      </details>
       <details>
         <summary>What happens to my data?</summary>
         <p>Your traces train only your models. Nothing is pooled across customers, and everything is deleted on request.</p>
@@ -208,7 +179,7 @@ client = leibler.wrap(OpenAI())</pre>
 
   <section class="wrap close" id="close">
     <h2>Bring one task.</h2>
-    <p>Thirty minutes. If you're an AI-native app team at volume, we tell you whether a smaller model can clear the bar on it, and what it takes.</p>
+    <p>Thirty minutes. We tell you whether a smaller model can clear the bar on it, and what it takes.</p>
     <div class="cta"><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="btn btn-o" href="mailto:krrish@leibler.dev">krrish@leibler.dev</a></div>
     <p class="cred">Krrish Agarwalla · post-training research at Stanford and LMU Munich</p>
   </section>

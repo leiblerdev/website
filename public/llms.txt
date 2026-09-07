@@ -18,7 +18,7 @@ Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for 
 - Quality is the fixed constraint. Nothing ships below the customer's frontier model's score on the customer's own inputs ("the bar").
 - Customer data is never pooled across customers and is deleted on request.
 - Trace capture is fire-and-forget and cannot add latency to or break the customer's calls.
-- Who it is for: AI-native application-layer startups with high-volume traces who want the next level — especially founders hiring LLM engineers. Teams whose LLM spend affects margins, running repetitive tasks at volume, that cannot accept a quality drop. Typical buyer: CTO or founding engineer. Not for pre-volume / credit-cushioned teams yet.
+- Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
 - How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
 - Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and checks the rebuild by replay. The claim it is built to earn, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.
 - Founder: Krrish Agarwalla. Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
