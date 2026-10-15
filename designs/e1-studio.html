@@ -56,13 +56,20 @@ a{color:inherit}
 .btn-nav{padding:10px 22px}
 /* Hero */
 .hero{padding-top:110px;padding-bottom:88px}
+.hero-inner{display:grid;grid-template-columns:55fr 45fr;gap:40px;align-items:center}
 .eyebrow{font-size:15px;color:var(--muted);margin-bottom:28px;max-width:70ch}
 .hero h1{
-  font-size:76px;font-weight:500;letter-spacing:-0.03em;line-height:1.02;
-  text-align:left;max-width:11em;margin-bottom:28px;
+  font-size:64px;font-weight:500;letter-spacing:-0.03em;line-height:1.05;
+  text-align:left;max-width:10em;margin-bottom:28px;
 }
 .hero .sub{font-size:19px;color:var(--muted);max-width:36em;margin-bottom:36px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{
+  border-radius:22px;min-height:420px;height:420px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#2B5CFF 0%,#7FA0FF 100%);
+}
+.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-visual .hv-label{font-size:12px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95}
 /* Stat cards under hero */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:96px}
 .stat-card{
@@ -73,7 +80,7 @@ a{color:inherit}
 .stat-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
 .stat-card p{font-size:15.5px;color:var(--muted);max-width:32ch}
 /* Sections */
-section.block{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--hairline)}
+section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .sec-head{
   display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:36px;
 }
@@ -81,7 +88,7 @@ section.block{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--ha
 .sec-head p.lead{font-size:16.5px;color:var(--muted);max-width:44ch}
 .card{
   background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);
-  padding:48px;
+  padding:32px;
 }
 .basis{font-size:14px;color:var(--muted);margin-bottom:24px}
 /* Comparison */
@@ -107,7 +114,7 @@ section.block{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--ha
 .cmp-note{font-size:14.5px;color:var(--muted);border-top:1px solid var(--hairline);padding-top:14px}
 .cmp-note b{display:block;color:var(--ink);font-weight:600;margin-bottom:4px}
 /* Demo */
-.demo-panel{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:40px}
+.demo-panel{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
 .demo-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
 .demo-top .live{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 #demo-replay{
@@ -182,7 +189,7 @@ section.block{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--ha
 .demo-strip{font-size:15.5px;color:var(--muted);text-align:center;max-width:46em;margin:28px auto 0}
 /* Proof */
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.proof-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:34px 30px}
+.proof-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
 .proof-card h3{font-size:18px;font-weight:600;margin-bottom:18px}
 .proof-nums{display:flex;gap:18px;margin-bottom:16px}
 .proof-nums .pn b{display:block;font-size:26px;font-weight:500;letter-spacing:-0.02em}
@@ -199,7 +206,7 @@ section.block{padding-top:72px;padding-bottom:72px;border-top:1px solid var(--ha
 .faq-row h3{font-size:19px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em}
 .faq-row p{font-size:16px;color:var(--muted);max-width:62ch}
 /* CTA + footer */
-.cta-block{text-align:center;padding-top:96px;padding-bottom:96px;border-top:1px solid var(--hairline)}
+.cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .cta-block h2{font-size:44px;font-weight:500;letter-spacing:-0.025em;margin-bottom:16px}
 .cta-block p{font-size:17px;color:var(--muted);max-width:38em;margin:0 auto 32px}
 footer.site{
@@ -210,14 +217,51 @@ footer.site{
 footer.site nav{display:flex;gap:20px}
 footer.site a{text-decoration:none;color:var(--muted)}
 footer.site a:hover{color:var(--ink)}
+/* Round 2 additions */
+.stat-glyph{display:block;margin-bottom:14px}
+.flow{display:flex;align-items:center;gap:0;margin-bottom:14px;flex-wrap:wrap}
+.flow-pill{
+  font-size:14px;font-weight:500;border:1px solid var(--hairline);background:#fff;
+  border-radius:999px;padding:8px 16px;white-space:nowrap;
+}
+.flow-join{width:28px;height:1px;background:var(--hairline);flex:none}
+.flow-note{font-size:15px;color:var(--muted);margin-bottom:28px}
+.erow{grid-template-columns:210px 1fr 96px}
+.erow .mname{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;white-space:nowrap}
+.mname-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mono{
+  width:20px;height:20px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:600;background:#EDEDEF;color:var(--ink);
+}
+.erow.hl .mono{background:var(--cobalt);color:#fff}
+.msg-row.agent{gap:8px;align-items:flex-end}
+.msg-row.agent::before{
+  content:"";width:10px;height:10px;border-radius:50%;background:var(--cobalt);flex:none;margin-bottom:16px;
+}
+.proof-bars{margin-top:20px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
+.duo-card h2{font-size:36px;font-weight:500;letter-spacing:-0.02em;line-height:1.12;margin-bottom:14px}
+.duo-card p.body-text{font-size:17px;color:var(--muted);max-width:62ch}
+.duo-card .duo-glyph{display:block;margin-bottom:16px}
+.cta-card{background:#EEF3FF;border-radius:22px;padding:64px 32px;text-align:center}
+.cta-card h2{font-size:44px;font-weight:500;letter-spacing:-0.025em;margin-bottom:16px}
+.cta-card p{font-size:17px;color:var(--muted);max-width:38em;margin:0 auto 32px}
 /* Responsive */
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
+  .hero-inner{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
   .cmp-notes{grid-template-columns:1fr}
   .proof-grid{grid-template-columns:1fr}
-  .card{padding:30px 22px}
-  .demo-panel{padding:20px 14px}
+  .duo{grid-template-columns:1fr}
+  section.block{padding-top:36px;padding-bottom:36px}
+  .card{padding:20px}
+  .demo-panel{padding:20px}
+  .duo-card{padding:20px}
+  .duo-card h2{font-size:28px}
+  .proof-card{padding:20px}
+  .cta-card{padding:48px 20px}
 }
 @media (max-width:480px){
   .wrap{padding-left:18px;padding-right:18px}
@@ -225,15 +269,20 @@ footer.site a:hover{color:var(--ink)}
   .hero{padding-top:72px;padding-bottom:56px}
   .hero h1{font-size:38px;max-width:12em}
   .hero .sub{font-size:17px}
+  .hero-visual{min-height:260px;height:260px}
   .stat-num{font-size:42px}
-  .sec-head h2{font-size:30px}
+  .sec-head h2{font-size:28px}
+  .duo-card h2{font-size:28px}
   .compare{grid-template-columns:1fr}
-  .erow{grid-template-columns:118px 1fr 70px;gap:8px}
+  .erow{grid-template-columns:128px 1fr 78px;gap:8px}
+  .mono{width:18px;height:18px;font-size:10px}
+  .mname-text{max-width:102px}
   .erow .mname{font-size:12.5px}
   .erow .mval{font-size:12.5px}
   #demo-stage{min-height:560px}
   .msg{max-width:92%}
-  .cta-block h2{font-size:34px}
+  .cta-block h2{font-size:28px}
+  .cta-card h2{font-size:28px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -254,27 +303,44 @@ footer.site a:hover{color:var(--ink)}
 
 <main>
   <section class="wrap hero">
-    <p class="eyebrow">leibler is a lab that helps you own your intelligence.</p>
-    <h1>Frontier models are built for everyone. Yours is built for your workflow.</h1>
-    <p class="sub">We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
-      <a class="btn btn-secondary" href="#demo">See it work</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">leibler is a data lab.</p>
+        <h1>Frontier models are built for everyone. Yours is built for your workflow.</h1>
+        <p class="sub">We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+          <a class="btn btn-secondary" href="#demo">See it work</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 400 420" preserveAspectRatio="none" aria-hidden="true">
+          <g stroke="#FFFFFF" stroke-opacity="0.8" fill="none" stroke-width="1">
+            <path d="M0,8 C110,12 200,190 300,208"/><path d="M0,25 C110,29 200,192 300,208"/><path d="M0,42 C110,46 200,194 300,208"/><path d="M0,59 C110,63 200,196 300,209"/><path d="M0,76 C110,80 200,198 300,209"/><path d="M0,93 C110,97 200,200 300,209"/><path d="M0,110 C110,114 200,202 300,210"/><path d="M0,127 C110,131 200,204 300,210"/><path d="M0,144 C110,148 200,206 300,210"/><path d="M0,161 C110,165 200,207 300,210"/><path d="M0,178 C110,182 200,208 300,211"/><path d="M0,195 C110,199 200,209 300,211"/><path d="M0,212 C110,212 200,210 300,211"/><path d="M0,229 C110,225 200,211 300,212"/><path d="M0,246 C110,242 200,212 300,212"/><path d="M0,263 C110,259 200,214 300,212"/><path d="M0,280 C110,276 200,216 300,213"/><path d="M0,297 C110,293 200,218 300,213"/><path d="M0,314 C110,310 200,220 300,214"/><path d="M0,331 C110,327 200,222 300,214"/><path d="M0,348 C110,344 200,224 300,214"/><path d="M0,365 C110,361 200,226 300,215"/><path d="M0,382 C110,378 200,228 300,215"/><path d="M0,399 C110,395 200,230 300,215"/>
+          </g>
+          <path d="M300,211 L400,211" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <text class="hv-label" x="12" y="212">everything</text>
+          <text class="hv-label" x="298" y="196">your workflow</text>
+        </svg>
+      </div>
     </div>
   </section>
 
   <div class="wrap stats" aria-label="Key numbers">
     <div class="stat-card">
+      <svg class="stat-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><ellipse cx="20" cy="11" rx="9" ry="4.5"/><path d="M11 11v8c0 2.5 4 4.5 9 4.5s9-2 9-4.5v-8"/><path d="M11 19v8c0 2.5 4 4.5 9 4.5s9-2 9-4.5v-8"/></svg>
       <div class="stat-num">1/10th</div>
       <div class="stat-label">Cost</div>
       <p>A small model specialised on one job runs on a fraction of the compute. Same work, a tenth of the bill.</p>
     </div>
     <div class="stat-card">
+      <svg class="stat-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="20" cy="23" r="11"/><path d="M20 23l5-6"/><path d="M14 6h12"/><path d="M20 6v4"/><path d="M30.5 10.5a14 14 0 0 1 3.5 4"/></svg>
       <div class="stat-num">1/20th</div>
       <div class="stat-label">Latency</div>
       <p>Fewer parameters, shorter prompts, no queue behind the whole world. A reply in 200 milliseconds instead of four seconds.</p>
     </div>
     <div class="stat-card">
+      <svg class="stat-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" aria-hidden="true"><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="7"/><circle cx="20" cy="20" r="1.6" fill="#2B5CFF" stroke="none"/></svg>
       <div class="stat-num">+35%</div>
       <div class="stat-label">Accuracy</div>
       <p>It has seen a thousand of your tickets and your rules, not the whole internet. It stops guessing what you meant.</p>
@@ -287,6 +353,13 @@ footer.site a:hover{color:var(--ink)}
       <p class="lead">It reads every incoming customer email, pulls up the order, decides refund, replacement or escalation, and drafts the reply. Today every one of those steps goes to a frontier model that was trained to do everything. Your agent only needs it to do this.</p>
     </div>
     <div class="card">
+      <div class="flow" aria-label="Workflow steps">
+        <span class="flow-pill">Email arrives</span><span class="flow-join" aria-hidden="true"></span>
+        <span class="flow-pill">Pull the order</span><span class="flow-join" aria-hidden="true"></span>
+        <span class="flow-pill">Decide: refund, replace, escalate</span><span class="flow-join" aria-hidden="true"></span>
+        <span class="flow-pill">Draft the reply</span>
+      </div>
+      <p class="flow-note">Four steps, one million times a month. Every step on a frontier model today.</p>
       <p class="basis">Per month, at one million tickets.</p>
       <div class="compare" role="table" aria-label="Frontier model versus your model">
         <div class="compare-col frontier">
@@ -324,39 +397,39 @@ footer.site a:hover{color:var(--ink)}
       <div id="demo-stage" aria-live="polite">
         <div class="demo-header"><span class="dot" aria-hidden="true"></span>leibler agent</div>
         <div class="demo-body">
-          <div class="beat msg-row you" data-beat="1"><div class="msg"><span class="who">You</span>We run a support agent on refund emails for a furniture shop. Build us a model for it.</div></div>
-          <div class="beat msg-row agent" data-beat="2"><div class="msg"><span class="who">Agent</span>I can. First, how should it behave? Pick what applies or add your own.</div></div>
+          <div class="beat msg-row you" data-beat="1"><div class="msg">Build us a model for our refund-email support agent.</div></div>
+          <div class="beat msg-row agent" data-beat="2"><div class="msg">How should it behave?</div></div>
           <div class="beat chips" data-beat="2b" role="group" aria-label="Behaviour choices">
             <button class="chip" type="button" data-chip="0">Refund under &euro;100 without asking</button>
             <button class="chip" type="button" data-chip="1">Offer a replacement before a refund</button>
             <button class="chip" type="button" data-chip="2">Escalate anything legal</button>
             <button class="chip" type="button" data-chip="3">Reply in the customer&rsquo;s language</button>
           </div>
-          <div class="beat msg-row you" data-beat="3"><div class="msg"><span class="who">You</span>Those three. Legal goes to a human.</div></div>
-          <div class="beat msg-row agent" data-beat="4"><div class="msg"><span class="who">Agent</span>Got it. I pulled 1,240 past tickets from your traces and wrote 312 eval cases around those rules. Running every model against them now.</div></div>
+          <div class="beat msg-row you" data-beat="3"><div class="msg">Those three. Legal goes to a human.</div></div>
+          <div class="beat msg-row agent" data-beat="4"><div class="msg">Wrote 312 eval cases from 1,240 of your tickets. Testing every model.</div></div>
           <div class="beat eval" data-beat="5">
             <div class="eval-title">Eval results</div>
             <div class="eval-bar-note">Accuracy per model. The line marks <b>your bar</b> at 80.</div>
-            <div class="erow" data-acc="64" data-time="4.0 s"><span class="mname">Frontier model A</span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
-            <div class="erow" data-acc="61" data-time="3.6 s"><span class="mname">Frontier model B</span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
-            <div class="erow" data-acc="66" data-time="5.1 s"><span class="mname">Frontier model C</span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
-            <div class="erow" data-acc="38" data-time="0.3 s"><span class="mname">Open 8B, untrained</span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
-            <div class="erow pending" data-beat="5b"><span class="mname">Yours (training)</span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval">…</span></div>
+            <div class="erow" data-acc="64" data-time="4.0 s"><span class="mname"><span class="mono" aria-hidden="true">G</span><span class="mname-text">GPT-5</span></span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
+            <div class="erow" data-acc="66" data-time="3.6 s"><span class="mname"><span class="mono" aria-hidden="true">C</span><span class="mname-text">Claude Sonnet 5.5</span></span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
+            <div class="erow" data-acc="61" data-time="5.1 s"><span class="mname"><span class="mono" aria-hidden="true">G</span><span class="mname-text">Gemini 3 Pro</span></span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
+            <div class="erow" data-acc="38" data-time="0.3 s"><span class="mname"><span class="mono" aria-hidden="true">Q</span><span class="mname-text">Qwen3 8B, untrained</span></span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></div>
+            <div class="erow pending" data-beat="5b"><span class="mname"><span class="mono" aria-hidden="true">L</span><span class="mname-text">Yours (training)</span></span><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval">…</span></div>
           </div>
-          <div class="beat msg-row agent" data-beat="6"><div class="msg"><span class="who">Agent</span>No model clears your bar yet. Training started on your tickets, four rounds.</div></div>
+          <div class="beat msg-row agent" data-beat="6"><div class="msg">None clears your bar. Training on your tickets.</div></div>
           <div class="beat train" data-beat="6b">
             <div class="train-top"><span>Training</span><span class="round" id="train-round">Round 1/4</span></div>
             <div class="traintrack"><div class="trainfill" id="train-fill"></div></div>
           </div>
-          <div class="beat msg-row agent" data-beat="8"><div class="msg"><span class="who">Agent</span>Done. leibler-support-v1 clears your bar at 86 and is hosted on your endpoint. Point your agent at it and you are live.</div></div>
+          <div class="beat msg-row agent" data-beat="8"><div class="msg">Done. 86 on your bar, hosted on your endpoint. Point your agent at it.</div></div>
           <div class="beat route" data-beat="8b">
             <span class="rlabel">Routing</span>
-            <span class="rval" id="route-val">Frontier model A</span>
+            <span class="rval" id="route-val">GPT-5</span>
             <button class="switch" id="route-switch" type="button" role="switch" aria-checked="false" aria-label="Routing target"></button>
           </div>
         </div>
       </div>
-      <p class="demo-strip">A new frontier model dropped? The agent re-runs your eval against it. If it wins, you train again. You do nothing.</p>
+      <p class="demo-strip">New frontier model? The agent re-runs your eval against it. You do nothing.</p>
     </div>
   </section>
 
@@ -374,6 +447,7 @@ footer.site a:hover{color:var(--ink)}
           <div class="pn"><b>64 to 88</b><span>accuracy</span></div>
         </div>
         <p>Routes 40,000 tickets a day to the right queue.</p>
+        <svg class="proof-bars" width="100%" height="52" viewBox="0 0 260 52" aria-hidden="true"><rect x="0" y="4" width="160" height="10" rx="5" fill="#D8D8DC"/><text x="168" y="13" font-size="12" font-family="Inter,sans-serif" fill="#6B6B6B">64</text><rect x="0" y="30" width="220" height="10" rx="5" fill="#2B5CFF"/><text x="228" y="39" font-size="12" font-family="Inter,sans-serif" fill="#0A0A0A">88</text></svg>
       </div>
       <div class="proof-card">
         <h3>Invoice extraction, logistics</h3>
@@ -383,6 +457,7 @@ footer.site a:hover{color:var(--ink)}
           <div class="pn"><b>71 to 93</b><span>accuracy</span></div>
         </div>
         <p>Pulls 14 fields off supplier invoices in six formats.</p>
+        <svg class="proof-bars" width="100%" height="52" viewBox="0 0 260 52" aria-hidden="true"><rect x="0" y="4" width="177" height="10" rx="5" fill="#D8D8DC"/><text x="185" y="13" font-size="12" font-family="Inter,sans-serif" fill="#6B6B6B">71</text><rect x="0" y="30" width="232" height="10" rx="5" fill="#2B5CFF"/><text x="240" y="39" font-size="12" font-family="Inter,sans-serif" fill="#0A0A0A">93</text></svg>
       </div>
       <div class="proof-card">
         <h3>Lead qualification, B2B sales</h3>
@@ -392,26 +467,24 @@ footer.site a:hover{color:var(--ink)}
           <div class="pn"><b>58 to 84</b><span>accuracy</span></div>
         </div>
         <p>Scores every inbound form and drafts the first reply.</p>
+        <svg class="proof-bars" width="100%" height="52" viewBox="0 0 260 52" aria-hidden="true"><rect x="0" y="4" width="145" height="10" rx="5" fill="#D8D8DC"/><text x="153" y="13" font-size="12" font-family="Inter,sans-serif" fill="#6B6B6B">58</text><rect x="0" y="30" width="210" height="10" rx="5" fill="#2B5CFF"/><text x="218" y="39" font-size="12" font-family="Inter,sans-serif" fill="#0A0A0A">84</text></svg>
       </div>
     </div>
   </section>
 
-  <section class="wrap block" id="data">
-    <div class="sec-head">
-      <h2>Your data stays yours.</h2>
-    </div>
-    <div class="plain">
-      <p class="body-text">Training runs on your traces and never leaves your account. The model is yours to download, host anywhere, or hand to us to run. No shared pool, no cross-customer training.</p>
-    </div>
-  </section>
-
-  <section class="wrap block" id="kullback">
-    <div class="sec-head">
-      <h2>Kullback is open source.</h2>
-    </div>
-    <div class="plain">
-      <p class="body-text">The harness that evaluates, trains and hosts is public. Read it, run it yourself, or let the agent run it for you.</p>
-      <a class="kullback-link" href="/kullback">See Kullback</a>
+  <section class="wrap block" id="data-kullback">
+    <div class="duo">
+      <div class="duo-card" id="data">
+        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="10" y="17" width="20" height="14" rx="3"/><path d="M14 17v-4a6 6 0 0 1 12 0v4"/><circle cx="20" cy="24" r="1.6" fill="#2B5CFF" stroke="none"/></svg>
+        <h2>Your data stays yours.</h2>
+        <p class="body-text">Training runs on your traces and never leaves your account. The model is yours to download, host anywhere, or hand to us to run. No shared pool, no cross-customer training.</p>
+      </div>
+      <div class="duo-card" id="kullback">
+        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c-2.5-2-6-2.5-11-2.5v22c5 0 8.5.5 11 2.5 2.5-2 6-2.5 11-2.5v-22c-5 0-8.5.5-11 2.5z"/><path d="M20 10v22"/></svg>
+        <h2>Kullback is open source.</h2>
+        <p class="body-text">The harness that evaluates, trains and hosts is public. Read it, run it yourself, or let the agent run it for you.</p>
+        <a class="kullback-link" href="/kullback">See Kullback</a>
+      </div>
     </div>
   </section>
 
@@ -434,9 +507,11 @@ footer.site a:hover{color:var(--ink)}
   </section>
 
   <section class="wrap cta-block" id="cta">
-    <h2>Bring one workflow.</h2>
-    <p>We evaluate it against the frontier for free and tell you honestly whether a specialised model will win.</p>
-    <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+    <div class="cta-card">
+      <h2>Bring one workflow.</h2>
+      <p>We evaluate it against the frontier for free and tell you honestly whether a specialised model will win.</p>
+      <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+    </div>
   </section>
 </main>
 
@@ -497,12 +572,12 @@ footer.site a:hover{color:var(--ink)}
       r.querySelector('.mval').textContent = '';
     });
     pending.classList.remove('hl');
-    pending.querySelector('.mname').textContent = 'Yours (training)';
+    pending.querySelector('.mname').innerHTML = '<span class="mono" aria-hidden="true">L</span><span class="mname-text">Yours (training)</span>';
     pending.querySelector('.efill').style.width = '0';
     pending.querySelector('.mval').textContent = '…';
     trainFill.style.width = '0';
     trainRound.textContent = 'Round 1/4';
-    routeVal.textContent = 'Frontier model A';
+    routeVal.textContent = 'GPT-5';
     routeSwitch.setAttribute('aria-checked', 'false');
     stage.classList.remove('is-done');
   }
@@ -514,7 +589,7 @@ footer.site a:hover{color:var(--ink)}
       r.querySelector('.mval').textContent = r.getAttribute('data-acc') + ' · ' + r.getAttribute('data-time');
     });
     pending.classList.add('hl');
-    pending.querySelector('.mname').textContent = 'Yours, leibler-support-v1';
+    pending.querySelector('.mname').innerHTML = '<span class="mono" aria-hidden="true">L</span><span class="mname-text">Yours, leibler-support-v1</span>';
     pending.querySelector('.efill').style.width = '86%';
     pending.querySelector('.mval').textContent = '86 · 0.2 s';
     trainFill.style.width = '100%';
@@ -579,7 +654,7 @@ footer.site a:hover{color:var(--ink)}
     }
     if(id !== runId) return;
     pending.classList.add('hl');
-    pending.querySelector('.mname').textContent = 'Yours, leibler-support-v1';
+    pending.querySelector('.mname').innerHTML = '<span class="mono" aria-hidden="true">L</span><span class="mname-text">Yours, leibler-support-v1</span>';
     var pfill = pending.querySelector('.efill');
     var pval = pending.querySelector('.mval');
     pfill.style.width = '86%';
@@ -608,7 +683,7 @@ footer.site a:hover{color:var(--ink)}
   routeSwitch.addEventListener('click', function(){
     var on = routeSwitch.getAttribute('aria-checked') === 'true';
     routeSwitch.setAttribute('aria-checked', on ? 'false' : 'true');
-    routeVal.textContent = on ? 'Frontier model A' : 'leibler-support-v1';
+    routeVal.textContent = on ? 'GPT-5' : 'leibler-support-v1';
   });
   replayBtn.addEventListener('click', function(){
     reset();
