@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team · leibler</title>
+<meta name="description" content="Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the world the agent worked in, grades any model on what it changed, and trains on the runs that pass.">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F7F3;
+  --white:#FFFFFF;
+  --ink:#0F1412;
+  --muted:#656D68;
+  --hairline:#E3E6E0;
+  --card:#FBFBF9;
+  --accent:#0E9F84;
+  --accent-strong:#0B7D68;
+  --accent-soft:#E3F5F0;
+  --accent-ink:#0B5C4D;
+  --green:#1DB954;
+  --radius:20px;
+  --fs-h1:68px;
+  --fs-h2:40px;
+  --fs-bignum:56px;
+  --fs-lead:19px;
+  --fs-body:17px;
+  --fs-cap:14px;
+  --fs-msg:16px;
+  --fs-cell:15px;
+  --fs-btn:15px;
+  --lh-h1:1.04;
+  --lh-h2:1.1;
+  --lh-lead:1.5;
+  --lh-body:1.55;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+a{color:inherit}
+/* Nav */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:20px;padding-bottom:20px;
+  border-bottom:1px solid var(--hairline);
+  position:sticky;top:0;background:rgba(247,247,243,.92);
+  backdrop-filter:blur(8px);z-index:50;
+}
+.wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em;display:inline-flex;align-items:center}
+.wordmark svg{flex:none;display:block;margin-right:10px}
+.foot-brand{display:inline-flex;align-items:center;gap:8px}
+.foot-brand svg{flex:none;display:block}
+.wordmark b{font-weight:600}
+.wordmark span{font-weight:400}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--ink)}
+.nav-links a.nl:hover{color:var(--muted)}
+.nav-links a.nl.current{color:var(--accent)}
+.btn{
+  display:inline-block;font-size:var(--fs-btn);font-weight:500;text-decoration:none;
+  padding:12px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  font-family:inherit;white-space:nowrap;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#2a2a2a}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline)}
+.btn-secondary:hover{border-color:#c9c9c9}
+.btn-nav{padding:10px 22px}
+/* Hero */
+.hero{padding-top:110px;padding-bottom:88px}
+.hero-inner{display:grid;grid-template-columns:58fr 42fr;gap:40px;align-items:center}
+.eyebrow{font-size:var(--fs-cell);color:var(--muted);margin-bottom:28px;max-width:70ch}
+.hero h1{
+  font-size:var(--fs-h1);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h1);
+  text-align:left;max-width:10em;margin-bottom:28px;
+}
+.hero .sub{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:36em;margin-bottom:36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{
+  border-radius:28px;min-height:420px;aspect-ratio:1/1;position:relative;overflow:hidden;
+  background:#0B1230;
+}
+.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
+/* Sections */
+section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
+.sec-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:36px;
+}
+.sec-head h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2)}
+.sec-head p.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:44ch}
+/* Cards */
+.duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
+.duo-card h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
+.duo-card p.body-text{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
+.duo-card .duo-glyph{display:block;margin-bottom:16px}
+/* Team */
+.tcard{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
+.tcard h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:4px}
+.tcard h3{font-size:var(--fs-lead);font-weight:600;letter-spacing:-0.01em;margin-bottom:12px}
+.tcard .role{font-size:var(--fs-cell);color:var(--muted);margin-bottom:12px}
+.tcard p.bio{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-bottom:16px}
+.tcard p.line{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
+.tlinks{display:flex;gap:20px;flex-wrap:wrap}
+.tlinks a{font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
+.place-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+/* CTA + footer */
+.cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
+.cta-block h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
+.cta-block p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:38em;margin:0 auto 32px}
+.cta-art{position:relative;border-radius:28px;overflow:hidden;min-height:420px;padding:64px 56px;display:flex;align-items:center;background:#EEF7F3}
+.cta-art svg.cta-bg{position:absolute;inset:0;width:100%;height:100%}
+.cta-copy{position:relative;max-width:32em}
+.cta-copy h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
+.cta-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:32px}
+.cta-copy .hero-cta{margin-top:0}
+footer.site{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding-top:24px;padding-bottom:32px;border-top:1px solid var(--hairline);
+  font-size:var(--fs-cap);color:var(--muted);
+}
+footer.site nav{display:flex;gap:20px}
+footer.site a{text-decoration:none;color:var(--muted)}
+footer.site a:hover{color:var(--ink)}
+/* Responsive */
+@media (max-width:900px){
+  .sec-head{grid-template-columns:1fr;gap:12px}
+  .hero-inner{grid-template-columns:1fr}
+  .place-grid{grid-template-columns:1fr}
+  section.block{padding-top:36px;padding-bottom:36px}
+  .duo-card{padding:20px}
+  .tcard{padding:20px}
+  .cta-art{padding:48px 24px;align-items:flex-start}
+}
+@media (max-width:640px){
+  :root{
+    --fs-h1:38px;
+    --fs-h2:28px;
+    --fs-bignum:44px;
+    --fs-lead:17px;
+    --fs-body:16px;
+    --fs-cap:14px;
+    --fs-msg:15px;
+    --fs-cell:14px;
+    --fs-btn:15px;
+  }
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav-links a.nl{display:none}
+  .hero{padding-top:72px;padding-bottom:56px}
+  .hero h1{max-width:12em}
+  .hero-visual{aspect-ratio:16/10;min-height:0}
+  .cta-art{min-height:360px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><b>leibler</b><span>.dev</span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a class="nl" href="/#demo">How it works</a>
+    <a class="nl" href="/kullback">Kullback</a>
+    <a class="nl current" href="/team" aria-current="page">Team</a>
+    <a class="btn btn-primary btn-nav" href="https://cal.com/leibler/30min">Book a call</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="hero">
+    <div style="max-width:32em">
+      <p class="eyebrow">Team</p>
+      <h1>Who is behind it.</h1>
+      <p class="sub">The method comes from the research.</p>
+    </div>
+  </section>
+
+  <section class="wrap block" id="founder">
+    <div class="tcard">
+      <h2>Krrish Agarwalla</h2>
+      <div class="role">Founder</div>
+      <p class="bio">Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.</p>
+      <div class="tlinks">
+        <a href="https://kkrrish.tech">kkrrish.tech</a>
+        <a href="mailto:hello@leibler.dev">hello@leibler.dev</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" id="place">
+    <div class="place-grid">
+      <div class="tcard">
+        <h3>Based in San Francisco.</h3>
+        <p class="line">We work with teams anywhere; most calls are in Pacific or Central European hours.</p>
+      </div>
+      <div class="tcard">
+        <h3>Open source first.</h3>
+        <p class="line">Kullback, the agent that builds the model, is Apache-2.0 on GitHub.</p>
+        <div class="tlinks" style="margin-top:16px">
+          <a href="/kullback">Read about Kullback</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cta-block" id="cta">
+    <div class="cta-art">
+      <svg class="cta-bg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="cta-field-a" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#EEF7F3"/>
+            <stop offset="0.45" stop-color="#10B59A"/>
+            <stop offset="1" stop-color="#0B1230"/>
+          </linearGradient>
+          <radialGradient id="cta-field-b" cx="0.5" cy="0.5" r="0.6">
+            <stop offset="0" stop-color="#0B5C58" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#0B5C58" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="cta-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#0B5C58"/>
+            <stop offset="0.55" stop-color="#10B59A"/>
+            <stop offset="1" stop-color="#FFFFFF"/>
+          </linearGradient>
+          <filter id="cta-grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <filter id="cta-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+        </defs>
+        <rect x="0" y="0" width="1200" height="420" fill="#EEF7F3"/>
+        <rect x="0" y="0" width="1200" height="420" fill="url(#cta-field-a)"/>
+        <rect x="0" y="0" width="1200" height="420" fill="url(#cta-field-b)"/>
+        <g stroke="url(#cta-line)" stroke-width="1" fill="none">
+          <path d="M545,412 C674,330 1000,170 1000,90" opacity="0.48"/><path d="M569,408 C726,318 947,199 1000,90" opacity="0.36"/><path d="M593,404 C719,306 894,228 1000,90" opacity="0.40"/><path d="M617,412 C772,294 961,197 1000,90" opacity="0.28"/><path d="M641,408 C764,330 908,226 1000,90" opacity="0.28"/><path d="M665,404 C757,318 975,195 1000,90" opacity="0.35"/><path d="M689,412 C809,306 922,224 1000,90" opacity="0.28"/><path d="M713,408 C802,294 989,193 1000,90" opacity="0.30"/><path d="M737,404 C855,330 936,222 1000,90" opacity="0.33"/><path d="M761,412 C847,318 883,191 1000,90" opacity="0.25"/><path d="M785,408 C840,306 950,220 1000,90" opacity="0.37"/><path d="M809,404 C892,294 897,189 1000,90" opacity="0.36"/><path d="M833,412 C885,330 964,218 1000,90" opacity="0.35"/><path d="M857,408 C878,318 911,187 1000,90" opacity="0.32"/><path d="M881,404 C930,306 978,216 1000,90" opacity="0.48"/><path d="M905,412 C923,294 925,185 1000,90" opacity="0.43"/><path d="M929,408 C975,330 992,214 1000,90" opacity="0.30"/><path d="M953,404 C968,318 939,183 1000,90" opacity="0.42"/><path d="M977,412 C961,306 886,212 1000,90" opacity="0.26"/><path d="M1001,408 C1013,294 953,181 1000,90" opacity="0.45"/><path d="M1025,404 C1006,330 900,210 1000,90" opacity="0.25"/><path d="M1049,412 C1058,318 967,179 1000,90" opacity="0.37"/><path d="M1073,408 C1051,306 914,208 1000,90" opacity="0.35"/><path d="M1097,404 C1044,294 981,177 1000,90" opacity="0.26"/><path d="M1121,412 C1096,330 928,206 1000,90" opacity="0.25"/><path d="M1145,408 C1089,318 995,175 1000,90" opacity="0.29"/>
+        </g>
+        <path d="M1000,90 L1200,8" stroke="#D9FF5C" stroke-opacity="0.3" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#cta-glow)"/>
+        <path d="M1000,90 L1200,8" stroke="#D9FF5C" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <rect x="0" y="0" width="1200" height="420" filter="url(#cta-grain)" opacity="0.06"/>
+      </svg>
+      <div class="cta-copy">
+        <h2>Bring one workflow.</h2>
+        <p>We evaluate it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site">
+  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · hello@leibler.dev</span>
+  <nav aria-label="Footer">
+    <a href="/#demo">How it works</a>
+    <a href="/kullback">Kullback</a>
+    <a href="/team">Team</a>
+  </nav>
+</footer>
+</body>
+</html>
+

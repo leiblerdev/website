@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F7F7F3;
@@ -83,7 +82,6 @@ a{color:inherit}
 .hero-inner{display:grid;grid-template-columns:58fr 42fr;gap:40px;align-items:center}
 .eyebrow{font-size:var(--fs-cell);color:var(--muted);margin-bottom:28px;max-width:70ch}
 .hero h1{
-  font-family:'Bricolage Grotesque','Inter',sans-serif;
   font-size:var(--fs-h1);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h1);
   text-align:left;max-width:10em;margin-bottom:28px;
 }
@@ -95,17 +93,16 @@ a{color:inherit}
 }
 .hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
 .hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
-/* Slim numbers row under hero */
 .numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:8px;padding-bottom:60px;text-align:center}
-.num-v{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
-.num-l{font-size:var(--fs-body);color:var(--muted)}
+.num-v{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--ink)}
+.num-l{font-size:var(--fs-body);color:var(--muted);margin-top:8px}
 .numbers-note{grid-column:1/-1;text-align:center;font-size:var(--fs-cell);color:var(--muted);margin-top:8px}
 /* Sections */
 section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .sec-head{
   display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:36px;
 }
-.sec-head h2{font-family:'Bricolage Grotesque','Inter',sans-serif;font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2)}
+.sec-head h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2)}
 .sec-head p.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:44ch}
 /* Demo */
 .demo-panel{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
@@ -283,21 +280,11 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .cmp-col h4{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
 .cmp-col.own h4{color:var(--accent-ink)}
 .cmp-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:9px 0;font-size:var(--fs-cell)}
-.cmp-num{font-family:'Bricolage Grotesque','Inter',sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.02em}
-.cmp-delta{font-size:var(--fs-cap);font-weight:600;color:var(--accent-ink)}
+.cmp-num{font-size:32px;font-weight:600;letter-spacing:-0.02em}
 .cmp-cap{font-size:var(--fs-cell);color:var(--muted);margin-top:14px}
-.team-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:stretch}
-.team-card{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.team-card h3{font-size:var(--fs-lead);font-weight:600;margin-bottom:4px}
-.team-card .role{font-size:var(--fs-cell);color:var(--muted);margin-bottom:12px}
-.team-card p.bio{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-bottom:16px}
-.team-links{display:flex;gap:20px}
-.team-links a{font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
-.team-side{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
-.team-side p{margin-bottom:8px}
 /* CTA + footer */
 .cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
-.cta-block h2{font-family:'Bricolage Grotesque','Inter',sans-serif;font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
+.cta-block h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
 .cta-block p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:38em;margin:0 auto 32px}
 footer.site{
   display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
@@ -309,22 +296,20 @@ footer.site a{text-decoration:none;color:var(--muted)}
 footer.site a:hover{color:var(--ink)}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.duo-card h2{font-family:'Bricolage Grotesque','Inter',sans-serif;font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
+.duo-card h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
 .duo-card p.body-text{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:62ch}
 .duo-card .duo-glyph{display:block;margin-bottom:16px}
 .cta-art{position:relative;border-radius:28px;overflow:hidden;min-height:420px;padding:64px 56px;display:flex;align-items:center;background:#EEF7F3}
 .cta-art svg.cta-bg{position:absolute;inset:0;width:100%;height:100%}
 .cta-copy{position:relative;max-width:32em}
-.cta-copy h2{font-family:'Bricolage Grotesque','Inter',sans-serif;font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
+.cta-copy h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
 .cta-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:32px}
 /* Responsive */
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
   .hero-inner{grid-template-columns:1fr}
-  .numbers{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .ex-cards{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
   .duo{grid-template-columns:1fr}
   section.block{padding-top:36px;padding-bottom:36px}
   .demo-panel{padding:20px}
@@ -348,7 +333,7 @@ footer.site a:hover{color:var(--ink)}
   .hero{padding-top:72px;padding-bottom:56px}
   .hero h1{max-width:12em}
   .hero-visual{aspect-ratio:16/10;min-height:0}
-  .numbers{padding-top:16px;padding-bottom:36px}
+  .numbers{grid-template-columns:1fr;padding-top:16px;padding-bottom:36px;gap:24px}
   .cta-art{min-height:360px}
   .eval-head{display:none}
   .erow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"name val time" "bar bar bar";column-gap:10px;row-gap:6px}
@@ -386,7 +371,7 @@ footer.site a:hover{color:var(--ink)}
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="#demo">How it works</a>
     <a class="nl" href="/kullback">Kullback</a>
-    <a class="nl" href="#team">Team</a>
+    <a class="nl" href="/team">Team</a>
     <a class="btn btn-primary btn-nav" href="https://cal.com/leibler/30min">Book a call</a>
   </nav>
 </header>
@@ -441,6 +426,22 @@ footer.site a:hover{color:var(--ink)}
         </svg>
       </div>
     </div>
+  </section>
+
+  <section class="wrap numbers" id="numbers" aria-label="Key numbers">
+    <div class="num">
+      <div class="num-v">1/10th</div>
+      <div class="num-l">the cost</div>
+    </div>
+    <div class="num">
+      <div class="num-v">1/20th</div>
+      <div class="num-l">the latency</div>
+    </div>
+    <div class="num">
+      <div class="num-v">+35%</div>
+      <div class="num-l">accuracy on your tasks</div>
+    </div>
+    <p class="numbers-note">Measured on the support agent below, against GPT-5 at one million tickets a month.</p>
   </section>
 
   <section class="wrap block" id="why">
@@ -499,20 +500,20 @@ footer.site a:hover{color:var(--ink)}
       <div class="cmp-grid">
         <div class="cmp-col front">
           <h4>Frontier model</h4>
-          <div class="cmp-row"><span class="cmp-num">$48,000</span><span class="cmp-delta"></span></div>
+          <div class="cmp-row"><span class="cmp-num">$48,000</span></div>
           <div class="cmp-row"><span>Cost per month</span></div>
-          <div class="cmp-row"><span class="cmp-num">4.0 s</span><span class="cmp-delta"></span></div>
+          <div class="cmp-row"><span class="cmp-num">4.0 s</span></div>
           <div class="cmp-row"><span>Time per reply</span></div>
-          <div class="cmp-row"><span class="cmp-num">64 of 100</span><span class="cmp-delta"></span></div>
+          <div class="cmp-row"><span class="cmp-num">64 of 100</span></div>
           <div class="cmp-row"><span>Accuracy on your tickets</span></div>
         </div>
         <div class="cmp-col own">
           <h4>support-v1</h4>
-          <div class="cmp-row"><span class="cmp-num">$4,800</span><span class="cmp-delta">1/10th</span></div>
+          <div class="cmp-row"><span class="cmp-num">$4,800</span></div>
           <div class="cmp-row"><span>Cost per month</span></div>
-          <div class="cmp-row"><span class="cmp-num">0.2 s</span><span class="cmp-delta">1/20th</span></div>
+          <div class="cmp-row"><span class="cmp-num">0.2 s</span></div>
           <div class="cmp-row"><span>Time per reply</span></div>
-          <div class="cmp-row"><span class="cmp-num">86 of 100</span><span class="cmp-delta">+35%</span></div>
+          <div class="cmp-row"><span class="cmp-num">86 of 100</span></div>
           <div class="cmp-row"><span>Accuracy on your tickets</span></div>
         </div>
       </div>
@@ -645,28 +646,6 @@ footer.site a:hover{color:var(--ink)}
         <h2>Kullback is open source.</h2>
         <p class="body-text">Read it, run it yourself, or let it run for you.</p>
         <span style="display:flex;gap:20px;flex-wrap:wrap"><a class="kullback-link" href="/kullback">Read more about Kullback</a><a class="kullback-link" href="https://github.com/leiblerdev/kullback" target="_blank" rel="noopener">See the code</a></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap block" id="team">
-    <div class="sec-head">
-      <h2>Who is behind it.</h2>
-      <p class="lead">The method comes from the research.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <h3>Krrish Agarwalla</h3>
-        <div class="role">Founder</div>
-        <p class="bio">Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.</p>
-        <div class="team-links">
-          <a href="https://kkrrish.tech">kkrrish.tech</a>
-          <a href="/team">Team page</a>
-        </div>
-      </div>
-      <div class="team-side">
-        <p>Based in San Francisco.</p>
-        <p>hello@leibler.dev</p>
       </div>
     </div>
   </section>
