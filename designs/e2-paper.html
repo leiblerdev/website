@@ -85,7 +85,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
 .score-cell{display:flex;align-items:center;gap:10px}
 .bar{position:relative;flex:1;height:5px;background:#ECE6D6;border-radius:3px;min-width:60px}
 .bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:3px;background:var(--ink);transition:width 1s ease}
-.bar::after{content:"";position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--accent)}
+.score-cell .bar::after{content:"";position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--accent)}
 .bar-label{font-size:12px;color:var(--muted);white-space:nowrap}
 .train{margin-top:6px}
 .train-line{position:relative;height:2px;background:#ECE6D6;border-radius:2px;margin:16px 0 10px;max-width:640px}
@@ -113,10 +113,9 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
 .text-link{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
 /* faq */
 .faq-list{margin-top:36px;border-top:1px solid var(--line)}
-.faq-list details{border-bottom:1px solid var(--line);padding:24px 4px}
-.faq-list summary{font-family:var(--serif);font-size:25px;cursor:pointer;list-style:none}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list details p{margin-top:10px;font-size:16px;color:var(--muted-ink);max-width:62ch}
+.faq-list .faq-item{border-bottom:1px solid var(--line);padding:24px 4px}
+.faq-list h3{font-family:var(--serif);font-weight:400;font-size:25px}
+.faq-list .faq-item p{margin-top:10px;font-size:16px;color:var(--muted-ink);max-width:62ch}
 /* cta + footer */
 .cta-sec{border-top:1px solid var(--line);margin-top:120px;padding:110px 24px 100px;text-align:center}
 .cta-sec h2{font-size:64px;margin-bottom:16px}
@@ -145,7 +144,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
   .who{padding-top:0}
   .eval-row{grid-template-columns:1fr .9fr .8fr;font-size:12.5px;gap:6px}
   .bar{min-width:44px}
-  .faq-list summary{font-size:21px}
+  .faq-list h3{font-size:21px}
   .cta-sec{padding:72px 20px 64px;margin-top:72px}
   .cta-sec h2{font-size:40px}
 }
@@ -257,7 +256,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
               <div class="eval-row" data-score="61"><span class="model">Frontier model B</span><span class="score-cell"><span class="bar"><i></i></span><span class="num">0</span></span><span>3.6 s</span></div>
               <div class="eval-row" data-score="66"><span class="model">Frontier model C</span><span class="score-cell"><span class="bar"><i></i></span><span class="num">0</span></span><span>5.1 s</span></div>
               <div class="eval-row" data-score="38"><span class="model">Open 8B, untrained</span><span class="score-cell"><span class="bar"><i></i></span><span class="num">0</span></span><span>0.3 s</span></div>
-              <div class="eval-row pending"><span class="model">Yours (training)</span><span class="score-cell"><span class="bar"><i></i></span><span class="num">…</span></span><span>…</span></div>
+              <div class="eval-row pending" id="yours-row"><span class="model" id="yours-label">Yours (training)</span><span class="score-cell"><span class="bar"><i></i></span><span class="num" id="yours-num">…</span></span><span id="yours-time">…</span></div>
             </div>
             <p style="margin-top:12px;font-size:13.5px;color:var(--muted-ink)"><span class="bar-label">Your bar: 80. Frontier scores sit below it.</span></p>
           </div>
@@ -268,14 +267,6 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
             <p>No model clears your bar yet. Training started on your tickets, four rounds.</p>
             <div class="train-line"><i id="train-fill"></i></div>
             <p class="rounds" id="round-counter">Round 0/4</p>
-          </div>
-        </div>
-        <div class="beat" data-beat="7">
-          <span class="who">Agent</span>
-          <div class="bubble">
-            <div class="eval">
-              <div class="eval-row hl" data-score="86"><span class="model">Yours, leibler-support-v1</span><span class="score-cell"><span class="bar"><i></i></span><span class="num">0</span></span><span>0.2 s</span></div>
-            </div>
           </div>
         </div>
         <div class="beat" data-beat="8">
@@ -354,18 +345,18 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
         <div>
           <h2>Questions</h2>
           <div class="faq-list">
-            <details>
-              <summary>Does it work for my workflow?</summary>
+            <div class="faq-item">
+              <h3>Does it work for my workflow?</h3>
               <p>If your agent does the same kind of task thousands of times a week and you can say what a good answer looks like, yes. Bring one task and we evaluate it for free.</p>
-            </details>
-            <details>
-              <summary>What happens when a better frontier model comes out?</summary>
+            </div>
+            <div class="faq-item">
+              <h3>What happens when a better frontier model comes out?</h3>
               <p>The agent re-runs your eval against it the day it ships. If the new model wins on your tasks, you get a report. If yours still wins, nothing changes.</p>
-            </details>
-            <details>
-              <summary>How long until it is live?</summary>
+            </div>
+            <div class="faq-item">
+              <h3>How long until it is live?</h3>
               <p>Evaluation in 48 hours. A trained, hosted model in about a week.</p>
-            </details>
+            </div>
           </div>
         </div>
       </div>
@@ -415,6 +406,16 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
     stage.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('sel'); });
     stage.querySelectorAll('#demo-stage .eval-row[data-score] .num').forEach(function(n){ n.textContent = '0'; });
     stage.querySelectorAll('#demo-stage .eval-row[data-score] .bar i').forEach(function(f){ f.style.width = '0'; });
+    var yr = document.getElementById('yours-row');
+    if(yr){
+      yr.classList.remove('hl');
+      yr.classList.add('pending');
+      document.getElementById('yours-label').textContent = 'Yours (training)';
+      document.getElementById('yours-num').textContent = '…';
+      document.getElementById('yours-time').textContent = '…';
+      var yf = yr.querySelector('.bar i');
+      if(yf) yf.style.width = '0';
+    }
     var tf = document.getElementById('train-fill');
     if(tf) tf.style.width = '0';
     var rc = document.getElementById('round-counter');
@@ -451,8 +452,13 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
     }
   }
   function resolveFinal(){
-    var row = stage.querySelector('[data-beat="7"] .eval-row');
-    if(row) countUp(row, 86, 1000);
+    var row = document.getElementById('yours-row');
+    if(!row) return;
+    document.getElementById('yours-label').textContent = 'Yours, leibler-support-v1';
+    document.getElementById('yours-time').textContent = '0.2 s';
+    row.classList.remove('pending');
+    row.classList.add('hl');
+    countUp(row, 86, 1000);
   }
   function flipRoute(){
     var sw = document.getElementById('route-switch');
@@ -472,6 +478,12 @@ h2{font-family:var(--serif);font-weight:400;font-size:46px;line-height:1.08;lett
         row.querySelector('.num').textContent = t;
         row.querySelector('.bar i').style.width = t + '%';
       });
+      document.getElementById('yours-label').textContent = 'Yours, leibler-support-v1';
+      document.getElementById('yours-time').textContent = '0.2 s';
+      document.getElementById('yours-num').textContent = '86';
+      document.getElementById('yours-row').classList.remove('pending');
+      document.getElementById('yours-row').classList.add('hl');
+      document.querySelector('#yours-row .bar i').style.width = '86%';
       document.getElementById('train-fill').style.width = '100%';
       document.getElementById('round-counter').textContent = 'Round 4/4';
       flipRoute();
