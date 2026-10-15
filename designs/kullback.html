@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kullback · leibler</title>
+<meta name="description" content="Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the world the agent worked in, grades any model on what it changed, and trains on the runs that pass.">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF;
+  --ink:#0A0A0A;
+  --muted:#6B6B6B;
+  --hairline:#E8E8E8;
+  --card:#F7F7F8;
+  --cobalt:#2B5CFF;
+  --green:#1DB954;
+  --radius:22px;
+  --fs-h1:68px;
+  --fs-h2:40px;
+  --fs-bignum:56px;
+  --fs-lead:19px;
+  --fs-body:17px;
+  --fs-cap:14px;
+  --fs-msg:16px;
+  --fs-cell:15px;
+  --fs-btn:15px;
+  --lh-h1:1.04;
+  --lh-h2:1.1;
+  --lh-lead:1.5;
+  --lh-body:1.55;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--white);
+  color:var(--ink);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+a{color:inherit}
+/* Nav */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:20px;padding-bottom:20px;
+  border-bottom:1px solid var(--hairline);
+  position:sticky;top:0;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);z-index:50;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{flex:none;display:block}
+.wordmark{font-size:var(--fs-msg);letter-spacing:-0.01em}
+.wordmark b{font-weight:600}
+.wordmark span{font-weight:400}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--muted)}
+.nav-links a.nl:hover{color:var(--ink)}
+.nav-links a.nl.current{color:var(--ink)}
+.btn{
+  display:inline-block;font-size:var(--fs-btn);font-weight:500;text-decoration:none;
+  padding:12px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  font-family:inherit;white-space:nowrap;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#2a2a2a}
+.btn-secondary{background:#EFEFF1;color:var(--ink)}
+.btn-secondary:hover{background:#E4E4E7}
+.btn-nav{padding:10px 22px}
+/* Hero */
+.hero{padding-top:110px;padding-bottom:88px}
+.hero-inner{display:grid;grid-template-columns:58fr 42fr;gap:40px;align-items:center}
+.eyebrow{font-size:var(--fs-cell);color:var(--muted);margin-bottom:28px;max-width:70ch}
+.hero h1{
+  font-size:var(--fs-h1);font-weight:500;letter-spacing:-0.03em;line-height:var(--lh-h1);
+  text-align:left;max-width:10em;margin-bottom:28px;
+}
+.hero .sub{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:36em;margin-bottom:36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{
+  border-radius:28px;min-height:420px;aspect-ratio:1/1;position:relative;overflow:hidden;
+  background:#2B5CFF;
+}
+.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-visual .hv-label{font-size:var(--fs-cap);font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
+/* Sections */
+section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
+.sec-head{margin-bottom:36px;max-width:60em}
+.sec-head h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
+.sec-head p.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:44ch}
+/* Loop steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.step-num{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--cobalt);margin-bottom:12px}
+.step-card h3{font-size:var(--fs-msg);font-weight:600;margin-bottom:6px}
+.step-card p{font-size:var(--fs-cell);color:var(--muted);line-height:var(--lh-body)}
+.loop-lead{margin-top:32px;font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:52em}
+/* Definition rows */
+.rows{display:flex;flex-direction:column}
+.row{padding:20px 0;border-top:1px solid var(--hairline)}
+.row:last-of-type{border-bottom:1px solid var(--hairline)}
+.row h3{font-size:var(--fs-msg);font-weight:600;margin-bottom:4px}
+.row p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
+.closing{margin-top:24px;font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--ink)}
+/* Cards */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
+.duo-card h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
+.duo-card p.body-text{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
+.duo-card .duo-glyph{display:block;margin-bottom:16px}
+/* CTA + footer */
+.cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
+.cta-art{position:relative;border-radius:28px;overflow:hidden;min-height:420px;padding:64px 56px;display:flex;align-items:center;background:#EEF3FF}
+.cta-art svg.cta-bg{position:absolute;inset:0;width:100%;height:100%}
+.cta-copy{position:relative;max-width:32em}
+.cta-copy h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
+.cta-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:32px}
+.cta-copy .hero-cta{margin-top:0}
+footer.site{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding-top:24px;padding-bottom:32px;border-top:1px solid var(--hairline);
+  font-size:var(--fs-cap);color:var(--muted);
+}
+footer.site .fbrand{display:flex;align-items:center;gap:10px}
+footer.site .fbrand svg{flex:none;display:block}
+footer.site nav{display:flex;gap:20px}
+footer.site a{text-decoration:none;color:var(--muted)}
+footer.site a:hover{color:var(--ink)}
+/* Responsive */
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr}
+  section.block{padding-top:36px;padding-bottom:36px}
+  .duo-card{padding:20px}
+  .cta-art{padding:48px 24px;align-items:flex-start}
+}
+@media (max-width:640px){
+  :root{
+    --fs-h1:38px;
+    --fs-h2:28px;
+    --fs-bignum:44px;
+    --fs-lead:17px;
+    --fs-body:16px;
+    --fs-cap:14px;
+    --fs-msg:15px;
+    --fs-cell:14px;
+    --fs-btn:15px;
+  }
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav-links a.nl{display:none}
+  .hero{padding-top:72px;padding-bottom:56px}
+  .hero h1{max-width:12em}
+  .hero-visual{aspect-ratio:16/10;min-height:0}
+  .cta-art{min-height:360px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="brand" href="/" aria-label="leibler.dev home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>
+    <span class="wordmark"><b>leibler</b><span>.dev</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a class="nl" href="/#demo">How it works</a>
+    <a class="nl current" href="/kullback" aria-current="page">Kullback</a>
+    <a class="nl" href="/team">Team</a>
+    <a class="btn btn-primary btn-nav" href="https://github.com/leiblerdev/kullback">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Open source · Apache-2.0</p>
+        <h1>Your traces in. A model out.</h1>
+        <p class="sub">Kullback is the agent behind leibler. It reads the logs your agent already writes, rebuilds the world the agent worked in, grades any model on what it changed, and trains on the runs that pass.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/leiblerdev/kullback">Read the code</a>
+          <a class="btn btn-secondary" href="/#demo">See it work</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="kullback-field-a" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2B5CFF" stop-opacity="0"/>
+              <stop offset="0.45" stop-color="#2B5CFF" stop-opacity="0"/>
+              <stop offset="0.62" stop-color="#5B7FFF"/>
+              <stop offset="0.8" stop-color="#8FA6FF"/>
+              <stop offset="1" stop-color="#DCE5FF"/>
+            </linearGradient>
+            <radialGradient id="kullback-field-b" cx="0.5" cy="0" r="0.75">
+              <stop offset="0" stop-color="#2B5CFF"/>
+              <stop offset="0.6" stop-color="#2B5CFF"/>
+              <stop offset="1" stop-color="#2B5CFF" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="kullback-grain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+              <feColorMatrix type="saturate" values="0"/>
+            </filter>
+            <filter id="kullback-glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6"/>
+            </filter>
+          </defs>
+          <rect x="0" y="0" width="480" height="480" fill="#2B5CFF"/>
+          <rect x="0" y="0" width="480" height="480" fill="url(#kullback-field-b)"/>
+          <rect x="0" y="0" width="480" height="480" fill="url(#kullback-field-a)"/>
+          <g stroke="#FFFFFF" stroke-width="1.25" fill="none">
+            <path d="M0,240 C60,238 120,232 170,210 C120,200 60,180 0,150" opacity="0.55"/>
+            <path d="M0,240 C60,240 130,238 180,214 C130,196 60,170 0,140" opacity="0.60"/>
+            <path d="M0,240 C60,242 135,242 188,220 C135,192 60,160 0,130" opacity="0.65"/>
+            <path d="M0,240 C60,244 140,248 196,226 C140,188 60,150 0,120" opacity="0.60"/>
+            <path d="M0,240 C60,246 145,252 202,232 C145,184 60,140 0,112" opacity="0.70"/>
+            <path d="M0,240 C60,248 150,258 208,238 C150,180 60,132 0,104" opacity="0.65"/>
+            <path d="M0,240 C60,250 155,264 214,244 C155,176 60,124 0,96" opacity="0.75"/>
+            <path d="M0,240 C60,252 160,270 220,250 C160,172 60,116 0,88" opacity="0.70"/>
+            <path d="M0,240 C60,254 165,276 226,256 C165,168 60,108 0,80" opacity="0.80"/>
+            <path d="M0,240 C60,256 170,282 232,262 C170,164 60,100 0,72" opacity="0.75"/>
+            <path d="M0,240 C60,258 175,288 238,268 C175,160 60,94 0,66" opacity="0.85"/>
+            <path d="M0,240 C60,260 180,294 244,274 C180,156 60,88 0,60" opacity="0.80"/>
+            <path d="M0,240 C60,240 130,244 182,268 C132,286 60,310 0,330" opacity="0.60"/>
+            <path d="M0,240 C60,242 135,250 190,274 C137,290 60,320 0,340" opacity="0.65"/>
+            <path d="M0,240 C60,244 140,256 198,280 C142,294 60,330 0,350" opacity="0.60"/>
+            <path d="M0,240 C60,246 145,262 204,286 C147,298 60,338 0,358" opacity="0.70"/>
+            <path d="M0,240 C60,248 150,268 210,292 C152,302 60,346 0,366" opacity="0.65"/>
+            <path d="M0,240 C60,250 155,274 216,298 C157,306 60,354 0,374" opacity="0.75"/>
+            <path d="M0,240 C60,252 160,280 222,304 C162,310 60,362 0,382" opacity="0.70"/>
+            <path d="M0,240 C60,254 165,286 228,310 C167,314 60,370 0,390" opacity="0.80"/>
+            <path d="M0,240 C60,256 170,292 234,316 C172,318 60,378 0,398" opacity="0.75"/>
+            <path d="M0,240 C60,258 175,298 240,322 C177,322 60,386 0,406" opacity="0.85"/>
+            <path d="M0,240 C60,260 180,304 246,328 C182,326 60,394 0,414" opacity="0.80"/>
+            <path d="M0,240 C60,262 185,310 252,334 C187,330 60,402 0,422" opacity="0.85"/>
+          </g>
+          <path d="M0,240 L60,240" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#kullback-glow)"/>
+          <path d="M0,240 L60,240" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M252,334 C320,300 380,270 480,240" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#kullback-glow)"/>
+          <path d="M252,334 C320,300 380,270 480,240" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="0" y="0" width="480" height="480" filter="url(#kullback-grain)" opacity="0.06"/>
+          <text class="hv-label" x="16" y="222">traces</text>
+          <text class="hv-label" x="412" y="222">model</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" id="loop">
+    <div class="sec-head">
+      <h2>The loop.</h2>
+    </div>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">1</div><h3>Traces</h3><p>The runs your agent already made.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Build</h3><p>Tools, data, rules, a simulated user, a verifier per task.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Run</h3><p>Any model, one turn at a time.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Verdict</h3><p>Code reads the final data and says pass or fail.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Report</h3><p>You read it and decide.</p></div>
+    </div>
+    <p class="loop-lead">Code decides pass or fail from what changed, not from the transcript. A judge model can take a pass away, never give one.</p>
+  </section>
+
+  <section class="wrap block" id="build">
+    <div class="sec-head">
+      <h2>What a week of traces turns into.</h2>
+    </div>
+    <div class="rows">
+      <div class="row"><h3>Data</h3><p>The records your runs touched, with the values they saw.</p></div>
+      <div class="row"><h3>Tools</h3><p>One function per tool, behaving the way the real one did in the logs.</p></div>
+      <div class="row"><h3>Rules</h3><p>Your policy, turned into checks that run before every write.</p></div>
+      <div class="row"><h3>User</h3><p>A simulated user who knows only what the real one knew.</p></div>
+      <div class="row"><h3>Verifier</h3><p>One per task. It looks at the final data and says pass or fail.</p></div>
+    </div>
+    <p class="closing">Every value points back to the line in your trace it came from. Nothing is invented.</p>
+  </section>
+
+  <section class="wrap block" id="principles">
+    <div class="sec-head">
+      <h2>Built so you can trust the numbers.</h2>
+    </div>
+    <div class="trio">
+      <div class="duo-card">
+        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6v22M20 28v6"/><path d="M12 14l8-8 8 8"/><path d="M12 34l8-6 8 6"/></svg>
+        <h2>Grade what changed, not what was said.</h2>
+        <p class="body-text">Required writes present, forbidden writes absent, policy never broken, the user's questions answered. Where judgment is unavoidable, two judges each cite a span and a disagreement goes to a person.</p>
+      </div>
+      <div class="duo-card">
+        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="4"/><path d="M10 16h20"/></svg>
+        <h2>A stand-in is reported, never counted.</h2>
+        <p class="body-text">Tool calls go to code first, then to an exact recording, then to a model stand-in. A run served by a stand-in anywhere is excluded from every number.</p>
+      </div>
+      <div class="duo-card">
+        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#2B5CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="12"/><path d="M20 8v24M8 20h24"/></svg>
+        <h2>Any model behind one id.</h2>
+        <p class="body-text">Built-in adapters and the models.dev registry, so a provider nobody wrote code for is one flag away. Keys come from the environment, never from a command line.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" id="review">
+    <div class="sec-head">
+      <h2>You read everything it makes.</h2>
+      <p class="lead">Every eval case and every training example Kullback writes stays readable. Reject one and it rewrites. The runner is frozen only when a person confirms it, and every verdict carries the hash of both the environment and the runner.</p>
+    </div>
+  </section>
+
+  <section class="wrap block" id="run">
+    <div class="sec-head">
+      <h2>Three ways to run it.</h2>
+    </div>
+    <div class="rows">
+      <div class="row"><h3>As a pipeline.</h3><p>Six commands, from ingesting traces to the report, in CI or on a laptop.</p></div>
+      <div class="row"><h3>As a screen.</h3><p>A terminal screen that watches stages, gates and spend as the build runs.</p></div>
+      <div class="row"><h3>As a loop.</h3><p>Resume from the cache and keep improving, or hand the session to the model.</p></div>
+    </div>
+    <p class="closing">Tests run fully offline and builds reproduce byte for byte from fixtures.</p>
+  </section>
+
+  <section class="wrap cta-block" id="cta">
+    <div class="cta-art">
+      <svg class="cta-bg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="kullback-cta-a" cx="0.88" cy="0.92" r="0.75">
+            <stop offset="0" stop-color="#EEF3FF"/>
+            <stop offset="0.6" stop-color="#C9D6FF"/>
+            <stop offset="1" stop-color="#C9D6FF" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="kullback-cta-b" cx="0.1" cy="0.05" r="0.8">
+            <stop offset="0" stop-color="#2B5CFF"/>
+            <stop offset="0.55" stop-color="#8FA6FF"/>
+            <stop offset="1" stop-color="#8FA6FF" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="kullback-cta-line" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2B5CFF"/>
+            <stop offset="0.6" stop-color="#7D97FF"/>
+            <stop offset="1" stop-color="#FFFFFF"/>
+          </linearGradient>
+          <filter id="kullback-cta-grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <filter id="kullback-cta-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+        </defs>
+        <rect x="0" y="0" width="1200" height="420" fill="#EEF3FF"/>
+        <rect x="0" y="0" width="1200" height="420" fill="url(#kullback-cta-b)"/>
+        <rect x="0" y="0" width="1200" height="420" fill="url(#kullback-cta-a)"/>
+        <g stroke="url(#kullback-cta-line)" stroke-width="1" fill="none">
+          <path d="M1136,39 C902,107 536,192 200,330" opacity="0.48"/><path d="M1149,38 C943,128 612,264 200,330" opacity="0.36"/><path d="M1103,39 C940,110 499,359 200,330" opacity="0.40"/><path d="M1106,50 C868,183 513,234 200,330" opacity="0.28"/><path d="M1134,21 C974,82 595,220 200,330" opacity="0.28"/><path d="M1113,59 C955,100 506,309 200,330" opacity="0.35"/><path d="M1113,66 C989,194 559,258 200,330" opacity="0.28"/><path d="M1108,66 C944,112 446,329 200,330" opacity="0.30"/><path d="M1074,48 C888,124 509,213 200,330" opacity="0.33"/><path d="M1098,47 C924,165 407,195 200,330" opacity="0.25"/><path d="M1066,49 C902,178 549,337 200,330" opacity="0.37"/><path d="M1055,70 C923,170 555,277 200,330" opacity="0.36"/><path d="M1053,58 C811,195 496,366 200,330" opacity="0.35"/><path d="M1031,55 C896,114 551,246 200,330" opacity="0.32"/><path d="M1033,32 C778,156 484,208 200,330" opacity="0.48"/><path d="M1013,33 C811,124 584,245 200,330" opacity="0.43"/><path d="M1039,67 C881,166 518,330 200,330" opacity="0.30"/><path d="M994,68 C744,185 518,171 200,330" opacity="0.42"/><path d="M1036,23 C858,155 575,342 200,330" opacity="0.26"/><path d="M1028,31 C797,94 407,297 200,330" opacity="0.45"/><path d="M983,27 C728,142 581,367 200,330" opacity="0.25"/><path d="M970,40 C804,93 460,302 200,330" opacity="0.37"/><path d="M984,61 C853,122 411,350 200,330" opacity="0.35"/><path d="M994,30 C797,116 533,323 200,330" opacity="0.26"/><path d="M989,54 C819,120 454,203 200,330" opacity="0.25"/><path d="M963,52 C803,165 434,362 200,330" opacity="0.29"/>
+        </g>
+        <path d="M200,330 L0,412" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="10" stroke-linecap="round" fill="none" filter="url(#kullback-cta-glow)"/>
+        <path d="M200,330 L0,412" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <rect x="0" y="0" width="1200" height="420" filter="url(#kullback-cta-grain)" opacity="0.06"/>
+      </svg>
+      <div class="cta-copy">
+        <h2>Read it, run it, or let it run for you.</h2>
+        <p>Apache-2.0. Pull requests welcome; the maintainer reviews every one.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/leiblerdev/kullback">GitHub</a>
+          <a class="btn btn-secondary" href="https://cal.com/leibler/30min">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site">
+  <span class="fbrand">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>
+    <span>leibler.dev · San Francisco · hello@leibler.dev</span>
+  </span>
+  <nav aria-label="Footer">
+    <a href="/#demo">How it works</a>
+    <a href="/kullback">Kullback</a>
+    <a href="/team">Team</a>
+  </nav>
+</footer>
+</body>
+</html>
