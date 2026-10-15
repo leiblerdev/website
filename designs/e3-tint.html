@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>leibler.dev: a model built for your workflow</title>
+<meta name="description" content="We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFF; --ink:#141428; --muted:#666A7A;
+  --sky:#E8F0FF; --mint:#E6F7EF; --butter:#FFF4D6; --lilac:#F0E8FF;
+  --card:#FFFFFF; --hair:#E2E2EC; --track:#ECECF4; --grey:#9AA0B4;
+  --r:28px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:32px;padding-right:32px}
+h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.02em}
+p{margin:0;max-width:68ch}
+a{color:inherit}
+/* nav */
+.top{position:sticky;top:0;z-index:10;background:rgba(250,250,255,.9);backdrop-filter:blur(8px)}
+.navin{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.brand{text-decoration:none;font-size:18px}
+.brand b{font-weight:700}
+.brand span{font-weight:400;color:var(--muted)}
+nav.links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+/* buttons */
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;
+  padding:13px 26px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.btn-p{background:var(--ink);color:#fff}
+.btn-s{background:#fff;color:var(--ink);border-color:var(--hair)}
+.btn-sm{padding:9px 20px;font-size:14px}
+/* hero */
+.hero{padding-top:72px;padding-bottom:56px}
+.eyebrow{font-size:16px;color:var(--muted);font-weight:500;margin-bottom:22px;max-width:68ch}
+.hero h1{font-size:72px;font-weight:600;letter-spacing:-0.03em;line-height:1.04;
+  text-align:left;max-width:12em;margin-bottom:24px}
+.hero .sub{font-size:18px;color:var(--muted);max-width:38em;margin-bottom:32px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.tile{border-radius:20px;padding:26px 28px}
+.tile.sky{background:var(--sky)} .tile.mint{background:var(--mint)} .tile.butter{background:var(--butter)}
+.tile .n{font-size:40px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+.tile .t{font-size:15px;color:var(--muted);font-weight:500}
+/* panels */
+.panel{border-radius:var(--r);padding:clamp(28px,5vw,68px);margin-top:24px}
+.panel.sky{background:var(--sky)} .panel.lilac{background:var(--lilac)} .panel.butter{background:var(--butter)}
+.shead{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:32px;margin-bottom:36px}
+.shead h2{font-size:clamp(28px,3.4vw,44px);font-weight:600;letter-spacing:-0.025em}
+.shead .lead{font-size:17px;color:#3E4254;max-width:38em}
+.basis{font-size:14px;font-weight:600;color:#3E4254;margin-bottom:20px}
+/* comparison bars */
+.cmp{background:rgba(255,255,255,.65);border-radius:20px;padding:28px;margin-bottom:14px}
+.cmp:last-of-type{margin-bottom:0}
+.cmprow{display:grid;grid-template-columns:150px 1fr 110px;gap:14px;align-items:center;margin:10px 0}
+.cmpname{font-size:14px;font-weight:600}
+.cmpbar{height:14px;border-radius:999px;background:rgba(20,20,40,.08);overflow:hidden}
+.cmpbar i{display:block;height:100%;border-radius:999px}
+.cmpbar.frontier i{background:var(--grey)}
+.cmpbar.yours i{background:var(--ink)}
+.cmpval{font-size:14px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.cmptop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.cmptop h3{font-size:17px}
+.pill{display:inline-block;font-size:13px;font-weight:700;background:var(--ink);color:#fff;
+  border-radius:999px;padding:4px 14px;white-space:nowrap}
+.why{font-size:clamp(19px,2.2vw,25px);font-weight:600;letter-spacing:-0.015em;
+  text-align:left;margin:34px 0 22px;max-width:34em}
+.notes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;list-style:none;margin:0;padding:0}
+.notes li{background:rgba(255,255,255,.65);border-radius:16px;padding:20px 22px;font-size:15px;color:#3E4254}
+.notes b{display:block;color:var(--ink);margin-bottom:4px}
+/* demo */
+#demo .shead .lead{color:#3E4254}
+.phone{width:420px;max-width:100%;margin:8px auto 0;background:#fff;border-radius:24px;
+  box-shadow:0 24px 70px rgba(60,50,120,.16);padding:26px 24px;min-height:1180px}
+#demo-stage .beat{display:none;margin:0 0 14px}
+#demo-stage .beat.on{display:block}
+#demo-stage .beat.gap7{margin:0}
+.msg{border-radius:16px;padding:12px 15px;font-size:14.5px;line-height:1.5;max-width:100%}
+.msg.you{background:var(--ink);color:#fff;margin-left:34px;border-bottom-right-radius:6px}
+.msg.agent{background:var(--lilac);color:var(--ink);margin-right:34px;border-bottom-left-radius:6px}
+.who{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  opacity:.65;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:13px;font-weight:600;background:var(--lilac);color:var(--ink);
+  border-radius:999px;padding:8px 14px}
+.chip.sel{background:var(--ink);color:#fff}
+.eval{background:#FBFBFE;border:1px solid var(--hair);border-radius:16px;padding:16px;margin-top:4px}
+.evalhead{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 8px;font-size:12.5px;font-weight:600;
+  color:var(--muted);margin-bottom:10px}
+.evrow{display:none;grid-template-columns:minmax(0,1fr) 96px 76px;gap:10px;align-items:center;
+  padding:7px 0;font-size:13px}
+.evrow.on{display:grid}
+.evrow .nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evrow .sc{height:8px;border-radius:999px;background:var(--track);position:relative;overflow:visible}
+.evrow .sc i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--grey);width:0}
+.evrow.mine .sc i{background:var(--ink)}
+.evrow .tick{position:absolute;top:-3px;bottom:-3px;left:80%;width:2px;background:var(--ink);border-radius:2px}
+.evrow .vl{font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.evrow.win{background:var(--mint);border-radius:10px;padding:7px 8px;margin:2px -8px}
+.train{margin-top:4px}
+.trainrow{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}
+.track{height:12px;border-radius:999px;background:var(--track);overflow:hidden}
+.track i{display:block;height:100%;width:0;border-radius:999px;background:var(--ink)}
+.route{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px;background:#FBFBFE;
+  border:1px solid var(--hair);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600}
+.sw{width:44px;height:24px;border-radius:999px;background:var(--grey);position:relative;flex:none;transition:background .4s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;
+  background:#fff;transition:left .4s}
+.route.on .sw{background:var(--ink)}
+.route.on .sw::after{left:23px}
+.replayrow{text-align:center;margin-top:22px}
+.strip{text-align:center;font-size:15px;font-weight:500;color:#3E4254;max-width:44em;margin:26px auto 0}
+/* proof */
+#proof{padding-top:72px}
+.cards3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px}
+.pcard{background:#fff;border:1px solid var(--hair);border-radius:20px;overflow:hidden}
+.pcard .band{height:10px}
+.band.sky{background:var(--sky)} .band.mint{background:var(--mint)} .band.butter{background:var(--butter)}
+.pcard .in{padding:24px}
+.pcard h3{font-size:18px;margin-bottom:10px}
+.pcard .nums{font-size:14px;font-weight:700;margin-bottom:10px}
+.pcard p{font-size:15px;color:var(--muted)}
+/* split sections */
+.split{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:32px;padding-top:64px}
+.split h2{font-size:clamp(28px,3.4vw,44px);font-weight:600;letter-spacing:-0.025em}
+.split p{font-size:17px;color:#3E4254;max-width:38em}
+.split a.ct{font-weight:700}
+/* faq */
+#faq{padding-top:64px}
+.faq3{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
+.faq3 article{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px 28px}
+.faq3 h3{font-size:18px;margin-bottom:8px}
+.faq3 p{font-size:15.5px;color:#3E4254}
+/* cta + footer */
+#cta .panel{text-align:left}
+#cta h2{font-size:clamp(32px,4vw,52px);font-weight:600;letter-spacing:-0.025em;margin-bottom:12px}
+#cta p{font-size:17px;color:#3E4254;margin-bottom:26px}
+footer.site{margin-top:56px;border-top:1px solid var(--hair)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding-top:24px;padding-bottom:32px;font-size:14px;color:var(--muted)}
+.foot nav{display:flex;gap:20px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+@media (max-width:720px){
+  .wrap{padding-left:16px;padding-right:16px}
+  nav.links{gap:14px;font-size:14px}
+  nav.links a.hidesm{display:none}
+  .hero{padding-top:48px}
+  .hero h1{font-size:38px}
+  .tiles,.notes,.cards3{grid-template-columns:1fr}
+  .shead,.split{grid-template-columns:1fr;gap:12px}
+  .panel{border-radius:22px}
+  .phone{width:100%;padding:20px 16px;min-height:1340px}
+  .msg.you{margin-left:16px}
+  .msg.agent{margin-right:16px}
+  .cmprow{grid-template-columns:88px 1fr 74px;gap:8px}
+  .cmpname,.cmpval{font-size:12.5px}
+  .evrow{grid-template-columns:minmax(0,1fr) 70px 76px;gap:8px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap navin">
+    <a class="brand" href="/"><b>leibler</b><span>.dev</span></a>
+    <nav class="links" aria-label="Primary">
+      <a class="hidesm" href="#workflow">How it works</a>
+      <a class="hidesm" href="#kullback">Kullback</a>
+      <a class="hidesm" href="/team">Team</a>
+      <a class="btn btn-p btn-sm" href="https://cal.com/leibler/30min">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <p class="eyebrow">leibler is a lab that helps you own your intelligence.</p>
+    <h1>Frontier models are built for everyone. Yours is built for your workflow.</h1>
+    <p class="sub">We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.</p>
+    <div class="cta">
+      <a class="btn btn-p" href="https://cal.com/leibler/30min">Book a call</a>
+      <a class="btn btn-s" href="#demo">See it work</a>
+    </div>
+    <div class="tiles">
+      <div class="tile sky"><div class="n">1/10th</div><div class="t">the cost: $4,800 a month, not $48,000</div></div>
+      <div class="tile mint"><div class="n">1/20th</div><div class="t">the latency: 0.2 s a reply, not 4.0 s</div></div>
+      <div class="tile butter"><div class="n">+35%</div><div class="t">the accuracy: 86 of 100 on your tickets, not 64</div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="workflow">
+    <div class="panel sky">
+      <div class="shead">
+        <h2>Say you run a support agent.</h2>
+        <p class="lead">It reads every incoming customer email, pulls up the order, decides refund, replacement or escalation, and drafts the reply. Today every one of those steps goes to a frontier model that was trained to do everything. Your agent only needs it to do this.</p>
+      </div>
+      <p class="basis">Per month, at one million tickets.</p>
+      <div class="cmp">
+        <div class="cmptop"><h3>Cost</h3><span class="pill">1/10th</span></div>
+        <div class="cmprow"><span class="cmpname">Frontier model</span><span class="cmpbar frontier"><i style="width:100%"></i></span><span class="cmpval">$48,000</span></div>
+        <div class="cmprow"><span class="cmpname">Your model</span><span class="cmpbar yours"><i style="width:10%"></i></span><span class="cmpval">$4,800</span></div>
+      </div>
+      <div class="cmp">
+        <div class="cmptop"><h3>Time per reply</h3><span class="pill">1/20th</span></div>
+        <div class="cmprow"><span class="cmpname">Frontier model</span><span class="cmpbar frontier"><i style="width:100%"></i></span><span class="cmpval">4.0 s</span></div>
+        <div class="cmprow"><span class="cmpname">Your model</span><span class="cmpbar yours"><i style="width:6%"></i></span><span class="cmpval">0.2 s</span></div>
+      </div>
+      <div class="cmp">
+        <div class="cmptop"><h3>Accuracy on your tickets</h3><span class="pill">+35%</span></div>
+        <div class="cmprow"><span class="cmpname">Frontier model</span><span class="cmpbar frontier"><i style="width:74%"></i></span><span class="cmpval">64 of 100</span></div>
+        <div class="cmprow"><span class="cmpname">Your model</span><span class="cmpbar yours"><i style="width:100%"></i></span><span class="cmpval">86 of 100</span></div>
+      </div>
+      <p class="why">A model that only has to be good at your tickets beats one that has to be good at everything.</p>
+      <ul class="notes">
+        <li><b>Cost</b>A small model specialised on one job runs on a fraction of the compute. Same work, a tenth of the bill.</li>
+        <li><b>Latency</b>Fewer parameters, shorter prompts, no queue behind the whole world. A reply in 200 milliseconds instead of four seconds.</li>
+        <li><b>Accuracy</b>It has seen a thousand of your tickets and your rules, not the whole internet. It stops guessing what you meant.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" id="demo">
+    <div class="panel lilac">
+      <div class="shead">
+        <h2>Meet the agent that builds it.</h2>
+        <p class="lead">You tell it how the model should behave. It writes the eval and the training data, trains, and hosts the result. You never touch a GPU.</p>
+      </div>
+      <div class="phone">
+        <div id="demo-stage" aria-live="polite">
+          <div class="beat" data-beat="1">
+            <div class="msg you"><span class="who">You</span>We run a support agent on refund emails for a furniture shop. Build us a model for it.</div>
+          </div>
+          <div class="beat" data-beat="2">
+            <div class="msg agent"><span class="who">Agent</span>I can. First, how should it behave? Pick what applies or add your own.</div>
+            <div class="chips" id="demo-chips">
+              <span class="chip">Refund under €100 without asking</span>
+              <span class="chip">Offer a replacement before a refund</span>
+              <span class="chip">Escalate anything legal</span>
+              <span class="chip">Reply in the customer's language</span>
+            </div>
+          </div>
+          <div class="beat" data-beat="3">
+            <div class="msg you"><span class="who">You</span>Those three. Legal goes to a human.</div>
+          </div>
+          <div class="beat" data-beat="4">
+            <div class="msg agent"><span class="who">Agent</span>Got it. I pulled 1,240 past tickets from your traces and wrote 312 eval cases around those rules. Running every model against them now.</div>
+          </div>
+          <div class="beat" data-beat="5">
+            <div class="eval">
+              <div class="evalhead"><span>Eval: 312 cases</span><span>Thin line marks your bar: 80</span></div>
+              <div class="evrow" data-row="0"><span class="nm">Frontier model A</span><span class="sc"><i data-w="64"></i><span class="tick"></span></span><span class="vl">64 · 4.0 s</span></div>
+              <div class="evrow" data-row="1"><span class="nm">Frontier model B</span><span class="sc"><i data-w="61"></i><span class="tick"></span></span><span class="vl">61 · 3.6 s</span></div>
+              <div class="evrow" data-row="2"><span class="nm">Frontier model C</span><span class="sc"><i data-w="66"></i><span class="tick"></span></span><span class="vl">66 · 5.1 s</span></div>
+              <div class="evrow" data-row="3"><span class="nm">Open 8B, untrained</span><span class="sc"><i data-w="38"></i><span class="tick"></span></span><span class="vl">38 · 0.3 s</span></div>
+              <div class="evrow mine" data-row="4" id="ev-yours"><span class="nm" id="ev-yours-name">Yours (training)</span><span class="sc"><i id="ev-yours-bar"></i><span class="tick"></span></span><span class="vl" id="ev-yours-val">…</span></div>
+            </div>
+          </div>
+          <div class="beat" data-beat="6">
+            <div class="msg agent"><span class="who">Agent</span>No model clears your bar yet. Training started on your tickets, four rounds.</div>
+            <div class="train">
+              <div class="trainrow"><span>Training</span><span id="roundct">Round 1/4</span></div>
+              <div class="track"><i id="trainfill"></i></div>
+            </div>
+          </div>
+          <div class="beat gap7" data-beat="7"></div>
+          <div class="beat" data-beat="8">
+            <div class="msg agent"><span class="who">Agent</span>Done. leibler-support-v1 clears your bar at 86 and is hosted on your endpoint. Point your agent at it and you are live.</div>
+            <div class="route" id="routebox"><span>Routing</span><span class="sw" aria-hidden="true"></span><span id="routestate">Frontier model A</span></div>
+          </div>
+        </div>
+        <div class="replayrow"><button class="btn btn-s btn-sm" id="demo-replay" type="button">Replay demo</button></div>
+      </div>
+      <p class="strip">A new frontier model dropped? The agent re-runs your eval against it. If it wins, you train again. You do nothing.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="proof">
+    <div class="shead">
+      <h2>What this looked like for the last three workflows.</h2>
+      <p class="lead">Same deal every time: one job, one eval, one small model that clears the bar.</p>
+    </div>
+    <div class="cards3">
+      <div class="pcard"><div class="band sky"></div><div class="in">
+        <h3>Ticket triage, e-commerce</h3>
+        <div class="nums">Cost 1/10th · Latency 1/20th · Accuracy 64 → 88</div>
+        <p>Routes 40,000 tickets a day to the right queue.</p>
+      </div></div>
+      <div class="pcard"><div class="band mint"></div><div class="in">
+        <h3>Invoice extraction, logistics</h3>
+        <div class="nums">Cost 1/10th · Latency 1/20th · Accuracy 71 → 93</div>
+        <p>Pulls 14 fields off supplier invoices in six formats.</p>
+      </div></div>
+      <div class="pcard"><div class="band butter"></div><div class="in">
+        <h3>Lead qualification, B2B sales</h3>
+        <div class="nums">Cost 1/10th · Latency 1/20th · Accuracy 58 → 84</div>
+        <p>Scores every inbound form and drafts the first reply.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="wrap split" id="data">
+    <h2>Your data stays yours.</h2>
+    <p>Training runs on your traces and never leaves your account. The model is yours to download, host anywhere, or hand to us to run. No shared pool, no cross-customer training.</p>
+  </section>
+
+  <section class="wrap split" id="kullback">
+    <h2>Kullback is open source.</h2>
+    <p>The harness that evaluates, trains and hosts is public. Read it, run it yourself, or let the agent run it for you. <a class="ct" href="/kullback">See Kullback</a></p>
+  </section>
+
+  <section class="wrap" id="faq">
+    <div class="shead">
+      <h2>Questions</h2>
+      <p class="lead">Short answers to the three we hear most.</p>
+    </div>
+    <div class="faq3">
+      <article><h3>Does it work for my workflow?</h3><p>If your agent does the same kind of task thousands of times a week and you can say what a good answer looks like, yes. Bring one task and we evaluate it for free.</p></article>
+      <article><h3>What happens when a better frontier model comes out?</h3><p>The agent re-runs your eval against it the day it ships. If the new model wins on your tasks, you get a report. If yours still wins, nothing changes.</p></article>
+      <article><h3>How long until it is live?</h3><p>Evaluation in 48 hours. A trained, hosted model in about a week.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap" id="cta">
+    <div class="panel butter">
+      <h2>Bring one workflow.</h2>
+      <p>We evaluate it against the frontier for free and tell you honestly whether a specialised model will win.</p>
+      <a class="btn btn-p" href="https://cal.com/leibler/30min">Book a call</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <span>leibler.dev · Munich · hello@leibler.dev</span>
+    <nav aria-label="Footer"><a href="#workflow">How it works</a><a href="#kullback">Kullback</a><a href="/team">Team</a></nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var stage = document.getElementById('demo-stage');
+  var replay = document.getElementById('demo-replay');
+  var timers = [];
+  var started = false;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function later(ms, fn){ timers.push(window.setTimeout(fn, ms)); }
+  function clearTimers(){ timers.forEach(function(t){ window.clearTimeout(t); }); timers = []; }
+  function beats(){ return Array.prototype.slice.call(stage.querySelectorAll('.beat')); }
+  function rows(){ return Array.prototype.slice.call(stage.querySelectorAll('.evrow')); }
+  function chips(){ return Array.prototype.slice.call(stage.querySelectorAll('#demo-chips .chip')); }
+  function reset(){
+    clearTimers();
+    stage.classList.remove('is-done');
+    beats().forEach(function(b){ b.classList.remove('on'); });
+    rows().forEach(function(r){ r.classList.remove('on'); });
+    chips().forEach(function(c){ c.classList.remove('sel'); });
+    var fill = document.getElementById('trainfill');
+    fill.style.transition = 'none'; fill.style.width = '0%';
+    document.getElementById('roundct').textContent = 'Round 1/4';
+    document.getElementById('ev-yours-name').textContent = 'Yours (training)';
+    document.getElementById('ev-yours-val').textContent = '…';
+    document.getElementById('ev-yours').classList.remove('win');
+    document.getElementById('ev-yours-bar').style.width = '0%';
+    rows().forEach(function(r){
+      var i = r.querySelector('.sc i');
+      if (i && r.id !== 'ev-yours' && i.getAttribute('data-w')) i.style.width = '0%';
+    });
+    document.getElementById('routebox').classList.remove('on');
+    document.getElementById('routestate').textContent = 'Frontier model A';
+  }
+  function fillRow(r){
+    r.classList.add('on');
+    var i = r.querySelector('.sc i');
+    if (i && i.getAttribute('data-w')) i.style.width = i.getAttribute('data-w') + '%';
+  }
+  function resolveYours(){
+    var r = document.getElementById('ev-yours');
+    r.classList.add('on');
+    document.getElementById('ev-yours-name').textContent = 'Yours, leibler-support-v1';
+    document.getElementById('ev-yours-val').textContent = '86 · 0.2 s';
+    var bar = document.getElementById('ev-yours-bar');
+    bar.style.width = '86%';
+    r.classList.add('win');
+  }
+  function finalState(){
+    reset();
+    beats().forEach(function(b){ b.classList.add('on'); });
+    var cs = chips();
+    if (cs[0]) cs[0].classList.add('sel');
+    if (cs[1]) cs[1].classList.add('sel');
+    if (cs[3]) cs[3].classList.add('sel');
+    rows().forEach(function(r){
+      r.classList.add('on');
+      var i = r.querySelector('.sc i');
+      if (i && i.getAttribute('data-w')) i.style.width = i.getAttribute('data-w') + '%';
+    });
+    resolveYours();
+    var fill = document.getElementById('trainfill');
+    fill.style.transition = 'none'; fill.style.width = '100%';
+    document.getElementById('roundct').textContent = 'Round 4/4';
+    document.getElementById('routebox').classList.add('on');
+    document.getElementById('routestate').textContent = 'leibler-support-v1';
+    stage.classList.add('is-done');
+  }
+  function play(){
+    reset();
+    if (reduced) { finalState(); return; }
+    var beat = {};
+    beats().forEach(function(b){ beat[b.getAttribute('data-beat')] = b; });
+    var cs = chips();
+    var rs = rows();
+    later(400, function(){ beat['1'].classList.add('on'); });
+    later(2000, function(){ beat['2'].classList.add('on'); });
+    later(3800, function(){ cs[0].classList.add('sel'); cs[1].classList.add('sel'); cs[3].classList.add('sel'); });
+    later(4300, function(){ beat['3'].classList.add('on'); });
+    later(6400, function(){ beat['4'].classList.add('on'); });
+    later(8000, function(){ beat['5'].classList.add('on'); });
+    later(8300, function(){ fillRow(rs[0]); });
+    later(9000, function(){ fillRow(rs[1]); });
+    later(9700, function(){ fillRow(rs[2]); });
+    later(10400, function(){ fillRow(rs[3]); });
+    later(11100, function(){ rs[4].classList.add('on'); });
+    later(12200, function(){
+      beat['6'].classList.add('on');
+      var fill = document.getElementById('trainfill');
+      fill.style.transition = 'none'; fill.style.width = '0%';
+      void fill.offsetWidth;
+      fill.style.transition = 'width 3s linear'; fill.style.width = '100%';
+    });
+    later(13000, function(){ document.getElementById('roundct').textContent = 'Round 2/4'; });
+    later(13800, function(){ document.getElementById('roundct').textContent = 'Round 3/4'; });
+    later(14600, function(){ document.getElementById('roundct').textContent = 'Round 4/4'; });
+    later(15600, function(){ beat['7'].classList.add('on'); resolveYours(); });
+    later(17000, function(){ beat['8'].classList.add('on'); });
+    later(18800, function(){
+      document.getElementById('routebox').classList.add('on');
+      document.getElementById('routestate').textContent = 'leibler-support-v1';
+    });
+    later(19600, function(){ stage.classList.add('is-done'); });
+  }
+  replay.addEventListener('click', function(){ play(); });
+  if (reduced) { finalState(); }
+  else if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !started) { started = true; play(); obs.disconnect(); }
+      });
+    }, {threshold: 0.2});
+    obs.observe(stage);
+  } else {
+    play();
+  }
+})();
+</script>
+</body>
+</html>
