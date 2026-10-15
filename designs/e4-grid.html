@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>leibler.dev, own your intelligence</title>
+<meta name="description" content="We train and host a model that only does your job.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111111;
+  --muted:#6B6B6B;
+  --hair:#E5E5E5;
+  --red:#E0321E;
+  --bg:#FFFFFF;
+  --gutter:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Schibsted Grotesk",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:400}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter)}
+a{color:inherit}
+p{max-width:68ch}
+/* header */
+.site-header{border-bottom:1px solid var(--hair)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.wordmark{font-size:17px;text-decoration:none;letter-spacing:-0.01em}
+.wordmark b{font-weight:500}
+.wordmark span{font-weight:400}
+.site-nav{display:flex;align-items:center;gap:28px}
+.site-nav a.nav-link{font-size:15px;text-decoration:none;color:var(--ink)}
+.site-nav a.nav-link:hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-block;text-decoration:none;font-size:16px;font-weight:500;padding:12px 22px;border:1px solid var(--ink);border-radius:0;cursor:pointer;background:transparent;color:var(--ink)}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#000}
+/* sections */
+section{border-bottom:1px solid var(--hair);padding:72px 0}
+.sec-label{grid-column:1/3;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);padding-top:8px}
+.sec-head{grid-column:3/13}
+.sec-head h2{font-size:40px;font-weight:400;letter-spacing:-0.02em;line-height:1.05;max-width:20ch}
+.sec-lead{grid-column:3/11;margin-top:16px;color:var(--muted);font-size:17px;max-width:66ch}
+.sec-body{grid-column:3/11;margin-top:16px}
+/* hero */
+.hero{padding:96px 0 80px}
+.hero .eyebrow{grid-column:1/13;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:32px}
+.hero h1{grid-column:1/11;font-size:88px;font-weight:400;letter-spacing:-0.035em;line-height:0.98}
+.hero .subline{grid-column:7/13;margin-top:32px;color:var(--muted);font-size:18px;max-width:34ch}
+.hero .cta-row{grid-column:1/13;margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.btn-secondary:hover{background:#f2f2f2}
+/* comparison table */
+.basis{grid-column:3/13;margin-top:32px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted)}
+table.cmp{grid-column:3/13;width:100%;border-collapse:collapse;margin-top:12px}
+table.cmp th,table.cmp td{border-top:1px solid var(--hair);padding:14px 0;text-align:left;font-size:16px;vertical-align:baseline}
+table.cmp tr:last-child th,table.cmp tr:last-child td{border-bottom:1px solid var(--hair)}
+table.cmp th.mono,table.cmp td.num{font-family:"JetBrains Mono",monospace;font-size:15px;text-align:right;white-space:nowrap}
+table.cmp td.change{font-family:"JetBrains Mono",monospace;font-size:15px;text-align:right;color:var(--red);white-space:nowrap}
+.why{grid-column:3/11;margin-top:28px;font-size:19px;letter-spacing:-0.01em}
+.trio{grid-column:3/13;margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:var(--gutter);border-top:1px solid var(--hair)}
+.trio div{padding-top:16px;border-top:none}
+.trio .k{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:8px}
+.trio p{font-size:15px;color:var(--muted)}
+/* demo */
+#demo-stage{grid-column:1/13;margin-top:36px;min-height:640px;border-top:1px solid var(--hair)}
+.beat{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);padding:18px 0;border-bottom:1px solid var(--hair)}
+.beat .ts{grid-column:1/3;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted)}
+.beat .msg{grid-column:3/11}
+.beat .who{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:6px}
+.beat .msg p{font-size:16px;max-width:62ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:13px;border:1px solid var(--hair);border-radius:0;padding:8px 12px;color:var(--ink);background:#fff}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+table.eval{width:100%;border-collapse:collapse;margin-top:12px}
+table.eval th,table.eval td{border-top:1px solid var(--hair);padding:10px 0;font-size:14px;text-align:left;vertical-align:middle}
+table.eval tr:last-child th,table.eval tr:last-child td{border-bottom:1px solid var(--hair)}
+table.eval .num{font-family:"JetBrains Mono",monospace;text-align:right;white-space:nowrap}
+table.eval th.num{text-align:right}
+table.eval tr.hl td{background:#fafafa}
+.bar-cell{position:relative;min-width:180px}
+.bar-track{position:relative;height:14px}
+.bar-fill{position:absolute;left:0;top:6px;height:2px;background:var(--ink);width:0}
+.bar-mark{position:absolute;top:0;bottom:0;left:80%;width:2px;background:var(--red)}
+.bar-note{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);margin-top:2px;white-space:nowrap}
+.train-wrap{margin-top:12px}
+.train-top{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:8px}
+.train-track{height:2px;background:var(--hair);position:relative}
+.train-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink)}
+.route-row{display:flex;align-items:center;gap:12px;margin-top:14px;font-family:"JetBrains Mono",monospace;font-size:13px}
+.route-pill{border:1px solid var(--hair);padding:6px 12px}
+.demo-controls{grid-column:1/13;margin-top:20px}
+.strip{grid-column:3/11;margin-top:32px;padding-top:20px;border-top:1px solid var(--hair);font-size:17px}
+/* proof */
+.proof-cols{grid-column:1/13;margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr)}
+.proof-col{padding:0 28px;border-left:1px solid var(--hair)}
+.proof-col:first-child{border-left:none;padding-left:0}
+.proof-col h3{font-size:19px;font-weight:500;letter-spacing:-0.01em;margin-bottom:16px}
+.proof-nums{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:12px;line-height:2}
+.proof-col p{font-size:15px;color:var(--muted)}
+/* faq */
+.faq-list{grid-column:3/13;margin-top:28px}
+.faq-list details{border-top:1px solid var(--hair);padding:18px 0}
+.faq-list details:last-child{border-bottom:1px solid var(--hair)}
+.faq-list summary{font-size:18px;cursor:pointer;list-style:none;font-weight:400}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::before{content:"+";font-family:"JetBrains Mono",monospace;color:var(--muted);margin-right:12px}
+.faq-list details[open] summary::before{content:"-"}
+.faq-list details p{margin-top:10px;color:var(--muted);font-size:16px;max-width:64ch}
+/* cta */
+.cta h2{font-size:64px;font-weight:400;letter-spacing:-0.03em;line-height:1}
+.cta .sec-body p{color:var(--muted)}
+.cta .btn{margin-top:24px}
+/* footer */
+footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted)}
+footer a{text-decoration:none;color:var(--muted)}
+footer a:hover{text-decoration:underline;text-underline-offset:3px}
+footer nav{display:flex;gap:20px}
+@media (max-width:700px){
+  :root{--gutter:16px}
+  body{font-size:16px}
+  section{padding:48px 0}
+  .site-nav a.nav-link{display:none}
+  .hero{padding:64px 0 56px}
+  .hero h1{grid-column:1/13;font-size:38px}
+  .hero .subline{grid-column:1/13;font-size:16px}
+  .sec-label{grid-column:1/13;padding-top:0;margin-bottom:8px}
+  .sec-head{grid-column:1/13}
+  .sec-head h2{font-size:30px}
+  .sec-lead,.sec-body,.basis,.why{grid-column:1/13}
+  table.cmp{grid-column:1/13}
+  table.cmp thead{display:none}
+  table.cmp tbody tr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 12px;padding:14px 0;border-top:1px solid var(--hair)}
+  table.cmp tbody tr:last-child{border-bottom:1px solid var(--hair)}
+  table.cmp tr:last-child th,table.cmp tr:last-child td{border-bottom:none}
+  table.cmp th[scope="row"]{grid-column:1/-1;border:none;padding:0;font-size:15px}
+  table.cmp td.num,table.cmp td.change{border:none;padding:0;text-align:left;font-size:13px}
+  table.cmp td[data-h]::before{content:attr(data-h);display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);margin-bottom:2px}
+  table.eval thead tr{display:grid;grid-template-columns:1fr auto auto;column-gap:12px}
+  table.eval th.h-bar{display:none}
+  table.eval th,table.eval td{font-size:13px}
+  table.eval tbody tr{display:grid;grid-template-columns:1fr auto auto;column-gap:12px}
+  table.eval td.c-bar{grid-column:1/-1;min-width:0}
+  .trio{grid-column:1/13;grid-template-columns:1fr;row-gap:16px}
+  #demo-stage{min-height:900px}
+  .beat .ts{grid-column:1/13;margin-bottom:4px}
+  .beat .msg{grid-column:1/13}
+  .strip{grid-column:1/13}
+  .proof-cols{grid-template-columns:1fr}
+  .proof-col{border-left:none;border-top:1px solid var(--hair);padding:20px 0 0;margin-top:20px}
+  .proof-col:first-child{border-top:none;margin-top:0;padding-top:0}
+  .cta h2{font-size:40px}
+  footer .wrap{flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/"><b>leibler</b><span>.dev</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="nav-link" href="#workflow">How it works</a>
+      <a class="nav-link" href="/kullback">Kullback</a>
+      <a class="nav-link" href="/team">Team</a>
+      <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap grid">
+      <p class="eyebrow">leibler is a lab that helps you own your intelligence.</p>
+      <h1 id="hero-h">Frontier models are built for everyone. Yours is built for your workflow.</h1>
+      <p class="subline">We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
+        <a class="btn btn-secondary" href="#demo">See it work</a>
+      </div>
+    </div>
+  </section>
+  <section id="workflow" aria-labelledby="workflow-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">01</div>
+      <div class="sec-head"><h2 id="workflow-h">Say you run a support agent.</h2></div>
+      <p class="sec-lead">It reads every incoming customer email, pulls up the order, decides refund, replacement or escalation, and drafts the reply. Today every one of those steps goes to a frontier model that was trained to do everything. Your agent only needs it to do this.</p>
+      <p class="basis">Per month, at one million tickets.</p>
+      <table class="cmp">
+        <thead><tr><th scope="col"><span class="mono" style="font-size:13px;color:var(--muted)"></span></th><th class="mono" scope="col">Frontier model</th><th class="mono" scope="col">Your model</th><th class="mono" scope="col">Change</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Cost</th><td class="num" data-h="Frontier model">$48,000</td><td class="num" data-h="Your model">$4,800</td><td class="change" data-h="Change">1/10th</td></tr>
+          <tr><th scope="row">Time per reply</th><td class="num" data-h="Frontier model">4.0 s</td><td class="num" data-h="Your model">0.2 s</td><td class="change" data-h="Change">1/20th</td></tr>
+          <tr><th scope="row">Accuracy on your tickets</th><td class="num" data-h="Frontier model">64 of 100</td><td class="num" data-h="Your model">86 of 100</td><td class="change" data-h="Change">+35%</td></tr>
+        </tbody>
+      </table>
+      <p class="why">A model that only has to be good at your tickets beats one that has to be good at everything.</p>
+      <div class="trio">
+        <div><p class="k">Cost</p><p>A small model specialised on one job runs on a fraction of the compute. Same work, a tenth of the bill.</p></div>
+        <div><p class="k">Latency</p><p>Fewer parameters, shorter prompts, no queue behind the whole world. A reply in 200 milliseconds instead of four seconds.</p></div>
+        <div><p class="k">Accuracy</p><p>It has seen a thousand of your tickets and your rules, not the whole internet. It stops guessing what you meant.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="demo" aria-labelledby="demo-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">02</div>
+      <div class="sec-head"><h2 id="demo-h">Meet the agent that builds it.</h2></div>
+      <p class="sec-lead">You tell it how the model should behave. It writes the eval and the training data, trains, and hosts the result. You never touch a GPU.</p>
+      <div id="demo-stage" aria-live="polite"></div>
+      <div class="demo-controls"><button class="btn btn-secondary" id="demo-replay" type="button">Replay the demo</button></div>
+      <p class="strip">A new frontier model dropped? The agent re-runs your eval against it. If it wins, you train again. You do nothing.</p>
+    </div>
+  </section>
+  <section id="proof" aria-labelledby="proof-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">03</div>
+      <div class="sec-head"><h2 id="proof-h">What this looked like for the last three workflows.</h2></div>
+      <div class="proof-cols">
+        <div class="proof-col"><h3>Ticket triage, e-commerce</h3><p class="proof-nums">cost 1/10th · latency 1/20th · accuracy 64 → 88</p><p>Routes 40,000 tickets a day to the right queue.</p></div>
+        <div class="proof-col"><h3>Invoice extraction, logistics</h3><p class="proof-nums">cost 1/10th · latency 1/20th · accuracy 71 → 93</p><p>Pulls 14 fields off supplier invoices in six formats.</p></div>
+        <div class="proof-col"><h3>Lead qualification, B2B sales</h3><p class="proof-nums">cost 1/10th · latency 1/20th · accuracy 58 → 84</p><p>Scores every inbound form and drafts the first reply.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="data" aria-labelledby="data-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">04</div>
+      <div class="sec-head"><h2 id="data-h">Your data stays yours.</h2></div>
+      <p class="sec-body">Training runs on your traces and never leaves your account. The model is yours to download, host anywhere, or hand to us to run. No shared pool, no cross-customer training.</p>
+    </div>
+  </section>
+  <section id="kullback" aria-labelledby="kullback-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">05</div>
+      <div class="sec-head"><h2 id="kullback-h">Kullback is open source.</h2></div>
+      <p class="sec-body">The harness that evaluates, trains and hosts is public. Read it, run it yourself, or let the agent run it for you. <a href="/kullback">See Kullback</a>.</p>
+    </div>
+  </section>
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">06</div>
+      <div class="sec-head"><h2 id="faq-h">Questions</h2></div>
+      <div class="faq-list">
+        <details><summary>Does it work for my workflow?</summary><p>If your agent does the same kind of task thousands of times a week and you can say what a good answer looks like, yes. Bring one task and we evaluate it for free.</p></details>
+        <details><summary>What happens when a better frontier model comes out?</summary><p>The agent re-runs your eval against it the day it ships. If the new model wins on your tasks, you get a report. If yours still wins, nothing changes.</p></details>
+        <details><summary>How long until it is live?</summary><p>Evaluation in 48 hours. A trained, hosted model in about a week.</p></details>
+      </div>
+    </div>
+  </section>
+  <section id="cta" class="cta" aria-labelledby="cta-h">
+    <div class="wrap grid">
+      <div class="sec-label mono">07</div>
+      <div class="sec-head"><h2 id="cta-h">Bring one workflow.</h2></div>
+      <div class="sec-body"><p>We evaluate it against the frontier for free and tell you honestly whether a specialised model will win.</p><a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a></div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>leibler.dev · Munich · hello@leibler.dev</span>
+    <nav aria-label="Footer"><a href="#workflow">How it works</a><a href="/kullback">Kullback</a><a href="/team">Team</a></nav>
+  </div>
+</footer>
+<script>
+(function(){
+  var stage = document.getElementById("demo-stage");
+  var replay = document.getElementById("demo-replay");
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var timers = [];
+  function later(ms, fn){ timers.push(setTimeout(fn, ms)); }
+  function clearAll(){ timers.forEach(clearTimeout); timers = []; }
+  function el(tag, cls, html){ var d = document.createElement(tag); if(cls) d.className = cls; if(html != null) d.innerHTML = html; return d; }
+  function beat(ts, who, bodyEl){
+    var row = el("div", "beat");
+    row.appendChild(el("div", "ts", ts));
+    var msg = el("div", "msg");
+    msg.appendChild(el("div", "who", who));
+    msg.appendChild(bodyEl);
+    row.appendChild(msg);
+    stage.appendChild(row);
+    return row;
+  }
+  function para(t){ return el("p", null, t); }
+  var CHIPS = ["Refund under \u20AC100 without asking","Offer a replacement before a refund","Escalate anything legal","Reply in the customer's language"];
+  function chips(selected){
+    var c = el("div", "chips");
+    CHIPS.forEach(function(label, i){
+      var s = el("span", "chip" + (selected.indexOf(i) >= 0 ? " on" : ""), label);
+      c.appendChild(s);
+    });
+    return c;
+  }
+  var EVAL = [
+    ["Frontier model A", 64, "4.0 s"],
+    ["Frontier model B", 61, "3.6 s"],
+    ["Frontier model C", 66, "5.1 s"],
+    ["Open 8B, untrained", 38, "0.3 s"],
+    ["Yours (training)", null, null]
+  ];
+  function evalTable(upto, resolved){
+    var t = el("table", "eval");
+    var head = document.createElement("tr");
+    head.appendChild(el("th", "h-model", "Model"));
+    head.appendChild(el("th", "num h-acc", "Accuracy"));
+    head.appendChild(el("th", "h-bar", ""));
+    head.appendChild(el("th", "num h-time", "Time per reply"));
+    var thead = document.createElement("thead"); thead.appendChild(head); t.appendChild(thead);
+    var tb = document.createElement("tbody");
+    for(var i = 0; i < upto; i++){
+      (function(i){
+        var r = EVAL[i];
+        var tr = document.createElement("tr");
+        var done = resolved && i === 4;
+        if(done) tr.className = "hl";
+        var name = (i === 4 && resolved) ? "Yours, leibler-support-v1" : r[0];
+        tr.appendChild(el("td", "c-name", name));
+        var acc = (i === 4 && !resolved) ? "\u2026" : String(done ? 86 : r[1]);
+        tr.appendChild(el("td", "num c-acc", acc));
+        var bc = el("td", "bar-cell c-bar");
+        var track = el("div", "bar-track");
+        var fill = el("div", "bar-fill");
+        var score = done ? 86 : r[1];
+        if(score != null) fill.style.width = score + "%";
+        track.appendChild(fill);
+        track.appendChild(el("div", "bar-mark"));
+        bc.appendChild(track);
+        bc.appendChild(el("div", "bar-note", "your bar 80"));
+        tr.appendChild(bc);
+        var tm = (i === 4 && !resolved) ? "\u2026" : (done ? "0.2 s" : r[2]);
+        tr.appendChild(el("td", "num c-time", tm));
+        tb.appendChild(tr);
+      })(i);
+    }
+    t.appendChild(tb);
+    return t;
+  }
+  function trainBar(step){
+    var w = el("div", "train-wrap");
+    var top = el("div", "train-top");
+    top.appendChild(el("span", null, "Training"));
+    top.appendChild(el("span", null, step + "/4"));
+    w.appendChild(top);
+    var track = el("div", "train-track");
+    var fill = el("div", "train-fill");
+    fill.style.width = (step * 25) + "%";
+    track.appendChild(fill);
+    w.appendChild(track);
+    return w;
+  }
+  function countUp(cell, target){
+    var dur = 600, t0 = null;
+    function frame(ts){
+      if(t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      cell.textContent = String(Math.round(target * p));
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    if("requestAnimationFrame" in window) requestAnimationFrame(frame);
+    else cell.textContent = String(target);
+  }
+  function countLast(container, target){
+    if(target == null || !container) return;
+    var cell = container.querySelector("tbody tr:last-child td.c-acc");
+    if(cell) countUp(cell, target);
+  }
+  function routeRow(value){
+    var r = el("div", "route-row");
+    r.appendChild(el("span", null, "Routing"));
+    r.appendChild(el("span", "route-pill", value));
+    return r;
+  }
+  // Full choreography, about 20 seconds.
+  function play(){
+    clearAll();
+    stage.innerHTML = "";
+    stage.classList.remove("is-done");
+    if(reduced){ renderFinal(); return; }
+    later(400, function(){
+      var b = beat("00:00", "You", para("We run a support agent on refund emails for a furniture shop. Build us a model for it."));
+    });
+    later(2400, function(){
+      var body = el("div", null);
+      body.appendChild(para("I can. First, how should it behave? Pick what applies or add your own."));
+      body.appendChild(chips([]));
+      beat("00:02", "Agent", body);
+    });
+    later(5000, function(){
+      var body = el("div", null);
+      body.appendChild(chips([0, 1, 3]));
+      body.appendChild(para("Those three. Legal goes to a human."));
+      beat("00:05", "You", body);
+    });
+    later(7000, function(){
+      beat("00:07", "Agent", para("Got it. I pulled 1,240 past tickets from your traces and wrote 312 eval cases around those rules. Running every model against them now."));
+    });
+    // Eval table fills row by row over about 3 s.
+    var evalRow = null;
+    later(9000, function(){
+      var body = el("div", null);
+      evalRow = el("div", null);
+      body.appendChild(evalRow);
+      evalRow.appendChild(evalTable(1, false));
+      beat("00:09", "Agent", body);
+      countLast(evalRow, 64);
+    });
+    later(9600, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(2, false)); countLast(evalRow, 61); } });
+    later(10200, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(3, false)); countLast(evalRow, 66); } });
+    later(10800, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(4, false)); countLast(evalRow, 38); } });
+    later(11500, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(5, false)); } });
+    // Training progress over about 3 s.
+    var trainHolder = null;
+    later(13000, function(){
+      var body = el("div", null);
+      body.appendChild(para("No model clears your bar yet. Training started on your tickets, four rounds."));
+      trainHolder = el("div", null);
+      trainHolder.appendChild(trainBar(1));
+      body.appendChild(trainHolder);
+      beat("00:13", "Agent", body);
+    });
+    later(14000, function(){ if(trainHolder){ trainHolder.innerHTML = ""; trainHolder.appendChild(trainBar(2)); } });
+    later(15000, function(){ if(trainHolder){ trainHolder.innerHTML = ""; trainHolder.appendChild(trainBar(3)); } });
+    later(16000, function(){ if(trainHolder){ trainHolder.innerHTML = ""; trainHolder.appendChild(trainBar(4)); } });
+    later(17200, function(){
+      var body = el("div", null);
+      body.appendChild(evalTable(5, true));
+      beat("00:16", "Agent", body);
+      countLast(body, 86);
+    });
+    later(19000, function(){
+      var body = el("div", null);
+      body.appendChild(para("Done. leibler-support-v1 clears your bar at 86 and is hosted on your endpoint. Point your agent at it and you are live."));
+      body.appendChild(routeRow("Frontier model A"));
+      beat("00:18", "Agent", body);
+    });
+    later(20500, function(){
+      var pill = stage.querySelector(".route-pill");
+      if(pill) pill.textContent = "leibler-support-v1";
+      stage.classList.add("is-done");
+    });
+  }
+  function renderFinal(){
+    stage.innerHTML = "";
+    beat("00:00", "You", para("We run a support agent on refund emails for a furniture shop. Build us a model for it."));
+    var b2 = el("div", null);
+    b2.appendChild(para("I can. First, how should it behave? Pick what applies or add your own."));
+    b2.appendChild(chips([]));
+    beat("00:02", "Agent", b2);
+    var b3 = el("div", null);
+    b3.appendChild(chips([0, 1, 3]));
+    b3.appendChild(para("Those three. Legal goes to a human."));
+    beat("00:05", "You", b3);
+    beat("00:07", "Agent", para("Got it. I pulled 1,240 past tickets from your traces and wrote 312 eval cases around those rules. Running every model against them now."));
+    var b5 = el("div", null); b5.appendChild(evalTable(5, false));
+    beat("00:09", "Agent", b5);
+    var b6 = el("div", null);
+    b6.appendChild(para("No model clears your bar yet. Training started on your tickets, four rounds."));
+    b6.appendChild(trainBar(4));
+    beat("00:13", "Agent", b6);
+    var b7 = el("div", null); b7.appendChild(evalTable(5, true));
+    beat("00:16", "Agent", b7);
+    var b8 = el("div", null);
+    b8.appendChild(para("Done. leibler-support-v1 clears your bar at 86 and is hosted on your endpoint. Point your agent at it and you are live."));
+    b8.appendChild(routeRow("leibler-support-v1"));
+    beat("00:18", "Agent", b8);
+    stage.classList.add("is-done");
+  }
+  replay.addEventListener("click", play);
+  var started = false;
+  function start(){ if(started) return; started = true; play(); }
+  replay.addEventListener("click", function(){ started = true; });
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ start(); io.disconnect(); } });
+    }, {threshold: 0.2});
+    io.observe(stage);
+  } else {
+    start();
+  }
+  // Fallback: if the stage never intersects (e.g. automated check), start after load.
+  setTimeout(start, 4000);
+})();
+</script>
+</body>
+</html>
