@@ -90,7 +90,8 @@ table.eval tr.hl td{background:#fafafa}
 .bar-track{position:relative;height:14px}
 .bar-fill{position:absolute;left:0;top:6px;height:2px;background:var(--ink);width:0}
 .bar-mark{position:absolute;top:0;bottom:0;left:80%;width:2px;background:var(--red)}
-.bar-note{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);margin-top:2px;white-space:nowrap}
+.bar-key{display:flex;align-items:center;gap:8px;margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);white-space:nowrap}
+.bar-key .tick{width:2px;height:10px;background:var(--red)}
 .train-wrap{margin-top:12px}
 .train-top{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:8px}
 .train-track{height:2px;background:var(--hair);position:relative}
@@ -108,13 +109,10 @@ table.eval tr.hl td{background:#fafafa}
 .proof-col p{font-size:15px;color:var(--muted)}
 /* faq */
 .faq-list{grid-column:3/13;margin-top:28px}
-.faq-list details{border-top:1px solid var(--hair);padding:18px 0}
-.faq-list details:last-child{border-bottom:1px solid var(--hair)}
-.faq-list summary{font-size:18px;cursor:pointer;list-style:none;font-weight:400}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary::before{content:"+";font-family:"JetBrains Mono",monospace;color:var(--muted);margin-right:12px}
-.faq-list details[open] summary::before{content:"-"}
-.faq-list details p{margin-top:10px;color:var(--muted);font-size:16px;max-width:64ch}
+.faq-list .faq-item{border-top:1px solid var(--hair);padding:18px 0}
+.faq-list .faq-item:last-child{border-bottom:1px solid var(--hair)}
+.faq-list .q{font-size:18px}
+.faq-list .a{margin-top:10px;color:var(--muted);font-size:16px;max-width:64ch}
 /* cta */
 .cta h2{font-size:64px;font-weight:400;letter-spacing:-0.03em;line-height:1}
 .cta .sec-body p{color:var(--muted)}
@@ -251,9 +249,9 @@ footer nav{display:flex;gap:20px}
       <div class="sec-label mono">06</div>
       <div class="sec-head"><h2 id="faq-h">Questions</h2></div>
       <div class="faq-list">
-        <details><summary>Does it work for my workflow?</summary><p>If your agent does the same kind of task thousands of times a week and you can say what a good answer looks like, yes. Bring one task and we evaluate it for free.</p></details>
-        <details><summary>What happens when a better frontier model comes out?</summary><p>The agent re-runs your eval against it the day it ships. If the new model wins on your tasks, you get a report. If yours still wins, nothing changes.</p></details>
-        <details><summary>How long until it is live?</summary><p>Evaluation in 48 hours. A trained, hosted model in about a week.</p></details>
+        <div class="faq-item"><p class="q">Does it work for my workflow?</p><p class="a">If your agent does the same kind of task thousands of times a week and you can say what a good answer looks like, yes. Bring one task and we evaluate it for free.</p></div>
+        <div class="faq-item"><p class="q">What happens when a better frontier model comes out?</p><p class="a">The agent re-runs your eval against it the day it ships. If the new model wins on your tasks, you get a report. If yours still wins, nothing changes.</p></div>
+        <div class="faq-item"><p class="q">How long until it is live?</p><p class="a">Evaluation in 48 hours. A trained, hosted model in about a week.</p></div>
       </div>
     </div>
   </section>
@@ -307,7 +305,8 @@ footer nav{display:flex;gap:20px}
     ["Open 8B, untrained", 38, "0.3 s"],
     ["Yours (training)", null, null]
   ];
-  function evalTable(upto, resolved){
+  function evalTable(upto){
+    var wrap = el("div", "eval-wrap");
     var t = el("table", "eval");
     var head = document.createElement("tr");
     head.appendChild(el("th", "h-model", "Model"));
@@ -320,29 +319,37 @@ footer nav{display:flex;gap:20px}
       (function(i){
         var r = EVAL[i];
         var tr = document.createElement("tr");
-        var done = resolved && i === 4;
-        if(done) tr.className = "hl";
-        var name = (i === 4 && resolved) ? "Yours, leibler-support-v1" : r[0];
-        tr.appendChild(el("td", "c-name", name));
-        var acc = (i === 4 && !resolved) ? "\u2026" : String(done ? 86 : r[1]);
+        tr.appendChild(el("td", "c-name", r[0]));
+        var acc = (i === 4) ? "\u2026" : String(r[1]);
         tr.appendChild(el("td", "num c-acc", acc));
         var bc = el("td", "bar-cell c-bar");
         var track = el("div", "bar-track");
         var fill = el("div", "bar-fill");
-        var score = done ? 86 : r[1];
+        var score = r[1];
         if(score != null) fill.style.width = score + "%";
         track.appendChild(fill);
         track.appendChild(el("div", "bar-mark"));
         bc.appendChild(track);
-        bc.appendChild(el("div", "bar-note", "your bar 80"));
         tr.appendChild(bc);
-        var tm = (i === 4 && !resolved) ? "\u2026" : (done ? "0.2 s" : r[2]);
+        var tm = (i === 4) ? "\u2026" : r[2];
         tr.appendChild(el("td", "num c-time", tm));
         tb.appendChild(tr);
       })(i);
     }
     t.appendChild(tb);
-    return t;
+    wrap.appendChild(t);
+    wrap.appendChild(el("div", "bar-key", '<span class="tick"></span>your bar 80'));
+    return wrap;
+  }
+  function resolvedTable(){
+    var w = evalTable(5);
+    var last = w.querySelector("tbody tr:last-child");
+    last.className = "hl";
+    last.querySelector("td.c-name").textContent = "Yours, leibler-support-v1";
+    last.querySelector("td.c-acc").textContent = "86";
+    last.querySelector("td.c-time").textContent = "0.2 s";
+    last.querySelector(".bar-fill").style.width = "86%";
+    return w;
   }
   function trainBar(step){
     var w = el("div", "train-wrap");
@@ -409,14 +416,14 @@ footer nav{display:flex;gap:20px}
       var body = el("div", null);
       evalRow = el("div", null);
       body.appendChild(evalRow);
-      evalRow.appendChild(evalTable(1, false));
+      evalRow.appendChild(evalTable(1));
       beat("00:09", "Agent", body);
       countLast(evalRow, 64);
     });
-    later(9600, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(2, false)); countLast(evalRow, 61); } });
-    later(10200, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(3, false)); countLast(evalRow, 66); } });
-    later(10800, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(4, false)); countLast(evalRow, 38); } });
-    later(11500, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(5, false)); } });
+    later(9600, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(2)); countLast(evalRow, 61); } });
+    later(10200, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(3)); countLast(evalRow, 66); } });
+    later(10800, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(4)); countLast(evalRow, 38); } });
+    later(11500, function(){ if(evalRow){ evalRow.innerHTML = ""; evalRow.appendChild(evalTable(5)); } });
     // Training progress over about 3 s.
     var trainHolder = null;
     later(13000, function(){
@@ -431,10 +438,14 @@ footer nav{display:flex;gap:20px}
     later(15000, function(){ if(trainHolder){ trainHolder.innerHTML = ""; trainHolder.appendChild(trainBar(3)); } });
     later(16000, function(){ if(trainHolder){ trainHolder.innerHTML = ""; trainHolder.appendChild(trainBar(4)); } });
     later(17200, function(){
-      var body = el("div", null);
-      body.appendChild(evalTable(5, true));
-      beat("00:16", "Agent", body);
-      countLast(body, 86);
+      if(!evalRow) return;
+      var last = evalRow.querySelector("tbody tr:last-child");
+      if(!last) return;
+      last.className = "hl";
+      var nm = last.querySelector("td.c-name"); if(nm) nm.textContent = "Yours, leibler-support-v1";
+      var tm = last.querySelector("td.c-time"); if(tm) tm.textContent = "0.2 s";
+      var fill = last.querySelector(".bar-fill"); if(fill) fill.style.width = "86%";
+      countLast(evalRow, 86);
     });
     later(19000, function(){
       var body = el("div", null);
@@ -460,14 +471,12 @@ footer nav{display:flex;gap:20px}
     b3.appendChild(para("Those three. Legal goes to a human."));
     beat("00:05", "You", b3);
     beat("00:07", "Agent", para("Got it. I pulled 1,240 past tickets from your traces and wrote 312 eval cases around those rules. Running every model against them now."));
-    var b5 = el("div", null); b5.appendChild(evalTable(5, false));
+    var b5 = el("div", null); b5.appendChild(resolvedTable());
     beat("00:09", "Agent", b5);
     var b6 = el("div", null);
     b6.appendChild(para("No model clears your bar yet. Training started on your tickets, four rounds."));
     b6.appendChild(trainBar(4));
     beat("00:13", "Agent", b6);
-    var b7 = el("div", null); b7.appendChild(evalTable(5, true));
-    beat("00:16", "Agent", b7);
     var b8 = el("div", null);
     b8.appendChild(para("Done. leibler-support-v1 clears your bar at 86 and is hosted on your endpoint. Point your agent at it and you are live."));
     b8.appendChild(routeRow("leibler-support-v1"));
