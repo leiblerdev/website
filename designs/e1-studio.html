@@ -147,7 +147,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .demo-header .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
 .demo-header .sub{font-weight:400;color:var(--muted)}
 .demo-body{padding:24px;display:flex;flex-direction:column;gap:14px;flex:1}
-.beat{display:none}
+.beat:not(.show){display:none !important}
 .beat.show{display:block;animation:fadeUp .45s ease}
 .msg-row.beat.show{display:flex}
 .chips.beat.show{display:flex}
@@ -185,12 +185,12 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .status{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
 .status-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
 .step{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:var(--fs-cell)}
-.step .sname{font-weight:500}
-.step .sresult{margin-left:auto;color:var(--muted);font-size:var(--fs-cap);text-align:right}
-.spin{width:12px;height:12px;border-radius:50%;flex:none;border:2px solid #C9D4FF;border-top-color:var(--cobalt);animation:rot .8s linear infinite}
+.step .sname{font-weight:500;min-width:0}
+.step .sresult{margin-left:auto;color:var(--muted);font-size:var(--fs-cap);text-align:right;white-space:nowrap;display:none}
+.step.done .sresult{display:block}
+.mark.spin{width:12px;height:12px;border-radius:50%;flex:none;border:2px solid #C9D4FF;border-top-color:var(--cobalt);animation:rot .8s linear infinite}
 @keyframes rot{to{transform:rotate(360deg)}}
-.check{width:14px;height:14px;flex:none;color:var(--cobalt);font-weight:600;font-size:var(--fs-cap)}
-.step.pending .sresult{display:none}
+.mark.check{width:14px;height:14px;flex:none;color:var(--cobalt);font-weight:600;font-size:var(--fs-cap)}
 /* Sample case card */
 .sample{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
 .sample .slabel{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
@@ -343,6 +343,7 @@ footer.site a:hover{color:var(--ink)}
   .eval-head,.erow{grid-template-columns:minmax(0,110px) 1fr 52px;gap:8px}
   .eval-head .ccost,.erow .ecost{display:none}
   .erow .etime{font-size:var(--fs-cell)}
+  .demo-header .sub{display:none}
   .demo-body{padding:14px}
   .msg{max-width:92%}
   .msg-wrap{max-width:92%}
@@ -654,17 +655,16 @@ footer.site a:hover{color:var(--ink)}
     var st = steps[idx];
     if(!st) return;
     var mark = st.querySelector('.mark');
-    var res = st.querySelector('.sresult');
     if(done){
-      mark.className = 'check';
+      mark.classList.add('check');
+      mark.classList.remove('spin');
       mark.textContent = '✓';
-      st.classList.remove('pending');
-      res.style.display = '';
+      st.classList.add('done');
     } else {
-      mark.className = 'spin';
+      mark.classList.add('spin');
+      mark.classList.remove('check');
       mark.textContent = '';
-      st.classList.add('pending');
-      res.style.display = 'none';
+      st.classList.remove('done');
     }
   }
   function countUp(el, target, dur, id){
@@ -692,6 +692,11 @@ footer.site a:hover{color:var(--ink)}
   function reset(){
     runId++;
     beats.forEach(function(b){ b.classList.remove('show'); b.classList.remove('typed'); });
+    Array.prototype.slice.call(stage.querySelectorAll('.step')).forEach(function(st){
+      st.classList.remove('done');
+      var m = st.querySelector('.mark');
+      if(m){ m.classList.remove('spin'); m.classList.remove('check'); m.textContent = ''; }
+    });
     chips.forEach(function(c){ c.classList.remove('sel'); });
     fillRows.forEach(function(r){
       r.querySelector('.efill').style.width = '0';
@@ -735,20 +740,22 @@ footer.site a:hover{color:var(--ink)}
     if(prep){
       var ps = prep.querySelectorAll('.step');
       ps.forEach(function(st, i){
-        st.querySelector('.mark').className = 'check';
-        st.querySelector('.mark').textContent = '✓';
-        st.classList.remove('pending');
-        st.querySelector('.sresult').style.display = '';
+        var pm = st.querySelector('.mark');
+        pm.classList.add('check');
+        pm.classList.remove('spin');
+        pm.textContent = '✓';
+        st.classList.add('done');
       });
     }
     var host = byBeat('host')[0];
     if(host){
       var hs = host.querySelectorAll('.step');
       hs.forEach(function(st){
-        st.querySelector('.mark').className = 'check';
-        st.querySelector('.mark').textContent = '✓';
-        st.classList.remove('pending');
-        st.querySelector('.sresult').style.display = '';
+        var hm = st.querySelector('.mark');
+        hm.classList.add('check');
+        hm.classList.remove('spin');
+        hm.textContent = '✓';
+        st.classList.add('done');
       });
     }
     routeVal.textContent = 'support-v1';
@@ -767,14 +774,15 @@ footer.site a:hover{color:var(--ink)}
       var et = r.querySelector('.etime');
       var ec = r.querySelector('.ecost');
       var spin = document.createElement('span');
-      spin.className = 'spin';
+      spin.classList.add('mark');
+      spin.classList.add('spin');
       val.textContent = '';
       val.appendChild(spin);
-      var alive = await sleep(700, id);
+      var alive = await sleep(350, id);
       if(!alive || id !== runId) return false;
       fill.style.width = acc + '%';
       val.textContent = '';
-      var ok = await countUp(val, acc, 450, id);
+      var ok = await countUp(val, acc, 300, id);
       if(id !== runId) return false;
       et.textContent = time;
       ec.textContent = cost;
@@ -813,7 +821,7 @@ footer.site a:hover{color:var(--ink)}
     if(!alive || id !== runId) return;
     if(!await agentBeat('k2', id)) return;
     show('case');
-    alive = await sleep(1600, id);
+    alive = await sleep(900, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k3', id)) return;
     show('eval');
@@ -821,10 +829,18 @@ footer.site a:hover{color:var(--ink)}
     if(!await runEvalRows(id)) return;
     alive = await sleep(700, id);
     if(!alive || id !== runId) return;
-    if(!await agentBeat('k4', id)) return;
+    show('k4');
     show('train');
+    alive = await sleep(700, id);
+    if(!alive || id !== runId) return;
+    byBeat('k4').forEach(function(b){ b.classList.add('typed'); });
     var rounds = [['Round 1 · 71', 25], ['Round 2 · 79', 50], ['Round 3 · 84', 75], ['Round 4 · 86', 100]];
-    for(var t = 0; t < rounds.length; t++){
+    alive = await sleep(200, id);
+    if(!alive || id !== runId) return;
+    trainFill.style.width = rounds[0][1] + '%';
+    trainRound.textContent = rounds[0][0];
+    tickLabels[0].classList.add('show');
+    for(var t = 1; t < rounds.length; t++){
       alive = await sleep(900, id);
       if(!alive || id !== runId) return;
       trainFill.style.width = rounds[t][1] + '%';
@@ -838,29 +854,32 @@ footer.site a:hover{color:var(--ink)}
     var pval = pending.querySelector('.mval');
     pfill.style.width = '86%';
     pval.textContent = '';
-    await countUp(pval, 86, 500, id);
+    await countUp(pval, 86, 400, id);
     if(id !== runId) return;
     pending.querySelector('.etime').textContent = '0.2 s';
     pending.querySelector('.ecost').textContent = '$0.005';
-    alive = await sleep(1200, id);
+    alive = await sleep(700, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k5', id)) return;
     show('host');
-    for(var h = 0; h < 2; h++){
-      markStep('host', h, false);
-      alive = await sleep(700, id);
-      if(!alive || id !== runId) return;
-      markStep('host', h, true);
-    }
-    show('route');
+    markStep('host', 0, false);
     alive = await sleep(700, id);
     if(!alive || id !== runId) return;
+    markStep('host', 0, true);
+    show('route');
+    markStep('host', 1, false);
+    alive = await sleep(700, id);
+    if(!alive || id !== runId) return;
+    markStep('host', 1, true);
     routeSwitch.setAttribute('aria-checked', 'true');
     routeVal.textContent = 'support-v1';
     alive = await sleep(1100, id);
     if(!alive || id !== runId) return;
-    if(!await agentBeat('k6', id)) return;
+    show('k6');
     stage.classList.add('is-done');
+    alive = await sleep(700, id);
+    if(!alive || id !== runId) return;
+    byBeat('k6').forEach(function(b){ b.classList.add('typed'); });
   }
   chips.forEach(function(c){
     c.addEventListener('click', function(){ c.classList.toggle('sel'); });
