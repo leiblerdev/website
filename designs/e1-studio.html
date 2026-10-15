@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>leibler.dev</title>
 <meta name="description" content="We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -52,7 +54,10 @@ a{color:inherit}
   position:sticky;top:0;background:rgba(255,255,255,.92);
   backdrop-filter:blur(8px);z-index:50;
 }
-.wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em}
+.wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em;display:inline-flex;align-items:center;gap:10px}
+.wordmark svg{flex:none;display:block}
+.foot-brand{display:inline-flex;align-items:center;gap:8px}
+.foot-brand svg{flex:none;display:block}
 .wordmark b{font-weight:600}
 .wordmark span{font-weight:400}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -107,7 +112,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 #demo-replay:hover{border-color:#c9c9c9}
 #demo-stage{
   background:#fff;border:1px solid var(--hairline);border-radius:16px;overflow:hidden;
-  min-height:640px;display:flex;flex-direction:column;
+  min-height:740px;display:flex;flex-direction:column;
 }
 .demo-header{
   display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--hairline);
@@ -166,6 +171,26 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .sample .stext{font-size:var(--fs-msg)}
 .sample hr{border:none;border-top:1px solid var(--hairline);margin:12px 0}
 .sample .expected{font-size:var(--fs-cell);color:var(--muted)}
+/* Human review card */
+.review{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
+.review-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
+.review-group{margin-bottom:14px}
+.review-group:last-of-type{margin-bottom:12px}
+.review-label{font-size:var(--fs-cap);font-weight:600;color:var(--muted);margin-bottom:8px}
+.review-items{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.review-item{position:relative;border:1px solid var(--hairline);border-radius:12px;padding:14px 42px 14px 14px;background:#fff}
+.review-ref{font-size:var(--fs-cap);color:var(--muted);margin-bottom:6px}
+.review-text{font-size:var(--fs-msg);line-height:1.5;margin-bottom:10px}
+.review-item hr{border:none;border-top:1px solid var(--hairline);margin:10px 0}
+.review-answer{font-size:var(--fs-cell);color:var(--muted)}
+.review-answer .alabel{font-size:var(--fs-cap);font-weight:600}
+.review-note{font-size:var(--fs-cap);color:var(--muted)}
+.review-check{
+  position:absolute;top:12px;right:12px;width:18px;height:18px;border-radius:50%;flex:none;
+  border:1.5px solid #C9C9CE;background:#fff;color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-cap);font-weight:600;
+}
+.review-check.on{background:var(--cobalt);border-color:var(--cobalt)}
 /* Eval table */
 .eval{border:1px solid var(--hairline);border-radius:14px;padding:20px 20px 14px;background:#fff;min-width:0}
 .eval-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
@@ -298,7 +323,8 @@ footer.site a:hover{color:var(--ink)}
   .demo-body{padding:14px}
   .msg{max-width:92%}
   .msg-wrap{max-width:92%}
-  #demo-stage{min-height:560px}
+  .review-items{grid-template-columns:1fr}
+  #demo-stage{min-height:620px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -308,7 +334,7 @@ footer.site a:hover{color:var(--ink)}
 </head>
 <body>
 <header class="wrap nav">
-  <a class="wordmark" href="/"><b>leibler</b><span>.dev</span></a>
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><b>leibler</b><span>.dev</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="#demo">How it works</a>
     <a class="nl" href="/kullback">Kullback</a>
@@ -412,14 +438,50 @@ footer.site a:hover{color:var(--ink)}
             <div class="step" data-step="1"><span class="mark"></span><span class="sname">Writing the eval</span><span class="sresult">312 cases, 4 rules</span></div>
             <div class="step" data-step="2"><span class="mark"></span><span class="sname">Building training data</span><span class="sresult">928 examples</span></div>
           </div>
-          <div class="beat msg-row agent" data-beat="k2"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Eval ready. One of the 312 cases:</div></div></div>
-          <div class="beat sample" data-beat="case">
-            <div class="slabel">Ticket 48213</div>
-            <div class="stext">The chair arrived with a cracked leg. I want my money back.</div>
-            <hr>
-            <div class="slabel">Expected</div>
-            <div class="expected">Offer a replacement first. Refund if the customer declines.</div>
+          <div class="beat msg-row agent" data-beat="k2"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Before I run anything, check my work. Two of the 312 eval cases and two of the 928 training examples:</div></div></div>
+          <div class="beat review" data-beat="review">
+            <div class="review-title">For your review</div>
+            <div class="review-group">
+              <div class="review-label">Eval cases</div>
+              <div class="review-items">
+                <div class="review-item">
+                  <span class="review-check" aria-hidden="true"></span>
+                  <div class="review-ref">Ticket 48213</div>
+                  <div class="review-text">The chair arrived with a cracked leg. I want my money back.</div>
+                  <hr>
+                  <div class="review-answer"><span class="alabel">Expected:</span> Offer a replacement first. Refund if the customer declines.</div>
+                </div>
+                <div class="review-item">
+                  <span class="review-check" aria-hidden="true"></span>
+                  <div class="review-ref">Ticket 48377</div>
+                  <div class="review-text">Die Lampe ist nach zwei Tagen kaputt gegangen. Was nun?</div>
+                  <hr>
+                  <div class="review-answer"><span class="alabel">Expected:</span> Reply in German. Offer a replacement; the order is €59, so refund without asking if they decline.</div>
+                </div>
+              </div>
+            </div>
+            <div class="review-group">
+              <div class="review-label">Training examples</div>
+              <div class="review-items">
+                <div class="review-item">
+                  <span class="review-check" aria-hidden="true"></span>
+                  <div class="review-ref">Ticket 48102</div>
+                  <div class="review-text">I ordered two cushions and only one arrived.</div>
+                  <hr>
+                  <div class="review-answer"><span class="alabel">Reply:</span> Sorry about that. The missing cushion ships today and the tracking number follows by email.</div>
+                </div>
+                <div class="review-item">
+                  <span class="review-check" aria-hidden="true"></span>
+                  <div class="review-ref">Ticket 48290</div>
+                  <div class="review-text">Your courier damaged my door frame. I will take legal action.</div>
+                  <hr>
+                  <div class="review-answer"><span class="alabel">Reply:</span> Escalated to a human. No automated reply.</div>
+                </div>
+              </div>
+            </div>
+            <div class="review-note">Every case and example stays readable in Kullback. Reject any of them and it rewrites.</div>
           </div>
+          <div class="beat msg-row you" data-beat="u3"><div class="msg">All four look right. Go.</div></div>
           <div class="beat msg-row agent" data-beat="k3"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Running every model on the 312 cases.</div></div></div>
           <div class="beat eval" data-beat="eval">
             <div class="eval-title">Eval results</div>
@@ -527,7 +589,7 @@ footer.site a:hover{color:var(--ink)}
 </main>
 
 <footer class="wrap site">
-  <span>leibler.dev · Munich · hello@leibler.dev</span>
+  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · hello@leibler.dev</span>
   <nav aria-label="Footer">
     <a href="#demo">How it works</a>
     <a href="/kullback">Kullback</a>
@@ -613,6 +675,10 @@ footer.site a:hover{color:var(--ink)}
       if(m){ m.classList.remove('spin'); m.classList.remove('check'); m.textContent = ''; }
     });
     chips.forEach(function(c){ c.classList.remove('sel'); });
+    Array.prototype.slice.call(stage.querySelectorAll('.review-check')).forEach(function(ch){
+      ch.classList.remove('on');
+      ch.textContent = '';
+    });
     fillRows.forEach(function(r){
       r.querySelector('.efill').style.width = '0';
       r.querySelector('.mval').textContent = '';
@@ -637,6 +703,10 @@ footer.site a:hover{color:var(--ink)}
   function finalState(){
     beats.forEach(function(b){ b.classList.add('show'); b.classList.add('typed'); });
     chips[0].classList.add('sel'); chips[1].classList.add('sel'); chips[3].classList.add('sel');
+    Array.prototype.slice.call(stage.querySelectorAll('.review-check')).forEach(function(ch){
+      ch.classList.add('on');
+      ch.textContent = '✓';
+    });
     fillRows.forEach(function(r){
       r.querySelector('.efill').style.width = r.getAttribute('data-acc') + '%';
       r.querySelector('.mval').textContent = r.getAttribute('data-acc');
@@ -746,7 +816,21 @@ footer.site a:hover{color:var(--ink)}
     alive = await sleep(600, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k2', id)) return;
-    show('case');
+    show('review');
+    alive = await sleep(600, id);
+    if(!alive || id !== runId) return;
+    var checks = Array.prototype.slice.call(stage.querySelectorAll('.review-check'));
+    for(var c = 0; c < checks.length; c++){
+      checks[c].classList.add('on');
+      checks[c].textContent = '✓';
+      if(c < checks.length - 1){
+        alive = await sleep(350, id);
+        if(!alive || id !== runId) return;
+      }
+    }
+    alive = await sleep(500, id);
+    if(!alive || id !== runId) return;
+    show('u3');
     alive = await sleep(900, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k3', id)) return;
