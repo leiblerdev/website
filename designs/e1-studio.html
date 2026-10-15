@@ -80,10 +80,10 @@ a{color:inherit}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero-visual{
   border-radius:28px;min-height:420px;aspect-ratio:1/1;position:relative;overflow:hidden;
-  background:#EEF3FF;
+  background:#2B5CFF;
 }
 .hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
-.hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95}
+.hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
 /* Slim numbers row under hero */
 .numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:8px;padding-bottom:60px;text-align:center}
 .num-v{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
@@ -311,7 +311,7 @@ footer.site a:hover{color:var(--ink)}
   <a class="wordmark" href="/"><b>leibler</b><span>.dev</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="#demo">How it works</a>
-    <a class="nl" href="#kullback">Kullback</a>
+    <a class="nl" href="/kullback">Kullback</a>
     <a class="nl" href="/team">Team</a>
     <a class="btn btn-primary btn-nav" href="https://cal.com/leibler/30min">Book a call</a>
   </nav>
@@ -332,15 +332,17 @@ footer.site a:hover{color:var(--ink)}
       <div class="hero-visual" aria-hidden="true">
         <svg viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <defs>
-            <radialGradient id="hero-field-a" cx="0.15" cy="0.1" r="0.9">
+            <linearGradient id="hero-field-a" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2B5CFF" stop-opacity="0"/>
+              <stop offset="0.45" stop-color="#2B5CFF" stop-opacity="0"/>
+              <stop offset="0.62" stop-color="#5B7FFF"/>
+              <stop offset="0.8" stop-color="#8FA6FF"/>
+              <stop offset="1" stop-color="#DCE5FF"/>
+            </linearGradient>
+            <radialGradient id="hero-field-b" cx="0.5" cy="0" r="0.75">
               <stop offset="0" stop-color="#2B5CFF"/>
-              <stop offset="0.55" stop-color="#8FA6FF"/>
-              <stop offset="1" stop-color="#8FA6FF" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="hero-field-b" cx="0.55" cy="0.45" r="0.85">
-              <stop offset="0" stop-color="#8FA6FF"/>
-              <stop offset="0.6" stop-color="#EEF3FF" stop-opacity="0.4"/>
-              <stop offset="1" stop-color="#EEF3FF" stop-opacity="0"/>
+              <stop offset="0.6" stop-color="#2B5CFF"/>
+              <stop offset="1" stop-color="#2B5CFF" stop-opacity="0"/>
             </radialGradient>
             <filter id="hero-grain" x="0" y="0" width="100%" height="100%">
               <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
@@ -350,17 +352,17 @@ footer.site a:hover{color:var(--ink)}
               <feGaussianBlur stdDeviation="6"/>
             </filter>
           </defs>
-          <rect x="0" y="0" width="480" height="480" fill="#EEF3FF"/>
-          <rect x="0" y="0" width="480" height="480" fill="url(#hero-field-a)"/>
+          <rect x="0" y="0" width="480" height="480" fill="#2B5CFF"/>
           <rect x="0" y="0" width="480" height="480" fill="url(#hero-field-b)"/>
-          <g stroke="#FFFFFF" stroke-width="1" fill="none">
-            <path d="M0,10 C104,15 244,161 326,240" opacity="0.53"/><path d="M0,27 C108,0 231,177 326,240" opacity="0.63"/><path d="M0,44 C94,26 217,193 326,240" opacity="0.59"/><path d="M0,61 C93,105 245,190 326,240" opacity="0.57"/><path d="M0,78 C96,34 231,160 326,240" opacity="0.42"/><path d="M0,95 C98,52 229,188 326,240" opacity="0.64"/><path d="M0,112 C106,125 230,207 326,240" opacity="0.51"/><path d="M0,129 C99,175 246,223 326,240" opacity="0.60"/><path d="M0,146 C100,121 224,183 326,240" opacity="0.62"/><path d="M0,163 C103,195 227,242 326,240" opacity="0.65"/><path d="M0,180 C92,154 244,218 326,240" opacity="0.69"/><path d="M0,197 C103,158 235,243 326,240" opacity="0.44"/><path d="M0,214 C94,199 245,247 326,240" opacity="0.39"/><path d="M0,231 C98,195 216,255 326,240" opacity="0.41"/><path d="M0,249 C107,244 221,257 326,240" opacity="0.40"/><path d="M0,266 C110,230 228,231 326,240" opacity="0.44"/><path d="M0,283 C119,311 224,277 326,240" opacity="0.42"/><path d="M0,300 C103,332 235,236 326,240" opacity="0.70"/><path d="M0,317 C98,294 239,255 326,240" opacity="0.45"/><path d="M0,334 C94,296 233,256 326,240" opacity="0.56"/><path d="M0,351 C102,346 245,276 326,240" opacity="0.55"/><path d="M0,368 C116,339 219,307 326,240" opacity="0.64"/><path d="M0,385 C99,356 238,315 326,240" opacity="0.42"/><path d="M0,402 C118,437 234,289 326,240" opacity="0.39"/><path d="M0,419 C93,461 222,312 326,240" opacity="0.44"/><path d="M0,436 C115,445 224,286 326,240" opacity="0.60"/><path d="M0,453 C94,428 232,332 326,240" opacity="0.57"/><path d="M0,470 C99,480 221,288 326,240" opacity="0.44"/>
+          <rect x="0" y="0" width="480" height="480" fill="url(#hero-field-a)"/>
+          <g stroke="#FFFFFF" stroke-width="1.25" fill="none">
+            <path d="M0,10 C103,14 232,144 317,240" opacity="0.63"/><path d="M0,27 C92,0 205,148 317,240" opacity="0.73"/><path d="M0,44 C119,62 217,169 317,240" opacity="0.79"/><path d="M0,61 C101,22 232,187 317,240" opacity="0.59"/><path d="M0,78 C94,41 235,163 317,240" opacity="0.77"/><path d="M0,95 C119,52 217,190 317,240" opacity="0.87"/><path d="M0,112 C97,90 213,170 317,240" opacity="0.79"/><path d="M0,129 C114,123 206,216 317,240" opacity="0.81"/><path d="M0,146 C110,131 231,217 317,240" opacity="0.76"/><path d="M0,163 C107,139 219,232 317,240" opacity="0.79"/><path d="M0,180 C101,210 232,193 317,240" opacity="0.61"/><path d="M0,197 C98,153 229,235 317,240" opacity="0.74"/><path d="M0,214 C119,201 211,208 317,240" opacity="0.67"/><path d="M0,231 C115,241 207,233 317,240" opacity="0.57"/><path d="M0,249 C109,214 211,251 317,240" opacity="0.84"/><path d="M0,266 C109,247 225,235 317,240" opacity="0.55"/><path d="M0,283 C99,300 225,236 317,240" opacity="0.84"/><path d="M0,300 C115,279 236,246 317,240" opacity="0.57"/><path d="M0,317 C106,350 224,268 317,240" opacity="0.72"/><path d="M0,334 C100,315 218,274 317,240" opacity="0.88"/><path d="M0,351 C94,328 235,286 317,240" opacity="0.58"/><path d="M0,368 C104,382 234,258 317,240" opacity="0.87"/><path d="M0,385 C113,364 222,308 317,240" opacity="0.64"/><path d="M0,402 C111,407 207,280 317,240" opacity="0.69"/><path d="M0,419 C96,460 213,284 317,240" opacity="0.76"/><path d="M0,436 C106,419 215,305 317,240" opacity="0.87"/><path d="M0,453 C94,480 235,322 317,240" opacity="0.83"/><path d="M0,470 C102,480 229,328 317,240" opacity="0.71"/>
           </g>
-          <path d="M326,240 L480,240" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="10" stroke-linecap="round" fill="none" filter="url(#hero-glow)"/>
-          <path d="M326,240 L480,240" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M317,240 L480,240" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#hero-glow)"/>
+          <path d="M317,240 L480,240" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
           <rect x="0" y="0" width="480" height="480" filter="url(#hero-grain)" opacity="0.06"/>
-          <text class="hv-label" x="16" y="456" opacity="0.8">everything</text>
-          <text class="hv-label" x="340" y="222">your workflow</text>
+          <text class="hv-label" x="16" y="456" opacity="0.95">everything</text>
+          <text class="hv-label" x="360" y="222" opacity="0.95">your workflow</text>
         </svg>
       </div>
     </div>
@@ -527,8 +529,8 @@ footer.site a:hover{color:var(--ink)}
 <footer class="wrap site">
   <span>leibler.dev · Munich · hello@leibler.dev</span>
   <nav aria-label="Footer">
-    <a href="#workflow">How it works</a>
-    <a href="#kullback">Kullback</a>
+    <a href="#demo">How it works</a>
+    <a href="/kullback">Kullback</a>
     <a href="/team">Team</a>
   </nav>
 </footer>
