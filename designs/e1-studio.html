@@ -340,10 +340,19 @@ footer.site a:hover{color:var(--ink)}
   .hero h1{max-width:12em}
   .hero-visual{min-height:260px;height:260px}
   .compare{grid-template-columns:1fr}
-  .eval-head,.erow{grid-template-columns:minmax(0,110px) 1fr 52px;gap:8px}
+  .eval-head,.erow{grid-template-columns:96px minmax(0,1fr) 44px;gap:8px}
   .eval-head .ccost,.erow .ecost{display:none}
   .erow .etime{font-size:var(--fs-cell)}
+  .acc-cell .etrack{flex:1 1 56px;min-width:56px}
   .demo-header .sub{display:none}
+  .step{flex-wrap:wrap}
+  .step .sname{word-break:keep-all}
+  .step .sresult{flex-basis:100%;margin-left:22px;text-align:left}
+  .tick-label .rn{display:none}
+  .tr-sub{display:none}
+  .train-top .round{white-space:nowrap}
+  .flow-join{display:none}
+  .flow{gap:8px}
   .demo-body{padding:14px}
   .msg{max-width:92%}
   .msg-wrap{max-width:92%}
@@ -497,13 +506,13 @@ footer.site a:hover{color:var(--ink)}
           </div>
           <div class="beat msg-row agent" data-beat="k4"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">None clears 80. Training support-v1 on your 928 examples.</div></div></div>
           <div class="beat train" data-beat="train">
-            <div class="train-top"><span>Training support-v1</span><span class="round" id="train-round">Starting</span></div>
+            <div class="train-top"><span>Training<span class="tr-sub"> support-v1</span></span><span class="round" id="train-round">Starting</span></div>
             <div class="traintrack"><div class="trainfill" id="train-fill"></div><span class="barline" style="position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--cobalt);border-radius:2px"></span></div>
             <div class="ticks">
-              <span class="tick" style="left:25%"></span><span class="tick-label" data-tick="0" style="left:25%">Round 1 · 71</span>
-              <span class="tick" style="left:50%"></span><span class="tick-label" data-tick="1" style="left:50%">Round 2 · 79</span>
-              <span class="tick" style="left:75%"></span><span class="tick-label" data-tick="2" style="left:75%">Round 3 · 84</span>
-              <span class="tick" style="left:100%"></span><span class="tick-label" data-tick="3" style="left:92%">Round 4 · 86</span>
+              <span class="tick" style="left:25%"></span><span class="tick-label" data-tick="0" style="left:25%"><span class="rn">Round 1 · </span>71</span>
+              <span class="tick" style="left:50%"></span><span class="tick-label" data-tick="1" style="left:50%"><span class="rn">Round 2 · </span>79</span>
+              <span class="tick" style="left:75%"></span><span class="tick-label" data-tick="2" style="left:75%"><span class="rn">Round 3 · </span>84</span>
+              <span class="tick" style="left:100%"></span><span class="tick-label" data-tick="3" style="left:92%"><span class="rn">Round 4 · </span>86</span>
             </div>
           </div>
           <div class="beat msg-row agent" data-beat="k5"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">support-v1 clears your bar at 86. Hosting it.</div></div></div>
@@ -789,6 +798,17 @@ footer.site a:hover{color:var(--ink)}
     }
     return true;
   }
+  var TICK_SCORES = [71, 79, 84, 86];
+  function showTick(t){
+    var tl = tickLabels[t];
+    tl.textContent = '';
+    var rn = document.createElement('span');
+    rn.className = 'rn';
+    rn.textContent = 'Round ' + (t + 1) + ' · ';
+    tl.appendChild(rn);
+    tl.appendChild(document.createTextNode(String(TICK_SCORES[t])));
+    tl.classList.add('show');
+  }
   async function run(){
     var id = ++runId;
     show('u1');
@@ -839,13 +859,13 @@ footer.site a:hover{color:var(--ink)}
     if(!alive || id !== runId) return;
     trainFill.style.width = rounds[0][1] + '%';
     trainRound.textContent = rounds[0][0];
-    tickLabels[0].classList.add('show');
+    showTick(0);
     for(var t = 1; t < rounds.length; t++){
       alive = await sleep(900, id);
       if(!alive || id !== runId) return;
       trainFill.style.width = rounds[t][1] + '%';
       trainRound.textContent = rounds[t][0];
-      tickLabels[t].classList.add('show');
+      showTick(t);
     }
     alive = await sleep(200, id);
     if(!alive || id !== runId) return;
