@@ -1,48 +1,52 @@
-# Leibler
+# leibler
 
-> Leibler (leibler.dev) is an AI lab that builds frontier-quality models for individual companies. Its harness grades a customer's own LLM traces against the frontier model they already use, task by task, post-trains smaller frontier models until they match or beat that bar, deploys them optimized for the customer's traffic, and routes each task to the model that is best on it and cheapest to run. New traces feed the next round, so the models keep improving. The result is higher output quality at a lower inference bill.
+> leibler (leibler.dev) is a data lab. It trains and hosts a model that does one company's job best: a specialised model trained on the company's own workflow, which is cheaper, faster and more accurate on that company's tasks than a frontier model. The models are built by Kullback, leibler's open source agent. On the support agent example on the home page, measured against GPT-6 Sol at one million tickets a month, the trained model costs one tenth as much, has one twentieth the latency and is 35 percent more accurate.
 
-Leibler is a lab, not a gateway or a proxy. The harness is Leibler's system for grading, post-training, optimizing, deploying, and routing; the deliverable is a model that clears the customer's own quality bar, running in production.
+Frontier models are built for everyone. A company's agent does one thing, the same task a million times a month, and needs depth, not breadth. The customer never touches a GPU.
 
 ## How it works
 
-1. Collect: the customer adds a one-line SDK wrapper (`import leibler; client = leibler.wrap(OpenAI())`) or sends a week of LLM traces.
-2. Evaluate: the harness clusters traces into tasks and grades candidate models against the customer's current frontier model on the customer's own inputs. Within 48 hours the customer has a pass rate per task and a routing plan.
-3. Post-train: for tasks no existing model clears, the harness post-trains a smaller frontier model on the customer's traces until it matches or beats the frontier on the same grader. A customer's data trains only that customer's models.
-4. Deploy: the harness deploys the models in production, optimized for the customer's traffic (quantization, batching, caching, custom kernels, hardware matched to load), in Leibler's cloud, the customer's cloud, a VPC, on-prem, or on the customer's own hardware with whichever provider they are comfortable with. Every release is graded against the same bar before it ships.
-5. Route: each task runs on the model that is best on it and cheapest to run. The customer applies the routing plan in their own configuration.
-6. Loop: new traces feed the next round of grading and post-training. Plans and models are re-graded when new models are released, so savings do not drift back.
+1. Describe: the customer tells Kullback how the model should behave, as rules (for example: refund under $100 without asking, offer a replacement before a refund, escalate anything legal).
+2. Ground: Kullback connects the customer's traces, knowledge graph and systems. It reads the logs the customer's agent already writes and rebuilds the system the agent worked in.
+3. Build the environment: from a week of traces it builds data (the records the runs touched, with the values they saw), tools (one function per tool, behaving the way the real one did in the logs), rules (the customer's policy, turned into checks that run before every write), a simulated user who knows only what the real one knew, and one verifier per task that looks at the final data and says pass or fail. Every value points back to the line in the trace it came from.
+4. Review: Kullback writes the eval and the training data. Every eval case and training example is a file the customer can read. Reject one and Kullback rewrites it.
+5. Evaluate: Kullback runs every model on the eval cases and grades it on what it changed. The bar is a score the customer sets.
+6. Train: if no model clears the bar, Kullback trains the customer's model on the runs that pass until it clears the bar.
+7. Host: leibler deploys the model, routes a small share of traffic to it first (5 percent in the example) and rolls out fully when it holds for 24 hours.
+8. Watch: Kullback re-runs the eval whenever a new frontier model ships and tells the customer if anything changes.
 
 ## Key facts
 
-- Quality is the fixed constraint. Nothing ships below the customer's frontier model's score on the customer's own inputs ("the bar").
-- Customer data is never pooled across customers and is deleted on request.
-- Trace capture is fire-and-forget and cannot add latency to or break the customer's calls.
-- Who it is for: teams whose LLM spend is large enough to affect margins, that run repetitive tasks at volume, and that cannot accept a drop in output quality. Typical buyer: CTO or founding engineer.
-- How to start: book a 30-minute call and bring one task. Leibler says whether a smaller model can clear the bar on it and what it takes.
-- Open source: Kullback (https://github.com/leiblerdev/kullback, Apache-2.0) is the harness that rebuilds a customer's environment from their traces (data, tools, policy rules, simulated user, a verifier per task) and checks the rebuild by replay. The claim it is built to earn, not made yet: a 2B parameter model post-trained in that environment performs on the real tasks.
-- Founder: Krrish Agarwalla. Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.
+- The customer's data stays the customer's. Training runs on the customer's workflow and never leaves the customer's account. The model is the customer's to download or host anywhere.
+- Kullback runs as three agents taking turns until the environment holds and a model clears the bar: the Builder, the Examiner and the Writer.
+- The runner is frozen only after a person confirms it, and every verdict carries the hash of the environment and the runner it ran on.
+- Worked example on the home page: an online furniture shop runs a support agent on every refund email, in four steps (email arrives, pull the order, decide refund, replace or escalate, draft the reply), one million times a month. On a frontier model it costs $48,000 a month, takes 4.0 s per reply and scores 64 of 100 on the shop's tickets. The trained model, support-v1, costs $4,800 a month, takes 0.2 s per reply and scores 86 of 100.
+- How to start: bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.
+- Open source: Kullback (https://github.com/leiblerdev/kullback) is Apache-2.0. Pull requests are welcome; the maintainer reviews every one. Its environments are on Hugging Face (https://huggingface.co/leibler).
+- Founder: Krrish Agarwalla (krrish@leibler.dev). Krrish researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich. The method comes from the research.
 
 ## Glossary
 
-- Trace: one LLM call with its prompt, response, token usage, cost, and latency.
-- Task: a cluster of similar traces sharing an intent; the unit that is graded, post-trained, and routed.
-- The bar: the customer's current frontier model's score on the customer's own inputs. Fixed; models climb to it.
-- Kullback: the open-source Builder and Runner of the harness; turns traces into an environment checked by replay, and runs other models in it.
-- Harness: Leibler's end-to-end system. It replays traces through candidate models, grades them against the bar, post-trains smaller frontier models, optimizes and deploys them, and routes traffic.
-- Routing plan: per task, which model clears the bar, the recommended traffic allocation, and the projected saving.
+- Trace: the logs the customer's agent already writes; Kullback's input.
+- Environment: the rebuilt system the agent worked in, made of data, tools, rules, a simulated user and a verifier per task.
+- Verifier: one per task; it looks at the final data and says pass or fail.
+- The bar: the score a model must reach on the customer's eval before it is hosted.
+- Builder: the Kullback agent that rebuilds the system the customer's agent worked in from its traces: data, tools, rules, user.
+- Examiner: the Kullback agent that writes a verifier per task, probes the build, and sends findings back to the Builder.
+- Writer: the Kullback agent that turns runs that pass into eval cases and training examples the customer can read.
 
 ## Pages
 
-- [Home](https://leibler.dev/): what Leibler does, an animated explanation of the bar and the training loop, and the four steps.
-- [Team](https://leibler.dev/team): who is behind Leibler.
-- [Book a call](https://cal.com/krrish-agarwalla/30min): 30-minute intro call with the founder.
+- [Home](https://leibler.dev/): what leibler does, why a model of your own, a worked support agent example, and a demo of Kullback building and hosting a model.
+- [Kullback](https://leibler.dev/kullback): the open source agent behind leibler, the loop of three agents, what a week of traces turns into, and how a person reviews its work.
+- [Team](https://leibler.dev/team): who is behind leibler.
+- [Kullback on GitHub](https://github.com/leiblerdev/kullback): the source, Apache-2.0.
+- [Hugging Face](https://huggingface.co/leibler): Kullback's environments.
+- [Book a call](https://cal.com/krrish-agarwalla/30min): a call with the founder.
 - [Founder's site](https://kkrrish.tech): Krrish Agarwalla.
-- [Kullback](https://leibler.dev/kullback): the open-source harness, what it builds and how it is checked.
-- [Kullback on GitHub](https://github.com/leiblerdev/kullback): source, design, decision log, research.
 
 ## Optional
 
 - [llms.txt](https://leibler.dev/llms.txt): this file.
 
-Last updated: 2026-09-02
+Last updated: 2026-10-16

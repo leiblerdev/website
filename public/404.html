@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Leibler · Not found</title>
+<title>Not found · leibler</title>
 <meta name="description" content="Page not found.">
 <link rel="canonical" href="https://leibler.dev/404">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#F7F7F3">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Leibler">
-<meta property="og:title" content="Leibler · Not found">
+<meta property="og:site_name" content="leibler">
+<meta property="og:title" content="Not found · leibler">
 <meta property="og:description" content="Page not found.">
 <meta property="og:url" content="https://leibler.dev/404">
 <meta property="og:image" content="https://leibler.dev/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Leibler · Not found">
+<meta name="twitter:title" content="Not found · leibler">
 <meta name="twitter:description" content="Page not found.">
 <meta name="twitter:image" content="https://leibler.dev/assets/img/og.png">
 <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
@@ -25,18 +25,116 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v=20260831b">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F7F3;
+  --ink:#0F1412;
+  --muted:#656D68;
+  --hairline:#E3E6E0;
+  --fs-h1:68px;
+  --fs-lead:19px;
+  --fs-body:17px;
+  --fs-cap:14px;
+  --fs-msg:16px;
+  --fs-cell:15px;
+  --fs-btn:15px;
+  --lh-h1:1.04;
+  --lh-lead:1.5;
+  --lh-body:1.55;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:var(--fs-body);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column;
+}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+a{color:inherit}
+/* Nav */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:20px;padding-bottom:20px;
+  border-bottom:1px solid var(--hairline);
+  position:sticky;top:0;background:rgba(247,247,243,.92);
+  backdrop-filter:blur(8px);z-index:50;
+}
+.wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em;display:inline-flex;align-items:center;gap:10px}
+.wordmark svg{flex:none;display:block}
+.foot-brand{display:inline-flex;align-items:center;gap:8px}
+.foot-brand svg{flex:none;display:block}
+.wordmark .wm-text b{font-weight:600}
+.wordmark .wm-text{font-weight:400}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--ink)}
+.nav-links a.nl:hover{color:var(--muted)}
+.btn{
+  display:inline-block;font-size:var(--fs-btn);font-weight:500;text-decoration:none;
+  padding:12px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  font-family:inherit;white-space:nowrap;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:#2a2a2a}
+.btn-nav{padding:10px 22px}
+/* Not found */
+main{flex:1}
+.nf{padding-top:110px;padding-bottom:110px}
+.nf .label{font-size:var(--fs-cell);color:var(--muted);margin-bottom:28px}
+.nf h1{font-size:var(--fs-h1);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h1);margin-bottom:28px}
+.nf p.sub{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:36em;margin-bottom:36px}
+/* Footer */
+footer.site{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding-top:24px;padding-bottom:32px;border-top:1px solid var(--hairline);
+  font-size:var(--fs-cap);color:var(--muted);
+}
+footer.site nav{display:flex;gap:20px}
+footer.site a{text-decoration:none;color:var(--muted)}
+footer.site a:hover{color:var(--ink)}
+@media (max-width:640px){
+  :root{
+    --fs-h1:38px;
+    --fs-lead:17px;
+    --fs-body:16px;
+    --fs-msg:15px;
+    --fs-cell:14px;
+  }
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav-links a.nl{display:none}
+  .nf{padding-top:72px;padding-bottom:72px}
+}
+</style>
 </head>
 <body>
-<header class="mono">
-  <div class="wrap nav">
-    <a class="brand" href="/">leibler<span>.dev</span></a>
-    <nav><a class="hide-s" href="/#how">How it works</a><a href="/team">Team</a><a class="btn btn-w" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></nav>
-  </div>
+<header class="wrap nav">
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><span class="wm-text"><b>leibler</b>.dev</span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a class="nl" href="/kullback">Kullback</a>
+    <a class="nl" href="/team">Team</a>
+    <a class="btn btn-primary btn-nav" href="https://cal.com/krrish-agarwalla/30min">Book a call</a>
+  </nav>
 </header>
 
-<main id="main"><section class="wrap nf"><p class="prompt"><b>404</b></p><h1>Nothing here.</h1><p>The page you asked for does not exist.</p><a class="btn btn-o" href="/">Back to leibler.dev</a></section></main>
-<footer class="wrap mono"><span>leibler.dev</span><span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a> · <a href="/team">team</a> · <a href="/llms.txt">llms.txt</a></span></footer>
+<main id="main">
+  <section class="wrap nf">
+    <p class="label">404</p>
+    <h1>Nothing here.</h1>
+    <p class="sub">The page you asked for does not exist.</p>
+    <a class="btn btn-primary" href="/">Back to leibler.dev</a>
+  </section>
+</main>
+
+<footer class="wrap site">
+  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · krrish@leibler.dev</span>
+  <nav aria-label="Footer">
+    <a href="/#demo">How it works</a>
+    <a href="/kullback">Kullback</a>
+    <a href="/team">Team</a>
+  </nav>
+</footer>
 </body>
 </html>
