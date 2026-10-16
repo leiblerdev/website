@@ -150,7 +150,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .fig .log{stroke:#D3D7D0;stroke-width:2;stroke-linecap:round}
 .fig .log-ts{stroke:#A3AAA4;stroke-width:2;stroke-linecap:round}
 .fig .ink-ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.legend5{width:88%;margin:32px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.legend5{margin:32px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
 .legend5 h3{font-size:var(--fs-msg);font-weight:600;margin-bottom:4px}
 .legend5 p{font-size:var(--fs-cell);line-height:var(--lh-body);color:var(--muted)}
 .closing{margin-top:24px;font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--ink)}
@@ -179,7 +179,7 @@ footer.site a:hover{color:var(--ink)}
   .fig{max-width:420px}
   .fig svg.fig-desk{display:none}
   .fig svg.fig-phone{display:block}
-  .legend5{grid-template-columns:1fr;gap:14px;max-width:420px}
+  .legend5{grid-template-columns:1fr;gap:14px}
   section.block{padding-top:36px;padding-bottom:36px}
   .cta-art{padding:48px 24px;align-items:flex-start}
 }
@@ -468,7 +468,7 @@ footer.site a:hover{color:var(--ink)}
   <section class="wrap block" id="review">
     <div class="sec-head">
       <h2>You read everything it makes.</h2>
-      <p class="lead">Every eval case and training example Kullback writes is a file you can read. Reject one and it rewrites it. The runner is frozen only after a person confirms it, and every verdict carries the hash of the environment and the runner it ran on.</p>
+      <p class="lead">Every eval case and training example is a file you can read. Reject one and Kullback rewrites it. Nothing is frozen until a person confirms it, and every verdict carries the hash of the environment and runner it ran on.</p>
     </div>
     <div class="fig fig-review">
       <svg class="fig-desk" viewBox="0 0 680 300" role="img" aria-label="An eval case goes to a person, who keeps it with a tick or sends it back with a cross to be rewritten.">

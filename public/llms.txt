@@ -37,7 +37,7 @@ Frontier models are built for everyone. A company's agent does one thing, the sa
 
 ## Pages
 
-- [Home](https://leibler.dev/): what leibler does, why a model of your own, a worked support agent example, and a demo of Kullback building and hosting a model.
+- [Home](https://leibler.dev/): what leibler does, a worked support agent example, and a demo of Kullback building and hosting a model.
 - [Kullback](https://leibler.dev/kullback): the open source agent behind leibler, the loop of three agents, what a week of traces turns into, and how a person reviews its work.
 - [Team](https://leibler.dev/team): who is behind leibler.
 - [Kullback on GitHub](https://github.com/leiblerdev/kullback): the source, Apache-2.0.
