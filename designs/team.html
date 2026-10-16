@@ -110,6 +110,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .tcard{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
 .tcard h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:4px}
 .tcard h3{font-size:var(--fs-lead);font-weight:600;letter-spacing:-0.01em;margin-bottom:12px}
+.tcard h3:last-child{margin-bottom:0}
 .tcard .role{font-size:var(--fs-cell);color:var(--muted);margin-bottom:12px}
 .tcard p.bio{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-bottom:16px}
 .tcard p.line{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
@@ -117,7 +118,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .tcard-founder img{display:block;width:160px;height:160px;border-radius:24px;object-fit:cover}
 .tlinks{display:flex;gap:20px;flex-wrap:wrap}
 .tlinks a{font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
-.place-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.place-grid{display:grid;grid-template-columns:1fr;gap:20px}
 /* CTA + footer */
 .cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .cta-block h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
@@ -140,7 +141,6 @@ footer.site a:hover{color:var(--ink)}
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
   .hero-inner{grid-template-columns:1fr}
-  .place-grid{grid-template-columns:1fr}
   section.block{padding-top:36px;padding-bottom:36px}
   .duo-card{padding:20px}
   .tcard{padding:20px}
@@ -204,7 +204,7 @@ footer.site a:hover{color:var(--ink)}
         <p class="bio">Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.</p>
         <div class="tlinks">
           <a href="https://kkrrish.tech">kkrrish.tech</a>
-          <a href="mailto:hello@leibler.dev">hello@leibler.dev</a>
+          <a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a>
         </div>
       </div>
     </div>
@@ -214,14 +214,6 @@ footer.site a:hover{color:var(--ink)}
     <div class="place-grid">
       <div class="tcard">
         <h3>Based in San Francisco.</h3>
-        <p class="line">We work with teams anywhere; most calls are in Pacific or Central European hours.</p>
-      </div>
-      <div class="tcard">
-        <h3>Open source first.</h3>
-        <p class="line">Kullback, the agent that builds the model, is Apache-2.0 on GitHub.</p>
-        <div class="tlinks" style="margin-top:16px">
-          <a href="/kullback">Read about Kullback</a>
-        </div>
       </div>
     </div>
   </section>
@@ -274,7 +266,7 @@ footer.site a:hover{color:var(--ink)}
 </main>
 
 <footer class="wrap site">
-  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · hello@leibler.dev</span>
+  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · krrish@leibler.dev</span>
   <nav aria-label="Footer">
     <a href="/#demo">How it works</a>
     <a href="/kullback">Kullback</a>
