@@ -464,7 +464,7 @@ footer.site a:hover{color:var(--ink)}
       if (rounded1 === Math.round(rounded1)) { pctText = String(Math.round(rounded1)) + '%'; }
       else { pctText = rounded1.toFixed(1) + '%'; }
       setStat('fidelity', pctText);
-      var fel = document.querySelector('[data-stat="fide' + 'lity"]');
+      var fel = document.querySelector('[data-stat="fidelity"]');
       if (fel && fel.parentNode) {
         var cap = fel.parentNode.querySelector('.num-l');
         if (cap) { cap.textContent = fmt(confirmed) + ' of ' + fmt(tot) + ' tasks replayed with fidelity'; }
