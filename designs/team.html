@@ -62,8 +62,8 @@ a{color:inherit}
 .wordmark svg{flex:none;display:block;margin-right:10px}
 .foot-brand{display:inline-flex;align-items:center;gap:8px}
 .foot-brand svg{flex:none;display:block}
-.wordmark b{font-weight:600}
-.wordmark span{font-weight:400}
+.wordmark b,.wordmark .wm-text b{font-weight:600}
+.wordmark span,.wordmark .wm-text{font-weight:400}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--ink)}
 .nav-links a.nl:hover{color:var(--muted)}
@@ -170,7 +170,7 @@ footer.site a:hover{color:var(--ink)}
 </head>
 <body>
 <header class="wrap nav">
-  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><b>leibler</b><span>.dev</span></a>
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><span class="wm-text"><b>leibler</b>.dev</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="/#demo">How it works</a>
     <a class="nl" href="/kullback">Kullback</a>
