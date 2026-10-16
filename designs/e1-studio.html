@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>leibler.dev</title>
-<meta name="description" content="We train and host a model that only does your job. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
+<meta name="description" content="We train and host a model that does your job best. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
 <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,8 +62,8 @@ a{color:inherit}
 .wordmark svg{flex:none;display:block}
 .foot-brand{display:inline-flex;align-items:center;gap:8px}
 .foot-brand svg{flex:none;display:block}
-.wordmark b{font-weight:600}
-.wordmark span{font-weight:400}
+.wordmark b,.wordmark .wm-text b{font-weight:600}
+.wordmark span,.wordmark .wm-text{font-weight:400}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--ink)}
 .nav-links a.nl:hover{color:var(--muted)}
@@ -248,7 +248,7 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 /* Fake input */
 .fake-input{display:flex;align-items:center;gap:10px;padding:12px 14px 16px;margin-top:auto}
 .fake-field{
-  flex:1;border:1px solid var(--hairline);border-radius:999px;padding:11px 18px;
+  flex:1;min-width:0;border:1px solid var(--hairline);border-radius:999px;padding:11px 18px;
   font-size:var(--fs-cell);color:var(--muted);background:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .fake-send{
@@ -367,7 +367,7 @@ footer.site a:hover{color:var(--ink)}
 </head>
 <body>
 <header class="wrap nav">
-  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><b>leibler</b><span>.dev</span></a>
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><span class="wm-text"><b>leibler</b>.dev</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="#demo">How it works</a>
     <a class="nl" href="/kullback">Kullback</a>
@@ -382,7 +382,7 @@ footer.site a:hover{color:var(--ink)}
       <div class="hero-copy">
         <p class="eyebrow">leibler is a data lab.</p>
         <h1>Frontier models are built for everyone. Yours is built for your workflow.</h1>
-        <p class="sub">We train and host a model that only does your job. Bring one workflow and we evaluate it against the frontier for free.</p>
+        <p class="sub">We train and host a model that does your job best.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="https://cal.com/leibler/30min">Book a call</a>
           <a class="btn btn-secondary" href="#demo">See it work</a>
@@ -484,14 +484,14 @@ footer.site a:hover{color:var(--ink)}
         <div class="ticket">Ticket 48213</div>
         <div class="stext">The chair arrived with a cracked leg. I want my money back.</div>
         <hr>
-        <div class="order">Order 11-20481 · Oak chair · €149 · delivered three days ago</div>
+        <div class="order">Order 11-20481 · Oak chair · $149 · delivered three days ago</div>
       </div>
       <div class="ex-card">
         <div class="slabel">What support-v1 replies</div>
-        <div class="stext">Sorry about the chair. We can send a replacement leg today at no cost, or refund the full €149 if you prefer. Reply with your choice and we handle the rest.</div>
+        <div class="stext">Sorry about the chair. We can send a replacement leg today at no cost, or refund the full $149 if you prefer. Reply with your choice and we handle the rest.</div>
         <div class="ex-chips">
           <span class="ex-chip">Replacement offered first</span>
-          <span class="ex-chip">Refund under €100 rule checked</span>
+          <span class="ex-chip">Refund under $100 rule checked</span>
           <span class="ex-chip">Customer's language: English</span>
         </div>
       </div>
@@ -537,7 +537,7 @@ footer.site a:hover{color:var(--ink)}
           <div class="beat msg-row you" data-beat="u1"><div class="msg">We run a support agent on refund emails for our furniture shop. Build us a model for it.</div></div>
           <div class="beat msg-row agent" data-beat="k1"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">On it. First, how should it behave? Pick any, or add your own.</div></div></div>
           <div class="beat chips" data-beat="chips" role="group" aria-label="Behaviour choices">
-            <button class="chip" type="button" data-chip="0">Refund under &euro;100 without asking</button>
+            <button class="chip" type="button" data-chip="0">Refund under $100 without asking</button>
             <button class="chip" type="button" data-chip="1">Offer a replacement before a refund</button>
             <button class="chip" type="button" data-chip="2">Escalate anything legal</button>
             <button class="chip" type="button" data-chip="3">Reply in the customer&rsquo;s language</button>
@@ -567,7 +567,7 @@ footer.site a:hover{color:var(--ink)}
                   <div class="review-ref">Ticket 48377</div>
                   <div class="review-text">Die Lampe ist nach zwei Tagen kaputt gegangen. Was nun?</div>
                   <hr>
-                  <div class="review-answer"><span class="alabel">Expected:</span> Reply in German. Offer a replacement; the order is €59, so refund without asking if they decline.</div>
+                  <div class="review-answer"><span class="alabel">Expected:</span> Reply in German. Offer a replacement; the order is $59, so refund without asking if they decline.</div>
                 </div>
               </div>
             </div>
@@ -596,7 +596,7 @@ footer.site a:hover{color:var(--ink)}
           <div class="beat msg-row agent" data-beat="k3"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Running every model on the 312 cases.</div></div></div>
           <div class="beat eval" data-beat="eval">
             <div class="eval-title">Eval results</div>
-            <div class="eval-bar-note">Accuracy per model. The line marks <b>your bar</b> at 80. Your bar: 80</div>
+            <div class="eval-bar-note">Accuracy on the 312 cases. The line marks <b>your bar</b> at 80.</div>
             <div class="eval-head"><span>Model</span><span>Accuracy</span><span style="text-align:right">Time</span><span class="ccost" style="text-align:right">Cost per ticket</span></div>
             <div class="erow" data-acc="64" data-time="4.0 s" data-cost="$0.048"><span class="mname"><span class="mono" aria-hidden="true">G</span><span class="mname-text">GPT-5</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
             <div class="erow" data-acc="66" data-time="3.6 s" data-cost="$0.041"><span class="mname"><span class="mono" aria-hidden="true">C</span><span class="mname-text">Claude Sonnet 5.5</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
@@ -716,6 +716,10 @@ footer.site a:hover{color:var(--ink)}
   var routeVal = document.getElementById('route-val');
   var routeSwitch = document.getElementById('route-switch');
   var replayBtn = document.getElementById('demo-replay');
+  var fakeField = stage.querySelector('.fake-field');
+  var headerSub = stage.querySelector('.demo-header .sub');
+  var HEADER_SUB_DEFAULT = 'builds and hosts your model';
+  var FAKE_PLACEHOLDER = 'Message Kullback';
   var runId = 0;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var PREP_RESULTS = ['1,240 tickets, last 30 days', '312 cases, 4 rules', '928 examples'];
@@ -773,6 +777,29 @@ footer.site a:hover{color:var(--ink)}
     byBeat(name).forEach(function(b){ b.classList.add('typed'); });
     return true;
   }
+  function setDone(id){
+    if(id !== runId) return;
+    stage.classList.add('is-done');
+    if(headerSub) headerSub.textContent = 'support-v1 is live';
+  }
+  async function typeYou(name, id){
+    var list = byBeat(name);
+    var beat = list[0];
+    var msg = beat ? beat.querySelector('.msg') : null;
+    var text = msg ? msg.textContent : '';
+    if(reduced || id !== runId || !fakeField || !text){ show(name); return true; }
+    var per = Math.max(12, Math.floor(600 / text.length));
+    fakeField.textContent = '';
+    for(var k = 0; k < text.length; k++){
+      if(id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
+      fakeField.textContent = text.slice(0, k + 1);
+      var alive = await sleep(per, id);
+      if(!alive || id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
+    }
+    fakeField.textContent = FAKE_PLACEHOLDER;
+    show(name);
+    return true;
+  }
   function reset(){
     runId++;
     beats.forEach(function(b){ b.classList.remove('show'); b.classList.remove('typed'); });
@@ -806,6 +833,8 @@ footer.site a:hover{color:var(--ink)}
     routeVal.textContent = 'GPT-5';
     routeSwitch.setAttribute('aria-checked', 'false');
     stage.classList.remove('is-done');
+    if(headerSub) headerSub.textContent = HEADER_SUB_DEFAULT;
+    if(fakeField) fakeField.textContent = FAKE_PLACEHOLDER;
   }
   function finalState(){
     beats.forEach(function(b){ b.classList.add('show'); b.classList.add('typed'); });
@@ -853,6 +882,8 @@ footer.site a:hover{color:var(--ink)}
     routeVal.textContent = 'support-v1';
     routeSwitch.setAttribute('aria-checked', 'true');
     stage.classList.add('is-done');
+    if(headerSub) headerSub.textContent = 'support-v1 is live';
+    if(fakeField) fakeField.textContent = FAKE_PLACEHOLDER;
   }
   async function runEvalRows(id){
     for(var i = 0; i < fillRows.length; i++){
@@ -894,12 +925,12 @@ footer.site a:hover{color:var(--ink)}
   }
   async function run(){
     var id = ++runId;
-    show('u1');
-    var alive = await sleep(1200, id);
+    if(!await typeYou('u1', id)) return;
+    var alive = await sleep(800, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k1', id)) return;
     show('chips');
-    alive = await sleep(1700, id);
+    alive = await sleep(1000, id);
     if(!alive || id !== runId) return;
     chips[0].classList.add('sel');
     alive = await sleep(250, id);
@@ -910,21 +941,21 @@ footer.site a:hover{color:var(--ink)}
     chips[3].classList.add('sel');
     alive = await sleep(300, id);
     if(!alive || id !== runId) return;
-    show('u2');
-    alive = await sleep(1200, id);
+    if(!await typeYou('u2', id)) return;
+    alive = await sleep(800, id);
     if(!alive || id !== runId) return;
     show('prep');
     for(var p = 0; p < 3; p++){
       markStep('prep', p, false);
-      alive = await sleep(800, id);
+      alive = await sleep(550, id);
       if(!alive || id !== runId) return;
       markStep('prep', p, true);
     }
-    alive = await sleep(600, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k2', id)) return;
     show('review');
-    alive = await sleep(600, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     var checks = Array.prototype.slice.call(stage.querySelectorAll('.review-check'));
     for(var c = 0; c < checks.length; c++){
@@ -937,18 +968,18 @@ footer.site a:hover{color:var(--ink)}
     }
     alive = await sleep(500, id);
     if(!alive || id !== runId) return;
-    show('u3');
-    alive = await sleep(900, id);
+    if(!await typeYou('u3', id)) return;
+    alive = await sleep(600, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k3', id)) return;
     show('eval');
     pending.classList.add('show');
     if(!await runEvalRows(id)) return;
-    alive = await sleep(700, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     show('k4');
     show('train');
-    alive = await sleep(700, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     byBeat('k4').forEach(function(b){ b.classList.add('typed'); });
     var rounds = [['Round 1 · 71', 25], ['Round 2 · 79', 50], ['Round 3 · 84', 75], ['Round 4 · 86', 100]];
@@ -958,7 +989,7 @@ footer.site a:hover{color:var(--ink)}
     trainRound.textContent = rounds[0][0];
     showTick(0);
     for(var t = 1; t < rounds.length; t++){
-      alive = await sleep(900, id);
+      alive = await sleep(600, id);
       if(!alive || id !== runId) return;
       trainFill.style.width = rounds[t][1] + '%';
       trainRound.textContent = rounds[t][0];
@@ -980,21 +1011,21 @@ footer.site a:hover{color:var(--ink)}
     if(!await agentBeat('k5', id)) return;
     show('host');
     markStep('host', 0, false);
-    alive = await sleep(700, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     markStep('host', 0, true);
     show('route');
     markStep('host', 1, false);
-    alive = await sleep(700, id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     markStep('host', 1, true);
     routeSwitch.setAttribute('aria-checked', 'true');
     routeVal.textContent = 'support-v1';
-    alive = await sleep(1100, id);
+    alive = await sleep(700, id);
     if(!alive || id !== runId) return;
     show('k6');
-    stage.classList.add('is-done');
-    alive = await sleep(700, id);
+    setDone(id);
+    alive = await sleep(500, id);
     if(!alive || id !== runId) return;
     byBeat('k6').forEach(function(b){ b.classList.add('typed'); });
   }
@@ -1026,7 +1057,7 @@ footer.site a:hover{color:var(--ink)}
       entries.forEach(function(e){
         if(e.isIntersecting){ start(); io.disconnect(); }
       });
-    }, {threshold: 0.25});
+    }, {threshold: 0.1});
     io.observe(stage);
   } else {
     start();
