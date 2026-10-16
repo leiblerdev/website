@@ -273,10 +273,6 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
   display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-msg);
 }
 .kullback-link{display:inline-block;margin-top:18px;font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.why-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.why-card h3{font-size:var(--fs-lead);font-weight:600;letter-spacing:-0.01em;margin-bottom:12px}
-.why-card p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
 .steps-row{display:flex;align-items:center;gap:0;margin-bottom:20px}
 .step-pill{flex:none;border:1px solid var(--hairline);background:#fff;border-radius:999px;padding:10px 20px;font-size:var(--fs-cell);font-weight:500;white-space:nowrap}
 .step-link{flex:1;min-width:16px;height:1px;background:var(--hairline)}
@@ -325,7 +321,6 @@ footer.site a:hover{color:var(--ink)}
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
   .hero-inner{grid-template-columns:1fr}
-  .why-grid{grid-template-columns:1fr}
   .ex-cards{grid-template-columns:1fr}
   .duo{grid-template-columns:1fr}
   section.block{padding-top:36px;padding-bottom:36px}
@@ -470,20 +465,7 @@ footer.site a:hover{color:var(--ink)}
   <section class="wrap block" id="why">
     <div class="sec-head">
       <h2>Why a model of your own.</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <h3>Frontier models carry everything.</h3>
-        <p>Every answer carries the whole internet, and you pay for all of it on every ticket.</p>
-      </div>
-      <div class="why-card">
-        <h3>Your agent does one thing.</h3>
-        <p>The same task, a million times a month. It needs depth, not breadth.</p>
-      </div>
-      <div class="why-card">
-        <h3>A specialised model wins on it.</h3>
-        <p>Trained on your workflow, it is cheaper, faster and more accurate on your tickets than the frontier.</p>
-      </div>
+      <p class="lead">A frontier model carries the whole internet into every ticket. Your agent does one task a million times a month, and a model trained on that workflow is cheaper, faster and more accurate on it.</p>
     </div>
   </section>
 
