@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://leibler.dev/sitemap.xml
+Sitemap: https://www.leibler.dev/sitemap.xml

@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>leibler.dev</title>
-<meta name="description" content="We train and host a model that does your job best. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
-<link rel="canonical" href="https://leibler.dev/">
+<title>leibler · A model trained on your agent's workflow</title>
+<meta name="description" content="leibler trains and hosts a model built for your agent's workflow: one tenth the cost, one twentieth the latency, and more accurate than the frontier on your tasks.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="https://www.leibler.dev/">
 <meta name="theme-color" content="#F7F7F3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="leibler">
-<meta property="og:title" content="leibler.dev">
-<meta property="og:description" content="We train and host a model that does your job best. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
-<meta property="og:url" content="https://leibler.dev/">
-<meta property="og:image" content="https://leibler.dev/assets/img/og.png">
+<meta property="og:title" content="leibler · A model trained on your agent's workflow">
+<meta property="og:description" content="leibler trains and hosts a model built for your agent's workflow: one tenth the cost, one twentieth the latency, and more accurate than the frontier on your tasks.">
+<meta property="og:url" content="https://www.leibler.dev/">
+<meta property="og:image" content="https://www.leibler.dev/assets/img/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="leibler: frontier models are built for everyone, yours is built for your workflow.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="leibler.dev">
-<meta name="twitter:description" content="We train and host a model that does your job best. One tenth the cost, one twentieth the latency, and more accurate than the frontier on your own tasks.">
-<meta name="twitter:image" content="https://leibler.dev/assets/img/og.png">
+<meta name="twitter:title" content="leibler · A model trained on your agent's workflow">
+<meta name="twitter:description" content="leibler trains and hosts a model built for your agent's workflow: one tenth the cost, one twentieth the latency, and more accurate than the frontier on your tasks.">
+<meta name="twitter:image" content="https://www.leibler.dev/assets/img/og.png?v=2">
 <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
@@ -318,6 +320,10 @@ footer.site a:hover{color:var(--ink)}
 .cta-copy{position:relative;max-width:32em}
 .cta-copy h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
 .cta-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:32px}
+.faq{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:28px 48px}
+.faq-item{border-top:1px solid var(--hairline);padding-top:16px}
+.faq dt{font-size:var(--fs-body);font-weight:600;margin-bottom:8px}
+.faq dd{margin:0;font-size:var(--fs-body);color:var(--muted);line-height:var(--lh-body)}
 /* Responsive */
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
@@ -350,6 +356,7 @@ footer.site a:hover{color:var(--ink)}
   .hero-visual{aspect-ratio:16/10;min-height:0}
   .numbers{grid-template-columns:1fr;padding-top:16px;padding-bottom:36px;gap:24px}
   .cta-art{min-height:360px}
+  .faq{grid-template-columns:1fr;gap:20px}
   .eval-head{display:none}
   .erow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"name val time" "bar bar bar";column-gap:10px;row-gap:6px}
   .erow .mname{grid-area:name}
@@ -380,8 +387,11 @@ footer.site a:hover{color:var(--ink)}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://leibler.dev/#org","name":"Leibler","url":"https://leibler.dev/","logo":"https://leibler.dev/assets/img/og.png","email":"krrish@leibler.dev","founder":{"@id":"https://leibler.dev/#krrish"}},
-{"@type":"Person","@id":"https://leibler.dev/#krrish","name":"Krrish Agarwalla","url":"https://kkrrish.tech","jobTitle":"Founder","worksFor":{"@id":"https://leibler.dev/#org"},"sameAs":["https://kkrrish.tech"]}
+{"@type":"Organization","@id":"https://www.leibler.dev/#org","name":"leibler","url":"https://www.leibler.dev/","logo":{"@type":"ImageObject","url":"https://www.leibler.dev/assets/img/logo/logo-mark.png"},"email":"krrish@leibler.dev","description":"leibler is a data lab. It trains and hosts a model that does your job best.","sameAs":["https://github.com/leiblerdev","https://huggingface.co/leibler"],"founder":{"@id":"https://www.leibler.dev/#krrish"}},
+{"@type":"Person","@id":"https://www.leibler.dev/#krrish","name":"Krrish Agarwalla","jobTitle":"Founder","url":"https://kkrrish.tech","sameAs":["https://kkrrish.tech"],"worksFor":{"@id":"https://www.leibler.dev/#org"}},
+{"@type":"WebSite","@id":"https://www.leibler.dev/#website","name":"leibler","url":"https://www.leibler.dev/","publisher":{"@id":"https://www.leibler.dev/#org"}},
+{"@type":"WebPage","@id":"https://www.leibler.dev/#webpage","url":"https://www.leibler.dev/","name":"leibler · A model trained on your agent's workflow","description":"leibler trains and hosts a model built for your agent's workflow: one tenth the cost, one twentieth the latency, and more accurate than the frontier on your tasks.","isPartOf":{"@id":"https://www.leibler.dev/#website"},"about":{"@id":"https://www.leibler.dev/#org"}},
+{"@type":"FAQPage","@id":"https://www.leibler.dev/#faq","mainEntity":[{"@type":"Question","name":"What is leibler?","acceptedAnswer":{"@type":"Answer","text":"leibler is a data lab. It trains and hosts a model that does your job best: a model trained on your own agent's workflow, which is cheaper, faster and more accurate on your tasks than a frontier model."}},{"@type":"Question","name":"What is Kullback?","acceptedAnswer":{"@type":"Answer","text":"Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the system the agent worked in, grades any model on what it changed there, and trains on the runs that pass. The code is on GitHub under Apache-2.0."}},{"@type":"Question","name":"Does my data leave my account?","acceptedAnswer":{"@type":"Answer","text":"No. Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere."}},{"@type":"Question","name":"Do I need GPUs or an ML team?","acceptedAnswer":{"@type":"Answer","text":"No. You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU."}},{"@type":"Question","name":"How does it compare with a frontier model?","acceptedAnswer":{"@type":"Answer","text":"In the refund email example on this page, the trained model refund-v1 costs $4,800 a month against $48,000 for GPT-6 Sol, replies in 0.2 s instead of 4.0 s, and scores 86 of 100 instead of 64 on the shop's tickets."}},{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"Bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week."}},{"@type":"Question","name":"Who is behind leibler?","acceptedAnswer":{"@type":"Answer","text":"Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich."}}]}
 ]}
 </script>
 </head>
@@ -487,7 +497,7 @@ footer.site a:hover{color:var(--ink)}
         <div class="order">Order 11-20481 · Oak chair · $149 · delivered three days ago</div>
       </div>
       <div class="ex-card">
-        <div class="slabel">What support-v1 replies</div>
+        <div class="slabel">What refund-v1 replies</div>
         <div class="stext">Sorry about the chair. We can send a replacement leg today at no cost, or refund the full $149 if you prefer. Reply with your choice and we handle the rest.</div>
         <div class="ex-chips">
           <span class="ex-chip">Replacement offered first</span>
@@ -508,7 +518,7 @@ footer.site a:hover{color:var(--ink)}
           <div class="cmp-row"><span>Accuracy on your tickets</span></div>
         </div>
         <div class="cmp-col own">
-          <h4>support-v1</h4>
+          <h4>refund-v1</h4>
           <div class="cmp-row"><span class="cmp-num">$4,800</span></div>
           <div class="cmp-row"><span>Cost per month</span></div>
           <div class="cmp-row"><span class="cmp-num">0.2 s</span></div>
@@ -604,11 +614,11 @@ footer.site a:hover{color:var(--ink)}
             <div class="erow" data-acc="66" data-time="3.6 s" data-cost="$0.041"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z" fill="#D97757" fill-rule="nonzero"></path></svg></span><span class="mname-text">Claude Opus 5.5</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
             <div class="erow" data-acc="61" data-time="5.1 s" data-cost="$0.035"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="#3186FF"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-0)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-1)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-2)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-0" x1="7" x2="11" y1="15.5" y2="12"><stop stop-color="#08B962"></stop><stop offset="1" stop-color="#08B962" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-1" x1="8" x2="11.5" y1="5.5" y2="11"><stop stop-color="#F94543"></stop><stop offset="1" stop-color="#F94543" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-2" x1="3.5" x2="17.5" y1="13.5" y2="12"><stop stop-color="#FABC12"></stop><stop offset=".46" stop-color="#FABC12" stop-opacity="0"></stop></linearGradient></defs></svg></span><span class="mname-text">Gemini 3.8 Flash</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
             <div class="erow" data-acc="38" data-time="0.3 s" data-cost="$0.003"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z" fill="url(#eval-qwen)" fill-rule="nonzero"></path><defs><linearGradient id="eval-qwen" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#6336E7" stop-opacity=".84"></stop><stop offset="100%" stop-color="#6F69F7" stop-opacity=".84"></stop></linearGradient></defs></svg></span><span class="mname-text">Qwen3 8B, untrained</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
-            <div class="erow pending" data-beat="evalk"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg></span><span class="mname-text">support-v1</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval">training</span></span><span class="etime">…</span><span class="ecost">…</span></div>
+            <div class="erow pending" data-beat="evalk"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg></span><span class="mname-text">refund-v1</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval">training</span></span><span class="etime">…</span><span class="ecost">…</span></div>
           </div>
-          <div class="beat msg-row agent" data-beat="k4"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">None clears 80. Training support-v1 on your 928 examples.</div></div></div>
+          <div class="beat msg-row agent" data-beat="k4"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">None clears 80. Training refund-v1 on your 928 examples.</div></div></div>
           <div class="beat train" data-beat="train">
-            <div class="train-top"><span>Training<span class="tr-sub"> support-v1</span></span><span class="round" id="train-round">Starting</span></div>
+            <div class="train-top"><span>Training<span class="tr-sub"> refund-v1</span></span><span class="round" id="train-round">Starting</span></div>
             <div class="traintrack"><div class="trainfill" id="train-fill"></div><span class="barline" style="position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--accent);border-radius:2px"></span></div>
             <div class="ticks">
               <span class="tick" style="left:25%"></span><span class="tick-label" data-tick="0" style="left:25%"><span class="rn">Round 1 · </span>71</span>
@@ -617,7 +627,7 @@ footer.site a:hover{color:var(--ink)}
               <span class="tick" style="left:100%"></span><span class="tick-label" data-tick="3" style="left:92%"><span class="rn">Round 4 · </span>86</span>
             </div>
           </div>
-          <div class="beat msg-row agent" data-beat="k5"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">support-v1 clears your bar at 86. Hosting it.</div></div></div>
+          <div class="beat msg-row agent" data-beat="k5"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">refund-v1 clears your bar at 86. Hosting it.</div></div></div>
           <div class="beat status" data-beat="host">
             <div class="status-title">Hosting</div>
             <div class="step" data-step="0"><span class="mark"></span><span class="sname">Deploying</span><span class="sresult">endpoint ready</span></div>
@@ -650,6 +660,19 @@ footer.site a:hover{color:var(--ink)}
         <span style="display:flex;gap:20px;flex-wrap:wrap"><a class="kullback-link" href="/kullback">Read more about Kullback</a><a class="kullback-link" href="https://github.com/leiblerdev/kullback" target="_blank" rel="noopener">See the code</a></span>
       </div>
     </div>
+  </section>
+
+  <section class="wrap block" id="faq">
+    <div class="sec-head"><h2>Questions.</h2></div>
+    <dl class="faq">
+      <div class="faq-item"><dt>What is leibler?</dt><dd>leibler is a data lab. It trains and hosts a model that does your job best: a model trained on your own agent's workflow, which is cheaper, faster and more accurate on your tasks than a frontier model.</dd></div>
+      <div class="faq-item"><dt>What is Kullback?</dt><dd>Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the system the agent worked in, grades any model on what it changed there, and trains on the runs that pass. The code is on GitHub under Apache-2.0.</dd></div>
+      <div class="faq-item"><dt>Does my data leave my account?</dt><dd>No. Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.</dd></div>
+      <div class="faq-item"><dt>Do I need GPUs or an ML team?</dt><dd>No. You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</dd></div>
+      <div class="faq-item"><dt>How does it compare with a frontier model?</dt><dd>In the refund email example on this page, the trained model refund-v1 costs $4,800 a month against $48,000 for GPT-6 Sol, replies in 0.2 s instead of 4.0 s, and scores 86 of 100 instead of 64 on the shop's tickets.</dd></div>
+      <div class="faq-item"><dt>How long does it take?</dt><dd>Bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</dd></div>
+      <div class="faq-item"><dt>Who is behind leibler?</dt><dd>Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich.</dd></div>
+    </dl>
   </section>
 
   <section class="wrap cta-block" id="cta">
@@ -814,7 +837,7 @@ footer.site a:hover{color:var(--ink)}
   function setDone(id){
     if(id !== runId) return;
     stage.classList.add('is-done');
-    if(headerSub) headerSub.textContent = 'support-v1 is live';
+    if(headerSub) headerSub.textContent = 'refund-v1 is live';
   }
   async function typeYou(name, id){
     var list = byBeat(name);
@@ -913,10 +936,10 @@ footer.site a:hover{color:var(--ink)}
         st.classList.add('done');
       });
     }
-    routeVal.textContent = 'support-v1';
+    routeVal.textContent = 'refund-v1';
     routeSwitch.setAttribute('aria-checked', 'true');
     stage.classList.add('is-done');
-    if(headerSub) headerSub.textContent = 'support-v1 is live';
+    if(headerSub) headerSub.textContent = 'refund-v1 is live';
     if(fakeField) fakeField.textContent = FAKE_PLACEHOLDER;
   }
   async function runEvalRows(id){
@@ -1055,7 +1078,7 @@ footer.site a:hover{color:var(--ink)}
     if(!alive || id !== runId) return;
     markStep('host', 1, true);
     routeSwitch.setAttribute('aria-checked', 'true');
-    routeVal.textContent = 'support-v1';
+    routeVal.textContent = 'refund-v1';
     alive = await pace(700, id);
     if(!alive || id !== runId) return;
     show('k6');
@@ -1070,7 +1093,7 @@ footer.site a:hover{color:var(--ink)}
   routeSwitch.addEventListener('click', function(){
     var on = routeSwitch.getAttribute('aria-checked') === 'true';
     routeSwitch.setAttribute('aria-checked', on ? 'false' : 'true');
-    routeVal.textContent = on ? 'GPT-6 Sol' : 'support-v1';
+    routeVal.textContent = on ? 'GPT-6 Sol' : 'refund-v1';
   });
   replayBtn.addEventListener('click', function(){
     reset();
