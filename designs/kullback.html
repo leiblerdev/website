@@ -115,7 +115,6 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .fig{width:88%;margin:0 auto}
 .fig svg{display:block;width:100%;height:auto}
 .fig svg.fig-phone{display:none}
-.fig-loop{max-width:960px}
 .fig-review{max-width:720px}
 .fig text{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 .fig .lb{font-size:15px;font-weight:600;fill:var(--ink)}
@@ -316,13 +315,13 @@ footer.site a:hover{color:var(--ink)}
     <p class="numbers-note" id="numbers-note">Live from GitHub and Hugging Face.</p>
   </section>
 
-  <section class="wrap block" id="agents">
+  <section class="wrap block" id="loop">
     <div class="sec-head">
-      <h2>Three agents, one loop.</h2>
+      <h2>The loop.</h2>
       <p class="lead">Kullback runs as three agents taking turns until the environment holds and a model clears the bar.</p>
     </div>
     <div class="fig fig-agents">
-      <svg class="fig-desk" viewBox="0 0 880 356" role="img" aria-label="An infinity loop: the Builder on the left lobe and the Examiner on the right lobe pass work back and forth through the Writer at the crossing.">
+      <svg class="fig-desk" viewBox="0 0 880 356" role="img" aria-label="An infinity loop: the Builder on the left lobe and the Writer on the right lobe, with the Examiner at the crossing where every pass goes through.">
         <path class="glow" d="M740,150 L739.7,142.2 L738.8,134.4 L737.2,126.7 L735.1,119.2 L732.5,111.8 L729.2,104.8 L725.5,98 L721.3,91.5 L716.6,85.4 L711.6,79.7 L706.2,74.4 L700.4,69.5 L694.4,65.1 L688.2,61.1 L681.8,57.5 L675.2,54.4 L668.4,51.7 L661.6,49.4 L654.8,47.5 L647.8,46.1 L640.9,45 L634,44.3 L627.2,44 L620.4,44 L613.7,44.3 L607,44.9 L600.4,45.8 L594,47 L587.7,48.4 L581.4,50 L575.3,51.8 L569.3,53.9 L563.5,56.1 L557.7,58.5 L552.1,61.1 L546.6,63.8 L541.2,66.6 L535.9,69.6 L530.8,72.6 L525.7,75.8 L520.8,79 L515.9,82.4 L511.2,85.8 L506.5,89.2 L501.9,92.8 L497.4,96.4 L493,100 L488.7,103.7 L484.4,107.4 L480.2,111.2 L476,115 L471.9,118.8 L467.8,122.7 L463.8,126.5 L459.7,130.4 L455.8,134.3 L451.8,138.2 L447.9,142.1 L443.9,146.1 L440,150 L436.1,153.9 L432.1,157.9 L428.2,161.8 L424.2,165.7 L420.3,169.6 L416.2,173.5 L412.2,177.3 L408.1,181.2 L404,185 L399.8,188.8 L395.6,192.6 L391.3,196.3 L387,200 L382.6,203.6 L378.1,207.2 L373.5,210.8 L368.8,214.2 L364.1,217.6 L359.2,221 L354.3,224.2 L349.2,227.4 L344.1,230.4 L338.8,233.4 L333.4,236.2 L327.9,238.9 L322.3,241.5 L316.5,243.9 L310.7,246.1 L304.7,248.2 L298.6,250 L292.3,251.6 L286,253 L279.6,254.2 L273,255.1 L266.3,255.7 L259.6,256 L252.8,256 L246,255.7 L239.1,255 L232.2,253.9 L225.2,252.5 L218.4,250.6 L211.6,248.3 L204.8,245.6 L198.2,242.5 L191.8,238.9 L185.6,234.9 L179.6,230.5 L173.8,225.6 L168.4,220.3 L163.4,214.6 L158.7,208.5 L154.5,202 L150.8,195.2 L147.5,188.2 L144.9,180.8 L142.8,173.3 L141.2,165.6 L140.3,157.8 L140,150 L140.3,142.2 L141.2,134.4 L142.8,126.7 L144.9,119.2 L147.5,111.8 L150.8,104.8 L154.5,98 L158.7,91.5 L163.4,85.4 L168.4,79.7 L173.8,74.4 L179.6,69.5 L185.6,65.1 L191.8,61.1 L198.2,57.5 L204.8,54.4 L211.6,51.7 L218.4,49.4 L225.2,47.5 L232.2,46.1 L239.1,45 L246,44.3 L252.8,44 L259.6,44 L266.3,44.3 L273,44.9 L279.6,45.8 L286,47 L292.3,48.4 L298.6,50 L304.7,51.8 L310.7,53.9 L316.5,56.1 L322.3,58.5 L327.9,61.1 L333.4,63.8 L338.8,66.6 L344.1,69.6 L349.2,72.6 L354.3,75.8 L359.2,79 L364.1,82.4 L368.8,85.8 L373.5,89.2 L378.1,92.8 L382.6,96.4 L387,100 L391.3,103.7 L395.6,107.4 L399.8,111.2 L404,115 L408.1,118.8 L412.2,122.7 L416.2,126.5 L420.3,130.4 L424.2,134.3 L428.2,138.2 L432.1,142.1 L436.1,146.1 L440,150 L443.9,153.9 L447.9,157.9 L451.8,161.8 L455.8,165.7 L459.7,169.6 L463.8,173.5 L467.8,177.3 L471.9,181.2 L476,185 L480.2,188.8 L484.4,192.6 L488.7,196.3 L493,200 L497.4,203.6 L501.9,207.2 L506.5,210.8 L511.2,214.2 L515.9,217.6 L520.8,221 L525.7,224.2 L530.8,227.4 L535.9,230.4 L541.2,233.4 L546.6,236.2 L552.1,238.9 L557.7,241.5 L563.5,243.9 L569.3,246.1 L575.3,248.2 L581.4,250 L587.7,251.6 L594,253 L600.4,254.2 L607,255.1 L613.7,255.7 L620.4,256 L627.2,256 L634,255.7 L640.9,255 L647.8,253.9 L654.8,252.5 L661.6,250.6 L668.4,248.3 L675.2,245.6 L681.8,242.5 L688.2,238.9 L694.4,234.9 L700.4,230.5 L706.2,225.6 L711.6,220.3 L716.6,214.6 L721.3,208.5 L725.5,202 L729.2,195.2 L732.5,188.2 L735.1,180.8 L737.2,173.3 L738.8,165.6 L739.7,157.8Z"/>
         <path class="acc" d="M740,150 L739.7,142.2 L738.8,134.4 L737.2,126.7 L735.1,119.2 L732.5,111.8 L729.2,104.8 L725.5,98 L721.3,91.5 L716.6,85.4 L711.6,79.7 L706.2,74.4 L700.4,69.5 L694.4,65.1 L688.2,61.1 L681.8,57.5 L675.2,54.4 L668.4,51.7 L661.6,49.4 L654.8,47.5 L647.8,46.1 L640.9,45 L634,44.3 L627.2,44 L620.4,44 L613.7,44.3 L607,44.9 L600.4,45.8 L594,47 L587.7,48.4 L581.4,50 L575.3,51.8 L569.3,53.9 L563.5,56.1 L557.7,58.5 L552.1,61.1 L546.6,63.8 L541.2,66.6 L535.9,69.6 L530.8,72.6 L525.7,75.8 L520.8,79 L515.9,82.4 L511.2,85.8 L506.5,89.2 L501.9,92.8 L497.4,96.4 L493,100 L488.7,103.7 L484.4,107.4 L480.2,111.2 L476,115 L471.9,118.8 L467.8,122.7 L463.8,126.5 L459.7,130.4 L455.8,134.3 L451.8,138.2 L447.9,142.1 L443.9,146.1 L440,150 L436.1,153.9 L432.1,157.9 L428.2,161.8 L424.2,165.7 L420.3,169.6 L416.2,173.5 L412.2,177.3 L408.1,181.2 L404,185 L399.8,188.8 L395.6,192.6 L391.3,196.3 L387,200 L382.6,203.6 L378.1,207.2 L373.5,210.8 L368.8,214.2 L364.1,217.6 L359.2,221 L354.3,224.2 L349.2,227.4 L344.1,230.4 L338.8,233.4 L333.4,236.2 L327.9,238.9 L322.3,241.5 L316.5,243.9 L310.7,246.1 L304.7,248.2 L298.6,250 L292.3,251.6 L286,253 L279.6,254.2 L273,255.1 L266.3,255.7 L259.6,256 L252.8,256 L246,255.7 L239.1,255 L232.2,253.9 L225.2,252.5 L218.4,250.6 L211.6,248.3 L204.8,245.6 L198.2,242.5 L191.8,238.9 L185.6,234.9 L179.6,230.5 L173.8,225.6 L168.4,220.3 L163.4,214.6 L158.7,208.5 L154.5,202 L150.8,195.2 L147.5,188.2 L144.9,180.8 L142.8,173.3 L141.2,165.6 L140.3,157.8 L140,150 L140.3,142.2 L141.2,134.4 L142.8,126.7 L144.9,119.2 L147.5,111.8 L150.8,104.8 L154.5,98 L158.7,91.5 L163.4,85.4 L168.4,79.7 L173.8,74.4 L179.6,69.5 L185.6,65.1 L191.8,61.1 L198.2,57.5 L204.8,54.4 L211.6,51.7 L218.4,49.4 L225.2,47.5 L232.2,46.1 L239.1,45 L246,44.3 L252.8,44 L259.6,44 L266.3,44.3 L273,44.9 L279.6,45.8 L286,47 L292.3,48.4 L298.6,50 L304.7,51.8 L310.7,53.9 L316.5,56.1 L322.3,58.5 L327.9,61.1 L333.4,63.8 L338.8,66.6 L344.1,69.6 L349.2,72.6 L354.3,75.8 L359.2,79 L364.1,82.4 L368.8,85.8 L373.5,89.2 L378.1,92.8 L382.6,96.4 L387,100 L391.3,103.7 L395.6,107.4 L399.8,111.2 L404,115 L408.1,118.8 L412.2,122.7 L416.2,126.5 L420.3,130.4 L424.2,134.3 L428.2,138.2 L432.1,142.1 L436.1,146.1 L440,150 L443.9,153.9 L447.9,157.9 L451.8,161.8 L455.8,165.7 L459.7,169.6 L463.8,173.5 L467.8,177.3 L471.9,181.2 L476,185 L480.2,188.8 L484.4,192.6 L488.7,196.3 L493,200 L497.4,203.6 L501.9,207.2 L506.5,210.8 L511.2,214.2 L515.9,217.6 L520.8,221 L525.7,224.2 L530.8,227.4 L535.9,230.4 L541.2,233.4 L546.6,236.2 L552.1,238.9 L557.7,241.5 L563.5,243.9 L569.3,246.1 L575.3,248.2 L581.4,250 L587.7,251.6 L594,253 L600.4,254.2 L607,255.1 L613.7,255.7 L620.4,256 L627.2,256 L634,255.7 L640.9,255 L647.8,253.9 L654.8,252.5 L661.6,250.6 L668.4,248.3 L675.2,245.6 L681.8,242.5 L688.2,238.9 L694.4,234.9 L700.4,230.5 L706.2,225.6 L711.6,220.3 L716.6,214.6 L721.3,208.5 L725.5,202 L729.2,195.2 L732.5,188.2 L735.1,180.8 L737.2,173.3 L738.8,165.6 L739.7,157.8Z"/>
         <polygon class="acc-head" points="581.2,50.1 589.3,42 592.3,52.6"/>
@@ -335,17 +334,17 @@ footer.site a:hover{color:var(--ink)}
         <text class="cp" x="140" y="320" text-anchor="middle">worked in from its traces:</text>
         <text class="cp" x="140" y="340" text-anchor="middle">data, tools, rules, user.</text>
         <circle class="node" cx="440" cy="150" r="46"/>
-        <text class="lb" x="440" y="155" text-anchor="middle">Writer</text>
-        <text class="cp" x="440" y="300" text-anchor="middle">Turns runs that pass into eval</text>
-        <text class="cp" x="440" y="320" text-anchor="middle">cases and training examples</text>
-        <text class="cp" x="440" y="340" text-anchor="middle">you can read.</text>
+        <text class="lb" x="440" y="155" text-anchor="middle">Examiner</text>
+        <text class="cp" x="440" y="300" text-anchor="middle">Writes a verifier per task,</text>
+        <text class="cp" x="440" y="320" text-anchor="middle">probes the build, and sends</text>
+        <text class="cp" x="440" y="340" text-anchor="middle">findings back to the Builder.</text>
         <circle class="node" cx="740" cy="150" r="46"/>
-        <text class="lb" x="740" y="155" text-anchor="middle">Examiner</text>
-        <text class="cp" x="740" y="300" text-anchor="middle">Writes a verifier per task,</text>
-        <text class="cp" x="740" y="320" text-anchor="middle">probes the build, and sends</text>
-        <text class="cp" x="740" y="340" text-anchor="middle">findings back to the Builder.</text>
+        <text class="lb" x="740" y="155" text-anchor="middle">Writer</text>
+        <text class="cp" x="740" y="300" text-anchor="middle">Turns runs that pass into eval</text>
+        <text class="cp" x="740" y="320" text-anchor="middle">cases and training examples</text>
+        <text class="cp" x="740" y="340" text-anchor="middle">you can read.</text>
       </svg>
-      <svg class="fig-phone" viewBox="0 0 300 512" role="img" aria-label="The Builder, the Writer and the Examiner stacked, joined by a loop that carries work down to the Examiner and back up to the Builder.">
+      <svg class="fig-phone" viewBox="0 0 300 512" role="img" aria-label="The Builder, the Examiner and the Writer stacked, joined by a loop that carries work down through the Examiner to the Writer and back up to the Builder.">
         <rect class="glow" x="244" y="32" width="40" height="386" rx="20"/>
         <rect class="acc" x="244" y="32" width="40" height="386" rx="20"/>
         <polygon class="acc-head" points="284,233 278.5,223 289.5,223"/>
@@ -359,82 +358,16 @@ footer.site a:hover{color:var(--ink)}
         <text class="cp-s" x="112" y="153" text-anchor="middle">data, tools, rules, user.</text>
         <path class="wire" d="M154,225 H244"/>
         <circle class="node" cx="112" cy="225" r="42"/>
-        <text class="lb" x="112" y="230" text-anchor="middle">Writer</text>
-        <text class="cp-s" x="112" y="290" text-anchor="middle">Turns runs that pass into eval</text>
-        <text class="cp-s" x="112" y="308" text-anchor="middle">cases and training examples</text>
-        <text class="cp-s" x="112" y="326" text-anchor="middle">you can read.</text>
+        <text class="lb" x="112" y="230" text-anchor="middle">Examiner</text>
+        <text class="cp-s" x="112" y="290" text-anchor="middle">Writes a verifier per task,</text>
+        <text class="cp-s" x="112" y="308" text-anchor="middle">probes the build, and sends</text>
+        <text class="cp-s" x="112" y="326" text-anchor="middle">findings back to the Builder.</text>
         <path class="wire" d="M154,398 H244"/>
         <circle class="node" cx="112" cy="398" r="42"/>
-        <text class="lb" x="112" y="403" text-anchor="middle">Examiner</text>
-        <text class="cp-s" x="112" y="463" text-anchor="middle">Writes a verifier per task,</text>
-        <text class="cp-s" x="112" y="481" text-anchor="middle">probes the build, and sends</text>
-        <text class="cp-s" x="112" y="499" text-anchor="middle">findings back to the Builder.</text>
-      </svg>
-    </div>
-  </section>
-
-  <section class="wrap block" id="loop">
-    <div class="sec-head">
-      <h2>The loop.</h2>
-    </div>
-    <div class="fig fig-loop">
-      <svg class="fig-desk" viewBox="0 0 960 140" role="img" aria-label="Five stages in a row: traces, build, run, verdict and report, with the verdict highlighted.">
-        <rect class="box" x="0" y="8" width="152" height="56" rx="12"/>
-        <text class="lb" x="76" y="41" text-anchor="middle">Traces</text>
-        <text class="cp" x="76" y="87" text-anchor="middle">The runs your agent</text>
-        <text class="cp" x="76" y="107" text-anchor="middle">already made.</text>
-        <path class="wire" d="M160,36 H188"/>
-        <polygon class="head" points="194,36 186,40.5 186,31.5"/>
-        <rect class="box" x="202" y="8" width="152" height="56" rx="12"/>
-        <text class="lb" x="278" y="41" text-anchor="middle">Build</text>
-        <text class="cp" x="278" y="87" text-anchor="middle">Tools, data, rules,</text>
-        <text class="cp" x="278" y="107" text-anchor="middle">a simulated user,</text>
-        <text class="cp" x="278" y="127" text-anchor="middle">a verifier per task.</text>
-        <path class="wire" d="M362,36 H390"/>
-        <polygon class="head" points="396,36 388,40.5 388,31.5"/>
-        <rect class="box" x="404" y="8" width="152" height="56" rx="12"/>
-        <text class="lb" x="480" y="41" text-anchor="middle">Run</text>
-        <text class="cp" x="480" y="87" text-anchor="middle">Any model, one turn</text>
-        <text class="cp" x="480" y="107" text-anchor="middle">at a time.</text>
-        <path class="wire" d="M564,36 H592"/>
-        <polygon class="head" points="598,36 590,40.5 590,31.5"/>
-        <rect class="hi" x="606" y="8" width="152" height="56" rx="12"/>
-        <text class="lb" x="682" y="41" text-anchor="middle">Verdict</text>
-        <text class="cp" x="682" y="87" text-anchor="middle">Code reads the final</text>
-        <text class="cp" x="682" y="107" text-anchor="middle">data and says</text>
-        <text class="cp" x="682" y="127" text-anchor="middle">pass or fail.</text>
-        <path class="wire" d="M766,36 H794"/>
-        <polygon class="head" points="800,36 792,40.5 792,31.5"/>
-        <rect class="box" x="808" y="8" width="152" height="56" rx="12"/>
-        <text class="lb" x="884" y="41" text-anchor="middle">Report</text>
-        <text class="cp" x="884" y="87" text-anchor="middle">You read it and decide.</text>
-      </svg>
-      <svg class="fig-phone" viewBox="0 0 300 652" role="img" aria-label="Five stages stacked top to bottom: traces, build, run, verdict and report, with the verdict highlighted.">
-        <rect class="box" x="50" y="8" width="200" height="46" rx="12"/>
-        <text class="lb" x="150" y="36" text-anchor="middle">Traces</text>
-        <text class="cp-s" x="150" y="76" text-anchor="middle">The runs your agent already made.</text>
-        <path class="wire" d="M150,110 V130"/>
-        <polygon class="head" points="150,136 145.5,128 154.5,128"/>
-        <rect class="box" x="50" y="144" width="200" height="46" rx="12"/>
-        <text class="lb" x="150" y="172" text-anchor="middle">Build</text>
-        <text class="cp-s" x="150" y="212" text-anchor="middle">Tools, data, rules, a simulated user,</text>
-        <text class="cp-s" x="150" y="230" text-anchor="middle">a verifier per task.</text>
-        <path class="wire" d="M150,246 V266"/>
-        <polygon class="head" points="150,272 145.5,264 154.5,264"/>
-        <rect class="box" x="50" y="280" width="200" height="46" rx="12"/>
-        <text class="lb" x="150" y="308" text-anchor="middle">Run</text>
-        <text class="cp-s" x="150" y="348" text-anchor="middle">Any model, one turn at a time.</text>
-        <path class="wire" d="M150,382 V402"/>
-        <polygon class="head" points="150,408 145.5,400 154.5,400"/>
-        <rect class="hi" x="50" y="416" width="200" height="46" rx="12"/>
-        <text class="lb" x="150" y="444" text-anchor="middle">Verdict</text>
-        <text class="cp-s" x="150" y="484" text-anchor="middle">Code reads the final data and says</text>
-        <text class="cp-s" x="150" y="502" text-anchor="middle">pass or fail.</text>
-        <path class="wire" d="M150,518 V538"/>
-        <polygon class="head" points="150,544 145.5,536 154.5,536"/>
-        <rect class="box" x="50" y="552" width="200" height="46" rx="12"/>
-        <text class="lb" x="150" y="580" text-anchor="middle">Report</text>
-        <text class="cp-s" x="150" y="620" text-anchor="middle">You read it and decide.</text>
+        <text class="lb" x="112" y="403" text-anchor="middle">Writer</text>
+        <text class="cp-s" x="112" y="463" text-anchor="middle">Turns runs that pass into eval</text>
+        <text class="cp-s" x="112" y="481" text-anchor="middle">cases and training examples</text>
+        <text class="cp-s" x="112" y="499" text-anchor="middle">you can read.</text>
       </svg>
     </div>
     <p class="loop-lead">Code decides pass or fail from what the model changed, not from what it said. A judge model can take a pass away but never give one.</p>
@@ -623,7 +556,6 @@ footer.site a:hover{color:var(--ink)}
       <div class="row"><h3>As a screen.</h3><p>A terminal screen that watches stages, gates and spend as the build runs.</p></div>
       <div class="row"><h3>As a loop.</h3><p>Resume from the cache and keep improving, or hand the session to the model.</p></div>
     </div>
-    <p class="closing">Tests run fully offline and builds reproduce byte for byte from fixtures.</p>
   </section>
 
   <section class="wrap cta-block" id="cta">
