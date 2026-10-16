@@ -60,6 +60,7 @@ a{color:inherit}
 }
 .wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em;display:inline-flex;align-items:center}
 .wordmark svg{flex:none;display:block;margin-right:10px}
+.wordmark .wm-text{white-space:nowrap}
 .foot-brand{display:inline-flex;align-items:center;gap:8px}
 .foot-brand svg{flex:none;display:block}
 .wordmark b{font-weight:600}
@@ -94,6 +95,11 @@ a{color:inherit}
 }
 .hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
 .hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:8px;padding-bottom:60px;text-align:center}
+.numbers a.num{text-decoration:none;color:inherit;display:block;min-width:0}
+.num-v{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--ink);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.num-l{font-size:var(--fs-body);color:var(--muted);margin-top:8px}
+.numbers-note{grid-column:1/-1;text-align:center;font-size:var(--fs-cell);color:var(--muted);margin-top:8px}
 /* Sections */
 section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .sec-head{
@@ -165,6 +171,7 @@ footer.site a:hover{color:var(--ink)}
   .hero{padding-top:72px;padding-bottom:56px}
   .hero h1{max-width:12em}
   .hero-visual{aspect-ratio:16/10;min-height:0}
+  .numbers{grid-template-columns:repeat(2,1fr);padding-top:16px;padding-bottom:36px;gap:24px}
   .cta-art{min-height:360px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -174,7 +181,7 @@ footer.site a:hover{color:var(--ink)}
 </head>
 <body>
 <header class="wrap nav">
-  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><b>leibler</b><span>.dev</span></a>
+  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><span class="wm-text"><b>leibler</b>.dev</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a class="nl" href="/#demo">How it works</a>
     <a class="nl current" href="/kullback" aria-current="page">Kullback</a>
@@ -254,6 +261,26 @@ footer.site a:hover{color:var(--ink)}
         </svg>
       </div>
     </div>
+  </section>
+
+  <section class="wrap numbers" id="numbers" aria-label="Key numbers">
+    <a class="num" href="https://github.com/leiblerdev/kullback">
+      <div class="num-v" data-stat="stars">14</div>
+      <div class="num-l">GitHub stars</div>
+    </a>
+    <a class="num" href="https://huggingface.co/leibler">
+      <div class="num-v" data-stat="envs">2</div>
+      <div class="num-l">Environments on Hugging Face</div>
+    </a>
+    <a class="num" href="https://huggingface.co/leibler">
+      <div class="num-v" data-stat="fidelity">100%</div>
+      <div class="num-l">353 of 353 tasks replayed with fidelity</div>
+    </a>
+    <a class="num" href="https://huggingface.co/leibler">
+      <div class="num-v" data-stat="downloads">1,591</div>
+      <div class="num-l">Downloads, last 30 days</div>
+    </a>
+    <p class="numbers-note" id="numbers-note">Live from GitHub and Hugging Face.</p>
   </section>
 
   <section class="wrap block" id="loop">
@@ -382,6 +409,70 @@ footer.site a:hover{color:var(--ink)}
     <a href="/team">Team</a>
   </nav>
 </footer>
+<script>
+(function() {
+  function fmt(n) { return Number(n).toLocaleString('en-US'); }
+  function setStat(name, text) {
+    var el = document.querySelector('[data-stat="' + name + '"]');
+    if (el) { el.textContent = text; }
+  }
+  var fails = 0;
+  function fail() {
+    fails++;
+    if (fails === 3) {
+      var note = document.getElementById('numbers-note');
+      if (note) { note.textContent = 'Numbers as of 16 October 2026.'; }
+    }
+  }
+  fetch('https://api.github.com/repos/leiblerdev/kullback').then(function(res) {
+    if (!res.ok) { throw new Error('github'); }
+    return res.json();
+  }).then(function(data) {
+    if (data && typeof data.stargazers_count === 'number') {
+      setStat('stars', fmt(data.stargazers_count));
+    }
+  }).catch(function() { fail(); });
+  fetch('https://huggingface.co/api/datasets?author=leibler').then(function(res) {
+    if (!res.ok) { throw new Error('hf'); }
+    return res.json();
+  }).then(function(data) {
+    if (Object.prototype.toString.call(data) === '[object Array]') {
+      setStat('envs', fmt(data.length));
+      var sum = 0;
+      for (var i = 0; i < data.length; i++) {
+        if (typeof data[i].downloads === 'number') { sum += data[i].downloads; }
+      }
+      setStat('downloads', fmt(sum));
+    }
+  }).catch(function() { fail(); });
+  fetch('https://huggingface.co/spaces/leibler/README/raw/main/README.md').then(function(res) {
+    if (!res.ok) { throw new Error('readme'); }
+    return res.text();
+  }).then(function(text) {
+    var re = /\((\d+) of (\d+)\)/g;
+    var m;
+    var confirmed = 0;
+    var tot = 0;
+    while ((m = re.exec(text)) !== null) {
+      confirmed += parseInt(m[1], 10);
+      tot += parseInt(m[2], 10);
+    }
+    if (tot > 0) {
+      var raw = confirmed / tot * 100;
+      var rounded1 = Math.round(raw * 10) / 10;
+      var pctText;
+      if (rounded1 === Math.round(rounded1)) { pctText = String(Math.round(rounded1)) + '%'; }
+      else { pctText = rounded1.toFixed(1) + '%'; }
+      setStat('fidelity', pctText);
+      var fel = document.querySelector('[data-stat="fidelity"]');
+      if (fel && fel.parentNode) {
+        var cap = fel.parentNode.querySelector('.num-l');
+        if (cap) { cap.textContent = fmt(confirmed) + ' of ' + fmt(tot) + ' tasks replayed with fidelity'; }
+      }
+    }
+  }).catch(function() { fail(); });
+})();
+</script>
 </body>
 </html>
 
