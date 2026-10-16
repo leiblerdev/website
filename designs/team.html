@@ -113,6 +113,8 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .tcard .role{font-size:var(--fs-cell);color:var(--muted);margin-bottom:12px}
 .tcard p.bio{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-bottom:16px}
 .tcard p.line{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
+.tcard-founder{display:grid;grid-template-columns:160px minmax(0,1fr);gap:32px;align-items:start}
+.tcard-founder img{display:block;width:160px;height:160px;border-radius:24px;object-fit:cover}
 .tlinks{display:flex;gap:20px;flex-wrap:wrap}
 .tlinks a{font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
 .place-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -161,6 +163,8 @@ footer.site a:hover{color:var(--ink)}
   .hero{padding-top:72px;padding-bottom:56px}
   .hero h1{max-width:12em}
   .hero-visual{aspect-ratio:16/10;min-height:0}
+  .tcard-founder{grid-template-columns:minmax(0,1fr);gap:20px}
+  .tcard-founder img{width:120px;height:120px}
   .cta-art{min-height:360px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -189,13 +193,19 @@ footer.site a:hover{color:var(--ink)}
   </section>
 
   <section class="wrap block" id="founder">
-    <div class="tcard">
-      <h2>Krrish Agarwalla</h2>
-      <div class="role">Founder</div>
-      <p class="bio">Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.</p>
-      <div class="tlinks">
-        <a href="https://kkrrish.tech">kkrrish.tech</a>
-        <a href="mailto:hello@leibler.dev">hello@leibler.dev</a>
+    <div class="tcard tcard-founder">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/krrish.webp 1x, /assets/img/krrish-2x.webp 2x">
+        <img src="/assets/img/krrish.jpg" srcset="/assets/img/krrish.jpg 1x, /assets/img/krrish-2x.jpg 2x" width="160" height="160" alt="Krrish Agarwalla" loading="lazy" decoding="async">
+      </picture>
+      <div>
+        <h2>Krrish Agarwalla</h2>
+        <div class="role">Founder</div>
+        <p class="bio">Researches post-training models for chip design with Dr. Amin Arbabian at Stanford, and mathematical reasoning with Dr. Hinrich Schütze at LMU Munich.</p>
+        <div class="tlinks">
+          <a href="https://kkrrish.tech">kkrrish.tech</a>
+          <a href="mailto:hello@leibler.dev">hello@leibler.dev</a>
+        </div>
       </div>
     </div>
   </section>
