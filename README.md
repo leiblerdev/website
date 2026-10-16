@@ -18,6 +18,12 @@ vercel.json      output directory, clean URLs, cache and security headers
 
     python3 tools/serve.py 8765     # http://localhost:8765, mimics clean URLs and the 404 page
 
+## Social image
+
+`public/assets/img/og.png` is rendered from `tools/og.html`. After editing the template, re-render with Playwright (kept outside the repo) and bump the `?v=` on the og:image links:
+
+    PLAYWRIGHT_CORE=/path/to/node_modules/playwright-core CHROME_PATH=/path/to/chrome node tools/og-render.mjs
+
 ## Deploy
 
 Vercel project root: this repository. Framework preset: Other, no build command; `vercel.json` sets the output directory to `public`. Every push to `main` deploys. Check the site at 360px wide before pushing.
