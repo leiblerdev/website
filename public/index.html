@@ -529,7 +529,7 @@ footer.site a:hover{color:var(--ink)}
   <section class="wrap block" id="demo">
     <div class="sec-head">
       <h2>Meet Kullback, the agent that builds it.</h2>
-      <p class="lead">Say you run a support agent on refund emails. You tell Kullback how the model should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</p>
+      <p class="lead">Tell Kullback how your support agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</p>
     </div>
     <div class="demo-panel">
       <div class="demo-top">
@@ -539,8 +539,8 @@ footer.site a:hover{color:var(--ink)}
       <div id="demo-stage" aria-live="polite">
         <div class="demo-header"><span class="dot" aria-hidden="true"></span><span>Kullback</span><span class="sub">builds and hosts your model</span></div>
         <div class="demo-body">
-          <div class="beat msg-row you" data-beat="u1"><div class="msg">We run a support agent on refund emails for our furniture shop. Build us a model for it.</div></div>
-          <div class="beat msg-row agent" data-beat="k1"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">On it. First, how should it behave? Pick any, or add your own.</div></div></div>
+          <div class="beat msg-row you" data-beat="u1"><div class="msg">We run a support agent on refund emails. Build us a model for it.</div></div>
+          <div class="beat msg-row agent" data-beat="k1"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">How should it behave? Pick any.</div></div></div>
           <div class="beat chips" data-beat="chips" role="group" aria-label="Behaviour choices">
             <button class="chip" type="button" data-chip="0">Refund under $100 without asking</button>
             <button class="chip" type="button" data-chip="1">Offer a replacement before a refund</button>
@@ -556,7 +556,7 @@ footer.site a:hover{color:var(--ink)}
             <div class="step" data-step="3"><span class="mark"></span><span class="sname">Writing the eval</span><span class="sresult">312 cases, 4 rules</span></div>
             <div class="step" data-step="4"><span class="mark"></span><span class="sname">Building training data</span><span class="sresult">928 examples</span></div>
           </div>
-          <div class="beat msg-row agent" data-beat="k2"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Before I run anything, check my work. Two of the 312 eval cases and two of the 928 training examples:</div></div></div>
+          <div class="beat msg-row agent" data-beat="k2"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Check my work first. Two of the 312 eval cases, two of the 928 training examples:</div></div></div>
           <div class="beat review" data-beat="review">
             <div class="review-title">For your review</div>
             <div class="review-group">
@@ -597,7 +597,7 @@ footer.site a:hover{color:var(--ink)}
                 </div>
               </div>
             </div>
-            <div class="review-note">Every case and example stays readable in Kullback. Reject any of them and it rewrites.</div>
+            <div class="review-note">Reject any of these and Kullback rewrites it.</div>
           </div>
           <div class="beat msg-row you" data-beat="u3"><div class="msg">All four look right. Go.</div></div>
           <div class="beat msg-row agent" data-beat="k3"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Running every model on the 312 cases.</div></div></div>
@@ -634,7 +634,7 @@ footer.site a:hover{color:var(--ink)}
             <button class="switch" id="route-switch" type="button" role="switch" aria-checked="false" aria-label="Routing target"></button>
             <span class="rnote">Full rollout when it holds for 24 hours.</span>
           </div>
-          <div class="beat msg-row agent" data-beat="k6"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Done. I re-run this eval whenever a new frontier model ships and tell you if anything changes.</div></div></div>
+          <div class="beat msg-row agent" data-beat="k6"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Done. I re-run the eval whenever a new frontier model ships.</div></div></div>
           <div class="fake-input" aria-hidden="true">
             <span class="fake-field">Message Kullback</span>
             <span class="fake-send"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M8 3L3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -731,10 +731,42 @@ footer.site a:hover{color:var(--ink)}
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var PREP_RESULTS = ['1,240 tickets, last 30 days', '312 cases, 4 rules', '928 examples'];
   var HOST_RESULTS = ['endpoint ready', '5% of traffic first'];
+  var stageRatio = 0;
+  var demoHeader = stage.querySelector('.demo-header');
 
   function sleep(ms, id){
     return new Promise(function(res){
       setTimeout(function(){ res(id === runId); }, ms);
+    });
+  }
+  function frontier(){
+    var shown = stage.querySelectorAll('.beat.show');
+    var el = shown.length ? shown[shown.length - 1] : demoHeader;
+    return el.getBoundingClientRect().bottom;
+  }
+  function viewerState(){
+    if(stageRatio === 0) return 'paused';
+    var bottom = frontier();
+    if(bottom > window.innerHeight - 24) return 'behind';
+    if(bottom < 80) return 'ahead';
+    return 'inview';
+  }
+  function pace(ms, id){
+    return new Promise(function(res){
+      var left = ms;
+      function step(){
+        if(id !== runId){ res(false); return; }
+        var st = viewerState();
+        if(st === 'paused' || st === 'behind'){ setTimeout(step, 120); return; }
+        if(st === 'ahead'){
+          setTimeout(function(){ res(id === runId); }, Math.min(left, 40));
+          return;
+        }
+        if(left <= 0){ res(id === runId); return; }
+        var d = Math.min(left, 120);
+        setTimeout(function(){ left -= d; step(); }, d);
+      }
+      step();
     });
   }
   function byBeat(name){
@@ -779,7 +811,7 @@ footer.site a:hover{color:var(--ink)}
   }
   async function agentBeat(name, id){
     show(name);
-    var alive = await sleep(700, id);
+    var alive = await pace(700, id);
     if(!alive || id !== runId) return false;
     byBeat(name).forEach(function(b){ b.classList.add('typed'); });
     return true;
@@ -800,7 +832,7 @@ footer.site a:hover{color:var(--ink)}
     for(var k = 0; k < text.length; k++){
       if(id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
       fakeField.textContent = text.slice(0, k + 1);
-      var alive = await sleep(per, id);
+      var alive = await pace(per, id);
       if(!alive || id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
     }
     fakeField.textContent = FAKE_PLACEHOLDER;
@@ -908,7 +940,7 @@ footer.site a:hover{color:var(--ink)}
       spin.classList.add('spin');
       val.textContent = '';
       val.appendChild(spin);
-      var alive = await sleep(350, id);
+      var alive = await pace(350, id);
       if(!alive || id !== runId) return false;
       fill.style.width = acc + '%';
       val.textContent = '';
@@ -933,77 +965,77 @@ footer.site a:hover{color:var(--ink)}
   async function run(){
     var id = ++runId;
     if(!await typeYou('u1', id)) return;
-    var alive = await sleep(800, id);
+    var alive = await pace(800, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k1', id)) return;
     show('chips');
-    alive = await sleep(1000, id);
+    alive = await pace(1000, id);
     if(!alive || id !== runId) return;
     chips[0].classList.add('sel');
-    alive = await sleep(250, id);
+    alive = await pace(250, id);
     if(!alive || id !== runId) return;
     chips[1].classList.add('sel');
-    alive = await sleep(250, id);
+    alive = await pace(250, id);
     if(!alive || id !== runId) return;
     chips[3].classList.add('sel');
-    alive = await sleep(300, id);
+    alive = await pace(300, id);
     if(!alive || id !== runId) return;
     if(!await typeYou('u2', id)) return;
-    alive = await sleep(800, id);
+    alive = await pace(800, id);
     if(!alive || id !== runId) return;
     show('prep');
     var prepCount = byBeat('prep')[0].querySelectorAll('.step').length;
     for(var p = 0; p < prepCount; p++){
       markStep('prep', p, false);
-      alive = await sleep(420, id);
+      alive = await pace(420, id);
       if(!alive || id !== runId) return;
       markStep('prep', p, true);
     }
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k2', id)) return;
     show('review');
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     var checks = Array.prototype.slice.call(stage.querySelectorAll('.review-check'));
     for(var c = 0; c < checks.length; c++){
       checks[c].classList.add('on');
       checks[c].textContent = '✓';
       if(c < checks.length - 1){
-        alive = await sleep(350, id);
+        alive = await pace(350, id);
         if(!alive || id !== runId) return;
       }
     }
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     if(!await typeYou('u3', id)) return;
-    alive = await sleep(600, id);
+    alive = await pace(600, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k3', id)) return;
     show('eval');
     pending.classList.add('show');
     if(!await runEvalRows(id)) return;
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     show('k4');
     show('train');
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     byBeat('k4').forEach(function(b){ b.classList.add('typed'); });
     var rounds = [['Round 1 · 71', 25], ['Round 2 · 79', 50], ['Round 3 · 84', 75], ['Round 4 · 86', 100]];
-    alive = await sleep(200, id);
+    alive = await pace(200, id);
     if(!alive || id !== runId) return;
     trainFill.style.width = rounds[0][1] + '%';
     trainRound.textContent = rounds[0][0];
     showTick(0);
     for(var t = 1; t < rounds.length; t++){
-      alive = await sleep(600, id);
+      alive = await pace(600, id);
       if(!alive || id !== runId) return;
       trainFill.style.width = rounds[t][1] + '%';
       trainRound.textContent = rounds[t][0];
       showTick(t);
     }
-    alive = await sleep(200, id);
+    alive = await pace(200, id);
     if(!alive || id !== runId) return;
     pending.classList.add('hl');
     var pfill = pending.querySelector('.efill');
@@ -1014,26 +1046,26 @@ footer.site a:hover{color:var(--ink)}
     if(id !== runId) return;
     pending.querySelector('.etime').textContent = '0.2 s';
     pending.querySelector('.ecost').textContent = '$0.005';
-    alive = await sleep(700, id);
+    alive = await pace(700, id);
     if(!alive || id !== runId) return;
     if(!await agentBeat('k5', id)) return;
     show('host');
     markStep('host', 0, false);
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     markStep('host', 0, true);
     show('route');
     markStep('host', 1, false);
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     markStep('host', 1, true);
     routeSwitch.setAttribute('aria-checked', 'true');
     routeVal.textContent = 'support-v1';
-    alive = await sleep(700, id);
+    alive = await pace(700, id);
     if(!alive || id !== runId) return;
     show('k6');
     setDone(id);
-    alive = await sleep(500, id);
+    alive = await pace(500, id);
     if(!alive || id !== runId) return;
     byBeat('k6').forEach(function(b){ b.classList.add('typed'); });
   }
@@ -1058,16 +1090,26 @@ footer.site a:hover{color:var(--ink)}
   function start(){
     if(started) return;
     started = true;
+    window.removeEventListener('scroll', maybeStart);
+    window.removeEventListener('resize', maybeStart);
     run();
+  }
+  function maybeStart(){
+    if(started || stageRatio === 0) return;
+    if(stageRatio >= 0.35 || stage.getBoundingClientRect().top < window.innerHeight * 0.5) start();
   }
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ start(); io.disconnect(); }
+        stageRatio = e.isIntersecting ? e.intersectionRatio : 0;
       });
-    }, {threshold: 0.1});
+      maybeStart();
+    }, {threshold: [0, 0.1, 0.35, 0.5]});
     io.observe(stage);
+    window.addEventListener('scroll', maybeStart, {passive: true});
+    window.addEventListener('resize', maybeStart);
   } else {
+    stageRatio = 1;
     start();
   }
 })();
