@@ -107,11 +107,32 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 }
 .sec-head h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2)}
 .sec-head p.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:44ch}
-/* Loop steps */
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-.step-num{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--accent);margin-bottom:12px}
-.step-card h3{font-size:var(--fs-msg);font-weight:600;margin-bottom:6px}
-.step-card p{font-size:var(--fs-cell);color:var(--muted);line-height:var(--lh-body)}
+/* Figures */
+.fig{width:88%;margin:0 auto}
+.fig svg{display:block;width:100%;height:auto}
+.fig svg.fig-phone{display:none}
+.fig-loop{max-width:960px}
+.fig-review{max-width:720px}
+.fig text{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.fig .lb{font-size:15px;font-weight:600;fill:var(--ink)}
+.fig .lb-s{font-size:14px;font-weight:500;fill:var(--ink)}
+.fig .cp{font-size:14px;fill:var(--muted)}
+.fig .cp-s{font-size:13px;fill:var(--muted)}
+.fig .node,.fig .box{fill:#fff;stroke:var(--hairline);stroke-width:1.25}
+.fig .tile{fill:var(--card);stroke:var(--hairline);stroke-width:1.25}
+.fig .hi{fill:#fff;stroke:var(--accent);stroke-width:2}
+.fig .wire{fill:none;stroke:#B8BEB7;stroke-width:1.25;stroke-linecap:round}
+.fig .wire-dash{stroke-dasharray:4 4}
+.fig .head{fill:#B8BEB7}
+.fig .acc{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fig .acc-head{fill:var(--accent)}
+.fig .glow{fill:none;stroke:var(--accent-soft);stroke-width:14;stroke-linejoin:round}
+.fig .log{stroke:#D3D7D0;stroke-width:2;stroke-linecap:round}
+.fig .log-ts{stroke:#A3AAA4;stroke-width:2;stroke-linecap:round}
+.fig .ink-ln{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.legend5{width:88%;margin:32px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.legend5 h3{font-size:var(--fs-msg);font-weight:600;margin-bottom:4px}
+.legend5 p{font-size:var(--fs-cell);line-height:var(--lh-body);color:var(--muted)}
 .loop-lead{margin-top:32px;font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:52em}
 /* Definition rows */
 .rows{display:flex;flex-direction:column}
@@ -122,10 +143,10 @@ section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--ha
 .closing{margin-top:24px;font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--ink)}
 /* Cards */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.duo-card h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
-.duo-card p.body-text{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted)}
-.duo-card .duo-glyph{display:block;margin-bottom:16px}
+.p-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:24px}
+.p-card .p-icon{display:block;margin-bottom:16px}
+.p-card h3{font-size:var(--fs-msg);font-weight:600;line-height:1.35;margin-bottom:8px}
+.p-card p{font-size:var(--fs-cell);line-height:var(--lh-body);color:var(--muted)}
 /* CTA + footer */
 .cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
 .cta-block h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
@@ -148,10 +169,13 @@ footer.site a:hover{color:var(--ink)}
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr;gap:12px}
   .hero-inner{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
   .trio{grid-template-columns:1fr}
+  .fig{max-width:420px}
+  .fig svg.fig-desk{display:none}
+  .fig svg.fig-phone{display:block}
+  .legend5{grid-template-columns:1fr;gap:14px;max-width:420px}
   section.block{padding-top:36px;padding-bottom:36px}
-  .duo-card{padding:20px}
+  .p-card{padding:20px}
   .cta-art{padding:48px 24px;align-items:flex-start}
 }
 @media (max-width:640px){
@@ -196,7 +220,7 @@ footer.site a:hover{color:var(--ink)}
       <div class="hero-copy">
         <p class="eyebrow">Open source · Apache-2.0</p>
         <h1>Your traces in. A model out.</h1>
-        <p class="sub">Kullback is the agent behind leibler. It reads the logs your agent already writes, rebuilds the world the agent worked in, grades any model on what it changed, and trains on the runs that pass.</p>
+        <p class="sub">Kullback is the agent behind leibler. It reads the logs your agent already writes, rebuilds the system the agent worked in, grades any model on what it changed there, and trains on the runs that pass.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="https://github.com/leiblerdev/kullback">Read the code</a>
           <a class="btn btn-secondary" href="/#demo">See it work</a>
@@ -283,32 +307,220 @@ footer.site a:hover{color:var(--ink)}
     <p class="numbers-note" id="numbers-note">Live from GitHub and Hugging Face.</p>
   </section>
 
+  <section class="wrap block" id="agents">
+    <div class="sec-head">
+      <h2>Three agents, one loop.</h2>
+      <p class="lead">Kullback runs as three agents taking turns until the environment holds and a model clears the bar.</p>
+    </div>
+    <div class="fig fig-agents">
+      <svg class="fig-desk" viewBox="0 0 880 356" role="img" aria-label="An infinity loop: the Builder on the left lobe and the Examiner on the right lobe pass work back and forth through the Writer at the crossing.">
+        <path class="glow" d="M740,150 L739.7,142.2 L738.8,134.4 L737.2,126.7 L735.1,119.2 L732.5,111.8 L729.2,104.8 L725.5,98 L721.3,91.5 L716.6,85.4 L711.6,79.7 L706.2,74.4 L700.4,69.5 L694.4,65.1 L688.2,61.1 L681.8,57.5 L675.2,54.4 L668.4,51.7 L661.6,49.4 L654.8,47.5 L647.8,46.1 L640.9,45 L634,44.3 L627.2,44 L620.4,44 L613.7,44.3 L607,44.9 L600.4,45.8 L594,47 L587.7,48.4 L581.4,50 L575.3,51.8 L569.3,53.9 L563.5,56.1 L557.7,58.5 L552.1,61.1 L546.6,63.8 L541.2,66.6 L535.9,69.6 L530.8,72.6 L525.7,75.8 L520.8,79 L515.9,82.4 L511.2,85.8 L506.5,89.2 L501.9,92.8 L497.4,96.4 L493,100 L488.7,103.7 L484.4,107.4 L480.2,111.2 L476,115 L471.9,118.8 L467.8,122.7 L463.8,126.5 L459.7,130.4 L455.8,134.3 L451.8,138.2 L447.9,142.1 L443.9,146.1 L440,150 L436.1,153.9 L432.1,157.9 L428.2,161.8 L424.2,165.7 L420.3,169.6 L416.2,173.5 L412.2,177.3 L408.1,181.2 L404,185 L399.8,188.8 L395.6,192.6 L391.3,196.3 L387,200 L382.6,203.6 L378.1,207.2 L373.5,210.8 L368.8,214.2 L364.1,217.6 L359.2,221 L354.3,224.2 L349.2,227.4 L344.1,230.4 L338.8,233.4 L333.4,236.2 L327.9,238.9 L322.3,241.5 L316.5,243.9 L310.7,246.1 L304.7,248.2 L298.6,250 L292.3,251.6 L286,253 L279.6,254.2 L273,255.1 L266.3,255.7 L259.6,256 L252.8,256 L246,255.7 L239.1,255 L232.2,253.9 L225.2,252.5 L218.4,250.6 L211.6,248.3 L204.8,245.6 L198.2,242.5 L191.8,238.9 L185.6,234.9 L179.6,230.5 L173.8,225.6 L168.4,220.3 L163.4,214.6 L158.7,208.5 L154.5,202 L150.8,195.2 L147.5,188.2 L144.9,180.8 L142.8,173.3 L141.2,165.6 L140.3,157.8 L140,150 L140.3,142.2 L141.2,134.4 L142.8,126.7 L144.9,119.2 L147.5,111.8 L150.8,104.8 L154.5,98 L158.7,91.5 L163.4,85.4 L168.4,79.7 L173.8,74.4 L179.6,69.5 L185.6,65.1 L191.8,61.1 L198.2,57.5 L204.8,54.4 L211.6,51.7 L218.4,49.4 L225.2,47.5 L232.2,46.1 L239.1,45 L246,44.3 L252.8,44 L259.6,44 L266.3,44.3 L273,44.9 L279.6,45.8 L286,47 L292.3,48.4 L298.6,50 L304.7,51.8 L310.7,53.9 L316.5,56.1 L322.3,58.5 L327.9,61.1 L333.4,63.8 L338.8,66.6 L344.1,69.6 L349.2,72.6 L354.3,75.8 L359.2,79 L364.1,82.4 L368.8,85.8 L373.5,89.2 L378.1,92.8 L382.6,96.4 L387,100 L391.3,103.7 L395.6,107.4 L399.8,111.2 L404,115 L408.1,118.8 L412.2,122.7 L416.2,126.5 L420.3,130.4 L424.2,134.3 L428.2,138.2 L432.1,142.1 L436.1,146.1 L440,150 L443.9,153.9 L447.9,157.9 L451.8,161.8 L455.8,165.7 L459.7,169.6 L463.8,173.5 L467.8,177.3 L471.9,181.2 L476,185 L480.2,188.8 L484.4,192.6 L488.7,196.3 L493,200 L497.4,203.6 L501.9,207.2 L506.5,210.8 L511.2,214.2 L515.9,217.6 L520.8,221 L525.7,224.2 L530.8,227.4 L535.9,230.4 L541.2,233.4 L546.6,236.2 L552.1,238.9 L557.7,241.5 L563.5,243.9 L569.3,246.1 L575.3,248.2 L581.4,250 L587.7,251.6 L594,253 L600.4,254.2 L607,255.1 L613.7,255.7 L620.4,256 L627.2,256 L634,255.7 L640.9,255 L647.8,253.9 L654.8,252.5 L661.6,250.6 L668.4,248.3 L675.2,245.6 L681.8,242.5 L688.2,238.9 L694.4,234.9 L700.4,230.5 L706.2,225.6 L711.6,220.3 L716.6,214.6 L721.3,208.5 L725.5,202 L729.2,195.2 L732.5,188.2 L735.1,180.8 L737.2,173.3 L738.8,165.6 L739.7,157.8Z"/>
+        <path class="acc" d="M740,150 L739.7,142.2 L738.8,134.4 L737.2,126.7 L735.1,119.2 L732.5,111.8 L729.2,104.8 L725.5,98 L721.3,91.5 L716.6,85.4 L711.6,79.7 L706.2,74.4 L700.4,69.5 L694.4,65.1 L688.2,61.1 L681.8,57.5 L675.2,54.4 L668.4,51.7 L661.6,49.4 L654.8,47.5 L647.8,46.1 L640.9,45 L634,44.3 L627.2,44 L620.4,44 L613.7,44.3 L607,44.9 L600.4,45.8 L594,47 L587.7,48.4 L581.4,50 L575.3,51.8 L569.3,53.9 L563.5,56.1 L557.7,58.5 L552.1,61.1 L546.6,63.8 L541.2,66.6 L535.9,69.6 L530.8,72.6 L525.7,75.8 L520.8,79 L515.9,82.4 L511.2,85.8 L506.5,89.2 L501.9,92.8 L497.4,96.4 L493,100 L488.7,103.7 L484.4,107.4 L480.2,111.2 L476,115 L471.9,118.8 L467.8,122.7 L463.8,126.5 L459.7,130.4 L455.8,134.3 L451.8,138.2 L447.9,142.1 L443.9,146.1 L440,150 L436.1,153.9 L432.1,157.9 L428.2,161.8 L424.2,165.7 L420.3,169.6 L416.2,173.5 L412.2,177.3 L408.1,181.2 L404,185 L399.8,188.8 L395.6,192.6 L391.3,196.3 L387,200 L382.6,203.6 L378.1,207.2 L373.5,210.8 L368.8,214.2 L364.1,217.6 L359.2,221 L354.3,224.2 L349.2,227.4 L344.1,230.4 L338.8,233.4 L333.4,236.2 L327.9,238.9 L322.3,241.5 L316.5,243.9 L310.7,246.1 L304.7,248.2 L298.6,250 L292.3,251.6 L286,253 L279.6,254.2 L273,255.1 L266.3,255.7 L259.6,256 L252.8,256 L246,255.7 L239.1,255 L232.2,253.9 L225.2,252.5 L218.4,250.6 L211.6,248.3 L204.8,245.6 L198.2,242.5 L191.8,238.9 L185.6,234.9 L179.6,230.5 L173.8,225.6 L168.4,220.3 L163.4,214.6 L158.7,208.5 L154.5,202 L150.8,195.2 L147.5,188.2 L144.9,180.8 L142.8,173.3 L141.2,165.6 L140.3,157.8 L140,150 L140.3,142.2 L141.2,134.4 L142.8,126.7 L144.9,119.2 L147.5,111.8 L150.8,104.8 L154.5,98 L158.7,91.5 L163.4,85.4 L168.4,79.7 L173.8,74.4 L179.6,69.5 L185.6,65.1 L191.8,61.1 L198.2,57.5 L204.8,54.4 L211.6,51.7 L218.4,49.4 L225.2,47.5 L232.2,46.1 L239.1,45 L246,44.3 L252.8,44 L259.6,44 L266.3,44.3 L273,44.9 L279.6,45.8 L286,47 L292.3,48.4 L298.6,50 L304.7,51.8 L310.7,53.9 L316.5,56.1 L322.3,58.5 L327.9,61.1 L333.4,63.8 L338.8,66.6 L344.1,69.6 L349.2,72.6 L354.3,75.8 L359.2,79 L364.1,82.4 L368.8,85.8 L373.5,89.2 L378.1,92.8 L382.6,96.4 L387,100 L391.3,103.7 L395.6,107.4 L399.8,111.2 L404,115 L408.1,118.8 L412.2,122.7 L416.2,126.5 L420.3,130.4 L424.2,134.3 L428.2,138.2 L432.1,142.1 L436.1,146.1 L440,150 L443.9,153.9 L447.9,157.9 L451.8,161.8 L455.8,165.7 L459.7,169.6 L463.8,173.5 L467.8,177.3 L471.9,181.2 L476,185 L480.2,188.8 L484.4,192.6 L488.7,196.3 L493,200 L497.4,203.6 L501.9,207.2 L506.5,210.8 L511.2,214.2 L515.9,217.6 L520.8,221 L525.7,224.2 L530.8,227.4 L535.9,230.4 L541.2,233.4 L546.6,236.2 L552.1,238.9 L557.7,241.5 L563.5,243.9 L569.3,246.1 L575.3,248.2 L581.4,250 L587.7,251.6 L594,253 L600.4,254.2 L607,255.1 L613.7,255.7 L620.4,256 L627.2,256 L634,255.7 L640.9,255 L647.8,253.9 L654.8,252.5 L661.6,250.6 L668.4,248.3 L675.2,245.6 L681.8,242.5 L688.2,238.9 L694.4,234.9 L700.4,230.5 L706.2,225.6 L711.6,220.3 L716.6,214.6 L721.3,208.5 L725.5,202 L729.2,195.2 L732.5,188.2 L735.1,180.8 L737.2,173.3 L738.8,165.6 L739.7,157.8Z"/>
+        <polygon class="acc-head" points="581.2,50.1 589.3,42 592.3,52.6"/>
+        <polygon class="acc-head" points="298.3,250.1 306.5,242.1 309.5,252.6"/>
+        <polygon class="acc-head" points="298.8,50.1 287.7,52.6 290.7,42"/>
+        <polygon class="acc-head" points="581.7,250.1 570.5,252.6 573.5,242.1"/>
+        <circle class="node" cx="140" cy="150" r="46"/>
+        <text class="lb" x="140" y="155" text-anchor="middle">Builder</text>
+        <text class="cp" x="140" y="300" text-anchor="middle">Rebuilds the system your agent</text>
+        <text class="cp" x="140" y="320" text-anchor="middle">worked in from its traces:</text>
+        <text class="cp" x="140" y="340" text-anchor="middle">data, tools, rules, user.</text>
+        <circle class="node" cx="440" cy="150" r="46"/>
+        <text class="lb" x="440" y="155" text-anchor="middle">Writer</text>
+        <text class="cp" x="440" y="300" text-anchor="middle">Turns runs that pass into eval</text>
+        <text class="cp" x="440" y="320" text-anchor="middle">cases and training examples</text>
+        <text class="cp" x="440" y="340" text-anchor="middle">you can read.</text>
+        <circle class="node" cx="740" cy="150" r="46"/>
+        <text class="lb" x="740" y="155" text-anchor="middle">Examiner</text>
+        <text class="cp" x="740" y="300" text-anchor="middle">Writes a verifier per task,</text>
+        <text class="cp" x="740" y="320" text-anchor="middle">probes the build, and sends</text>
+        <text class="cp" x="740" y="340" text-anchor="middle">findings back to the Builder.</text>
+      </svg>
+      <svg class="fig-phone" viewBox="0 0 300 512" role="img" aria-label="The Builder, the Writer and the Examiner stacked, joined by a loop that carries work down to the Examiner and back up to the Builder.">
+        <rect class="glow" x="244" y="32" width="40" height="386" rx="20"/>
+        <rect class="acc" x="244" y="32" width="40" height="386" rx="20"/>
+        <polygon class="acc-head" points="284,233 278.5,223 289.5,223"/>
+        <polygon class="acc-head" points="244,138 249.5,148 238.5,148"/>
+        <polygon class="acc-head" points="244,312 249.5,322 238.5,322"/>
+        <path class="wire" d="M154,52 H244"/>
+        <circle class="node" cx="112" cy="52" r="42"/>
+        <text class="lb" x="112" y="57" text-anchor="middle">Builder</text>
+        <text class="cp-s" x="112" y="117" text-anchor="middle">Rebuilds the system your agent</text>
+        <text class="cp-s" x="112" y="135" text-anchor="middle">worked in from its traces:</text>
+        <text class="cp-s" x="112" y="153" text-anchor="middle">data, tools, rules, user.</text>
+        <path class="wire" d="M154,225 H244"/>
+        <circle class="node" cx="112" cy="225" r="42"/>
+        <text class="lb" x="112" y="230" text-anchor="middle">Writer</text>
+        <text class="cp-s" x="112" y="290" text-anchor="middle">Turns runs that pass into eval</text>
+        <text class="cp-s" x="112" y="308" text-anchor="middle">cases and training examples</text>
+        <text class="cp-s" x="112" y="326" text-anchor="middle">you can read.</text>
+        <path class="wire" d="M154,398 H244"/>
+        <circle class="node" cx="112" cy="398" r="42"/>
+        <text class="lb" x="112" y="403" text-anchor="middle">Examiner</text>
+        <text class="cp-s" x="112" y="463" text-anchor="middle">Writes a verifier per task,</text>
+        <text class="cp-s" x="112" y="481" text-anchor="middle">probes the build, and sends</text>
+        <text class="cp-s" x="112" y="499" text-anchor="middle">findings back to the Builder.</text>
+      </svg>
+    </div>
+  </section>
+
   <section class="wrap block" id="loop">
     <div class="sec-head">
       <h2>The loop.</h2>
     </div>
-    <div class="steps">
-      <div class="step-card"><div class="step-num">1</div><h3>Traces</h3><p>The runs your agent already made.</p></div>
-      <div class="step-card"><div class="step-num">2</div><h3>Build</h3><p>Tools, data, rules, a simulated user, a verifier per task.</p></div>
-      <div class="step-card"><div class="step-num">3</div><h3>Run</h3><p>Any model, one turn at a time.</p></div>
-      <div class="step-card"><div class="step-num">4</div><h3>Verdict</h3><p>Code reads the final data and says pass or fail.</p></div>
-      <div class="step-card"><div class="step-num">5</div><h3>Report</h3><p>You read it and decide.</p></div>
+    <div class="fig fig-loop">
+      <svg class="fig-desk" viewBox="0 0 960 140" role="img" aria-label="Five stages in a row: traces, build, run, verdict and report, with the verdict highlighted.">
+        <rect class="box" x="0" y="8" width="152" height="56" rx="12"/>
+        <text class="lb" x="76" y="41" text-anchor="middle">Traces</text>
+        <text class="cp" x="76" y="87" text-anchor="middle">The runs your agent</text>
+        <text class="cp" x="76" y="107" text-anchor="middle">already made.</text>
+        <path class="wire" d="M160,36 H188"/>
+        <polygon class="head" points="194,36 186,40.5 186,31.5"/>
+        <rect class="box" x="202" y="8" width="152" height="56" rx="12"/>
+        <text class="lb" x="278" y="41" text-anchor="middle">Build</text>
+        <text class="cp" x="278" y="87" text-anchor="middle">Tools, data, rules,</text>
+        <text class="cp" x="278" y="107" text-anchor="middle">a simulated user,</text>
+        <text class="cp" x="278" y="127" text-anchor="middle">a verifier per task.</text>
+        <path class="wire" d="M362,36 H390"/>
+        <polygon class="head" points="396,36 388,40.5 388,31.5"/>
+        <rect class="box" x="404" y="8" width="152" height="56" rx="12"/>
+        <text class="lb" x="480" y="41" text-anchor="middle">Run</text>
+        <text class="cp" x="480" y="87" text-anchor="middle">Any model, one turn</text>
+        <text class="cp" x="480" y="107" text-anchor="middle">at a time.</text>
+        <path class="wire" d="M564,36 H592"/>
+        <polygon class="head" points="598,36 590,40.5 590,31.5"/>
+        <rect class="hi" x="606" y="8" width="152" height="56" rx="12"/>
+        <text class="lb" x="682" y="41" text-anchor="middle">Verdict</text>
+        <text class="cp" x="682" y="87" text-anchor="middle">Code reads the final</text>
+        <text class="cp" x="682" y="107" text-anchor="middle">data and says</text>
+        <text class="cp" x="682" y="127" text-anchor="middle">pass or fail.</text>
+        <path class="wire" d="M766,36 H794"/>
+        <polygon class="head" points="800,36 792,40.5 792,31.5"/>
+        <rect class="box" x="808" y="8" width="152" height="56" rx="12"/>
+        <text class="lb" x="884" y="41" text-anchor="middle">Report</text>
+        <text class="cp" x="884" y="87" text-anchor="middle">You read it and decide.</text>
+      </svg>
+      <svg class="fig-phone" viewBox="0 0 300 652" role="img" aria-label="Five stages stacked top to bottom: traces, build, run, verdict and report, with the verdict highlighted.">
+        <rect class="box" x="50" y="8" width="200" height="46" rx="12"/>
+        <text class="lb" x="150" y="36" text-anchor="middle">Traces</text>
+        <text class="cp-s" x="150" y="76" text-anchor="middle">The runs your agent already made.</text>
+        <path class="wire" d="M150,110 V130"/>
+        <polygon class="head" points="150,136 145.5,128 154.5,128"/>
+        <rect class="box" x="50" y="144" width="200" height="46" rx="12"/>
+        <text class="lb" x="150" y="172" text-anchor="middle">Build</text>
+        <text class="cp-s" x="150" y="212" text-anchor="middle">Tools, data, rules, a simulated user,</text>
+        <text class="cp-s" x="150" y="230" text-anchor="middle">a verifier per task.</text>
+        <path class="wire" d="M150,246 V266"/>
+        <polygon class="head" points="150,272 145.5,264 154.5,264"/>
+        <rect class="box" x="50" y="280" width="200" height="46" rx="12"/>
+        <text class="lb" x="150" y="308" text-anchor="middle">Run</text>
+        <text class="cp-s" x="150" y="348" text-anchor="middle">Any model, one turn at a time.</text>
+        <path class="wire" d="M150,382 V402"/>
+        <polygon class="head" points="150,408 145.5,400 154.5,400"/>
+        <rect class="hi" x="50" y="416" width="200" height="46" rx="12"/>
+        <text class="lb" x="150" y="444" text-anchor="middle">Verdict</text>
+        <text class="cp-s" x="150" y="484" text-anchor="middle">Code reads the final data and says</text>
+        <text class="cp-s" x="150" y="502" text-anchor="middle">pass or fail.</text>
+        <path class="wire" d="M150,518 V538"/>
+        <polygon class="head" points="150,544 145.5,536 154.5,536"/>
+        <rect class="box" x="50" y="552" width="200" height="46" rx="12"/>
+        <text class="lb" x="150" y="580" text-anchor="middle">Report</text>
+        <text class="cp-s" x="150" y="620" text-anchor="middle">You read it and decide.</text>
+      </svg>
     </div>
-    <p class="loop-lead">Code decides pass or fail from what changed, not from the transcript. A judge model can take a pass away, never give one.</p>
+    <p class="loop-lead">Code decides pass or fail from what the model changed, not from what it said. A judge model can take a pass away but never give one.</p>
   </section>
 
   <section class="wrap block" id="build">
     <div class="sec-head">
       <h2>What a week of traces turns into.</h2>
     </div>
-    <div class="rows">
-      <div class="row"><h3>Data</h3><p>The records your runs touched, with the values they saw.</p></div>
-      <div class="row"><h3>Tools</h3><p>One function per tool, behaving the way the real one did in the logs.</p></div>
-      <div class="row"><h3>Rules</h3><p>Your policy, turned into checks that run before every write.</p></div>
-      <div class="row"><h3>User</h3><p>A simulated user who knows only what the real one knew.</p></div>
-      <div class="row"><h3>Verifier</h3><p>One per task. It looks at the final data and says pass or fail.</p></div>
+    <div class="fig fig-build">
+      <svg class="fig-desk" viewBox="0 0 880 244" role="img" aria-label="Lines from your traces fan into one environment that holds five parts: data, tools, rules, user and verifier.">
+        <text class="lb-s" x="20" y="28" text-anchor="start">your traces</text>
+        <path class="log-ts" d="M20,52 H46"/>
+        <path class="log" d="M56,52 H206"/>
+        <path class="wire" d="M236,52 C310,52 330,128 392,128"/>
+        <path class="log-ts" d="M20,74 H46"/>
+        <path class="log" d="M56,74 H160"/>
+        <path class="wire" d="M236,74 C310,74 330,128 392,128"/>
+        <path class="log-ts" d="M20,96 H46"/>
+        <path class="log" d="M56,96 H224"/>
+        <path class="wire" d="M236,96 C310,96 330,128 392,128"/>
+        <path class="log-ts" d="M20,118 H46"/>
+        <path class="log" d="M56,118 H142"/>
+        <path class="wire" d="M236,118 C310,118 330,128 392,128"/>
+        <path class="log-ts" d="M20,140 H46"/>
+        <path class="log" d="M56,140 H194"/>
+        <path class="wire" d="M236,140 C310,140 330,128 392,128"/>
+        <path class="log-ts" d="M20,162 H46"/>
+        <path class="log" d="M56,162 H216"/>
+        <path class="wire" d="M236,162 C310,162 330,128 392,128"/>
+        <path class="log-ts" d="M20,184 H46"/>
+        <path class="log" d="M56,184 H152"/>
+        <path class="wire" d="M236,184 C310,184 330,128 392,128"/>
+        <path class="log-ts" d="M20,206 H46"/>
+        <path class="log" d="M56,206 H184"/>
+        <path class="wire" d="M236,206 C310,206 330,128 392,128"/>
+        <path class="log-ts" d="M20,228 H46"/>
+        <path class="log" d="M56,228 H172"/>
+        <path class="wire" d="M236,228 C310,228 330,128 392,128"/>
+        <path class="acc" d="M392,128 H420"/>
+        <polygon class="acc-head" points="428,128 418,133.5 418,122.5"/>
+        <rect class="box" x="430" y="20" width="430" height="216" rx="20"/>
+        <text class="lb" x="454" y="52" text-anchor="start">environment</text>
+        <rect class="tile" x="454" y="76" width="116" height="56" rx="12"/>
+        <text class="lb-s" x="512" y="109" text-anchor="middle">Data</text>
+        <rect class="tile" x="587" y="76" width="116" height="56" rx="12"/>
+        <text class="lb-s" x="645" y="109" text-anchor="middle">Tools</text>
+        <rect class="tile" x="720" y="76" width="116" height="56" rx="12"/>
+        <text class="lb-s" x="778" y="109" text-anchor="middle">Rules</text>
+        <rect class="tile" x="520.5" y="152" width="116" height="56" rx="12"/>
+        <text class="lb-s" x="578.5" y="185" text-anchor="middle">User</text>
+        <rect class="tile" x="653.5" y="152" width="116" height="56" rx="12"/>
+        <text class="lb-s" x="711.5" y="185" text-anchor="middle">Verifier</text>
+      </svg>
+      <svg class="fig-phone" viewBox="0 0 300 440" role="img" aria-label="Lines from your traces fan down into one environment that holds five parts: data, tools, rules, user and verifier.">
+        <text class="lb-s" x="20" y="18" text-anchor="start">your traces</text>
+        <path class="log-ts" d="M20,40 H46"/>
+        <path class="log" d="M56,40 H246"/>
+        <path class="log-ts" d="M20,58 H46"/>
+        <path class="log" d="M56,58 H200"/>
+        <path class="log-ts" d="M20,76 H46"/>
+        <path class="log" d="M56,76 H264"/>
+        <path class="log-ts" d="M20,94 H46"/>
+        <path class="log" d="M56,94 H182"/>
+        <path class="log-ts" d="M20,112 H46"/>
+        <path class="log" d="M56,112 H234"/>
+        <path class="wire" d="M40,128 C40,150 150,146 150,166"/>
+        <path class="wire" d="M95,128 C95,150 150,146 150,166"/>
+        <path class="wire" d="M150,128 C150,150 150,146 150,166"/>
+        <path class="wire" d="M205,128 C205,150 150,146 150,166"/>
+        <path class="wire" d="M260,128 C260,150 150,146 150,166"/>
+        <path class="acc" d="M150,166 V184"/>
+        <polygon class="acc-head" points="150,192 144.5,182 155.5,182"/>
+        <rect class="box" x="10" y="194" width="280" height="236" rx="20"/>
+        <text class="lb" x="30" y="224" text-anchor="start">environment</text>
+        <rect class="tile" x="30" y="244" width="112" height="48" rx="12"/>
+        <text class="lb-s" x="86" y="273" text-anchor="middle">Data</text>
+        <rect class="tile" x="158" y="244" width="112" height="48" rx="12"/>
+        <text class="lb-s" x="214" y="273" text-anchor="middle">Tools</text>
+        <rect class="tile" x="30" y="304" width="112" height="48" rx="12"/>
+        <text class="lb-s" x="86" y="333" text-anchor="middle">Rules</text>
+        <rect class="tile" x="158" y="304" width="112" height="48" rx="12"/>
+        <text class="lb-s" x="214" y="333" text-anchor="middle">User</text>
+        <rect class="tile" x="94" y="364" width="112" height="48" rx="12"/>
+        <text class="lb-s" x="150" y="393" text-anchor="middle">Verifier</text>
+      </svg>
     </div>
-    <p class="closing">Every value points back to the line in your trace it came from. Nothing is invented.</p>
+    <div class="legend5">
+      <div><h3>Data</h3><p>The records your runs touched, with the values they saw.</p></div>
+      <div><h3>Tools</h3><p>One function per tool, behaving the way the real one did in the logs.</p></div>
+      <div><h3>Rules</h3><p>Your policy, turned into checks that run before every write.</p></div>
+      <div><h3>User</h3><p>A simulated user who knows only what the real one knew.</p></div>
+      <div><h3>Verifier</h3><p>One per task. It looks at the final data and says pass or fail.</p></div>
+    </div>
+    <p class="closing">Every value points back to the line in your trace it came from.</p>
   </section>
 
   <section class="wrap block" id="principles">
@@ -316,20 +528,20 @@ footer.site a:hover{color:var(--ink)}
       <h2>Built so you can trust the numbers.</h2>
     </div>
     <div class="trio">
-      <div class="duo-card">
-        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#0E9F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6v22M20 28v6"/><path d="M12 14l8-8 8 8"/><path d="M12 34l8-6 8 6"/></svg>
-        <h2>Grade what changed, not what was said.</h2>
-        <p class="body-text">Required writes present, forbidden writes absent, policy never broken, the user's questions answered. Where judgment is unavoidable, two judges each cite a span and a disagreement goes to a person.</p>
+      <div class="p-card">
+        <svg class="p-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#0E9F84" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="18" height="22" rx="3"/><path d="M8.5 10l1.8 1.8 3.2-3.2M16 10h3.5M8.5 18l1.8 1.8 3.2-3.2M16 18h3.5"/></svg>
+        <h3>Grade what changed, not what was said.</h3>
+        <p>Code checks the final data: required writes present, forbidden writes absent, no rule broken, the user's questions answered. Where a judgment call cannot be avoided, two judge models each cite the span they read, and a person settles any disagreement.</p>
       </div>
-      <div class="duo-card">
-        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#0E9F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="4"/><path d="M10 16h20"/></svg>
-        <h2>A stand-in is reported, never counted.</h2>
-        <p class="body-text">Tool calls go to code first, then to an exact recording, then to a model stand-in. A run served by a stand-in anywhere is excluded from every number.</p>
+      <div class="p-card">
+        <svg class="p-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#0E9F84" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 23V12a6 6 0 0 1 12 0v11l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6z"/><path d="M11.5 12.5h.01M16.5 12.5h.01"/><path d="M4 4l20 20"/></svg>
+        <h3>A stand-in is reported, never counted.</h3>
+        <p>Tool calls go to code first, then to an exact recording, and only then to a model stand-in. A run that touched a stand-in anywhere is left out of every number.</p>
       </div>
-      <div class="duo-card">
-        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#0E9F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="12"/><path d="M20 8v24M8 20h24"/></svg>
-        <h2>Any model behind one id.</h2>
-        <p class="body-text">Built-in adapters and the models.dev registry, so a provider nobody wrote code for is one flag away. Keys come from the environment, never from a command line.</p>
+      <div class="p-card">
+        <svg class="p-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#0E9F84" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3v5M17 3v5"/><path d="M8 8h12v5a6 6 0 0 1-12 0z"/><path d="M14 19v6"/></svg>
+        <h3>Any model behind one id.</h3>
+        <p>Built-in adapters and the models.dev registry mean a provider nobody wrote code for is one flag away. Keys come from the environment, never from the command line.</p>
       </div>
     </div>
   </section>
@@ -337,7 +549,59 @@ footer.site a:hover{color:var(--ink)}
   <section class="wrap block" id="review">
     <div class="sec-head">
       <h2>You read everything it makes.</h2>
-      <p class="lead">Every eval case and every training example Kullback writes stays readable. Reject one and it rewrites. The runner is frozen only when a person confirms it, and every verdict carries the hash of both the environment and the runner.</p>
+      <p class="lead">Every eval case and training example Kullback writes is a file you can read. Reject one and it rewrites it. The runner is frozen only after a person confirms it, and every verdict carries the hash of the environment and the runner it ran on.</p>
+    </div>
+    <div class="fig fig-review">
+      <svg class="fig-desk" viewBox="0 0 680 300" role="img" aria-label="An eval case goes to a person, who keeps it with a tick or sends it back with a cross to be rewritten.">
+        <path class="box" d="M40,30 H152 L170,48 V190 H40 Z"/>
+        <path class="wire" d="M152,30 V48 H170"/>
+        <text class="lb" x="58" y="62" text-anchor="start">eval case</text>
+        <path class="log" d="M58,92 H150"/>
+        <path class="log" d="M58,114 H128"/>
+        <path class="log" d="M58,136 H142"/>
+        <path class="log" d="M58,158 H114"/>
+        <path class="wire" d="M182,110 H254"/>
+        <polygon class="head" points="262,110 254,114.5 254,105.5"/>
+        <circle class="ink-ln" cx="320" cy="85" r="15"/>
+        <path class="ink-ln" d="M292,132 C292,100 348,100 348,132"/>
+        <path class="ink-ln" d="M297,163 l10,10 M307,163 l-10,10"/>
+        <path class="acc" d="M332.5,168 l5,5 l10,-10"/>
+        <path class="acc" d="M358,168 C420,168 430,110 486,110"/>
+        <polygon class="acc-head" points="496,110 486,115.5 486,104.5"/>
+        <rect class="box" x="500" y="84" width="140" height="52" rx="12"/>
+        <text class="lb" x="570" y="115" text-anchor="middle">kept</text>
+        <path class="wire" d="M302,186 C302,250 260,262 188,262"/>
+        <polygon class="head" points="180,262 188,257.5 188,266.5"/>
+        <rect class="box" x="40" y="238" width="130" height="48" rx="12"/>
+        <text class="lb" x="105" y="267" text-anchor="middle">rewritten</text>
+        <path class="wire wire-dash" d="M105,232 V204"/>
+        <polygon class="head" points="105,198 109.5,206 100.5,206"/>
+      </svg>
+      <svg class="fig-phone" viewBox="0 0 300 390" role="img" aria-label="An eval case goes to a person, who keeps it with a tick or sends it back with a cross to be rewritten.">
+        <path class="box" d="M95,10 H187 L205,28 V140 H95 Z"/>
+        <path class="wire" d="M187,10 V28 H205"/>
+        <text class="lb" x="111" y="40" text-anchor="start">eval case</text>
+        <path class="log" d="M111,66 H189"/>
+        <path class="log" d="M111,86 H171"/>
+        <path class="log" d="M111,106 H183"/>
+        <path class="log" d="M111,126 H159"/>
+        <path class="wire" d="M150,150 V176"/>
+        <polygon class="head" points="150,184 145.5,176 154.5,176"/>
+        <circle class="ink-ln" cx="150" cy="207" r="15"/>
+        <path class="ink-ln" d="M122,254 C122,222 178,222 178,254"/>
+        <path class="ink-ln" d="M123,275 l10,10 M133,275 l-10,10"/>
+        <path class="acc" d="M164.5,280 l5,5 l10,-10"/>
+        <path class="acc" d="M184,290 C210,300 231,304 231,318"/>
+        <polygon class="acc-head" points="231,328 225.5,318 236.5,318"/>
+        <rect class="box" x="176" y="330" width="110" height="48" rx="12"/>
+        <text class="lb" x="231" y="359" text-anchor="middle">kept</text>
+        <path class="wire" d="M116,290 C90,300 69,304 69,320"/>
+        <polygon class="head" points="69,326 64.5,318 73.5,318"/>
+        <rect class="box" x="14" y="330" width="110" height="48" rx="12"/>
+        <text class="lb" x="69" y="359" text-anchor="middle">rewritten</text>
+        <path class="wire wire-dash" d="M30,324 C30,180 50,75 83,75"/>
+        <polygon class="head" points="90,75 82,79.5 82,70.5"/>
+      </svg>
     </div>
   </section>
 
