@@ -27,7 +27,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"https://www.leibler.dev/#org","name":"leibler","url":"https://www.leibler.dev/","logo":{"@type":"ImageObject","url":"https://www.leibler.dev/assets/img/logo/logo-mark.png"},"email":"krrish@leibler.dev","description":"leibler is a data lab. We post-train small models on your data that beat the frontier on speed, cost and accuracy.","sameAs":["https://github.com/leiblerdev","https://huggingface.co/leibler"],"founder":{"@id":"https://www.leibler.dev/#krrish"}},
@@ -61,7 +61,7 @@
   --peach:#DDD8CE;
   --gold:#E2DDD3;
   --rose:#C9C3B7;
-  --shadow:#262A2F;
+  --shadow:#CC3A14;
   --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;
   --serif:'Fraunces',Georgia,serif;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -138,10 +138,19 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .nav[data-tone="light"] .btn-nav::before{background:var(--brown)}
 
 /* hero */
-.hero{position:relative;min-height:calc(100vh - 50px);display:flex;align-items:flex-end;padding:160px var(--gutter) 70px;overflow:hidden}
-.cascade{position:absolute;right:0;bottom:0;width:min(66vw,980px);height:92%;overflow:visible}
+.hero{position:relative;min-height:calc(100vh - 50px);display:flex;align-items:flex-end;padding:160px var(--gutter) 84px;overflow:hidden;isolation:isolate}
+.ridges{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 12%,#000 62%),linear-gradient(180deg,transparent 0%,#000 18%);mask-image:linear-gradient(90deg,transparent 12%,#000 62%),linear-gradient(180deg,transparent 0%,#000 18%);
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:22%;background:linear-gradient(180deg,transparent,var(--paper));z-index:1;pointer-events:none}
 .hero-inner{position:relative;z-index:2;max-width:760px}
-.hero-title{font-size:clamp(46px,5.6vw,84px);margin-bottom:26px}
+.hero-title{font-size:clamp(50px,6.4vw,104px);margin-bottom:28px;letter-spacing:-.03em;line-height:1}
+.hero-title .ln{padding-bottom:.16em;margin-bottom:-.1em}
+.hero-title em{font-style:italic;color:var(--terra);padding-right:.04em}
+.hero-legend{position:absolute;right:var(--gutter);bottom:84px;z-index:2;display:flex;gap:22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2)}
+.hero-legend span{display:flex;align-items:center;gap:8px}
+.hero-legend i{display:block;width:18px;height:1.5px;background:#7C8086}
+.hero-legend i.lg-y{background:var(--terra);box-shadow:0 0 8px rgba(232,70,30,.8)}
 .hero-sub{font-size:19px;max-width:36em;margin-bottom:34px}
 
 /* glance */
@@ -166,19 +175,32 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .trusted .lede{margin-bottom:56px}
 .mq{overflow:hidden;padding:4px 0 14px}
 .mq-track{display:flex;gap:16px;width:max-content;will-change:transform}
-.tile{width:184px;height:88px;background:var(--surface);border:1px solid rgba(237,234,227,.14);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.tile{width:184px;height:88px;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .tile:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--shadow)}
 .tile small{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-2)}
 .tile b{font-size:30px;font-weight:400;letter-spacing:-.03em}
 .tile.bar b{color:var(--brown)}
-.tile.ours{background:var(--red);color:var(--cream-2)}
+.tile.ours{background:var(--red);color:var(--cream-2);box-shadow:8px 8px 0 #7A240C}
 .tile.ours small{color:var(--cream)}
 
 /* example pinned */
 .example{padding-top:120px}
-.ex-head{padding:0 var(--gutter);margin-bottom:40px}
+.ex-head{padding:0 var(--gutter);margin-bottom:20px}
+.ex-head .sub.center{margin-bottom:40px}
+.ex-kpis{display:grid;grid-template-columns:repeat(4,1fr);max-width:980px;margin:0 auto;border-top:1px solid rgba(232,70,30,.45);border-bottom:1px solid rgba(237,234,227,.1)}
+.ex-kpis div{padding:22px 20px;text-align:center}
+.ex-kpis div + div{border-left:1px solid rgba(237,234,227,.1)}
+.ex-kpis dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
+.ex-kpis dd{font-family:var(--serif);font-weight:300;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.02em;color:var(--terra)}
+.ex-kpis s{font-family:var(--sans);font-size:15px;color:var(--brown-2);margin-right:6px;text-decoration-color:rgba(237,234,227,.5);vertical-align:middle}
 .ex-pin{height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:90px var(--gutter) 40px}
-.dash{position:relative;background:#1E2125;padding:18px 0 0 18px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.dash{position:relative;background:#1E2125;padding:0 0 0 18px;border:1px solid rgba(232,70,30,.35);box-shadow:14px 14px 0 var(--red)}
+.dash-bar{display:flex;align-items:center;gap:6px;height:38px;margin:0 0 16px -18px;padding:0 16px;border-bottom:1px solid rgba(237,234,227,.08);font-size:12px;color:var(--brown-2)}
+.dash-bar i{width:9px;height:9px;border-radius:50%;background:#33373C}
+.dash-bar span{margin-left:10px;letter-spacing:.04em}
+.dash-bar em{margin-left:auto;font-style:normal;display:flex;align-items:center;gap:6px;color:var(--terra);letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.dash-bar em::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(232,70,30,.6);animation:live 1.8s infinite}
+@keyframes live{70%{box-shadow:0 0 0 7px rgba(232,70,30,0)}100%{box-shadow:0 0 0 0 rgba(232,70,30,0)}}
 .dash-top{padding:0 18px 16px 0}
 .dash h4{font-size:24px;letter-spacing:-.01em;margin-bottom:12px}
 .stats{display:flex;gap:10px}
@@ -202,20 +224,35 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .p-red{background:#F8D4D0;color:#9B2C22}
 .p-grey{background:#E7E3DF;color:#6B625D}
 .p-dec,.p-stat{background:#E7E3DF;transition:background-color .4s,color .4s}
-.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:var(--surface);border:1px solid rgba(237,234,227,.14);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
+.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
 .pop-v{position:absolute;inset:16px 18px;opacity:0;visibility:hidden}
 .pop-v.on{position:relative;inset:auto;opacity:1;visibility:visible}
 .pop small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
 .pop p{font-size:16px;line-height:1.4}
 .pop .opt{display:inline-block;font-size:13px;padding:4px 10px;margin:4px 6px 0 0;border:1px solid rgba(237,234,227,.25)}
 .pop .opt.on{background:var(--red);color:var(--cream-2);border-color:var(--red)}
-.steps{list-style:none;display:flex;flex-direction:column;gap:30px}
-.steps li{position:relative;padding-left:26px;opacity:.38;transition:opacity .5s var(--ease)}
-.steps li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;background:currentColor;transform:skewY(-30deg)}
-.steps h3{font-size:clamp(26px,2.4vw,36px);letter-spacing:-.015em;line-height:1.12}
-.steps p{max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height .6s var(--ease),opacity .5s,margin .5s var(--ease);max-width:30em}
+.race{display:grid;grid-template-columns:62px 1fr 34px;gap:6px 10px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(237,234,227,.1);font-size:11px;color:var(--brown-2)}
+.race i{height:4px;background:rgba(237,234,227,.08);position:relative}
+.race u{position:absolute;left:0;top:0;bottom:0}
+.race u.y{width:5%;background:var(--terra);box-shadow:0 0 8px rgba(232,70,30,.8)}
+.race u.f{width:100%;background:#6B7076}
+.race b{font-weight:500;color:var(--brown);text-align:right}
+.steps{list-style:none;display:flex;flex-direction:column;gap:30px;position:relative;padding-left:2px;--p:.25}
+.steps::before,.steps::after{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:1px;background:rgba(237,234,227,.12)}
+.steps::after{background:var(--terra);bottom:auto;height:calc((100% - 16px) * var(--p));transition:height .7s var(--ease);box-shadow:0 0 10px rgba(232,70,30,.6)}
+.steps li{position:relative;display:grid;grid-template-columns:40px 1fr;gap:20px}
+.steps li h3{opacity:.38;transition:opacity .5s var(--ease)}
+.steps li .sn{color:rgba(237,234,227,.45)}
+.steps li.on h3{opacity:1}
+.sn{position:relative;z-index:1;width:38px;height:38px;display:grid;place-items:center;font-size:12px;letter-spacing:.06em;background:var(--paper);border:1px solid rgba(237,234,227,.25);transition:background-color .4s,border-color .4s,color .4s}
+.steps li.on .sn{background:var(--red);border-color:var(--red);color:var(--cream-2)}
+.steps li{cursor:default}
+.steps h3{font-size:clamp(26px,2.4vw,36px);letter-spacing:-.015em;line-height:1.12;padding-top:2px}
+.steps p,.steps code{display:block;max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height .6s var(--ease),opacity .5s,margin .5s var(--ease);max-width:30em}
+.steps code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--terra);letter-spacing:.02em}
 .steps li.on{opacity:1}
-.steps li.on p{max-height:200px;opacity:1;margin-top:14px}
+.steps li.on p{max-height:200px;opacity:1;margin-top:12px}
+.steps li.on code{max-height:40px;opacity:1;margin-top:10px}
 
 /* kullback */
 .kb{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:150px var(--gutter) 130px;overflow:hidden}
@@ -239,7 +276,7 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .roles b{font-weight:500;font-size:14px;letter-spacing:.12em;color:var(--brown-2);padding-top:8px}
 .roles h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;margin-bottom:6px}
 .roles p{max-width:30em}
-.task{background:var(--surface);border:1px solid rgba(237,234,227,.14);box-shadow:12px 12px 0 var(--shadow);padding:26px 28px}
+.task{background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:12px 12px 0 var(--shadow);padding:26px 28px}
 .task-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .task-top small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2)}
 .task-ask{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.3;letter-spacing:-.01em;margin-bottom:20px}
@@ -254,13 +291,13 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .quotes{padding:40px 0 130px}
 .quotes .lede{margin-bottom:50px}
 .q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.qcard{background:var(--surface);border:1px solid rgba(237,234,227,.14);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.qcard{background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .qcard:hover{transform:translate(-4px,-4px);box-shadow:16px 16px 0 var(--shadow)}
 .qcard blockquote{font-size:24px;line-height:1.35;font-weight:300;letter-spacing:-.015em}
 .qcard figcaption{display:flex;align-items:center;gap:14px;font-size:14px}
 .qcard b{font-weight:500;display:block}
 .qcard small{opacity:.7}
-.av{width:44px;height:44px;display:grid;place-items:center;background:#23272C;font-weight:500}
+.av{width:44px;height:44px;display:grid;place-items:center;background:#23272C;border:1px solid rgba(232,70,30,.35);font-weight:500}
 .av.k{background:var(--red);color:var(--cream-2)}
 
 /* standard */
@@ -275,9 +312,9 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .acc-i.open .acc-b{height:auto}
 .acc-b p{padding:12px 0 6px;max-width:32em}
 .std-ui{position:relative;height:460px}
-.sheet{position:absolute;background:var(--surface);border:1px solid rgba(237,234,227,.14);box-shadow:10px 10px 0 var(--shadow)}
-.sheet.s3{inset:0 40px 60px 120px;opacity:.5}
-.sheet.s2{inset:30px 20px 30px 60px;opacity:.75}
+.sheet{position:absolute;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:10px 10px 0 var(--shadow)}
+.sheet.s3{box-shadow:none;inset:0 40px 60px 120px;opacity:.5}
+.sheet.s2{box-shadow:none;inset:30px 20px 30px 60px;opacity:.75}
 .sheet.s1{inset:60px 0 0 0;padding:26px 28px;display:flex;flex-direction:column;gap:12px}
 .s1 h4{font-size:26px;letter-spacing:-.01em}
 .s1 > small{opacity:.75;margin-bottom:10px}
@@ -326,7 +363,8 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   .btn-nav{height:44px;padding:0 16px;font-size:12px}
   .announce{font-size:13.5px}
   .hero{min-height:88vh;padding-top:120px}
-  .cascade{width:110vw;height:70%;opacity:.8}
+  .ridges{-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 78%);mask-image:linear-gradient(180deg,#000 30%,transparent 78%);opacity:.9}
+  .hero-legend{display:none}
   .glance,.std,.close,.kb{grid-template-columns:1fr}
   .glance{padding:70px var(--gutter) 100px}
   .three,.q-grid,.loop-body{grid-template-columns:1fr}
@@ -335,6 +373,10 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   .ex-pin{grid-template-columns:1fr;gap:24px;padding-top:86px;align-content:start;height:auto;min-height:100vh}
   .pop{right:8px;top:auto;bottom:-20px;width:min(300px,80%)}
   .tr{grid-template-columns:52px 1fr 80px;font-size:12px}
+  .ex-kpis{grid-template-columns:repeat(2,1fr)}
+  .ex-kpis div:nth-child(3){border-left:0}
+  .ex-kpis div:nth-child(n+3){border-top:1px solid rgba(237,234,227,.1)}
+  .dash{box-shadow:8px 8px 0 var(--red);margin-bottom:56px}
   .tr span:nth-child(4){display:none}
   .stats{flex-wrap:wrap}
   .steps{gap:18px}
@@ -372,26 +414,17 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 
 <!-- HERO -->
 <section class="hero tone-terra" data-tone="dark">
-  <svg class="cascade" viewBox="0 0 900 820" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
-    <defs>
-      <linearGradient id="pgv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8461E" stop-opacity="0"/><stop offset=".5" stop-color="#E8461E" stop-opacity=".35"/><stop offset="1" stop-color="#CC3A14" stop-opacity=".75"/></linearGradient>
-      <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#3A3E44" stop-opacity="0"/>
-        <stop offset=".55" stop-color="#6B7076" stop-opacity=".22"/>
-        <stop offset="1" stop-color="#9EA2A8" stop-opacity=".5"/>
-      </linearGradient>
-    </defs>
-    <g class="panels"></g>
-  </svg>
+  <canvas class="ridges" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <p class="eyebrow r-up">Frontier models are trained for everyone.</p>
-    <h1 class="hero-title"><span class="ln"><span>Own your</span></span><span class="ln"><span>intelligence</span></span></h1>
+    <h1 class="hero-title"><span class="ln"><span>Own your</span></span><span class="ln"><span><em>intelligence</em></span></span></h1>
     <p class="hero-sub r-up">We post-train small models on your data. Faster, cheaper and more accurate than the frontier on your tasks.</p>
     <div class="btns r-up">
       <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-red">Book a call</a>
       <a href="#example" class="btn btn-ghost">See it work</a>
     </div>
   </div>
+  <p class="hero-legend r-up" aria-hidden="true"><span><i class="lg-f"></i>Frontier · broad</span><span><i class="lg-y"></i>Yours · sharp</span></p>
 </section>
 
 <!-- AT A GLANCE -->
@@ -399,11 +432,11 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   <div class="glance-art">
     <svg viewBox="0 0 420 340" aria-hidden="true">
       <g class="gl-panels">
-        <polygon points="40,330 40,140 150,80 150,270" fill="#5C6066" opacity=".28"/>
-        <polygon points="86,330 86,120 196,60 196,270" fill="#3A3E44" opacity=".38"/>
-        <polygon points="134,330 134,140 244,80 244,270" fill="#6B7076" opacity=".35"/>
-        <polygon points="178,330 178,120 288,60 288,270" fill="#3A3E44" opacity=".45"/>
-        <polygon points="224,330 224,140 334,80 334,270" fill="#5C6066" opacity=".32"/>
+        <polygon points="40,330 40,140 150,80 150,270" fill="#B8320F" opacity=".28"/>
+        <polygon points="86,330 86,120 196,60 196,270" fill="#5A1E0E" opacity=".38"/>
+        <polygon points="134,330 134,140 244,80 244,270" fill="#CC3A14" opacity=".35"/>
+        <polygon points="178,330 178,120 288,60 288,270" fill="#5A1E0E" opacity=".45"/>
+        <polygon points="224,330 224,140 334,80 334,270" fill="#B8320F" opacity=".32"/>
         <polygon points="62,214 62,196 120,164 120,182" fill="#E8461E" opacity=".8" class="gl-chip"/>
       </g>
       <line x1="92" y1="10" x2="92" y2="200" stroke="#EDEAE3" stroke-width="1.2" class="gl-line"/>
@@ -426,25 +459,25 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   <div class="three">
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#4A4E54" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#6B7076" opacity=".7"/></g>
-        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#4A4E54" opacity=".85"/></g>
-        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#5C6066" opacity=".9"/></g>
+        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#8F2A10" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#CC3A14" opacity=".7"/></g>
+        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#8F2A10" opacity=".85"/></g>
+        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#B8320F" opacity=".9"/></g>
       </svg>
       <h3>Cut the bill</h3>
       <p>$4,800 a month, not $48,000.</p>
     </div>
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#3A3E44" opacity=".55"/></g>
-        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#6B7076" opacity=".75"/></g>
-        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#4A4E54" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#5C6066"/></g>
+        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#5A1E0E" opacity=".55"/></g>
+        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#CC3A14" opacity=".75"/></g>
+        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#8F2A10" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#B8320F"/></g>
       </svg>
       <h3>Reply in 0.2 seconds</h3>
       <p>Not 4.0. Smaller models run faster.</p>
     </div>
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#4A4E54" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#4A4E54" opacity=".35"/></g>
+        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#8F2A10" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#8F2A10" opacity=".35"/></g>
         <g class="f2"><polygon points="70,70 140,35 210,70 140,105" fill="#E8461E" opacity=".8"/></g>
         <g class="f3"><polygon points="70,105 140,70 210,105 140,140" fill="#E8461E" opacity=".6"/></g>
       </svg>
@@ -476,12 +509,19 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 <!-- EXAMPLE: pinned dashboard + step list -->
 <section class="example tone-cream" id="example" data-tone="dark">
   <div class="ex-head">
-    <p class="eyebrow center">One example, in detail</p>
+    <p class="eyebrow center">Case study</p>
     <h2 class="center">A support agent for a furniture shop</h2>
-    <p class="center sub">One million support emails a month. Four steps.</p>
+    <p class="center sub">Follow one ticket through four steps.</p>
+    <dl class="ex-kpis">
+      <div><dt>Emails a month</dt><dd>1M</dd></div>
+      <div><dt>Monthly cost</dt><dd><s>$48k</s> $4.8k</dd></div>
+      <div><dt>Reply time</dt><dd><s>4.0 s</s> 0.2 s</dd></div>
+      <div><dt>Accuracy</dt><dd><s>64</s> 86</dd></div>
+    </dl>
   </div>
   <div class="ex-pin">
     <div class="dash">
+      <div class="dash-bar"><i></i><i></i><i></i><span>support / refund-agent</span><em>Live</em></div>
       <div class="dash-top">
         <h4>Refund agent · activity</h4>
         <div class="stats">
@@ -504,14 +544,14 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
         <div class="pop-v on"><small>Inbound email · #48213</small><p>“The chair arrived with a cracked leg. I want my money back.”</p></div>
         <div class="pop-v"><small>Customer and order</small><p><b>First-time customer</b><br>Oak chair · $149 · delivered three days ago</p></div>
         <div class="pop-v"><small>Decision · not a repeat customer</small><p><span class="opt">Refund now</span><span class="opt on">Replace first</span><span class="opt">Escalate</span></p></div>
-        <div class="pop-v"><small>refund-v1 replies · 0.2 s</small><p>Sorry about the chair. Want a free replacement today? Or we'll refund the full $149.</p></div>
+        <div class="pop-v"><small>refund-v1 replies · 0.2 s</small><p>Sorry about the chair. Want a free replacement today? Or we'll refund the full $149.</p><div class="race"><span>refund-v1</span><i><u class="y"></u></i><b>0.2 s</b><span>Frontier</span><i><u class="f"></u></i><b>4.0 s</b></div></div>
       </div>
     </div>
     <ol class="steps">
-      <li class="on"><h3>Email arrives</h3><p>A chair arrived broken. The customer wants to cancel.</p></li>
-      <li><h3>Look up the customer</h3><p>Did they actually order it? What did they pay?</p></li>
-      <li><h3>Read the situation</h3><p>Loyal customer: refund now. Anyone else: offer a replacement first.</p></li>
-      <li><h3>Draft the reply</h3><p>refund-v1 replies in 0.2 seconds, replacement first.</p></li>
+      <li class="on"><span class="sn">01</span><div><h3>Email arrives</h3><p>A chair arrived broken. The customer wants to cancel.</p><code>inbox.read</code></div></li>
+      <li><span class="sn">02</span><div><h3>Look up the customer</h3><p>Did they actually order it? What did they pay?</p><code>customers.get · orders.find</code></div></li>
+      <li><span class="sn">03</span><div><h3>Read the situation</h3><p>Loyal customer: refund now. Anyone else: offer a replacement first.</p><code>policy.check</code></div></li>
+      <li><span class="sn">04</span><div><h3>Draft the reply</h3><p>refund-v1 replies in 0.2 seconds, replacement first.</p><code>reply.send</code></div></li>
     </ol>
   </div>
 </section>
@@ -694,36 +734,91 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   }
   addEventListener('scroll', navTone, { passive: true });
 
-  /* ---------- hero cascade: panel heights follow a bell curve that sharpens on scroll ---------- */
+  /* ---------- hero ridgelines: a broad "frontier" distribution, with a band that sharpens into "yours" ---------- */
   (() => {
-    const g = $('.cascade .panels'), N = 15, W = 74, STEP = 50, SKEW = 92, BASE = 820;
-    const polys = Array.from({ length: N }, (_, i) => {
-      const p = document.createElementNS(NS, 'polygon');
-      p.setAttribute('fill', i === 10 ? 'url(#pgv)' : 'url(#pg)');
-      p.setAttribute('opacity', i === 10 ? '1' : (.55 + .45 * (i / N)).toFixed(2));
-      g.append(p); return p;
+    const cv = $('.ridges'), ctx = cv.getContext('2d'), hero = $('.hero');
+    const N = 44, PTS = 180, BG = '#121417', RED = '232,70,30';
+    const st = { sharp: 0, mx: 0, intro: reduce ? 1 : 0, peak: reduce ? 1 : 0 };
+    let W = 0, H = 0, dpr = 1, t0 = performance.now(), visible = true;
+    function size() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (reduce) draw(0);
+    }
+    const gauss = (x, m, s) => Math.exp(-((x - m) * (x - m)) / (2 * s * s));
+    const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+    function draw(time) {
+      const t = time / 1000;
+      ctx.clearRect(0, 0, W, H);
+      const mobile = W < 700;
+      const x0 = -W * .06, x1 = mobile ? W * 1.1 : W * 1.02;
+      const top = H * (mobile ? .1 : .16), bot = H * (mobile ? .62 : .9);
+      const gap = (bot - top) / N, A = gap * 11;
+      const c = (mobile ? .62 : .7) + st.mx * .04, s = .075 - .04 * st.sharp, band = N * .64;
+      let label = null;
+      for (let i = 0; i < N; i++) {
+        const base = top + (i + 1) * gap;
+        const w = gauss(i, band, N * .11) * st.peak;
+        const amp = ease((st.intro * 2.2) - i * .028);
+        const ph = i * .53;
+        const ys = new Float32Array(PTS + 1);
+        let maxH = 0;
+        for (let k = 0; k <= PTS; k++) {
+          const u = k / PTS;
+          const env = gauss(u, .56, .2);
+          const n = .55 * Math.sin(u * 13 + ph + t * .45) + .3 * Math.sin(u * 29 - ph * 1.7 + t * .8) + .2 * Math.sin(u * 51 + ph * 2.3 - t * .3);
+          const broad = gauss(u, .5, .19) * .42 + env * n * .16;
+          const h = A * amp * (broad * (1 - .55 * w) + w * 1.2 * gauss(u, c, s));
+          ys[k] = base - Math.max(0, h);
+          if (h > maxH) maxH = h;
+        }
+        ctx.beginPath();
+        ctx.moveTo(x0, base);
+        for (let k = 0; k <= PTS; k++) ctx.lineTo(x0 + (x1 - x0) * k / PTS, ys[k]);
+        ctx.lineTo(x1, base + gap * 2); ctx.lineTo(x0, base + gap * 2); ctx.closePath();
+        ctx.fillStyle = BG; ctx.fill();
+        ctx.beginPath();
+        for (let k = 0; k <= PTS; k++) { const x = x0 + (x1 - x0) * k / PTS; k ? ctx.lineTo(x, ys[k]) : ctx.moveTo(x, ys[k]); }
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(237,234,227,${(.1 + .32 * (i / N)) * (1 - .6 * w)})`;
+        ctx.stroke();
+        if (w > .04) {
+          const cx = x0 + (x1 - x0) * c, half = (x1 - x0) * s * 3.2;
+          const g = ctx.createLinearGradient(cx - half, 0, cx + half, 0);
+          g.addColorStop(0, `rgba(${RED},0)`); g.addColorStop(.5, `rgba(${RED},${Math.min(1, w * 1.1)})`); g.addColorStop(1, `rgba(${RED},0)`);
+          ctx.strokeStyle = g; ctx.lineWidth = 1.4;
+          ctx.shadowColor = `rgba(${RED},.9)`; ctx.shadowBlur = 14 * w;
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+          if (Math.abs(i - Math.round(band)) < .5) label = { x: cx, y: base - maxH };
+        }
+      }
+      if (label && st.peak > .6 && !mobile) {
+        const a = Math.min(1, (st.peak - .6) / .4);
+        ctx.globalAlpha = a;
+        ctx.strokeStyle = `rgba(${RED},.7)`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(label.x, label.y - 10); ctx.lineTo(label.x, label.y - 54); ctx.lineTo(label.x + 16, label.y - 54); ctx.stroke();
+        ctx.fillStyle = `rgb(${RED})`;
+        ctx.beginPath(); ctx.arc(label.x, label.y - 6, 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '500 11px "Inter Tight", sans-serif';
+        ctx.fillText('YOUR MODEL', label.x + 22, label.y - 50);
+        ctx.globalAlpha = 1;
+      }
+    }
+    size();
+    addEventListener('resize', size);
+    if (reduce) return;
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
+    gsap.ticker.add(() => { if (visible) draw(performance.now() - t0); });
+    gsap.to(st, { intro: 1, duration: 2.4, ease: 'power2.out', delay: .1 });
+    gsap.to(st, { peak: 1, duration: 2, ease: 'expo.out', delay: 1.1 });
+    gsap.to(st, { sharp: 1, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 1 } });
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      gsap.to(st, { mx: (e.clientX - r.left) / r.width - .5, duration: 1.4, ease: 'power3' });
     });
-    const st = { sigma: 5.2, center: 9.6, grow: 0, mx: 0, my: 0 };
-    const grows = new Array(N).fill(0);
-    function render() {
-      polys.forEach((p, i) => {
-        const z = (i - st.center) / st.sigma;
-        const h = (150 + 560 * Math.exp(-z * z / 2)) * grows[i];
-        const par = (i / N) * 26;
-        const x = 40 + i * STEP + st.mx * par, by = BASE + st.my * par * .4;
-        p.setAttribute('points', `${x},${by} ${x},${by - h} ${x + W},${by - h - SKEW} ${x + W},${by - SKEW}`);
-      });
-    }
-    gsap.ticker.add(render);
-    grows.forEach((_, i) => { const o = { v: 0 }; gsap.to(o, { v: 1, duration: 1.6, delay: .15 + i * .05, ease: 'expo.out', onUpdate: () => { grows[i] = o.v; } }); });
-    gsap.to(st, { sigma: 1.9, center: 10.4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
-    if (!reduce) {
-      const hero = $('.hero');
-      hero.addEventListener('mousemove', e => {
-        const r = hero.getBoundingClientRect();
-        gsap.to(st, { mx: (e.clientX - r.left) / r.width - .5, my: (e.clientY - r.top) / r.height - .5, duration: 1.2, ease: 'power3' });
-      });
-    }
   })();
 
   /* ---------- hero copy ---------- */
@@ -733,7 +828,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
     .from('.btn-nav', { opacity: 0, duration: 1 }, .25)
     .from('.hero .eyebrow', { y: 16, opacity: 0, duration: 1 }, .3)
     .from('.hero-title .ln > span', { yPercent: 110, duration: 1.3, stagger: .1 }, .35)
-    .from('.hero-sub, .hero .btns', { y: 20, opacity: 0, duration: 1.1, stagger: .1 }, .6);
+    .from('.hero-sub, .hero .btns, .hero-legend', { y: 20, opacity: 0, duration: 1.1, stagger: .1 }, .6);
 
   /* ---------- glance art ---------- */
   gsap.timeline({ scrollTrigger: { trigger: '.glance', start: 'top 70%' }, defaults: { ease: 'expo.out' } })
@@ -773,6 +868,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
       if (k === cur) return;
       const prev = cur; cur = k;
       items.forEach((li, i) => li.classList.toggle('on', i === k));
+      $('.steps').style.setProperty('--p', (k + 1) / 4);
       if (prev >= 0) {
         const from = views[prev];
         gsap.to(from, { autoAlpha: 0, y: -8, duration: .25, onComplete: () => from.classList.remove('on') });
@@ -805,7 +901,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   /* ---------- kullback art: big translucent panels with parallax ---------- */
   (() => {
     const g = $('.kb-panels');
-    const cols = ['#3A3E44', '#5C6066', '#2C3035', '#7C8086', '#4A4E54', '#6B7076', '#E8461E', '#33373C'];
+    const cols = ['#5A1E0E', '#B8320F', '#3A160A', '#E8461E', '#8F2A10', '#CC3A14', '#F07A55', '#6E230C'];
     const panels = cols.map((c, i) => {
       const p = document.createElementNS(NS, 'polygon');
       const x = 60 + i * 66, top = 120 + (i % 3) * 60 + i * 20;
@@ -859,7 +955,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   })();
 
   /* ---------- generic reveals ---------- */
-  const sel = '.bottom .eyebrow, .bottom .sub, .col h3, .col p, .bottom .btn, .trusted h2, .trusted .lede, .ex-head > *, .kb-copy > .eyebrow, .kb-copy > h2, .kb .lede, .loop-head > *, .roles li, .task, .quotes .wrap > *, .qcard, .std-copy > .eyebrow, .std-copy > h2, .std .lede, .std-copy > .btn, .acc-i, .faq > .eyebrow, .faq > h2, details, .foot-top > *, .foot-bot';
+  const sel = '.bottom .eyebrow, .bottom .sub, .col h3, .col p, .bottom .btn, .trusted h2, .trusted .lede, .ex-head > *, .ex-kpis div, .kb-copy > .eyebrow, .kb-copy > h2, .kb .lede, .loop-head > *, .roles li, .task, .quotes .wrap > *, .qcard, .std-copy > .eyebrow, .std-copy > h2, .std .lede, .std-copy > .btn, .acc-i, .faq > .eyebrow, .faq > h2, details, .foot-top > *, .foot-bot';
   gsap.set(sel, { opacity: 0 });
   ScrollTrigger.batch(sel, { start: 'top 90%', once: true, onEnter: els => gsap.fromTo(els, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: .07, ease: 'expo.out' }) });
 
