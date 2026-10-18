@@ -237,22 +237,33 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .race u.y{width:5%;background:var(--terra);box-shadow:0 0 8px rgba(232,70,30,.8)}
 .race u.f{width:100%;background:#6B7076}
 .race b{font-weight:500;color:var(--brown);text-align:right}
-.steps{list-style:none;display:flex;flex-direction:column;gap:30px;position:relative;padding-left:2px;--p:.25}
-.steps::before,.steps::after{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:1px;background:rgba(237,234,227,.12)}
-.steps::after{background:var(--terra);bottom:auto;height:calc((100% - 16px) * var(--p));transition:height .7s var(--ease);box-shadow:0 0 10px rgba(232,70,30,.6)}
-.steps li{position:relative;display:grid;grid-template-columns:40px 1fr;gap:20px}
-.steps li h3{opacity:.38;transition:opacity .5s var(--ease)}
-.steps li .sn{color:rgba(237,234,227,.45)}
+.flow{max-width:520px}
+.flow-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;margin-bottom:10px;border-bottom:1px solid rgba(237,234,227,.1);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2)}
+.flow-head b{font-family:ui-monospace,Menlo,monospace;font-weight:400;letter-spacing:0;color:var(--terra);font-size:13px;margin-left:6px}
+.steps{list-style:none;position:relative;display:flex;flex-direction:column;--y:0px}
+.steps::before,.steps::after{content:"";position:absolute;left:4px;top:28px;width:1px}
+.steps::before{bottom:28px;background:rgba(237,234,227,.12)}
+.steps::after{height:var(--y);background:linear-gradient(180deg,rgba(232,70,30,.15),var(--terra));box-shadow:0 0 10px rgba(232,70,30,.55);transition:height .8s var(--ease)}
+.steps li{position:relative;display:grid;grid-template-columns:30px 1fr;padding:16px 0}
+.node{position:relative;z-index:1;width:9px;height:9px;margin-top:12px;border-radius:50%;border:1px solid rgba(237,234,227,.35);background:var(--paper);transition:background-color .4s,border-color .4s,box-shadow .5s}
+.steps li.done .node{background:var(--terra);border-color:var(--terra)}
+.steps li.on .node{background:var(--terra);border-color:var(--terra);box-shadow:0 0 0 5px rgba(232,70,30,.16),0 0 16px rgba(232,70,30,.9)}
+.sn{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;color:var(--brown-2);margin-bottom:4px;transition:color .4s}
+.steps li.on .sn{color:var(--terra)}
+.steps h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;line-height:1.12;opacity:.32;transition:opacity .5s var(--ease)}
+.steps li.done h3{opacity:.55}
 .steps li.on h3{opacity:1}
-.sn{position:relative;z-index:1;width:38px;height:38px;display:grid;place-items:center;font-size:12px;letter-spacing:.06em;background:var(--paper);border:1px solid rgba(237,234,227,.25);transition:background-color .4s,border-color .4s,color .4s}
-.steps li.on .sn{background:var(--red);border-color:var(--red);color:var(--cream-2)}
-.steps li{cursor:default}
-.steps h3{font-size:clamp(26px,2.4vw,36px);letter-spacing:-.015em;line-height:1.12;padding-top:2px}
-.steps p,.steps code{display:block;max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height .6s var(--ease),opacity .5s,margin .5s var(--ease);max-width:30em}
-.steps code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--terra);letter-spacing:.02em}
-.steps li.on{opacity:1}
-.steps li.on p{max-height:200px;opacity:1;margin-top:12px}
-.steps li.on code{max-height:40px;opacity:1;margin-top:10px}
+.sb{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--ease),opacity .5s}
+.steps li.on .sb{max-height:260px;opacity:1}
+.sb p{margin-top:10px;color:var(--brown-2)}
+.trace{margin-top:16px;background:var(--surface);border:1px solid rgba(232,70,30,.28);border-left:2px solid var(--terra);padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.5}
+.trace .call{display:flex;justify-content:space-between;gap:14px}
+.trace code{font:inherit;color:var(--brown)}
+.trace code b{font-weight:400;color:var(--terra)}
+.trace code i{font-style:normal;color:#A9A49A}
+.trace .ms{color:var(--brown-2);white-space:nowrap}
+.trace .out{margin-top:6px;color:var(--brown-2)}
+.trace .out em{font-style:normal;color:var(--terra)}
 
 /* kullback */
 .kb{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:150px var(--gutter) 130px;overflow:hidden}
@@ -379,7 +390,6 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   .dash{box-shadow:8px 8px 0 var(--red);margin-bottom:56px}
   .tr span:nth-child(4){display:none}
   .stats{flex-wrap:wrap}
-  .steps{gap:18px}
   .kb-art{opacity:.35;width:100%}
   .std-ui{height:420px}
   .ev{grid-template-columns:100px 1fr 28px;font-size:13px}
@@ -547,12 +557,15 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
         <div class="pop-v"><small>refund-v1 replies · 0.2 s</small><p>Sorry about the chair. Want a free replacement today? Or we'll refund the full $149.</p><div class="race"><span>refund-v1</span><i><u class="y"></u></i><b>0.2 s</b><span>Frontier</span><i><u class="f"></u></i><b>4.0 s</b></div></div>
       </div>
     </div>
-    <ol class="steps">
-      <li class="on"><span class="sn">01</span><div><h3>Email arrives</h3><p>A chair arrived broken. The customer wants to cancel.</p><code>inbox.read</code></div></li>
-      <li><span class="sn">02</span><div><h3>Look up the customer</h3><p>Did they actually order it? What did they pay?</p><code>customers.get · orders.find</code></div></li>
-      <li><span class="sn">03</span><div><h3>Read the situation</h3><p>Loyal customer: refund now. Anyone else: offer a replacement first.</p><code>policy.check</code></div></li>
-      <li><span class="sn">04</span><div><h3>Draft the reply</h3><p>refund-v1 replies in 0.2 seconds, replacement first.</p><code>reply.send</code></div></li>
-    </ol>
+    <div class="flow">
+      <div class="flow-head"><span>Agent trace · #48213</span><span>Elapsed <b class="elapsed">0.008 s</b></span></div>
+      <ol class="steps">
+      <li class="on"><span class="node"></span><div><small class="sn">01</small><h3>Email arrives</h3><div class="sb"><p>A chair arrived broken. The customer wants to cancel.</p><div class="trace"><div class="call"><code><b>inbox.read</b>(<i>"#48213"</i>)</code><span class="ms">8 ms</span></div><div class="out">→ “The chair arrived with a cracked leg. I want my money back.”</div></div></div></div></li>
+      <li><span class="node"></span><div><small class="sn">02</small><h3>Look up the customer</h3><div class="sb"><p>Did they actually order it? What did they pay?</p><div class="trace"><div class="call"><code><b>orders.find</b>(<i>customer: 20931</i>)</code><span class="ms">14 ms</span></div><div class="out">→ 1 order · oak chair · $149 · delivered 3 days ago</div></div></div></div></li>
+      <li><span class="node"></span><div><small class="sn">03</small><h3>Read the situation</h3><div class="sb"><p>Loyal customer: refund now. Anyone else: offer a replacement first.</p><div class="trace"><div class="call"><code><b>policy.check</b>(<i>order: 77812</i>)</code><span class="ms">6 ms</span></div><div class="out">→ first order · not loyal yet · <em>replace first</em></div></div></div></div></li>
+      <li><span class="node"></span><div><small class="sn">04</small><h3>Draft the reply</h3><div class="sb"><p>refund-v1 writes it, replacement first, refund ready.</p><div class="trace"><div class="call"><code><b>refund-v1.reply</b>()</code><span class="ms">200 ms</span></div><div class="out">→ reply sent · 0.2 s instead of 4.0 s</div></div></div></div></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -867,8 +880,12 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
     function set(k) {
       if (k === cur) return;
       const prev = cur; cur = k;
-      items.forEach((li, i) => li.classList.toggle('on', i === k));
-      $('.steps').style.setProperty('--p', (k + 1) / 4);
+      items.forEach((li, i) => { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); });
+      const rail = () => $('.steps').style.setProperty('--y', (items[k].offsetTop + 4) + 'px');
+      rail(); setTimeout(rail, 750);
+      const el = $('.elapsed'), from = { v: parseFloat(el.textContent) * 1000 || 0 };
+      gsap.to(from, { v: [8, 22, 28, 228][k], duration: .9, ease: 'power2.out', onUpdate: () => { el.textContent = (from.v / 1000).toFixed(3) + ' s'; } });
+      gsap.fromTo($('.out', items[k]), { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: .6, delay: .35, ease: 'power3.out' });
       if (prev >= 0) {
         const from = views[prev];
         gsap.to(from, { autoAlpha: 0, y: -8, duration: .25, onComplete: () => from.classList.remove('on') });
