@@ -7,20 +7,20 @@
 <meta name="description" content="leibler is a data lab that helps you own your intelligence. Kullback builds evals and synthetic training data from your agent's real work, then post-trains a small model that beats the frontier on speed, cost and accuracy.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <link rel="canonical" href="https://www.leibler.dev/">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F6F4EF">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="leibler">
 <meta property="og:title" content="leibler · A model trained on your agent's workflow">
 <meta property="og:description" content="leibler is a data lab that helps you own your intelligence. Kullback builds evals and synthetic training data from your agent's real work, then post-trains a small model that beats the frontier on speed, cost and accuracy.">
 <meta property="og:url" content="https://www.leibler.dev/">
-<meta property="og:image" content="https://www.leibler.dev/assets/img/og.png?v=2">
+<meta property="og:image" content="https://www.leibler.dev/assets/img/og.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="leibler: frontier models are built for everyone, yours is built for your workflow.">
+<meta property="og:image:alt" content="leibler: frontier models are trained for everyone. Own your intelligence.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="leibler · A model trained on your agent's workflow">
 <meta name="twitter:description" content="leibler is a data lab that helps you own your intelligence. Kullback builds evals and synthetic training data from your agent's real work, then post-trains a small model that beats the frontier on speed, cost and accuracy.">
-<meta name="twitter:image" content="https://www.leibler.dev/assets/img/og.png?v=2">
+<meta name="twitter:image" content="https://www.leibler.dev/assets/img/og.png?v=3">
 <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
@@ -49,19 +49,19 @@
 </script>
 <style>
 :root{
-  --terra:#1E4D3A;
-  --terra-2:#173E2F;
-  --cream:#E3EDE7;
-  --cream-2:#F1F6F3;
-  --paper:#FAFCFB;
-  --brown:#142A21;
-  --brown-2:#4C6358;
-  --choc:#163A2B;
-  --red:#1E4D3A;
-  --peach:#B9D6C6;
-  --gold:#BFDCC9;
-  --rose:#8FBFA5;
-  --shadow:#D3E3DA;
+  --terra:#E8461E;
+  --terra-2:#B8320F;
+  --cream:#EDEAE3;
+  --cream-2:#FAF8F4;
+  --paper:#F6F4EF;
+  --brown:#121417;
+  --brown-2:#5C6066;
+  --choc:#121417;
+  --red:#CC3A14;
+  --peach:#DDD8CE;
+  --gold:#E2DDD3;
+  --rose:#C9C3B7;
+  --shadow:#E3DED4;
   --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;
   --serif:'Fraunces',Georgia,serif;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -70,7 +70,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{font-family:var(--sans);background:#fff;color:var(--brown);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--sans);background:var(--paper);color:var(--brown);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
 pre,code,input,svg text{font-family:var(--sans)}
@@ -85,7 +85,7 @@ pre,code,input,svg text{font-family:var(--sans)}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .2  0 0 0 0 .15  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* tones */
-.tone-terra{background:#fff;color:var(--brown)}
+.tone-terra{background:var(--paper);color:var(--brown)}
 .tone-cream{background:transparent}
 .tone-choc{background:var(--choc);color:var(--cream)}
 
@@ -109,8 +109,8 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .btn-cream::before{background:#fff}
 .btn-red{background:var(--red);color:var(--cream-2)}
 .btn-red::before{background:var(--brown)}
-.btn-ghost{color:var(--brown);box-shadow:inset 0 0 0 1px rgba(20,42,33,.35)}
-.btn-ghost::before{background:rgba(30,77,58,.07)}
+.btn-ghost{color:var(--brown);box-shadow:inset 0 0 0 1px rgba(18,20,23,.35)}
+.btn-ghost::before{background:rgba(204,58,20,.07)}
 .btn:hover{transform:translateY(-2px)}
 .btns{display:flex;gap:14px;flex-wrap:wrap}
 
@@ -120,10 +120,10 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .nav{position:sticky;top:0;z-index:60;height:98px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);margin-bottom:-98px;
   color:var(--cream);transition:color .4s,background-color .4s,height .4s var(--ease)}
 .nav.scrolled{height:78px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.nav[data-tone="dark"].scrolled{background:rgba(30,77,58,.82)}
-.nav[data-tone="choc"].scrolled{background:rgba(22,58,43,.88)}
+.nav[data-tone="dark"].scrolled{background:rgba(18,20,23,.82)}
+.nav[data-tone="choc"].scrolled{background:rgba(18,20,23,.88)}
 .nav[data-tone="light"]{color:var(--brown)}
-.nav[data-tone="light"].scrolled{background:rgba(255,255,255,.88);box-shadow:0 1px 0 rgba(20,42,33,.08)}
+.nav[data-tone="light"].scrolled{background:rgba(246,244,239,.88);box-shadow:0 1px 0 rgba(18,20,23,.08)}
 .brand{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:400;letter-spacing:-.04em}
 .brand svg{width:30px;height:30px}
 .brand .brand-l{fill:var(--terra);transition:fill .4s}
@@ -166,49 +166,49 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .trusted .lede{margin-bottom:56px}
 .mq{overflow:hidden;padding:4px 0 14px}
 .mq-track{display:flex;gap:16px;width:max-content;will-change:transform}
-.tile{width:184px;height:88px;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.tile{width:184px;height:88px;background:#fff;border:1px solid rgba(18,20,23,.14);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .tile:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--shadow)}
 .tile small{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-2)}
 .tile b{font-size:30px;font-weight:400;letter-spacing:-.03em}
-.tile.bar b{color:#142A21}
-.tile.ours{background:var(--terra);color:var(--cream-2)}
+.tile.bar b{color:#121417}
+.tile.ours{background:var(--red);color:var(--cream-2)}
 .tile.ours small{color:var(--cream)}
 
 /* example pinned */
 .example{padding-top:120px}
 .ex-head{padding:0 var(--gutter);margin-bottom:40px}
 .ex-pin{height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:90px var(--gutter) 40px}
-.dash{position:relative;background:#F2F7F4;padding:18px 0 0 18px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.dash{position:relative;background:#EFECE5;padding:18px 0 0 18px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
 .dash-top{padding:0 18px 16px 0}
 .dash h4{font-size:24px;letter-spacing:-.01em;margin-bottom:12px}
 .stats{display:flex;gap:10px}
-.stat{border:1px solid rgba(20,42,33,.2);padding:10px 12px}
+.stat{border:1px solid rgba(18,20,23,.2);padding:10px 12px}
 .stat.grow{flex:1}
 .stat small{font-size:12px;font-weight:500;display:block;margin-bottom:4px}
 .stat div{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .stat b{font-size:22px;font-weight:500;letter-spacing:-.02em}
 .stat span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-right:8px}
-.meter{flex:1;min-width:60px;height:10px;background:rgba(20,42,33,.12);position:relative;align-self:center}
-.meter u{position:absolute;inset:0;right:auto;width:0;background:#1E4D3A}
+.meter{flex:1;min-width:60px;height:10px;background:rgba(18,20,23,.12);position:relative;align-self:center}
+.meter u{position:absolute;inset:0;right:auto;width:0;background:#E8461E}
 .table{background:#fff;font-size:13px}
-.tr{display:grid;grid-template-columns:70px 1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 16px;height:40px;border-bottom:1px solid #E8F0EB;transition:background-color .4s}
-.th{background:#4F7A66;color:#fff;font-size:11.5px;height:30px}
-.tr.ghost span{height:7px;background:#E6EEE9;border-radius:2px}
+.tr{display:grid;grid-template-columns:70px 1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 16px;height:40px;border-bottom:1px solid #ECE9E2;transition:background-color .4s}
+.th{background:#2A2D31;color:#fff;font-size:11.5px;height:30px}
+.tr.ghost span{height:7px;background:#E4E0D8;border-radius:2px}
 .tr.ghost span:nth-child(2){width:70%}
-.tr.hot{background:#E9F5EE}
+.tr.hot{background:#FBE8E1}
 .pill{justify-self:start;font-size:11px;padding:2px 8px;border-radius:3px;background:#EEE;white-space:nowrap}
 .p-amber{background:#FBEFC4;color:#8A6410}
 .p-green{background:#D9F1D9;color:#2E6B33}
 .p-red{background:#F8D4D0;color:#9B2C22}
 .p-grey{background:#E7E3DF;color:#6B625D}
 .p-dec,.p-stat{background:#E7E3DF;transition:background-color .4s,color .4s}
-.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
+.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:#fff;border:1px solid rgba(18,20,23,.14);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
 .pop-v{position:absolute;inset:16px 18px;opacity:0;visibility:hidden}
 .pop-v.on{position:relative;inset:auto;opacity:1;visibility:visible}
 .pop small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
 .pop p{font-size:16px;line-height:1.4}
-.pop .opt{display:inline-block;font-size:13px;padding:4px 10px;margin:4px 6px 0 0;border:1px solid rgba(20,42,33,.25)}
-.pop .opt.on{background:var(--terra);color:var(--cream-2);border-color:var(--terra)}
+.pop .opt{display:inline-block;font-size:13px;padding:4px 10px;margin:4px 6px 0 0;border:1px solid rgba(18,20,23,.25)}
+.pop .opt.on{background:var(--red);color:var(--cream-2);border-color:var(--red)}
 .steps{list-style:none;display:flex;flex-direction:column;gap:30px}
 .steps li{position:relative;padding-left:26px;opacity:.38;transition:opacity .5s var(--ease)}
 .steps li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;background:currentColor;transform:skewY(-30deg)}
@@ -224,28 +224,28 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .ilist{list-style:none;display:flex;flex-direction:column;gap:30px;max-width:36em}
 .ilist li{display:grid;grid-template-columns:44px 1fr;gap:22px;align-items:center}
 .ic svg{width:42px;height:42px;fill:none;stroke:var(--red);stroke-width:1.6}
-.ic svg rect:first-child{fill:rgba(30,77,58,.08)}
+.ic svg rect:first-child{fill:rgba(204,58,20,.08)}
 .kb-art{position:absolute;right:0;top:0;width:55%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 96%);mask-image:linear-gradient(180deg,#000 55%,transparent 96%)}
 
 /* how it works: loop */
 .loop{padding:40px var(--gutter) 140px}
 .loop-head{max-width:820px;margin-bottom:56px}
 .inputs{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.inputs li{font-size:14px;padding:8px 14px;background:#fff;border:1px solid rgba(20,42,33,.18)}
+.inputs li{font-size:14px;padding:8px 14px;background:#fff;border:1px solid rgba(18,20,23,.18)}
 .inputs small{opacity:.6;margin-left:4px}
 .loop-body{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.roles{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(20,42,33,.2)}
-.roles li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid rgba(20,42,33,.2)}
+.roles{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(18,20,23,.2)}
+.roles li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid rgba(18,20,23,.2)}
 .roles b{font-weight:500;font-size:14px;letter-spacing:.12em;color:var(--brown-2);padding-top:8px}
 .roles h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;margin-bottom:6px}
 .roles p{max-width:30em}
-.task{background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:12px 12px 0 var(--shadow);padding:26px 28px}
+.task{background:#fff;border:1px solid rgba(18,20,23,.14);box-shadow:12px 12px 0 var(--shadow);padding:26px 28px}
 .task-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .task-top small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2)}
 .task-ask{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.3;letter-spacing:-.01em;margin-bottom:20px}
-.task dl{display:grid;grid-template-columns:120px 1fr;gap:14px 18px;font-size:14.5px;border-top:1px solid #E8F0EB;padding-top:18px}
+.task dl{display:grid;grid-template-columns:120px 1fr;gap:14px 18px;font-size:14.5px;border-top:1px solid #ECE9E2;padding-top:18px}
 .task dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);padding-top:2px}
-.task code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#EEF4F0;padding:1px 5px}
+.task code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#ECE8E0;padding:1px 5px}
 .chk{display:block;position:relative;padding-left:22px}
 .chk + .chk{margin-top:6px}
 .chk::before{content:"";position:absolute;left:2px;top:.35em;width:10px;height:6px;border-left:1.6px solid var(--terra);border-bottom:1.6px solid var(--terra);transform:rotate(-45deg)}
@@ -254,14 +254,14 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .quotes{padding:40px 0 130px}
 .quotes .lede{margin-bottom:50px}
 .q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.qcard{background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.qcard{background:#fff;border:1px solid rgba(18,20,23,.14);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .qcard:hover{transform:translate(-4px,-4px);box-shadow:16px 16px 0 var(--shadow)}
 .qcard blockquote{font-size:24px;line-height:1.35;font-weight:300;letter-spacing:-.015em}
 .qcard figcaption{display:flex;align-items:center;gap:14px;font-size:14px}
 .qcard b{font-weight:500;display:block}
 .qcard small{opacity:.7}
-.av{width:44px;height:44px;display:grid;place-items:center;background:#E8F1EC;font-weight:500}
-.av.k{background:var(--terra);color:var(--cream-2)}
+.av{width:44px;height:44px;display:grid;place-items:center;background:#ECE9E2;font-weight:500}
+.av.k{background:var(--red);color:var(--cream-2)}
 
 /* standard */
 .std{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:80px var(--gutter) 140px;align-items:center}
@@ -275,25 +275,25 @@ h2.big{font-size:clamp(40px,4.6vw,66px)}
 .acc-i.open .acc-b{height:auto}
 .acc-b p{padding:12px 0 6px;max-width:32em}
 .std-ui{position:relative;height:460px}
-.sheet{position:absolute;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:10px 10px 0 var(--shadow)}
+.sheet{position:absolute;background:#fff;border:1px solid rgba(18,20,23,.14);box-shadow:10px 10px 0 var(--shadow)}
 .sheet.s3{inset:0 40px 60px 120px;opacity:.5}
 .sheet.s2{inset:30px 20px 30px 60px;opacity:.75}
 .sheet.s1{inset:60px 0 0 0;padding:26px 28px;display:flex;flex-direction:column;gap:12px}
 .s1 h4{font-size:26px;letter-spacing:-.01em}
 .s1 > small{opacity:.75;margin-bottom:10px}
 .ev{display:grid;grid-template-columns:130px 1fr 32px;gap:14px;align-items:center;font-size:14.5px}
-.ev i{position:relative;height:12px;background:#E8F0EB}
-.ev i::after{content:"";position:absolute;left:80%;top:-5px;bottom:-5px;width:2px;background:#142A21}
-.ev u{position:absolute;left:0;top:0;bottom:0;width:0;background:#4F7A66}
+.ev i{position:relative;height:12px;background:#ECE9E2}
+.ev i::after{content:"";position:absolute;left:80%;top:-5px;bottom:-5px;width:2px;background:#121417}
+.ev u{position:absolute;left:0;top:0;bottom:0;width:0;background:#B8BCC2}
 .ev b{text-align:right;font-weight:500}
 .ev.ours u{background:var(--terra)}
-.ev.ours b{color:var(--terra)}
+.ev.ours b{color:var(--red)}
 
 /* faq */
 .faq{padding:40px var(--gutter) 150px}
 .faq h2{margin-bottom:46px}
-.faq-list{max-width:900px;margin:0 auto;border-top:1px solid rgba(20,42,33,.2)}
-details{border-bottom:1px solid rgba(20,42,33,.2)}
+.faq-list{max-width:900px;margin:0 auto;border-top:1px solid rgba(18,20,23,.2)}
+details{border-bottom:1px solid rgba(18,20,23,.2)}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:23px;font-weight:300;letter-spacing:-.02em}
 summary::-webkit-details-marker{display:none}
 summary i{width:14px;height:14px;position:relative;flex:none;transition:transform .45s var(--ease)}
@@ -316,7 +316,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 .foot-cols{display:flex;gap:120px;font-size:19px;font-weight:500}
 .foot-cols div{display:flex;flex-direction:column;gap:18px}
 .foot-cols a:hover,.foot-bot a:hover{text-decoration:underline;text-underline-offset:3px}
-.foot-bot{display:flex;justify-content:space-between;font-size:15px;border-top:1px solid rgba(227,237,231,.18);padding-top:22px}
+.foot-bot{display:flex;justify-content:space-between;font-size:15px;border-top:1px solid rgba(237,234,227,.18);padding-top:22px}
 
 /* responsive */
 @media (max-width:960px){
@@ -374,10 +374,11 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 <section class="hero tone-terra" data-tone="light">
   <svg class="cascade" viewBox="0 0 900 820" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
     <defs>
+      <linearGradient id="pgv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8461E" stop-opacity="0"/><stop offset=".5" stop-color="#E8461E" stop-opacity=".35"/><stop offset="1" stop-color="#CC3A14" stop-opacity=".75"/></linearGradient>
       <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#A9CDB9" stop-opacity="0"/>
-        <stop offset=".55" stop-color="#5E9A7E" stop-opacity=".22"/>
-        <stop offset="1" stop-color="#2E6B52" stop-opacity=".5"/>
+        <stop offset="0" stop-color="#C9C4BA" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#9EA2A8" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#5C6066" stop-opacity=".5"/>
       </linearGradient>
     </defs>
     <g class="panels"></g>
@@ -398,14 +399,14 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   <div class="glance-art">
     <svg viewBox="0 0 420 340" aria-hidden="true">
       <g class="gl-panels">
-        <polygon points="40,330 40,140 150,80 150,270" fill="#B9D6C6" opacity=".28"/>
-        <polygon points="86,330 86,120 196,60 196,270" fill="#D6EADF" opacity=".38"/>
-        <polygon points="134,330 134,140 244,80 244,270" fill="#7FB39A" opacity=".35"/>
-        <polygon points="178,330 178,120 288,60 288,270" fill="#D6EADF" opacity=".45"/>
-        <polygon points="224,330 224,140 334,80 334,270" fill="#B9D6C6" opacity=".32"/>
-        <polygon points="62,214 62,196 120,164 120,182" fill="#2E6B52" opacity=".8" class="gl-chip"/>
+        <polygon points="40,330 40,140 150,80 150,270" fill="#D3CDC2" opacity=".28"/>
+        <polygon points="86,330 86,120 196,60 196,270" fill="#E6E2D9" opacity=".38"/>
+        <polygon points="134,330 134,140 244,80 244,270" fill="#B8BCC2" opacity=".35"/>
+        <polygon points="178,330 178,120 288,60 288,270" fill="#E6E2D9" opacity=".45"/>
+        <polygon points="224,330 224,140 334,80 334,270" fill="#D3CDC2" opacity=".32"/>
+        <polygon points="62,214 62,196 120,164 120,182" fill="#E8461E" opacity=".8" class="gl-chip"/>
       </g>
-      <line x1="92" y1="10" x2="92" y2="200" stroke="#142A21" stroke-width="1.2" class="gl-line"/>
+      <line x1="92" y1="10" x2="92" y2="200" stroke="#121417" stroke-width="1.2" class="gl-line"/>
     </svg>
     <span class="gl-label">In your account</span>
   </div>
@@ -425,27 +426,27 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   <div class="three">
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#BFDCC9" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#8FBFA5" opacity=".7"/></g>
-        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#BFDCC9" opacity=".85"/></g>
-        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#9CC5AE" opacity=".9"/></g>
+        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#DDD8CE" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#B8BCC2" opacity=".7"/></g>
+        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#DDD8CE" opacity=".85"/></g>
+        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#CFC9BE" opacity=".9"/></g>
       </svg>
       <h3>Cut the bill</h3>
       <p>$4,800 a month instead of $48,000. A model a hundred times smaller runs on a cheaper GPU and handles more traffic on it.</p>
     </div>
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#C4DDCF" opacity=".55"/></g>
-        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#8FBFA5" opacity=".75"/></g>
-        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#BFDCC9" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#9CC5AE"/></g>
+        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#E6E2D9" opacity=".55"/></g>
+        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#B8BCC2" opacity=".75"/></g>
+        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#DDD8CE" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#CFC9BE"/></g>
       </svg>
       <h3>Reply in 0.2 seconds</h3>
       <p>Instead of 4.0. Smaller means faster: twenty replies go out from refund-v1 for every one from the frontier model.</p>
     </div>
     <div class="col">
       <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#BFDCC9" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#BFDCC9" opacity=".35"/></g>
-        <g class="f2"><polygon points="70,70 140,35 210,70 140,105" fill="#6FA88C" opacity=".8"/></g>
-        <g class="f3"><polygon points="70,105 140,70 210,105 140,140" fill="#6FA88C" opacity=".6"/></g>
+        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#DDD8CE" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#DDD8CE" opacity=".35"/></g>
+        <g class="f2"><polygon points="70,70 140,35 210,70 140,105" fill="#E8461E" opacity=".8"/></g>
+        <g class="f3"><polygon points="70,105 140,70 210,105 140,140" fill="#E8461E" opacity=".6"/></g>
       </svg>
       <h3>Score 86 of 100</h3>
       <p>On the shop's own tickets, where the frontier gets 64. It clears the bar the frontier can't.</p>
@@ -628,7 +629,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 
 <!-- CLOSING -->
 <section class="close tone-choc" data-tone="dark">
-  <svg class="pyramid" viewBox="0 0 720 620" aria-hidden="true"><defs><radialGradient id="glow" cx=".5" cy=".55" r=".5"><stop offset="0" stop-color="#7FC2A0" stop-opacity=".55"/><stop offset="1" stop-color="#7FC2A0" stop-opacity="0"/></radialGradient></defs><ellipse cx="360" cy="330" rx="300" ry="240" fill="url(#glow)" class="glow"/><g class="tiers"></g></svg>
+  <svg class="pyramid" viewBox="0 0 720 620" aria-hidden="true"><defs><radialGradient id="glow" cx=".5" cy=".55" r=".5"><stop offset="0" stop-color="#E8461E" stop-opacity=".55"/><stop offset="1" stop-color="#E8461E" stop-opacity="0"/></radialGradient></defs><ellipse cx="360" cy="330" rx="300" ry="240" fill="url(#glow)" class="glow"/><g class="tiers"></g></svg>
   <div class="close-copy">
     <p class="eyebrow">Bring one workflow</p>
     <h2>Beat the frontier on speed, cost and accuracy</h2>
@@ -642,7 +643,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
 <footer class="foot tone-choc" data-tone="dark">
   <div class="foot-top">
     <a class="giant" href="/" aria-label="leibler">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" fill="#163A2B"/><rect x="42" y="38" width="7" height="7" fill="#163A2B"/></svg>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" fill="#121417"/><rect x="42" y="38" width="7" height="7" fill="#121417"/></svg>
       <span>leibler</span>
     </a>
     <div class="foot-cols">
@@ -701,8 +702,8 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
     const g = $('.cascade .panels'), N = 15, W = 74, STEP = 50, SKEW = 92, BASE = 820;
     const polys = Array.from({ length: N }, (_, i) => {
       const p = document.createElementNS(NS, 'polygon');
-      p.setAttribute('fill', 'url(#pg)');
-      p.setAttribute('opacity', (.55 + .45 * (i / N)).toFixed(2));
+      p.setAttribute('fill', i === 10 ? 'url(#pgv)' : 'url(#pg)');
+      p.setAttribute('opacity', i === 10 ? '1' : (.55 + .45 * (i / N)).toFixed(2));
       g.append(p); return p;
     });
     const st = { sigma: 5.2, center: 9.6, grow: 0, mx: 0, my: 0 };
@@ -807,7 +808,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
   /* ---------- kullback art: big translucent panels with parallax ---------- */
   (() => {
     const g = $('.kb-panels');
-    const cols = ['#7FA894', '#4F7A66', '#A9C7B8', '#3E6B57', '#C3DACE', '#5A8873', '#2F5A47', '#93B8A6'];
+    const cols = ['#CFC9BE', '#9EA2A8', '#E2DDD3', '#7C8086', '#ECE8E0', '#B8BCC2', '#E8461E', '#D6D1C7'];
     const panels = cols.map((c, i) => {
       const p = document.createElementNS(NS, 'polygon');
       const x = 60 + i * 66, top = 120 + (i % 3) * 60 + i * 20;
@@ -849,7 +850,7 @@ details p{padding:0 0 26px;max-width:44em;overflow:hidden}
       const w = 340 - k * 21, h = w * .5, cy = 400 - k * 17;
       const p = document.createElementNS(NS, 'polygon');
       p.setAttribute('points', `${360 - w},${cy} 360,${cy - h} ${360 + w},${cy} 360,${cy + h}`);
-      p.setAttribute('fill', '#8CCBA8'); p.setAttribute('opacity', '.09');
+      p.setAttribute('fill', '#E8461E'); p.setAttribute('opacity', '.09');
       g.append(p); tiers.push(p);
     }
     gsap.from(tiers, { y: 80, opacity: 0, duration: 1.4, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.close', start: 'top 70%' } });
