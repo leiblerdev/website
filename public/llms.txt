@@ -37,16 +37,13 @@ Frontier models are trained for everyone, because serving everyone is how fronti
 
 ## Questions
 
-- Q: What is leibler? A: leibler (Kullback-Leibler) is a data lab that helps you own your intelligence. We post-train a model on your proprietary data and on synthetic data that matches your real tasks, so it beats the frontier on speed, cost and accuracy for your work.
-- Q: Why not just use a frontier model? A: Frontier models are trained to be general, because serving everyone is how frontier labs make their revenue. A model post-trained on your workflow is more accurate on it. It's also 10 to 100 times smaller, so it costs less, runs on cheaper GPUs, handles more traffic and replies faster.
-- Q: What is Kullback? A: Kullback is the open source agent behind leibler. You type the behavior you want and it writes eval tasks for it, with context, requirements and judges. It then generates training data for those scenarios and post-trains a model with reinforcement learning. The code is on GitHub under Apache-2.0.
-- Q: Why trust synthetic data? A: Kullback builds a synthetic environment from your traces, your business knowledge graph, your request and, with permission, your GitHub and agent harness, so it matches production. Three agents, the Builder, the Examiner and the Writer, then take turns, hardening every task and checking it with its own verifier before it's used.
-- Q: How big is the model? A: Typically 9B to 27B parameters. In the example on this page, a 9B model beats the frontier on the shop's own tickets.
-- Q: Does my data leave my account? A: No. Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.
-- Q: Do I need GPUs or an ML team? A: No. You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.
-- Q: How does it compare with a frontier model? A: In the refund email example on this page, the trained model refund-v1 costs $4,800 a month against $48,000 for GPT-6 Sol, replies in 0.2 s instead of 4.0 s, and scores 86 of 100 instead of 64 on the shop's tickets.
-- Q: How long does it take? A: Bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.
-- Q: Who is behind leibler? A: Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich.
+- Q: What is leibler? A: A data lab. We post-train small models on your data that beat the frontier on your tasks.
+- Q: Why not just use a frontier model? A: It's built for everyone. Yours is 10 to 100 times smaller, so it's cheaper, faster and more accurate on your work.
+- Q: What is Kullback? A: Our open source agent. It writes the eval, generates the training data and trains the model. Apache-2.0.
+- Q: Why trust synthetic data? A: It's built from your traces, knowledge graph and agent code, and every task is checked before it's used.
+- Q: Does my data leave my account? A: No. The model is yours to keep.
+- Q: How long does it take? A: Eval in 48 hours. A hosted model in about a week.
+- Q: Who is behind leibler? A: Krrish Agarwalla, a post-training researcher at Stanford and LMU Munich.
 
 ## Pages
 
