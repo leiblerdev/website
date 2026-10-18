@@ -7,7 +7,7 @@
 <meta name="description" content="leibler trains and hosts a model built for your agent's workflow: one tenth the cost, one twentieth the latency, and more accurate than the frontier on your tasks.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <link rel="canonical" href="https://www.leibler.dev/">
-<meta name="theme-color" content="#F7F7F3">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="leibler">
 <meta property="og:title" content="leibler · A model trained on your agent's workflow">
@@ -27,362 +27,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#F7F7F3;
-  --white:#FFFFFF;
-  --ink:#0F1412;
-  --muted:#656D68;
-  --hairline:#E3E6E0;
-  --card:#FBFBF9;
-  --accent:#0E9F84;
-  --accent-strong:#0B7D68;
-  --accent-soft:#E3F5F0;
-  --accent-ink:#0B5C4D;
-  --green:#1DB954;
-  --radius:20px;
-  --fs-h1:68px;
-  --fs-h2:40px;
-  --fs-bignum:56px;
-  --fs-lead:19px;
-  --fs-body:17px;
-  --fs-cap:14px;
-  --fs-msg:16px;
-  --fs-cell:15px;
-  --fs-btn:15px;
-  --lh-h1:1.04;
-  --lh-h2:1.1;
-  --lh-lead:1.5;
-  --lh-body:1.55;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  font-size:var(--fs-body);
-  line-height:var(--lh-body);
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
-a{color:inherit}
-/* Nav */
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:20px;padding-bottom:20px;
-  border-bottom:1px solid var(--hairline);
-  position:sticky;top:0;background:rgba(247,247,243,.92);
-  backdrop-filter:blur(8px);z-index:50;
-}
-.wordmark{font-size:var(--fs-msg);text-decoration:none;letter-spacing:-0.01em;display:inline-flex;align-items:center;gap:10px}
-.wordmark svg{flex:none;display:block}
-.foot-brand{display:inline-flex;align-items:center;gap:8px}
-.foot-brand svg{flex:none;display:block}
-.wordmark b,.wordmark .wm-text b{font-weight:600}
-.wordmark span,.wordmark .wm-text{font-weight:400}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a.nl{font-size:var(--fs-cell);text-decoration:none;color:var(--ink)}
-.nav-links a.nl:hover{color:var(--muted)}
-.btn{
-  display:inline-block;font-size:var(--fs-btn);font-weight:500;text-decoration:none;
-  padding:12px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
-  font-family:inherit;white-space:nowrap;
-}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:#2a2a2a}
-.btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline)}
-.btn-secondary:hover{border-color:#c9c9c9}
-.btn-nav{padding:10px 22px}
-/* Hero */
-.hero{padding-top:110px;padding-bottom:88px}
-.hero-inner{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:40px;align-items:center}
-.eyebrow{font-size:var(--fs-cell);color:var(--muted);margin-bottom:28px;max-width:70ch}
-.hero h1{
-  font-size:var(--fs-h1);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h1);
-  text-align:left;max-width:10em;margin-bottom:28px;
-}
-.hero .sub{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:36em;margin-bottom:36px}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.hero-visual{
-  border-radius:28px;aspect-ratio:1/1;position:relative;overflow:hidden;
-  background:#0B1230;
-}
-.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
-.hero-visual .hv-label{font-size:14px;font-family:'Inter',sans-serif;fill:#fff;opacity:.95;letter-spacing:.02em}
-.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:8px;padding-bottom:60px;text-align:center}
-.num-v{font-size:var(--fs-bignum);font-weight:500;letter-spacing:-0.03em;line-height:1;color:var(--ink)}
-.num-l{font-size:var(--fs-body);color:var(--muted);margin-top:8px}
-.numbers-note{grid-column:1/-1;text-align:center;font-size:var(--fs-cell);color:var(--muted);margin-top:8px}
-/* Sections */
-section.block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
-.sec-head{
-  display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:36px;
-}
-.sec-head h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2)}
-.sec-head p.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:44ch}
-/* Demo */
-.demo-panel{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.demo-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
-.demo-top .live{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-#demo-replay{
-  font-family:inherit;font-size:var(--fs-cap);font-weight:500;cursor:pointer;
-  background:#fff;border:1px solid var(--hairline);border-radius:999px;padding:9px 20px;color:var(--ink);
-}
-#demo-replay:hover{border-color:#c9c9c9}
-#demo-stage{
-  background:#fff;border:1px solid var(--hairline);border-radius:16px;overflow:hidden;
-  min-height:810px;display:flex;flex-direction:column;
-}
-.demo-header{
-  display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--hairline);
-  font-size:var(--fs-cap);font-weight:600;
-}
-.demo-header .dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
-.demo-header .sub{font-weight:400;color:var(--muted)}
-.demo-body{padding:24px;display:flex;flex-direction:column;gap:14px;flex:1}
-.beat:not(.show){display:none !important}
-.beat.show{display:block;animation:fadeUp .45s ease}
-.msg-row.beat.show{display:flex}
-.chips.beat.show{display:flex}
-.route.beat.show{display:flex}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.msg-row{display:flex}
-.msg-row.you{justify-content:flex-end}
-.msg-row.agent{gap:8px;align-items:flex-end}
-.avatar{
-  width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;flex:none;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:var(--fs-cap);font-weight:600;margin-bottom:16px;
-}
-.msg{
-  max-width:78%;padding:12px 17px;border-radius:18px;font-size:var(--fs-msg);line-height:1.5;
-}
-.msg-row.you .msg{background:var(--ink);color:#fff;border-bottom-right-radius:6px}
-.msg-row.agent .msg{background:#fff;color:var(--ink);border:1px solid var(--hairline);border-bottom-left-radius:6px}
-.msg-wrap{min-width:0;max-width:78%}
-.msg-wrap .msg{max-width:100%}
-.typing{display:inline-flex;gap:5px;align-items:center;background:#fff;border:1px solid var(--hairline);border-radius:18px;border-bottom-left-radius:6px;padding:14px 18px}
-.typing i{width:7px;height:7px;border-radius:50%;background:#B9B9BE;animation:blink 1s infinite}
-.typing i:nth-child(2){animation-delay:.15s}
-.typing i:nth-child(3){animation-delay:.3s}
-@keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
-.msg-row.agent .msg{display:none}
-.msg-row.agent.typed .msg{display:block}
-.msg-row.agent.typed .typing{display:none}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
-.chip{
-  font-family:inherit;font-size:var(--fs-cap);font-weight:500;cursor:pointer;
-  padding:9px 16px;border-radius:999px;border:1px solid var(--hairline);background:#fff;color:var(--ink);
-}
-.chip.sel{background:var(--accent);border-color:var(--accent);color:#fff}
-/* Status cards */
-.status{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
-.status-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
-.step{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:var(--fs-cell)}
-.step .sname{font-weight:500;min-width:0}
-.step .sresult{margin-left:auto;color:var(--muted);font-size:var(--fs-cap);text-align:right;white-space:nowrap;display:none}
-.step.done .sresult{display:block}
-.mark.spin{width:12px;height:12px;border-radius:50%;flex:none;border:2px solid var(--accent-soft);border-top-color:var(--accent);animation:rot .8s linear infinite}
-@keyframes rot{to{transform:rotate(360deg)}}
-.mark.check{width:14px;height:14px;flex:none;color:var(--accent);font-weight:600;font-size:var(--fs-cap)}
-/* Sample case card */
-.sample{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
-.sample .slabel{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
-.sample .stext{font-size:var(--fs-msg)}
-.sample hr{border:none;border-top:1px solid var(--hairline);margin:12px 0}
-.sample .expected{font-size:var(--fs-cell);color:var(--muted)}
-/* Human review card */
-.review{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
-.review-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
-.review-group{margin-bottom:14px}
-.review-group:last-of-type{margin-bottom:12px}
-.review-label{font-size:var(--fs-cap);font-weight:600;color:var(--muted);margin-bottom:8px}
-.review-items{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.review-item{position:relative;border:1px solid var(--hairline);border-radius:12px;padding:14px 42px 14px 14px;background:#fff}
-.review-ref{font-size:var(--fs-cap);color:var(--muted);margin-bottom:6px}
-.review-text{font-size:var(--fs-msg);line-height:1.5;margin-bottom:10px}
-.review-item hr{border:none;border-top:1px solid var(--hairline);margin:10px 0}
-.review-answer{font-size:var(--fs-cell);color:var(--muted)}
-.review-answer .alabel{font-size:var(--fs-cap);font-weight:600}
-.review-note{font-size:var(--fs-cap);color:var(--muted)}
-.review-check{
-  position:absolute;top:12px;right:12px;width:18px;height:18px;border-radius:50%;flex:none;
-  border:1.5px solid #C9C9CE;background:#fff;color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-cap);font-weight:600;
-}
-.review-check.on{background:var(--accent);border-color:var(--accent)}
-/* Eval table */
-.eval{border:1px solid var(--hairline);border-radius:14px;padding:20px 20px 14px;background:#fff;min-width:0}
-.eval-title{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
-.eval-bar-note{font-size:var(--fs-cap);color:var(--muted);margin-bottom:14px}
-.eval-bar-note b{color:var(--accent-ink)}
-.eval-head,.erow{display:grid;grid-template-columns:minmax(0,150px) 1fr 64px 88px;gap:12px;align-items:center;padding:9px 0}
-.eval-head{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.erow .mname{font-size:var(--fs-cell);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:8px;min-width:0}
-.mname-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.mono{
-  width:26px;height:26px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;
-  background:#fff;border:1px solid var(--hairline);color:var(--ink);
-}
-.mono svg{display:block;flex:none}
-.erow.hl .mono{border-color:var(--accent)}
-.erow .mval{font-size:var(--fs-cell);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.erow .etime,.erow .ecost{font-size:var(--fs-cell);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.etrack{position:relative;height:10px;background:#F0F0F2;border-radius:999px;min-width:0}
-.efill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:#B9B9BE;transition:width .5s ease}
-.erow.hl .efill{background:var(--accent)}
-.barline{position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--accent);border-radius:2px}
-.erow.hl{background:var(--accent-soft);border-radius:10px;padding-left:10px;padding-right:10px;margin-left:-10px;margin-right:-10px}
-.erow.hl .mname{font-weight:600}
-.erow.hl .mval,.erow.hl .etime,.erow.hl .ecost{color:var(--ink);font-weight:600}
-.acc-cell{display:flex;align-items:center;gap:10px;min-width:0}
-.acc-cell .etrack{flex:1}
-.acc-cell .mval{flex:none}
-/* Training */
-.train{border:1px solid var(--hairline);border-radius:14px;padding:18px 20px;background:#fff}
-.train-top{display:flex;justify-content:space-between;font-size:var(--fs-cell);font-weight:500;margin-bottom:12px}
-.train-top .round{color:var(--muted);font-variant-numeric:tabular-nums}
-.traintrack{position:relative;height:10px;background:#F0F0F2;border-radius:999px}
-.trainfill{height:100%;width:0;border-radius:999px;background:var(--accent);transition:width .4s linear}
-.ticks{position:relative;height:22px;margin-top:8px}
-.tick{position:absolute;top:0;width:2px;height:8px;background:#C9C9CE;border-radius:2px}
-.tick-label{position:absolute;top:10px;transform:translateX(-50%);font-size:var(--fs-cap);color:var(--muted);white-space:nowrap;display:none}
-.tick-label.show{display:block}
-/* Routing switch */
-.route{display:flex;align-items:center;gap:14px;border:1px solid var(--hairline);border-radius:14px;padding:14px 18px;background:#fff;flex-wrap:wrap}
-.route .rlabel{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.route .rval{font-size:var(--fs-cell);font-weight:600}
-.route .rnote{flex-basis:100%;font-size:var(--fs-cap);color:var(--muted)}
-.switch{
-  margin-left:auto;position:relative;width:52px;height:30px;border-radius:999px;flex:none;
-  background:#D8D8DC;border:none;cursor:pointer;transition:background .3s ease;padding:0;
-}
-.switch::after{
-  content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
-  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .3s ease;
-}
-.switch[aria-checked="true"]{background:var(--accent)}
-.switch[aria-checked="true"]::after{left:25px}
-/* Fake input */
-.fake-input{display:flex;align-items:center;gap:10px;padding:12px 14px 16px;margin-top:auto}
-.fake-field{
-  flex:1;min-width:0;border:1px solid var(--hairline);border-radius:999px;padding:11px 18px;
-  font-size:var(--fs-cell);color:var(--muted);background:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.fake-send{
-  width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;border:none;flex:none;
-  display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-msg);
-}
-.kullback-link{display:inline-block;margin-top:18px;font-size:var(--fs-cell);font-weight:600;color:var(--accent-ink);text-decoration:none}
-.steps-row{display:flex;align-items:center;gap:0;margin-bottom:20px}
-.step-pill{flex:none;border:1px solid var(--hairline);background:#fff;border-radius:999px;padding:10px 20px;font-size:var(--fs-cell);font-weight:500;white-space:nowrap}
-.step-link{flex:1;min-width:16px;height:1px;background:var(--hairline)}
-.ex-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
-.ex-card{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.ex-card .slabel{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
-.ex-card .stext{font-size:var(--fs-msg);line-height:1.55}
-.ex-card .order{font-size:var(--fs-cell);color:var(--muted);margin-top:18px}
-.ex-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.ex-chip{font-size:var(--fs-cap);font-weight:500;background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:7px 14px}
-.cmp-card{background:#fff;border:1px solid var(--hairline);border-radius:var(--radius);padding:28px}
-.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
-.cmp-col{padding:20px 22px}
-.cmp-col.front{background:#fff}
-.cmp-col.own{background:var(--accent-soft)}
-.cmp-col h4{font-size:var(--fs-cap);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
-.cmp-col.own h4{color:var(--accent-ink)}
-.cmp-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:9px 0;font-size:var(--fs-cell)}
-.cmp-num{font-size:32px;font-weight:600;letter-spacing:-0.02em}
-.cmp-cap{font-size:var(--fs-cell);color:var(--muted);margin-top:14px}
-/* CTA + footer */
-.cta-block{padding-top:60px;padding-bottom:60px;border-top:1px solid var(--hairline)}
-.cta-block h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px}
-.cta-block p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:38em;margin:0 auto 32px}
-footer.site{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
-  padding-top:24px;padding-bottom:32px;border-top:1px solid var(--hairline);
-  font-size:var(--fs-cap);color:var(--muted);
-}
-footer.site nav{display:flex;gap:20px}
-footer.site a{text-decoration:none;color:var(--muted)}
-footer.site a:hover{color:var(--ink)}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.duo-card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:32px}
-.duo-card h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:14px}
-.duo-card p.body-text{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:62ch}
-.duo-card .duo-glyph{display:block;margin-bottom:16px}
-.cta-art{position:relative;border-radius:28px;overflow:hidden;min-height:420px;padding:64px 56px;display:flex;align-items:center;background:#EEF7F3}
-.cta-art svg.cta-bg{position:absolute;inset:0;width:100%;height:100%}
-.cta-copy{position:relative;max-width:32em}
-.cta-copy h2{font-size:var(--fs-h2);font-weight:500;letter-spacing:-0.02em;line-height:var(--lh-h2);margin-bottom:16px;color:var(--ink)}
-.cta-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink);margin-bottom:32px}
-.faq{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:28px 48px}
-.faq-item{border-top:1px solid var(--hairline);padding-top:16px}
-.faq dt{font-size:var(--fs-body);font-weight:600;margin-bottom:8px}
-.faq dd{margin:0;font-size:var(--fs-body);color:var(--muted);line-height:var(--lh-body)}
-/* Responsive */
-@media (max-width:900px){
-  .sec-head{grid-template-columns:1fr;gap:12px}
-  .hero-inner{grid-template-columns:1fr}
-  .ex-cards{grid-template-columns:1fr}
-  .duo{grid-template-columns:1fr}
-  section.block{padding-top:36px;padding-bottom:36px}
-  .demo-panel{padding:20px}
-  .duo-card{padding:20px}
-  .cta-art{padding:48px 24px;align-items:flex-start}
-  .steps-row{flex-wrap:wrap;gap:10px}
-  .step-link{display:none}
-}
-@media (max-width:640px){
-  :root{
-    --fs-h1:38px;
-    --fs-h2:28px;
-    --fs-bignum:44px;
-    --fs-lead:17px;
-    --fs-body:16px;
-    --fs-cap:14px;
-    --fs-msg:15px;
-    --fs-cell:14px;
-    --fs-btn:15px;
-  }
-  .wrap{padding-left:18px;padding-right:18px}
-  .nav-links a.nl{display:none}
-  .hero{padding-top:72px;padding-bottom:56px}
-  .hero h1{max-width:12em}
-  .hero-visual{aspect-ratio:16/10;min-height:0}
-  .numbers{grid-template-columns:1fr;padding-top:16px;padding-bottom:36px;gap:24px}
-  .cta-art{min-height:360px}
-  .faq{grid-template-columns:1fr;gap:20px}
-  .eval-head{display:none}
-  .erow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"name val time" "bar bar bar";column-gap:10px;row-gap:6px}
-  .erow .mname{grid-area:name}
-  .erow .mval{grid-area:val;color:var(--ink);font-weight:600}
-  .erow .etime{grid-area:time;font-size:var(--fs-cell)}
-  .erow .ecost{display:none}
-  .acc-cell{display:contents}
-  .acc-cell .etrack{grid-area:bar;width:100%;height:8px}
-  .demo-header .sub{display:none}
-  .step{flex-wrap:wrap}
-  .step .sname{flex:1 1 0;min-width:0;word-break:normal}
-  .step .sresult{flex-basis:100%;margin-left:22px;text-align:left;white-space:normal}
-  .tick-label .rn{display:none}
-  .tr-sub{display:none}
-  .train-top .round{white-space:nowrap}
-  .route .rlabel{flex-basis:100%}
-  .demo-body{padding:14px}
-  .msg{max-width:92%}
-  .msg-wrap{max-width:92%}
-  .review-items{grid-template-columns:1fr}
-  .cmp-grid{grid-template-columns:1fr}
-  #demo-stage{min-height:730px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .beat.show{animation:none}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"https://www.leibler.dev/#org","name":"leibler","url":"https://www.leibler.dev/","logo":{"@type":"ImageObject","url":"https://www.leibler.dev/assets/img/logo/logo-mark.png"},"email":"krrish@leibler.dev","description":"leibler is a data lab. It trains and hosts a model that does your job best.","sameAs":["https://github.com/leiblerdev","https://huggingface.co/leibler"],"founder":{"@id":"https://www.leibler.dev/#krrish"}},
@@ -399,739 +44,762 @@ footer.site a:hover{color:var(--ink)}
 {"@type":"Question","name":"Who is behind leibler?","acceptedAnswer":{"@type":"Answer","text":"Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich."}}]}
 ]}
 </script>
+<style>
+:root{
+  --terra:#1E4D3A;
+  --terra-2:#173E2F;
+  --cream:#E3EDE7;
+  --cream-2:#F1F6F3;
+  --paper:#FAFCFB;
+  --brown:#142A21;
+  --brown-2:#4C6358;
+  --choc:#163A2B;
+  --red:#1E4D3A;
+  --peach:#B9D6C6;
+  --gold:#BFDCC9;
+  --rose:#8FBFA5;
+  --shadow:#D3E3DA;
+  --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --gutter:clamp(16px,3vw,42px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--sans);background:#fff;color:var(--brown);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+pre,code,input,svg text{font-family:var(--sans)}
+::selection{background:var(--terra);color:var(--cream)}
+.wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.ul{text-decoration:underline;text-underline-offset:3px}
+.muted{opacity:.55}
+
+/* paper grain */
+.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .2  0 0 0 0 .15  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* tones */
+.tone-terra{background:#fff;color:var(--brown)}
+.tone-cream{background:transparent}
+.tone-choc{background:var(--choc);color:var(--cream)}
+
+/* type */
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:13.5px;font-weight:400;margin-bottom:14px}
+h1,h2,h3,h4,.acc-i button{font-family:var(--serif);font-weight:300;font-optical-sizing:auto}
+h1,h2{letter-spacing:-.02em;line-height:1.06}
+h2{font-size:clamp(34px,3.7vw,54px);margin-bottom:18px}
+h2.big{font-size:clamp(40px,4.6vw,66px)}
+.ln{display:block;overflow:hidden;padding-bottom:.06em}
+.ln > span{display:inline-block}
+.sub,.lede{font-size:18px;max-width:34em}
+.sub.center{margin-bottom:56px}
+
+/* buttons: square, tracked caps */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:58px;padding:0 30px;font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  position:relative;isolation:isolate;overflow:hidden;transition:color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn-cream{background:var(--cream-2);color:var(--brown)}
+.btn-cream::before{background:#fff}
+.btn-red{background:var(--red);color:var(--cream-2)}
+.btn-red::before{background:var(--brown)}
+.btn-ghost{color:var(--brown);box-shadow:inset 0 0 0 1px rgba(20,42,33,.35)}
+.btn-ghost::before{background:rgba(30,77,58,.07)}
+.btn:hover{transform:translateY(-2px)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* announce + nav */
+.announce{display:block;text-align:center;background:var(--choc);color:#fff;font-size:16px;font-weight:500;padding:13px 16px;position:relative;z-index:61}
+.announce:hover{text-decoration:underline;text-underline-offset:3px}
+.nav{position:sticky;top:0;z-index:60;height:98px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);margin-bottom:-98px;
+  color:var(--cream);transition:color .4s,background-color .4s,height .4s var(--ease)}
+.nav.scrolled{height:78px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav[data-tone="dark"].scrolled{background:rgba(30,77,58,.82)}
+.nav[data-tone="choc"].scrolled{background:rgba(22,58,43,.88)}
+.nav[data-tone="light"]{color:var(--brown)}
+.nav[data-tone="light"].scrolled{background:rgba(255,255,255,.88);box-shadow:0 1px 0 rgba(20,42,33,.08)}
+.brand{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:400;letter-spacing:-.04em}
+.brand svg{width:30px;height:30px}
+.brand .brand-l{fill:var(--terra);transition:fill .4s}
+.nav[data-tone="light"] .brand .brand-l{fill:var(--cream)}
+.nav-links{display:flex;gap:44px;font-size:18px;font-weight:500}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn-nav{background:var(--cream-2);color:var(--brown);transition:background-color .4s,color .4s,transform .4s var(--ease)}
+.btn-nav::before{background:#fff}
+.nav[data-tone="light"] .btn-nav{background:var(--red);color:var(--cream-2)}
+.nav[data-tone="light"] .btn-nav::before{background:var(--brown)}
+
+/* hero */
+.hero{position:relative;min-height:calc(100vh - 50px);display:flex;align-items:flex-end;padding:160px var(--gutter) 70px;overflow:hidden}
+.cascade{position:absolute;right:0;bottom:0;width:min(66vw,980px);height:92%;overflow:visible}
+.hero-inner{position:relative;z-index:2;max-width:760px}
+.hero-title{font-size:clamp(46px,5.6vw,84px);margin-bottom:26px}
+.hero-sub{font-size:19px;max-width:36em;margin-bottom:34px}
+
+/* glance */
+.glance{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:110px var(--gutter) 150px}
+.glance-art{position:relative;max-width:440px;margin:0 auto;width:100%}
+.glance-art svg{width:100%;overflow:visible}
+.gl-label{position:absolute;left:24%;top:-4px;text-transform:uppercase;letter-spacing:.16em;font-size:15px}
+.glance-copy p:not(.eyebrow){font-size:18px;max-width:34em}
+
+/* bottom line */
+.bottom{padding:150px var(--gutter) 120px}
+.bottom .eyebrow{margin-bottom:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1240px;margin:0 auto 60px}
+.col{text-align:center}
+.iso-ill{width:220px;height:150px;margin:0 auto 34px;display:block;overflow:visible}
+.col h3{font-size:30px;letter-spacing:-.01em;margin-bottom:12px}
+.col p{max-width:24em;margin:0 auto}
+
+/* marquee tiles */
+.trusted{padding:90px 0 130px}
+.trusted .lede{margin-bottom:56px}
+.mq{overflow:hidden;padding:4px 0 14px}
+.mq-track{display:flex;gap:16px;width:max-content;will-change:transform}
+.tile{width:184px;height:88px;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.tile:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--shadow)}
+.tile small{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-2)}
+.tile b{font-size:30px;font-weight:400;letter-spacing:-.03em}
+.tile.bar b{color:#142A21}
+.tile.ours{background:var(--terra);color:var(--cream-2)}
+.tile.ours small{color:var(--cream)}
+
+/* example pinned */
+.example{padding-top:120px}
+.ex-head{padding:0 var(--gutter);margin-bottom:40px}
+.ex-pin{height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:90px var(--gutter) 40px}
+.dash{position:relative;background:#F2F7F4;padding:18px 0 0 18px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.dash-top{padding:0 18px 16px 0}
+.dash h4{font-size:24px;letter-spacing:-.01em;margin-bottom:12px}
+.stats{display:flex;gap:10px}
+.stat{border:1px solid rgba(20,42,33,.2);padding:10px 12px}
+.stat.grow{flex:1}
+.stat small{font-size:12px;font-weight:500;display:block;margin-bottom:4px}
+.stat div{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.stat b{font-size:22px;font-weight:500;letter-spacing:-.02em}
+.stat span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-right:8px}
+.meter{flex:1;min-width:60px;height:10px;background:rgba(20,42,33,.12);position:relative;align-self:center}
+.meter u{position:absolute;inset:0;right:auto;width:0;background:#1E4D3A}
+.table{background:#fff;font-size:13px}
+.tr{display:grid;grid-template-columns:70px 1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 16px;height:40px;border-bottom:1px solid #E8F0EB;transition:background-color .4s}
+.th{background:#4F7A66;color:#fff;font-size:11.5px;height:30px}
+.tr.ghost span{height:7px;background:#E6EEE9;border-radius:2px}
+.tr.ghost span:nth-child(2){width:70%}
+.tr.hot{background:#E9F5EE}
+.pill{justify-self:start;font-size:11px;padding:2px 8px;border-radius:3px;background:#EEE;white-space:nowrap}
+.p-amber{background:#FBEFC4;color:#8A6410}
+.p-green{background:#D9F1D9;color:#2E6B33}
+.p-red{background:#F8D4D0;color:#9B2C22}
+.p-grey{background:#E7E3DF;color:#6B625D}
+.p-dec,.p-stat{background:#E7E3DF;transition:background-color .4s,color .4s}
+.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
+.pop-v{position:absolute;inset:16px 18px;opacity:0;visibility:hidden}
+.pop-v.on{position:relative;inset:auto;opacity:1;visibility:visible}
+.pop small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
+.pop p{font-size:16px;line-height:1.4}
+.pop .opt{display:inline-block;font-size:13px;padding:4px 10px;margin:4px 6px 0 0;border:1px solid rgba(20,42,33,.25)}
+.pop .opt.on{background:var(--terra);color:var(--cream-2);border-color:var(--terra)}
+.steps{list-style:none;display:flex;flex-direction:column;gap:30px}
+.steps li{position:relative;padding-left:26px;opacity:.38;transition:opacity .5s var(--ease)}
+.steps li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;background:currentColor;transform:skewY(-30deg)}
+.steps h3{font-size:clamp(26px,2.4vw,36px);letter-spacing:-.015em;line-height:1.12}
+.steps p{max-height:0;overflow:hidden;opacity:0;margin-top:0;transition:max-height .6s var(--ease),opacity .5s,margin .5s var(--ease);max-width:30em}
+.steps li.on{opacity:1}
+.steps li.on p{max-height:140px;opacity:1;margin-top:14px}
+
+/* kullback */
+.kb{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:150px var(--gutter) 130px;overflow:hidden}
+.kb-copy{position:relative;z-index:2}
+.kb .lede{margin-bottom:44px}
+.ilist{list-style:none;display:flex;flex-direction:column;gap:30px;max-width:36em}
+.ilist li{display:grid;grid-template-columns:44px 1fr;gap:22px;align-items:center}
+.ic svg{width:42px;height:42px;fill:none;stroke:var(--red);stroke-width:1.6}
+.ic svg rect:first-child{fill:rgba(30,77,58,.08)}
+.kb-art{position:absolute;right:0;top:0;width:55%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 96%);mask-image:linear-gradient(180deg,#000 55%,transparent 96%)}
+
+/* quotes */
+.quotes{padding:40px 0 130px}
+.quotes .lede{margin-bottom:50px}
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.qcard{background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.qcard:hover{transform:translate(-4px,-4px);box-shadow:16px 16px 0 var(--shadow)}
+.qcard blockquote{font-size:24px;line-height:1.35;font-weight:300;letter-spacing:-.015em}
+.qcard figcaption{display:flex;align-items:center;gap:14px;font-size:14px}
+.qcard b{font-weight:500;display:block}
+.qcard small{opacity:.7}
+.av{width:44px;height:44px;display:grid;place-items:center;background:#E8F1EC;font-weight:500}
+.av.k{background:var(--terra);color:var(--cream-2)}
+
+/* standard */
+.std{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:80px var(--gutter) 140px;align-items:center}
+.std .lede{margin-bottom:28px}
+.acc{margin-top:56px}
+.acc-i{position:relative;padding-left:26px;margin-bottom:18px}
+.acc-i::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:6px;background:currentColor;transform:skewY(-30deg)}
+.acc-i button{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;opacity:.4;transition:opacity .4s;line-height:1.2}
+.acc-i.open button,.acc-i button:hover{opacity:1}
+.acc-b{height:0;overflow:hidden}
+.acc-i.open .acc-b{height:auto}
+.acc-b p{padding:12px 0 6px;max-width:32em}
+.std-ui{position:relative;height:460px}
+.sheet{position:absolute;background:#fff;border:1px solid rgba(20,42,33,.14);box-shadow:10px 10px 0 var(--shadow)}
+.sheet.s3{inset:0 40px 60px 120px;opacity:.5}
+.sheet.s2{inset:30px 20px 30px 60px;opacity:.75}
+.sheet.s1{inset:60px 0 0 0;padding:26px 28px;display:flex;flex-direction:column;gap:12px}
+.s1 h4{font-size:26px;letter-spacing:-.01em}
+.s1 > small{opacity:.75;margin-bottom:10px}
+.ev{display:grid;grid-template-columns:130px 1fr 32px;gap:14px;align-items:center;font-size:14.5px}
+.ev i{position:relative;height:12px;background:#E8F0EB}
+.ev i::after{content:"";position:absolute;left:80%;top:-5px;bottom:-5px;width:2px;background:#142A21}
+.ev u{position:absolute;left:0;top:0;bottom:0;width:0;background:#4F7A66}
+.ev b{text-align:right;font-weight:500}
+.ev.ours u{background:var(--terra)}
+.ev.ours b{color:var(--terra)}
+
+/* faq */
+.faq{padding:40px var(--gutter) 150px}
+.faq h2{margin-bottom:46px}
+.faq-list{max-width:900px;margin:0 auto;border-top:1px solid rgba(20,42,33,.2)}
+details{border-bottom:1px solid rgba(20,42,33,.2)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:23px;font-weight:300;letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary i{width:14px;height:14px;position:relative;flex:none;transition:transform .45s var(--ease)}
+summary i::before,summary i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:currentColor}
+summary i::after{transform:rotate(90deg)}
+details[open] summary i{transform:rotate(45deg)}
+details p{padding:0 0 26px;max-width:44em;overflow:hidden}
+
+/* closing */
+.close{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:100vh;padding:120px var(--gutter) 80px;overflow:hidden}
+.pyramid{width:100%;max-width:720px;overflow:visible}
+.close-copy h2{font-size:clamp(40px,4.4vw,66px)}
+.close-copy .lede{margin-bottom:32px;opacity:.9}
+
+/* footer */
+.foot{padding:20px var(--gutter) 40px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:46px}
+.giant{display:flex;align-items:center;gap:.14em;font-size:clamp(90px,12vw,170px);font-weight:400;letter-spacing:-.06em;line-height:.9}
+.giant svg{width:.82em;height:.82em}
+.foot-cols{display:flex;gap:120px;font-size:19px;font-weight:500}
+.foot-cols div{display:flex;flex-direction:column;gap:18px}
+.foot-cols a:hover,.foot-bot a:hover{text-decoration:underline;text-underline-offset:3px}
+.foot-bot{display:flex;justify-content:space-between;font-size:15px;border-top:1px solid rgba(227,237,231,.18);padding-top:22px}
+
+/* responsive */
+@media (max-width:960px){
+  .nav-links{display:none}
+  .nav{height:76px;margin-bottom:-76px}
+  .brand{font-size:24px}.brand svg{width:24px;height:24px}
+  .btn-nav{height:44px;padding:0 16px;font-size:12px}
+  .announce{font-size:13.5px}
+  .hero{min-height:88vh;padding-top:120px}
+  .cascade{width:110vw;height:70%;opacity:.8}
+  .glance,.std,.close,.kb{grid-template-columns:1fr}
+  .glance{padding:70px var(--gutter) 100px}
+  .three,.q-grid{grid-template-columns:1fr}
+  .ex-pin{grid-template-columns:1fr;gap:24px;padding-top:86px;align-content:start;height:auto;min-height:100vh}
+  .pop{right:8px;top:auto;bottom:-20px;width:min(300px,80%)}
+  .tr{grid-template-columns:52px 1fr 80px;font-size:12px}
+  .tr span:nth-child(4){display:none}
+  .stats{flex-wrap:wrap}
+  .steps{gap:18px}
+  .kb-art{opacity:.35;width:100%}
+  .std-ui{height:420px}
+  .ev{grid-template-columns:100px 1fr 28px;font-size:13px}
+  .close{min-height:auto;padding-top:100px}
+  .foot-cols{gap:60px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.001ms!important}}
+</style>
 </head>
 <body>
-<header class="wrap nav">
-  <a class="wordmark" href="/"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg><span class="wm-text"><b>leibler</b>.dev</span></a>
-  <nav class="nav-links" aria-label="Primary">
-    <a class="nl" href="#demo">How it works</a>
-    <a class="nl" href="/kullback">Kullback</a>
-    <a class="nl" href="/team">Team</a>
-    <a class="btn btn-primary btn-nav" href="https://cal.com/krrish-agarwalla/30min">Book a call</a>
+<div class="grain" aria-hidden="true"></div>
+
+<a class="announce" href="https://github.com/leiblerdev/kullback">Kullback, the agent behind leibler, is open source. Read the code on GitHub →</a>
+
+<header class="nav" data-tone="light">
+  <a class="brand" href="/" aria-label="leibler home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" class="brand-l"/><rect x="42" y="38" width="7" height="7" class="brand-l"/></svg>
+    <span>leibler</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#glance">Product</a>
+    <a href="#example">Example</a>
+    <a href="#kullback">Kullback</a>
+    <a href="#faq">Questions</a>
+    <a href="/team">Team</a>
   </nav>
+  <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-nav">Book a call</a>
 </header>
 
 <main>
-  <section class="wrap hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">leibler is a data lab.</p>
-        <h1>Frontier models are built for everyone. Yours is built for your workflow.</h1>
-        <p class="sub">We train and host a model that does your job best.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="https://cal.com/krrish-agarwalla/30min">Book a call</a>
-          <a class="btn btn-secondary" href="#demo">See it work</a>
-        </div>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="hero-field-a" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#0B1230"/>
-              <stop offset="0.5" stop-color="#0B5C58"/>
-              <stop offset="1" stop-color="#10B59A"/>
-            </linearGradient>
-            <radialGradient id="hero-field-b" cx="0.62" cy="0.56" r="0.45">
-              <stop offset="0" stop-color="#D9FF5C" stop-opacity="0.2"/>
-              <stop offset="1" stop-color="#D9FF5C" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="hero-grain" x="0" y="0" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
-              <feColorMatrix type="saturate" values="0"/>
-            </filter>
-            <filter id="hero-glow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="6"/>
-            </filter>
-          </defs>
-          <rect x="0" y="0" width="480" height="480" fill="#0B1230"/>
-          <rect x="0" y="0" width="480" height="480" fill="url(#hero-field-a)"/>
-          <rect x="0" y="0" width="480" height="480" fill="url(#hero-field-b)"/>
-          <g stroke="#FFFFFF" stroke-width="1.25" fill="none">
-            <path d="M20,0 C60,90 180,190 298,269" opacity="0.45"/><path d="M55,0 C80,100 190,195 298,269" opacity="0.62"/><path d="M90,0 C110,95 200,200 298,269" opacity="0.55"/><path d="M125,0 C140,110 210,205 298,269" opacity="0.71"/><path d="M160,0 C170,120 220,210 298,269" opacity="0.48"/><path d="M195,0 C200,125 230,215 298,269" opacity="0.66"/><path d="M230,0 C235,130 245,220 298,269" opacity="0.58"/><path d="M265,0 C265,135 255,225 298,269" opacity="0.74"/><path d="M300,0 C295,130 270,225 298,269" opacity="0.52"/><path d="M335,0 C320,140 280,230 298,269" opacity="0.68"/><path d="M370,0 C345,145 285,235 298,269" opacity="0.44"/><path d="M405,0 C370,150 290,238 298,269" opacity="0.6"/><path d="M440,0 C395,155 295,242 298,269" opacity="0.72"/><path d="M475,0 C420,160 298,246 298,269" opacity="0.5"/>
-            <path d="M0,20 C90,60 190,180 298,269" opacity="0.63"/><path d="M0,55 C100,80 195,185 298,269" opacity="0.77"/><path d="M0,90 C110,100 200,190 298,269" opacity="0.53"/><path d="M0,125 C115,120 210,195 298,269" opacity="0.69"/><path d="M0,160 C120,140 215,200 298,269" opacity="0.47"/><path d="M0,195 C125,160 220,210 298,269" opacity="0.75"/><path d="M0,230 C130,180 225,220 298,269" opacity="0.59"/><path d="M0,265 C135,210 230,235 298,269" opacity="0.7"/><path d="M0,300 C135,235 232,245 298,269" opacity="0.54"/><path d="M0,335 C140,255 235,252 298,269" opacity="0.66"/><path d="M0,370 C145,270 240,258 298,269" opacity="0.49"/><path d="M0,405 C150,285 245,262 298,269" opacity="0.73"/><path d="M0,440 C155,300 250,266 298,269" opacity="0.57"/><path d="M0,470 C160,310 255,270 298,269" opacity="0.64"/>
-          </g>
-          <path d="M298,269 L480,392" stroke="#D9FF5C" stroke-opacity="0.3" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#hero-glow)"/>
-          <path d="M298,269 L480,392" stroke="#D9FF5C" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <circle cx="343" cy="300" r="4" fill="#D9FF5C"/>
-          <circle cx="383" cy="328" r="4" fill="#D9FF5C"/>
-          <circle cx="423" cy="355" r="4" fill="#D9FF5C"/>
-          <rect x="0" y="0" width="480" height="480" filter="url(#hero-grain)" opacity="0.06"/>
-          <text class="hv-label" x="16" y="40" opacity="0.95">everything</text>
-          <text class="hv-label" x="352" y="372" opacity="0.95">your workflow</text>
-        </svg>
-      </div>
-    </div>
-  </section>
 
-  <section class="wrap numbers" id="numbers" aria-label="Key numbers">
-    <div class="num">
-      <div class="num-v">1/10th</div>
-      <div class="num-l">the cost</div>
+<!-- HERO -->
+<section class="hero tone-terra" data-tone="light">
+  <svg class="cascade" viewBox="0 0 900 820" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+    <defs>
+      <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#A9CDB9" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#5E9A7E" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#2E6B52" stop-opacity=".5"/>
+      </linearGradient>
+    </defs>
+    <g class="panels"></g>
+  </svg>
+  <div class="hero-inner">
+    <p class="eyebrow r-up">Frontier models are built for everyone.</p>
+    <h1 class="hero-title"><span class="ln"><span>Yours is built for</span></span><span class="ln"><span>your workflow</span></span></h1>
+    <p class="hero-sub r-up">leibler is a data lab. We train and host a model that does your job best: trained on your own agent's workflow, so it's cheaper, faster and more accurate on your tasks than a frontier model.</p>
+    <div class="btns r-up">
+      <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-red">Book a call</a>
+      <a href="#example" class="btn btn-ghost">See it work</a>
     </div>
-    <div class="num">
-      <div class="num-v">1/20th</div>
-      <div class="num-l">the latency</div>
-    </div>
-    <div class="num">
-      <div class="num-v">+35%</div>
-      <div class="num-l">accuracy on your tasks</div>
-    </div>
-    <p class="numbers-note">Measured on the example agent below, against GPT-6 Sol at one million tickets a month.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="wrap block" id="example">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">One example, in detail</p>
-        <h2>An agent on refund emails.</h2>
-      </div>
-      <p class="lead">An online furniture shop runs an agent on every refund email. Four steps, one million times a month, every step on a frontier model today.</p>
-    </div>
-    <div class="steps-row" aria-label="Agent steps">
-      <span class="step-pill">Email arrives</span><span class="step-link" aria-hidden="true"></span>
-      <span class="step-pill">Pull the order</span><span class="step-link" aria-hidden="true"></span>
-      <span class="step-pill">Decide: refund, replace, escalate</span><span class="step-link" aria-hidden="true"></span>
-      <span class="step-pill">Draft the reply</span>
-    </div>
-    <div class="ex-cards">
-      <div class="ex-card">
-        <div class="slabel">What comes in</div>
-        <div class="stext">The chair arrived with a cracked leg. I want my money back.</div>
-        <div class="order">Oak chair · $149 · delivered three days ago</div>
-      </div>
-      <div class="ex-card">
-        <div class="slabel">What refund-v1 replies</div>
-        <div class="stext">Sorry about the chair. We can send a replacement leg today at no cost, or refund the full $149. Reply with your choice.</div>
-        <div class="ex-chips">
-          <span class="ex-chip">Replacement offered first</span>
-          <span class="ex-chip">Refund rule checked</span>
-        </div>
-      </div>
-    </div>
-    <div class="cmp-card">
-      <div class="cmp-grid">
-        <div class="cmp-col front">
-          <h4>Frontier model</h4>
-          <div class="cmp-row"><span class="cmp-num">$48,000</span></div>
-          <div class="cmp-row"><span>Cost per month</span></div>
-          <div class="cmp-row"><span class="cmp-num">4.0 s</span></div>
-          <div class="cmp-row"><span>Time per reply</span></div>
-          <div class="cmp-row"><span class="cmp-num">64 of 100</span></div>
-          <div class="cmp-row"><span>Accuracy on your tickets</span></div>
-        </div>
-        <div class="cmp-col own">
-          <h4>refund-v1</h4>
-          <div class="cmp-row"><span class="cmp-num">$4,800</span></div>
-          <div class="cmp-row"><span>Cost per month</span></div>
-          <div class="cmp-row"><span class="cmp-num">0.2 s</span></div>
-          <div class="cmp-row"><span>Time per reply</span></div>
-          <div class="cmp-row"><span class="cmp-num">86 of 100</span></div>
-          <div class="cmp-row"><span>Accuracy on your tickets</span></div>
-        </div>
-      </div>
-      <p class="cmp-cap">Measured against GPT-6 Sol at one million tickets a month.</p>
-    </div>
-  </section>
+<!-- AT A GLANCE -->
+<section class="glance tone-terra" id="glance" data-tone="light">
+  <div class="glance-art">
+    <svg viewBox="0 0 420 340" aria-hidden="true">
+      <g class="gl-panels">
+        <polygon points="40,330 40,140 150,80 150,270" fill="#B9D6C6" opacity=".28"/>
+        <polygon points="86,330 86,120 196,60 196,270" fill="#D6EADF" opacity=".38"/>
+        <polygon points="134,330 134,140 244,80 244,270" fill="#7FB39A" opacity=".35"/>
+        <polygon points="178,330 178,120 288,60 288,270" fill="#D6EADF" opacity=".45"/>
+        <polygon points="224,330 224,140 334,80 334,270" fill="#B9D6C6" opacity=".32"/>
+        <polygon points="62,214 62,196 120,164 120,182" fill="#2E6B52" opacity=".8" class="gl-chip"/>
+      </g>
+      <line x1="92" y1="10" x2="92" y2="200" stroke="#142A21" stroke-width="1.2" class="gl-line"/>
+    </svg>
+    <span class="gl-label">In your account</span>
+  </div>
+  <div class="glance-copy">
+    <p class="eyebrow">At a glance</p>
+    <h2>With leibler, your agent gets its own model</h2>
+    <p>Tell Kullback how your agent should behave. It reads the logs your agent already writes, writes the eval and the training data, trains, hosts, and keeps watching the frontier. Training runs on your workflow and never leaves your account. You never touch a GPU.</p>
+  </div>
+</section>
 
-  <section class="wrap block" id="demo">
-    <div class="sec-head">
-      <h2>Meet Kullback, the agent that builds it.</h2>
-      <p class="lead">Tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</p>
-    </div>
-    <div class="demo-panel">
-      <div class="demo-top">
-        <span class="live">Live demo</span>
-        <button id="demo-replay" type="button">Replay</button>
-      </div>
-      <div id="demo-stage" aria-live="polite">
-        <div class="demo-header"><span class="dot" aria-hidden="true"></span><span>Kullback</span><span class="sub">builds and hosts your model</span></div>
-        <div class="demo-body">
-          <div class="beat msg-row you" data-beat="u1"><div class="msg">We run an agent on refund emails. Build us a model for it.</div></div>
-          <div class="beat msg-row agent" data-beat="k1"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">How should it behave? Pick any.</div></div></div>
-          <div class="beat chips" data-beat="chips" role="group" aria-label="Behaviour choices">
-            <button class="chip" type="button" data-chip="0">Refund under $100 without asking</button>
-            <button class="chip" type="button" data-chip="1">Offer a replacement before a refund</button>
-            <button class="chip" type="button" data-chip="2">Escalate anything legal</button>
-            <button class="chip" type="button" data-chip="3">Reply in the customer&rsquo;s language</button>
-          </div>
-          <div class="beat msg-row you" data-beat="u2"><div class="msg">Those three. Legal goes to a human.</div></div>
-          <div class="beat status" data-beat="prep">
-            <div class="status-title">Grounding in your workflow</div>
-            <div class="step" data-step="0"><span class="mark"></span><span class="sname">Connecting your traces</span><span class="sresult">1,240 tickets, last 30 days</span></div>
-            <div class="step" data-step="1"><span class="mark"></span><span class="sname">Connecting your knowledge graph</span><span class="sresult">products, policies, customers linked</span></div>
-            <div class="step" data-step="2"><span class="mark"></span><span class="sname">Connecting your systems</span><span class="sresult">order and refund tools mapped</span></div>
-            <div class="step" data-step="3"><span class="mark"></span><span class="sname">Writing the eval</span><span class="sresult">312 cases, 4 rules</span></div>
-            <div class="step" data-step="4"><span class="mark"></span><span class="sname">Building training data</span><span class="sresult">928 examples</span></div>
-          </div>
-          <div class="beat msg-row agent" data-beat="k2"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Check my work first. Two of the 312 eval cases, two of the 928 training examples:</div></div></div>
-          <div class="beat review" data-beat="review">
-            <div class="review-title">For your review</div>
-            <div class="review-group">
-              <div class="review-label">Eval cases</div>
-              <div class="review-items">
-                <div class="review-item">
-                  <span class="review-check" aria-hidden="true"></span>
-                  <div class="review-ref">Ticket 48213</div>
-                  <div class="review-text">The chair arrived with a cracked leg. I want my money back.</div>
-                  <hr>
-                  <div class="review-answer"><span class="alabel">Expected:</span> Offer a replacement first. Refund if the customer declines.</div>
-                </div>
-                <div class="review-item">
-                  <span class="review-check" aria-hidden="true"></span>
-                  <div class="review-ref">Ticket 48377</div>
-                  <div class="review-text">Die Lampe ist nach zwei Tagen kaputt gegangen. Was nun?</div>
-                  <hr>
-                  <div class="review-answer"><span class="alabel">Expected:</span> Reply in German. Offer a replacement; the order is $59, so refund without asking if they decline.</div>
-                </div>
-              </div>
-            </div>
-            <div class="review-group">
-              <div class="review-label">Training examples</div>
-              <div class="review-items">
-                <div class="review-item">
-                  <span class="review-check" aria-hidden="true"></span>
-                  <div class="review-ref">Ticket 48102</div>
-                  <div class="review-text">I ordered two cushions and only one arrived.</div>
-                  <hr>
-                  <div class="review-answer"><span class="alabel">Reply:</span> Sorry about that. The missing cushion ships today and the tracking number follows by email.</div>
-                </div>
-                <div class="review-item">
-                  <span class="review-check" aria-hidden="true"></span>
-                  <div class="review-ref">Ticket 48290</div>
-                  <div class="review-text">Your courier damaged my door frame. I will take legal action.</div>
-                  <hr>
-                  <div class="review-answer"><span class="alabel">Reply:</span> Escalated to a human. No automated reply.</div>
-                </div>
-              </div>
-            </div>
-            <div class="review-note">Reject any of these and Kullback rewrites it.</div>
-          </div>
-          <div class="beat msg-row you" data-beat="u3"><div class="msg">All four look right. Go.</div></div>
-          <div class="beat msg-row agent" data-beat="k3"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Running every model on the 312 cases.</div></div></div>
-          <div class="beat eval" data-beat="eval">
-            <div class="eval-title">Eval results</div>
-            <div class="eval-bar-note">Accuracy on the 312 cases. The line marks <b>your bar</b> at 80.</div>
-            <div class="eval-head"><span>Model</span><span>Accuracy</span><span style="text-align:right">Time</span><span class="ccost" style="text-align:right">Cost per ticket</span></div>
-            <div class="erow" data-acc="64" data-time="4.0 s" data-cost="$0.048"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" fill-rule="evenodd" aria-hidden="true" focusable="false"><path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"></path></svg></span><span class="mname-text">GPT-6 Sol</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
-            <div class="erow" data-acc="66" data-time="3.6 s" data-cost="$0.041"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z" fill="#D97757" fill-rule="nonzero"></path></svg></span><span class="mname-text">Claude Opus 5.5</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
-            <div class="erow" data-acc="61" data-time="5.1 s" data-cost="$0.035"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="#3186FF"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-0)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-1)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#eval-gemini-2)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-0" x1="7" x2="11" y1="15.5" y2="12"><stop stop-color="#08B962"></stop><stop offset="1" stop-color="#08B962" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-1" x1="8" x2="11.5" y1="5.5" y2="11"><stop stop-color="#F94543"></stop><stop offset="1" stop-color="#F94543" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="eval-gemini-2" x1="3.5" x2="17.5" y1="13.5" y2="12"><stop stop-color="#FABC12"></stop><stop offset=".46" stop-color="#FABC12" stop-opacity="0"></stop></linearGradient></defs></svg></span><span class="mname-text">Gemini 3.8 Flash</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
-            <div class="erow" data-acc="38" data-time="0.3 s" data-cost="$0.003"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12.604 1.34c.393.69.784 1.382 1.174 2.075a.18.18 0 00.157.091h5.552c.174 0 .322.11.446.327l1.454 2.57c.19.337.24.478.024.837-.26.43-.513.864-.76 1.3l-.367.658c-.106.196-.223.28-.04.512l2.652 4.637c.172.301.111.494-.043.77-.437.785-.882 1.564-1.335 2.34-.159.272-.352.375-.68.37-.777-.016-1.552-.01-2.327.016a.099.099 0 00-.081.05 575.097 575.097 0 01-2.705 4.74c-.169.293-.38.363-.725.364-.997.003-2.002.004-3.017.002a.537.537 0 01-.465-.271l-1.335-2.323a.09.09 0 00-.083-.049H4.982c-.285.03-.553-.001-.805-.092l-1.603-2.77a.543.543 0 01-.002-.54l1.207-2.12a.198.198 0 000-.197 550.951 550.951 0 01-1.875-3.272l-.79-1.395c-.16-.31-.173-.496.095-.965.465-.813.927-1.625 1.387-2.436.132-.234.304-.334.584-.335a338.3 338.3 0 012.589-.001.124.124 0 00.107-.063l2.806-4.895a.488.488 0 01.422-.246c.524-.001 1.053 0 1.583-.006L11.704 1c.341-.003.724.032.9.34zm-3.432.403a.06.06 0 00-.052.03L6.254 6.788a.157.157 0 01-.135.078H3.253c-.056 0-.07.025-.041.074l5.81 10.156c.025.042.013.062-.034.063l-2.795.015a.218.218 0 00-.2.116l-1.32 2.31c-.044.078-.021.118.068.118l5.716.008c.046 0 .08.02.104.061l1.403 2.454c.046.081.092.082.139 0l5.006-8.76.783-1.382a.055.055 0 01.096 0l1.424 2.53a.122.122 0 00.107.062l2.763-.02a.04.04 0 00.035-.02.041.041 0 000-.04l-2.9-5.086a.108.108 0 010-.113l.293-.507 1.12-1.977c.024-.041.012-.062-.035-.062H9.2c-.059 0-.073-.026-.043-.077l1.434-2.505a.107.107 0 000-.114L9.225 1.774a.06.06 0 00-.053-.031zm6.29 8.02c.046 0 .058.02.034.06l-.832 1.465-2.613 4.585a.056.056 0 01-.05.029.058.058 0 01-.05-.029L8.498 9.841c-.02-.034-.01-.052.028-.054l.216-.012 6.722-.012z" fill="url(#eval-qwen)" fill-rule="nonzero"></path><defs><linearGradient id="eval-qwen" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#6336E7" stop-opacity=".84"></stop><stop offset="100%" stop-color="#6F69F7" stop-opacity=".84"></stop></linearGradient></defs></svg></span><span class="mname-text">Qwen3 8B, untrained</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval"></span></span><span class="etime"></span><span class="ecost"></span></div>
-            <div class="erow pending" data-beat="evalk"><span class="mname"><span class="mono" aria-hidden="true"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg></span><span class="mname-text">refund-v1</span></span><span class="acc-cell"><span class="etrack"><span class="efill"></span><span class="barline"></span></span><span class="mval">training</span></span><span class="etime">…</span><span class="ecost">…</span></div>
-          </div>
-          <div class="beat msg-row agent" data-beat="k4"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">None clears 80. Training refund-v1 on your 928 examples.</div></div></div>
-          <div class="beat train" data-beat="train">
-            <div class="train-top"><span>Training<span class="tr-sub"> refund-v1</span></span><span class="round" id="train-round">Starting</span></div>
-            <div class="traintrack"><div class="trainfill" id="train-fill"></div><span class="barline" style="position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--accent);border-radius:2px"></span></div>
-            <div class="ticks">
-              <span class="tick" style="left:25%"></span><span class="tick-label" data-tick="0" style="left:25%"><span class="rn">Round 1 · </span>71</span>
-              <span class="tick" style="left:50%"></span><span class="tick-label" data-tick="1" style="left:50%"><span class="rn">Round 2 · </span>79</span>
-              <span class="tick" style="left:75%"></span><span class="tick-label" data-tick="2" style="left:75%"><span class="rn">Round 3 · </span>84</span>
-              <span class="tick" style="left:100%"></span><span class="tick-label" data-tick="3" style="left:92%"><span class="rn">Round 4 · </span>86</span>
-            </div>
-          </div>
-          <div class="beat msg-row agent" data-beat="k5"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">refund-v1 clears your bar at 86. Hosting it.</div></div></div>
-          <div class="beat status" data-beat="host">
-            <div class="status-title">Hosting</div>
-            <div class="step" data-step="0"><span class="mark"></span><span class="sname">Deploying</span><span class="sresult">endpoint ready</span></div>
-            <div class="step" data-step="1"><span class="mark"></span><span class="sname">Routing refund emails</span><span class="sresult">5% of traffic first</span></div>
-          </div>
-          <div class="beat route" data-beat="route">
-            <span class="rlabel">Routing</span>
-            <span class="rval" id="route-val">GPT-6 Sol</span>
-            <button class="switch" id="route-switch" type="button" role="switch" aria-checked="false" aria-label="Routing target"></button>
-            <span class="rnote">Full rollout when it holds for 24 hours.</span>
-          </div>
-          <div class="beat msg-row agent" data-beat="k6"><span class="avatar" aria-hidden="true">K</span><div class="msg-wrap"><div class="typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="msg">Done. I re-run the eval whenever a new frontier model ships.</div></div></div>
-          <div class="fake-input" aria-hidden="true">
-            <span class="fake-field">Message Kullback</span>
-            <span class="fake-send"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M8 3L3.5 7.5M8 3l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="duo" style="margin-top:20px">
-      <div class="duo-card">
-        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#0E9F84" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="10" y="17" width="20" height="14" rx="3"/><path d="M14 17v-4a6 6 0 0 1 12 0v4"/><circle cx="20" cy="24" r="1.6" fill="#0E9F84" stroke="none"/></svg>
-        <h2>Your data stays yours.</h2>
-        <p class="body-text">Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.</p>
-      </div>
-      <div class="duo-card" id="kullback">
-        <svg class="duo-glyph" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#0E9F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c-2.5-2-6-2.5-11-2.5v22c5 0 8.5.5 11 2.5 2.5-2 6-2.5 11-2.5v-22c-5 0-8.5.5-11 2.5z"/><path d="M20 10v22"/></svg>
-        <h2>Kullback is open source.</h2>
-        <p class="body-text">Read it, run it yourself, or let it run for you.</p>
-        <span style="display:flex;gap:20px;flex-wrap:wrap"><a class="kullback-link" href="/kullback">Read more about Kullback</a><a class="kullback-link" href="https://github.com/leiblerdev/kullback" target="_blank" rel="noopener">See the code</a></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap block" id="faq">
-    <div class="sec-head"><h2>Questions.</h2></div>
-    <dl class="faq">
-      <div class="faq-item"><dt>What is leibler?</dt><dd>leibler is a data lab. It trains and hosts a model that does your job best: a model trained on your own agent's workflow, which is cheaper, faster and more accurate on your tasks than a frontier model.</dd></div>
-      <div class="faq-item"><dt>What is Kullback?</dt><dd>Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the system the agent worked in, grades any model on what it changed there, and trains on the runs that pass. The code is on GitHub under Apache-2.0.</dd></div>
-      <div class="faq-item"><dt>Does my data leave my account?</dt><dd>No. Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.</dd></div>
-      <div class="faq-item"><dt>Do I need GPUs or an ML team?</dt><dd>No. You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</dd></div>
-      <div class="faq-item"><dt>How does it compare with a frontier model?</dt><dd>In the refund email example on this page, the trained model refund-v1 costs $4,800 a month against $48,000 for GPT-6 Sol, replies in 0.2 s instead of 4.0 s, and scores 86 of 100 instead of 64 on the shop's tickets.</dd></div>
-      <div class="faq-item"><dt>How long does it take?</dt><dd>Bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</dd></div>
-      <div class="faq-item"><dt>Who is behind leibler?</dt><dd>Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich.</dd></div>
-    </dl>
-  </section>
-
-  <section class="wrap cta-block" id="cta">
-    <div class="cta-art">
-      <svg class="cta-bg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="cta-field-a" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#EEF7F3"/>
-            <stop offset="0.45" stop-color="#10B59A"/>
-            <stop offset="1" stop-color="#0B1230"/>
-          </linearGradient>
-          <radialGradient id="cta-field-b" cx="0.55" cy="0.5" r="0.6">
-            <stop offset="0" stop-color="#0B5C58" stop-opacity="0.55"/>
-            <stop offset="1" stop-color="#0B5C58" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="cta-line" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stop-color="#0B5C58"/>
-            <stop offset="0.55" stop-color="#10B59A"/>
-            <stop offset="1" stop-color="#FFFFFF"/>
-          </linearGradient>
-          <filter id="cta-grain" x="0" y="0" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
-            <feColorMatrix type="saturate" values="0"/>
-          </filter>
-          <filter id="cta-glow" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="6"/>
-          </filter>
-        </defs>
-        <rect x="0" y="0" width="1200" height="420" fill="#EEF7F3"/>
-        <rect x="0" y="0" width="1200" height="420" fill="url(#cta-field-a)"/>
-        <rect x="0" y="0" width="1200" height="420" fill="url(#cta-field-b)"/>
-        <g stroke="url(#cta-line)" stroke-width="1" fill="none">
-          <path d="M64,381 C298,313 664,228 1000,90" opacity="0.5"/><path d="M51,382 C257,292 588,156 1000,90" opacity="0.38"/><path d="M97,381 C260,310 701,61 1000,90" opacity="0.42"/><path d="M94,370 C332,237 687,186 1000,90" opacity="0.3"/><path d="M66,399 C226,338 605,200 1000,90" opacity="0.32"/><path d="M87,361 C245,320 694,111 1000,90" opacity="0.37"/><path d="M87,354 C211,226 641,162 1000,90" opacity="0.3"/><path d="M92,354 C256,308 754,91 1000,90" opacity="0.33"/><path d="M126,372 C312,296 691,207 1000,90" opacity="0.35"/><path d="M102,373 C276,255 793,225 1000,90" opacity="0.31"/><path d="M134,371 C298,242 651,83 1000,90" opacity="0.39"/><path d="M145,350 C277,250 645,143 1000,90" opacity="0.38"/><path d="M147,362 C389,225 704,54 1000,90" opacity="0.37"/><path d="M169,365 C304,306 649,174 1000,90" opacity="0.34"/><path d="M167,388 C422,264 716,212 1000,90" opacity="0.5"/><path d="M187,387 C389,296 616,175 1000,90" opacity="0.45"/><path d="M161,353 C319,254 682,90 1000,90" opacity="0.32"/><path d="M206,352 C456,235 682,249 1000,90" opacity="0.44"/><path d="M164,397 C342,265 625,78 1000,90" opacity="0.3"/><path d="M172,389 C403,326 793,123 1000,90" opacity="0.47"/><path d="M217,393 C472,278 619,53 1000,90" opacity="0.31"/><path d="M230,380 C396,327 740,118 1000,90" opacity="0.39"/><path d="M216,359 C347,298 789,70 1000,90" opacity="0.37"/><path d="M206,390 C403,304 667,97 1000,90" opacity="0.3"/><path d="M211,366 C381,300 746,217 1000,90" opacity="0.33"/><path d="M237,368 C397,255 766,58 1000,90" opacity="0.35"/>
-        </g>
-        <path d="M1000,90 L1200,8" stroke="#D9FF5C" stroke-opacity="0.3" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#cta-glow)"/>
-        <path d="M1000,90 L1200,8" stroke="#D9FF5C" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <rect x="0" y="0" width="1200" height="420" filter="url(#cta-grain)" opacity="0.06"/>
+<!-- BOTTOM LINE -->
+<section class="bottom tone-cream" data-tone="light">
+  <p class="eyebrow center">The bottom line</p>
+  <h2 class="center big"><span class="ln"><span>1/10th the cost.</span></span><span class="ln"><span>1/20th the latency.</span></span></h2>
+  <p class="center sub">And 35% more accurate on your tasks. Measured on the example agent below, against GPT-6 Sol at one million tickets a month.</p>
+  <div class="three">
+    <div class="col">
+      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
+        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#BFDCC9" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#8FBFA5" opacity=".7"/></g>
+        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#BFDCC9" opacity=".85"/></g>
+        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#9CC5AE" opacity=".9"/></g>
       </svg>
-      <div class="cta-copy">
-        <h2>Bring one workflow.</h2>
-        <p>We evaluate it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</p>
-        <a class="btn btn-primary" href="https://cal.com/krrish-agarwalla/30min">Book a call</a>
+      <h3>Cut the bill</h3>
+      <p>$4,800 a month instead of $48,000. A model sized for one job costs a tenth of one built for every job.</p>
+    </div>
+    <div class="col">
+      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
+        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#C4DDCF" opacity=".55"/></g>
+        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#8FBFA5" opacity=".75"/></g>
+        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#BFDCC9" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#9CC5AE"/></g>
+      </svg>
+      <h3>Reply in 0.2 seconds</h3>
+      <p>Instead of 4.0. Twenty replies go out from refund-v1 for every one from the frontier model.</p>
+    </div>
+    <div class="col">
+      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
+        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#BFDCC9" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#BFDCC9" opacity=".35"/></g>
+        <g class="f2"><polygon points="70,70 140,35 210,70 140,105" fill="#6FA88C" opacity=".8"/></g>
+        <g class="f3"><polygon points="70,105 140,70 210,105 140,140" fill="#6FA88C" opacity=".6"/></g>
+      </svg>
+      <h3>Score 86 of 100</h3>
+      <p>On the shop's own tickets, where the frontier gets 64. It clears the bar the frontier can't.</p>
+    </div>
+  </div>
+  <div class="center"><a href="#example" class="btn btn-red">See the example</a></div>
+</section>
+
+<!-- MODEL MARQUEE -->
+<section class="trusted tone-cream" data-tone="light">
+  <div class="wrap">
+    <h2>Graded on your tickets</h2>
+    <p class="lede">Kullback runs every model on the same 312 eval cases. The line it has to clear is your bar: 80.</p>
+  </div>
+  <div class="mq"><div class="mq-track">
+    <div class="tile"><small>GPT-6 Sol</small><b>64</b></div>
+    <div class="tile"><small>Claude Opus 5.5</small><b>66</b></div>
+    <div class="tile"><small>Gemini 3.8 Flash</small><b>61</b></div>
+    <div class="tile"><small>Qwen3 8B, untrained</small><b>38</b></div>
+    <div class="tile bar"><small>Your bar</small><b>80</b></div>
+    <div class="tile ours"><small>refund-v1</small><b>86</b></div>
+    <div class="tile"><small>Time · refund-v1</small><b>0.2 s</b></div>
+    <div class="tile"><small>Cost per ticket</small><b>$0.0048</b></div>
+  </div></div>
+</section>
+
+<!-- EXAMPLE: pinned dashboard + step list -->
+<section class="example tone-cream" id="example" data-tone="light">
+  <div class="ex-head">
+    <p class="eyebrow center">One example, in detail</p>
+    <h2 class="center">An agent on refund emails</h2>
+    <p class="center sub">An online furniture shop runs an agent on every refund email. Four steps, one million times a month, every step on a frontier model today.</p>
+  </div>
+  <div class="ex-pin">
+    <div class="dash">
+      <div class="dash-top">
+        <h4>Refund agent · activity</h4>
+        <div class="stats">
+          <div class="stat"><small>Tickets</small><div><b>1,240</b><span>last 30 days</span></div></div>
+          <div class="stat"><small>Eval</small><div><b>312</b><span>cases</span><b>4</b><span>rules</span></div></div>
+          <div class="stat grow"><small>Accuracy</small><div><b>86</b><span>refund-v1</span><b class="muted">64</b><span>GPT-6 Sol</span><i class="meter"><u></u></i></div></div>
+        </div>
+      </div>
+      <div class="table">
+        <div class="tr th"><span>Ticket</span><span>Message</span><span>Decision</span><span>Status</span></div>
+        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
+        <div class="tr hot"><span>48213</span><span>Chair arrived with a cracked leg</span><span class="pill p-dec">—</span><span class="pill p-stat">Received</span></div>
+        <div class="tr"><span>48377</span><span>Die Lampe ist kaputt gegangen</span><span class="pill p-amber">Replace</span><span class="pill p-green">Replied in German</span></div>
+        <div class="tr"><span>48102</span><span>Only one cushion arrived</span><span class="pill p-amber">Reship</span><span class="pill p-green">Completed</span></div>
+        <div class="tr"><span>48290</span><span>Courier damaged my door frame</span><span class="pill p-red">Escalate</span><span class="pill p-grey">Human</span></div>
+        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
+        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="pop">
+        <div class="pop-v on"><small>Inbound email · #48213</small><p>“The chair arrived with a cracked leg. I want my money back.”</p></div>
+        <div class="pop-v"><small>Order pulled</small><p><b>Oak chair · $149</b><br>Delivered three days ago</p></div>
+        <div class="pop-v"><small>Decision</small><p><span class="opt">Refund</span><span class="opt on">Replace</span><span class="opt">Escalate</span></p></div>
+        <div class="pop-v"><small>refund-v1 replies · 0.2 s</small><p>Sorry about the chair. We can send a replacement leg today at no cost, or refund the full $149. Reply with your choice.</p></div>
       </div>
     </div>
-  </section>
+    <ol class="steps">
+      <li class="on"><h3>Email arrives</h3><p>A customer writes in, in any language and any tone. One million of these a month, and anything legal goes straight to a human.</p></li>
+      <li><h3>Pull the order</h3><p>The agent looks up what was bought, for how much, and when it arrived, using the order and refund tools Kullback already mapped.</p></li>
+      <li><h3>Decide: refund, replace, escalate</h3><p>The shop's rules decide. Offer a replacement before a refund, refund under $100 without asking, escalate anything legal.</p></li>
+      <li><h3>Draft the reply</h3><p>refund-v1 writes it in 0.2 seconds instead of 4.0, with the replacement offered first and the refund rule checked.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- KULLBACK icon list -->
+<section class="kb tone-cream" id="kullback" data-tone="light">
+  <div class="kb-copy">
+    <p class="eyebrow">Meet Kullback</p>
+    <h2>The agent that builds it</h2>
+    <p class="lede">Kullback is the open source agent behind leibler. You never touch a GPU.</p>
+    <ul class="ilist">
+      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M14 18h16M14 23h10M14 28h13"/></svg></span><p>Kullback reads the logs your agent already writes, and connects your knowledge graph and your systems: 1,240 tickets, products, policies and customers linked.</p></li>
+      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M15 22l4 4 8-9"/></svg></span><p>It writes the eval from how your agent should behave: 312 cases and 4 rules, then grades every frontier model on them.</p></li>
+      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><rect x="13" y="13" width="8" height="8"/><rect x="23" y="13" width="8" height="8"/><rect x="13" y="23" width="8" height="8"/></svg></span><p>It builds the training data, 928 examples, and shows you some first. Reject any and Kullback rewrites them.</p></li>
+      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M13 30l6-8 4 3 8-11"/></svg></span><p>When no model clears your bar, it trains one. refund-v1 went 71, 79, 84, 86 over four rounds.</p></li>
+      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M14 31V20M20 31V15M26 31V23M14 18l6-5 6 6"/></svg></span><p>Finally, it hosts the model, routes 5% of traffic first, and re-runs the eval whenever a new frontier model ships.</p></li>
+    </ul>
+  </div>
+  <svg class="kb-art" viewBox="0 0 600 800" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><g class="kb-panels"></g></svg>
+</section>
+
+<!-- FROM THE DEMO cards -->
+<section class="quotes tone-cream" data-tone="light">
+  <div class="wrap">
+    <p class="eyebrow">From the live demo</p>
+    <h2>A conversation, not a project</h2>
+    <p class="lede">Building refund-v1 took a handful of messages. Here's how it went.</p>
+  </div>
+  <div class="q-grid wrap">
+    <figure class="qcard"><blockquote>“We run an agent on refund emails. Build us a model for it.”</blockquote><figcaption><span class="av">Y</span><div><b>You</b><small>Message 1</small></div></figcaption></figure>
+    <figure class="qcard"><blockquote>“None clears 80. Training refund-v1 on your 928 examples.”</blockquote><figcaption><span class="av k">K</span><div><b>Kullback</b><small>After the eval</small></div></figcaption></figure>
+    <figure class="qcard"><blockquote>“Done. I re-run the eval whenever a new frontier model ships.”</blockquote><figcaption><span class="av k">K</span><div><b>Kullback</b><small>After hosting</small></div></figcaption></figure>
+  </div>
+</section>
+
+<!-- DATA / OPEN SOURCE -->
+<section class="std tone-cream" data-tone="light">
+  <div class="std-copy">
+    <p class="eyebrow">Built to be yours</p>
+    <h2>A new standard for agent models</h2>
+    <p class="lede">Evaluation in 48 hours, a hosted model in about a week.</p>
+    <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-red">Book a call</a>
+    <div class="acc">
+      <div class="acc-i open"><button>Your data stays yours</button><div class="acc-b"><p>Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.</p></div></div>
+      <div class="acc-i"><button>Kullback is open source</button><div class="acc-b"><p>Read it, run it yourself, or let it run for you. The code is on GitHub under Apache-2.0. <a href="https://github.com/leiblerdev/kullback" class="ul">See the code</a></p></div></div>
+      <div class="acc-i"><button>No GPUs, no ML team</button><div class="acc-b"><p>You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier.</p></div></div>
+      <div class="acc-i"><button>Bring one workflow</button><div class="acc-b"><p>leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</p></div></div>
+    </div>
+  </div>
+  <div class="std-ui">
+    <div class="sheet s3"></div><div class="sheet s2"></div>
+    <div class="sheet s1">
+      <h4>Eval results</h4>
+      <small>Accuracy on the 312 cases. The line marks your bar at 80.</small>
+      <div class="ev" data-v="64"><span>GPT-6 Sol</span><i><u></u></i><b>64</b></div>
+      <div class="ev" data-v="66"><span>Claude Opus 5.5</span><i><u></u></i><b>66</b></div>
+      <div class="ev" data-v="61"><span>Gemini 3.8 Flash</span><i><u></u></i><b>61</b></div>
+      <div class="ev" data-v="38"><span>Qwen3 8B</span><i><u></u></i><b>38</b></div>
+      <div class="ev ours" data-v="86"><span>refund-v1</span><i><u></u></i><b>86</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq tone-cream" id="faq" data-tone="light">
+  <p class="eyebrow center">Questions</p>
+  <h2 class="center">What people ask</h2>
+  <div class="faq-list">
+    <details><summary>What is leibler?<i></i></summary><p>leibler is a data lab. It trains and hosts a model that does your job best: a model trained on your own agent's workflow, which is cheaper, faster and more accurate on your tasks than a frontier model.</p></details>
+    <details><summary>What is Kullback?<i></i></summary><p>Kullback is the open source agent behind leibler. It reads the logs your agent already writes, rebuilds the system the agent worked in, grades any model on what it changed there, and trains on the runs that pass. The code is on GitHub under Apache-2.0.</p></details>
+    <details><summary>Does my data leave my account?<i></i></summary><p>No. Training runs on your workflow and never leaves your account. The model is yours to download or host anywhere.</p></details>
+    <details><summary>Do I need GPUs or an ML team?<i></i></summary><p>No. You tell Kullback how your agent should behave. It writes the eval and the training data, trains, hosts, and keeps watching the frontier. You never touch a GPU.</p></details>
+    <details><summary>How does it compare with a frontier model?<i></i></summary><p>In the refund email example on this page, the trained model refund-v1 costs $4,800 a month against $48,000 for GPT-6 Sol, replies in 0.2 s instead of 4.0 s, and scores 86 of 100 instead of 64 on the shop's tickets.</p></details>
+    <details><summary>How long does it take?<i></i></summary><p>Bring one workflow. leibler evaluates it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</p></details>
+    <details><summary>Who is behind leibler?<i></i></summary><p>Krrish Agarwalla, who researches post-training models for chip design at Stanford and mathematical reasoning at LMU Munich.</p></details>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="close tone-choc" data-tone="dark">
+  <svg class="pyramid" viewBox="0 0 720 620" aria-hidden="true"><defs><radialGradient id="glow" cx=".5" cy=".55" r=".5"><stop offset="0" stop-color="#7FC2A0" stop-opacity=".55"/><stop offset="1" stop-color="#7FC2A0" stop-opacity="0"/></radialGradient></defs><ellipse cx="360" cy="330" rx="300" ry="240" fill="url(#glow)" class="glow"/><g class="tiers"></g></svg>
+  <div class="close-copy">
+    <p class="eyebrow">Bring one workflow</p>
+    <h2>No frontier bill, no GPUs, just your model</h2>
+    <p class="lede">We evaluate it against the frontier for free. Evaluation in 48 hours, a hosted model in about a week.</p>
+    <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-cream">Book a call</a>
+  </div>
+</section>
+
 </main>
 
-<footer class="wrap site">
-  <span class="foot-brand"><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect x="0" y="0" width="64" height="64" rx="12" fill="#000"/><path transform="translate(20.561 45.000)" d="M11.8564453125 -7.533203125Q11.8564453125 -5.232421875 12.70068359375 -4.0634765625Q13.544921875 -2.89453125 15.1962890625 -2.89453125H19.185546875V0.0H14.8623046875Q11.80078125 0.0 10.12158203125 -1.966796875Q8.4423828125 -3.93359375 8.4423828125 -7.533203125V-26.4033203125H2.96875V-29.0751953125H11.8564453125Z" fill="#fff"/><rect x="42" y="38" width="7" height="7" fill="#6b6b6b"/></svg>leibler.dev · San Francisco · krrish@leibler.dev</span>
-  <nav aria-label="Footer">
-    <a href="#demo">How it works</a>
-    <a href="/kullback">Kullback</a>
-    <a href="/team">Team</a>
-  </nav>
+<footer class="foot tone-choc" data-tone="dark">
+  <div class="foot-top">
+    <a class="giant" href="/" aria-label="leibler">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" fill="#163A2B"/><rect x="42" y="38" width="7" height="7" fill="#163A2B"/></svg>
+      <span>leibler</span>
+    </a>
+    <div class="foot-cols">
+      <div><a href="#glance">Product</a><a href="#example">Example</a><a href="#kullback">Kullback</a></div>
+      <div><a href="/team">Team</a><a href="https://github.com/leiblerdev/kullback">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+    </div>
+  </div>
+  <div class="foot-bot"><span>leibler.dev · San Francisco</span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a></div>
 </footer>
-<script>
-(function(){
-  var stage = document.getElementById('demo-stage');
-  var beats = Array.prototype.slice.call(stage.querySelectorAll('.beat'));
-  var chips = Array.prototype.slice.call(stage.querySelectorAll('.chip'));
-  var fillRows = Array.prototype.slice.call(stage.querySelectorAll('.erow[data-acc]'));
-  var pending = stage.querySelector('.erow.pending');
-  var trainFill = document.getElementById('train-fill');
-  var trainRound = document.getElementById('train-round');
-  var tickLabels = Array.prototype.slice.call(stage.querySelectorAll('.tick-label'));
-  var routeVal = document.getElementById('route-val');
-  var routeSwitch = document.getElementById('route-switch');
-  var replayBtn = document.getElementById('demo-replay');
-  var fakeField = stage.querySelector('.fake-field');
-  var headerSub = stage.querySelector('.demo-header .sub');
-  var HEADER_SUB_DEFAULT = 'builds and hosts your model';
-  var FAKE_PLACEHOLDER = 'Message Kullback';
-  var runId = 0;
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var PREP_RESULTS = ['1,240 tickets, last 30 days', '312 cases, 4 rules', '928 examples'];
-  var HOST_RESULTS = ['endpoint ready', '5% of traffic first'];
-  var stageRatio = 0;
-  var demoHeader = stage.querySelector('.demo-header');
 
-  function sleep(ms, id){
-    return new Promise(function(res){
-      setTimeout(function(){ res(id === runId); }, ms);
-    });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const NS = 'http://www.w3.org/2000/svg';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- smooth scroll ---------- */
+  let lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
   }
-  function frontier(){
-    var shown = stage.querySelectorAll('.beat.show');
-    var el = shown.length ? shown[shown.length - 1] : demoHeader;
-    return el.getBoundingClientRect().bottom;
-  }
-  function viewerState(){
-    if(stageRatio === 0) return 'paused';
-    var bottom = frontier();
-    if(bottom > window.innerHeight - 24) return 'behind';
-    if(bottom < 80) return 'ahead';
-    return 'inview';
-  }
-  function pace(ms, id){
-    return new Promise(function(res){
-      var left = ms;
-      function step(){
-        if(id !== runId){ res(false); return; }
-        var st = viewerState();
-        if(st === 'paused' || st === 'behind'){ setTimeout(step, 120); return; }
-        if(st === 'ahead'){
-          setTimeout(function(){ res(id === runId); }, Math.min(left, 40));
-          return;
-        }
-        if(left <= 0){ res(id === runId); return; }
-        var d = Math.min(left, 120);
-        setTimeout(function(){ left -= d; step(); }, d);
-      }
-      step();
-    });
-  }
-  function byBeat(name){
-    return beats.filter(function(b){ return b.getAttribute('data-beat') === name; });
-  }
-  function show(name){
-    byBeat(name).forEach(function(b){ b.classList.add('show'); });
-  }
-  function markStep(cardName, idx, done){
-    var card = byBeat(cardName)[0];
-    if(!card) return;
-    var steps = card.querySelectorAll('.step');
-    var st = steps[idx];
-    if(!st) return;
-    var mark = st.querySelector('.mark');
-    if(done){
-      mark.classList.add('check');
-      mark.classList.remove('spin');
-      mark.textContent = '✓';
-      st.classList.add('done');
-    } else {
-      mark.classList.add('spin');
-      mark.classList.remove('check');
-      mark.textContent = '';
-      st.classList.remove('done');
-    }
-  }
-  function countUp(el, target, dur, id){
-    return new Promise(function(res){
-      if(reduced || id !== runId){ el.textContent = target; res(false); return; }
-      var t0 = null;
-      function frame(t){
-        if(id !== runId){ res(false); return; }
-        if(!t0) t0 = t;
-        var p = Math.min(1, (t - t0) / dur);
-        el.textContent = Math.round(target * p);
-        if(p < 1) requestAnimationFrame(frame);
-        else res(true);
-      }
-      requestAnimationFrame(frame);
-    });
-  }
-  async function agentBeat(name, id){
-    show(name);
-    var alive = await pace(700, id);
-    if(!alive || id !== runId) return false;
-    byBeat(name).forEach(function(b){ b.classList.add('typed'); });
-    return true;
-  }
-  function setDone(id){
-    if(id !== runId) return;
-    stage.classList.add('is-done');
-    if(headerSub) headerSub.textContent = 'refund-v1 is live';
-  }
-  async function typeYou(name, id){
-    var list = byBeat(name);
-    var beat = list[0];
-    var msg = beat ? beat.querySelector('.msg') : null;
-    var text = msg ? msg.textContent : '';
-    if(reduced || id !== runId || !fakeField || !text){ show(name); return true; }
-    var per = Math.max(12, Math.floor(600 / text.length));
-    fakeField.textContent = '';
-    for(var k = 0; k < text.length; k++){
-      if(id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
-      fakeField.textContent = text.slice(0, k + 1);
-      var alive = await pace(per, id);
-      if(!alive || id !== runId){ fakeField.textContent = FAKE_PLACEHOLDER; return false; }
-    }
-    fakeField.textContent = FAKE_PLACEHOLDER;
-    show(name);
-    return true;
-  }
-  function reset(){
-    runId++;
-    beats.forEach(function(b){ b.classList.remove('show'); b.classList.remove('typed'); });
-    Array.prototype.slice.call(stage.querySelectorAll('.step')).forEach(function(st){
-      st.classList.remove('done');
-      var m = st.querySelector('.mark');
-      if(m){ m.classList.remove('spin'); m.classList.remove('check'); m.textContent = ''; }
-    });
-    chips.forEach(function(c){ c.classList.remove('sel'); });
-    Array.prototype.slice.call(stage.querySelectorAll('.review-check')).forEach(function(ch){
-      ch.classList.remove('on');
-      ch.textContent = '';
-    });
-    fillRows.forEach(function(r){
-      r.querySelector('.efill').style.width = '0';
-      r.querySelector('.mval').textContent = '';
-      var et = r.querySelector('.etime');
-      var ec = r.querySelector('.ecost');
-      if(et) et.textContent = '';
-      if(ec) ec.textContent = '';
-      r.classList.remove('show');
-    });
-    pending.classList.remove('hl');
-    pending.querySelector('.mval').textContent = 'training';
-    pending.querySelector('.etime').textContent = '…';
-    pending.querySelector('.ecost').textContent = '…';
-    pending.querySelector('.efill').style.width = '0';
-    trainFill.style.width = '0';
-    trainRound.textContent = 'Starting';
-    tickLabels.forEach(function(t){ t.classList.remove('show'); });
-    routeVal.textContent = 'GPT-6 Sol';
-    routeSwitch.setAttribute('aria-checked', 'false');
-    stage.classList.remove('is-done');
-    if(headerSub) headerSub.textContent = HEADER_SUB_DEFAULT;
-    if(fakeField) fakeField.textContent = FAKE_PLACEHOLDER;
-  }
-  function finalState(){
-    beats.forEach(function(b){ b.classList.add('show'); b.classList.add('typed'); });
-    chips[0].classList.add('sel'); chips[1].classList.add('sel'); chips[3].classList.add('sel');
-    Array.prototype.slice.call(stage.querySelectorAll('.review-check')).forEach(function(ch){
-      ch.classList.add('on');
-      ch.textContent = '✓';
-    });
-    fillRows.forEach(function(r){
-      r.querySelector('.efill').style.width = r.getAttribute('data-acc') + '%';
-      r.querySelector('.mval').textContent = r.getAttribute('data-acc');
-      r.querySelector('.etime').textContent = r.getAttribute('data-time');
-      r.querySelector('.ecost').textContent = r.getAttribute('data-cost');
-    });
-    pending.classList.add('hl');
-    pending.querySelector('.efill').style.width = '86%';
-    pending.querySelector('.mval').textContent = '86';
-    pending.querySelector('.etime').textContent = '0.2 s';
-    pending.querySelector('.ecost').textContent = '$0.005';
-    trainFill.style.width = '100%';
-    trainRound.textContent = 'Round 4 · 86';
-    tickLabels.forEach(function(t){ t.classList.add('show'); });
-    var prep = byBeat('prep')[0];
-    if(prep){
-      var ps = prep.querySelectorAll('.step');
-      ps.forEach(function(st, i){
-        var pm = st.querySelector('.mark');
-        pm.classList.add('check');
-        pm.classList.remove('spin');
-        pm.textContent = '✓';
-        st.classList.add('done');
-      });
-    }
-    var host = byBeat('host')[0];
-    if(host){
-      var hs = host.querySelectorAll('.step');
-      hs.forEach(function(st){
-        var hm = st.querySelector('.mark');
-        hm.classList.add('check');
-        hm.classList.remove('spin');
-        hm.textContent = '✓';
-        st.classList.add('done');
-      });
-    }
-    routeVal.textContent = 'refund-v1';
-    routeSwitch.setAttribute('aria-checked', 'true');
-    stage.classList.add('is-done');
-    if(headerSub) headerSub.textContent = 'refund-v1 is live';
-    if(fakeField) fakeField.textContent = FAKE_PLACEHOLDER;
-  }
-  async function runEvalRows(id){
-    for(var i = 0; i < fillRows.length; i++){
-      var r = fillRows[i];
-      r.classList.add('show');
-      var acc = parseInt(r.getAttribute('data-acc'), 10);
-      var time = r.getAttribute('data-time');
-      var cost = r.getAttribute('data-cost');
-      var fill = r.querySelector('.efill');
-      var val = r.querySelector('.mval');
-      var et = r.querySelector('.etime');
-      var ec = r.querySelector('.ecost');
-      var spin = document.createElement('span');
-      spin.classList.add('mark');
-      spin.classList.add('spin');
-      val.textContent = '';
-      val.appendChild(spin);
-      var alive = await pace(350, id);
-      if(!alive || id !== runId) return false;
-      fill.style.width = acc + '%';
-      val.textContent = '';
-      var ok = await countUp(val, acc, 300, id);
-      if(id !== runId) return false;
-      et.textContent = time;
-      ec.textContent = cost;
-    }
-    return true;
-  }
-  var TICK_SCORES = [71, 79, 84, 86];
-  function showTick(t){
-    var tl = tickLabels[t];
-    tl.textContent = '';
-    var rn = document.createElement('span');
-    rn.className = 'rn';
-    rn.textContent = 'Round ' + (t + 1) + ' · ';
-    tl.appendChild(rn);
-    tl.appendChild(document.createTextNode(String(TICK_SCORES[t])));
-    tl.classList.add('show');
-  }
-  async function run(){
-    var id = ++runId;
-    if(!await typeYou('u1', id)) return;
-    var alive = await pace(800, id);
-    if(!alive || id !== runId) return;
-    if(!await agentBeat('k1', id)) return;
-    show('chips');
-    alive = await pace(1000, id);
-    if(!alive || id !== runId) return;
-    chips[0].classList.add('sel');
-    alive = await pace(250, id);
-    if(!alive || id !== runId) return;
-    chips[1].classList.add('sel');
-    alive = await pace(250, id);
-    if(!alive || id !== runId) return;
-    chips[3].classList.add('sel');
-    alive = await pace(300, id);
-    if(!alive || id !== runId) return;
-    if(!await typeYou('u2', id)) return;
-    alive = await pace(800, id);
-    if(!alive || id !== runId) return;
-    show('prep');
-    var prepCount = byBeat('prep')[0].querySelectorAll('.step').length;
-    for(var p = 0; p < prepCount; p++){
-      markStep('prep', p, false);
-      alive = await pace(420, id);
-      if(!alive || id !== runId) return;
-      markStep('prep', p, true);
-    }
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    if(!await agentBeat('k2', id)) return;
-    show('review');
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    var checks = Array.prototype.slice.call(stage.querySelectorAll('.review-check'));
-    for(var c = 0; c < checks.length; c++){
-      checks[c].classList.add('on');
-      checks[c].textContent = '✓';
-      if(c < checks.length - 1){
-        alive = await pace(350, id);
-        if(!alive || id !== runId) return;
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const t = $(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    lenis ? lenis.scrollTo(t, { duration: 1.4, offset: -40 }) : t.scrollIntoView({ behavior: 'smooth' });
+  }));
+
+  /* ---------- nav tone follows the section under it ---------- */
+  const nav = $('.nav'), toned = $$('main [data-tone], footer[data-tone]');
+  function navTone() {
+    nav.classList.toggle('scrolled', scrollY > 60);
+    const y = nav.getBoundingClientRect().bottom - 10;
+    for (const s of toned) {
+      const host = s.parentElement.classList.contains('pin-spacer') ? s.parentElement : s;
+      const r = host.getBoundingClientRect();
+      if (r.top <= y && r.bottom > y) {
+        const tone = s.classList.contains('tone-choc') ? 'choc' : s.dataset.tone;
+        if (nav.dataset.tone !== tone) nav.dataset.tone = tone;
+        return;
       }
     }
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    if(!await typeYou('u3', id)) return;
-    alive = await pace(600, id);
-    if(!alive || id !== runId) return;
-    if(!await agentBeat('k3', id)) return;
-    show('eval');
-    pending.classList.add('show');
-    if(!await runEvalRows(id)) return;
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    show('k4');
-    show('train');
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    byBeat('k4').forEach(function(b){ b.classList.add('typed'); });
-    var rounds = [['Round 1 · 71', 25], ['Round 2 · 79', 50], ['Round 3 · 84', 75], ['Round 4 · 86', 100]];
-    alive = await pace(200, id);
-    if(!alive || id !== runId) return;
-    trainFill.style.width = rounds[0][1] + '%';
-    trainRound.textContent = rounds[0][0];
-    showTick(0);
-    for(var t = 1; t < rounds.length; t++){
-      alive = await pace(600, id);
-      if(!alive || id !== runId) return;
-      trainFill.style.width = rounds[t][1] + '%';
-      trainRound.textContent = rounds[t][0];
-      showTick(t);
-    }
-    alive = await pace(200, id);
-    if(!alive || id !== runId) return;
-    pending.classList.add('hl');
-    var pfill = pending.querySelector('.efill');
-    var pval = pending.querySelector('.mval');
-    pfill.style.width = '86%';
-    pval.textContent = '';
-    await countUp(pval, 86, 400, id);
-    if(id !== runId) return;
-    pending.querySelector('.etime').textContent = '0.2 s';
-    pending.querySelector('.ecost').textContent = '$0.005';
-    alive = await pace(700, id);
-    if(!alive || id !== runId) return;
-    if(!await agentBeat('k5', id)) return;
-    show('host');
-    markStep('host', 0, false);
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    markStep('host', 0, true);
-    show('route');
-    markStep('host', 1, false);
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    markStep('host', 1, true);
-    routeSwitch.setAttribute('aria-checked', 'true');
-    routeVal.textContent = 'refund-v1';
-    alive = await pace(700, id);
-    if(!alive || id !== runId) return;
-    show('k6');
-    setDone(id);
-    alive = await pace(500, id);
-    if(!alive || id !== runId) return;
-    byBeat('k6').forEach(function(b){ b.classList.add('typed'); });
   }
-  chips.forEach(function(c){
-    c.addEventListener('click', function(){ c.classList.toggle('sel'); });
-  });
-  routeSwitch.addEventListener('click', function(){
-    var on = routeSwitch.getAttribute('aria-checked') === 'true';
-    routeSwitch.setAttribute('aria-checked', on ? 'false' : 'true');
-    routeVal.textContent = on ? 'GPT-6 Sol' : 'refund-v1';
-  });
-  replayBtn.addEventListener('click', function(){
-    reset();
-    if(reduced){ finalState(); return; }
-    run();
-  });
-  if(reduced){
-    finalState();
-    return;
-  }
-  var started = false;
-  function start(){
-    if(started) return;
-    started = true;
-    window.removeEventListener('scroll', maybeStart);
-    window.removeEventListener('resize', maybeStart);
-    run();
-  }
-  function maybeStart(){
-    if(started || stageRatio === 0) return;
-    if(stageRatio >= 0.35 || stage.getBoundingClientRect().top < window.innerHeight * 0.5) start();
-  }
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        stageRatio = e.isIntersecting ? e.intersectionRatio : 0;
+  addEventListener('scroll', navTone, { passive: true });
+
+  /* ---------- hero cascade: panel heights follow a bell curve that sharpens on scroll ---------- */
+  (() => {
+    const g = $('.cascade .panels'), N = 15, W = 74, STEP = 50, SKEW = 92, BASE = 820;
+    const polys = Array.from({ length: N }, (_, i) => {
+      const p = document.createElementNS(NS, 'polygon');
+      p.setAttribute('fill', 'url(#pg)');
+      p.setAttribute('opacity', (.55 + .45 * (i / N)).toFixed(2));
+      g.append(p); return p;
+    });
+    const st = { sigma: 5.2, center: 9.6, grow: 0, mx: 0, my: 0 };
+    const grows = new Array(N).fill(0);
+    function render() {
+      polys.forEach((p, i) => {
+        const z = (i - st.center) / st.sigma;
+        const h = (150 + 560 * Math.exp(-z * z / 2)) * grows[i];
+        const par = (i / N) * 26;
+        const x = 40 + i * STEP + st.mx * par, by = BASE + st.my * par * .4;
+        p.setAttribute('points', `${x},${by} ${x},${by - h} ${x + W},${by - h - SKEW} ${x + W},${by - SKEW}`);
       });
-      maybeStart();
-    }, {threshold: [0, 0.1, 0.35, 0.5]});
-    io.observe(stage);
-    window.addEventListener('scroll', maybeStart, {passive: true});
-    window.addEventListener('resize', maybeStart);
-  } else {
-    stageRatio = 1;
-    start();
-  }
+    }
+    gsap.ticker.add(render);
+    grows.forEach((_, i) => { const o = { v: 0 }; gsap.to(o, { v: 1, duration: 1.6, delay: .15 + i * .05, ease: 'expo.out', onUpdate: () => { grows[i] = o.v; } }); });
+    gsap.to(st, { sigma: 1.9, center: 10.4, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+    if (!reduce) {
+      const hero = $('.hero');
+      hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect();
+        gsap.to(st, { mx: (e.clientX - r.left) / r.width - .5, my: (e.clientY - r.top) / r.height - .5, duration: 1.2, ease: 'power3' });
+      });
+    }
+  })();
+
+  /* ---------- hero copy ---------- */
+  gsap.timeline({ defaults: { ease: 'expo.out' } })
+    .from('.announce', { yPercent: -100, duration: 1 })
+    .from('.brand, .nav-links', { y: -16, opacity: 0, duration: 1, stagger: .08 }, .1)
+    .from('.btn-nav', { opacity: 0, duration: 1 }, .25)
+    .from('.hero .eyebrow', { y: 16, opacity: 0, duration: 1 }, .3)
+    .from('.hero-title .ln > span', { yPercent: 110, duration: 1.3, stagger: .1 }, .35)
+    .from('.hero-sub, .hero .btns', { y: 20, opacity: 0, duration: 1.1, stagger: .1 }, .6);
+
+  /* ---------- glance art ---------- */
+  gsap.timeline({ scrollTrigger: { trigger: '.glance', start: 'top 70%' }, defaults: { ease: 'expo.out' } })
+    .from('.gl-panels polygon:not(.gl-chip)', { x: -60, y: 30, opacity: 0, duration: 1.4, stagger: .1 })
+    .from('.gl-line', { attr: { y2: 10 }, duration: 1 }, .4)
+    .from('.gl-label', { opacity: 0, x: -10, duration: .8 }, .7)
+    .from('.gl-chip', { opacity: 0, x: -30, duration: 1 }, .8)
+    .from('.glance-copy > *', { y: 30, opacity: 0, duration: 1.2, stagger: .1 }, .2);
+  if (!reduce) gsap.to('.gl-chip', { y: -12, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 });
+
+  /* ---------- line reveals ---------- */
+  gsap.from('.bottom .ln > span', { yPercent: 110, duration: 1.3, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.bottom h2', start: 'top 85%' } });
+
+  /* ---------- floating isometric illustrations ---------- */
+  $$('.iso-ill').forEach((svg, k) => {
+    const parts = $$('g', svg);
+    gsap.from(parts, { y: -40, opacity: 0, duration: 1.2, stagger: .15, ease: 'expo.out', scrollTrigger: { trigger: svg, start: 'top 85%' } });
+    if (!reduce) parts.forEach((p, i) => gsap.to(p, { y: i % 2 ? 6 : -8, duration: 2.6 + i * .4 + k * .2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.4 + i * .3 }));
+  });
+
+  /* ---------- marquee ---------- */
+  (() => {
+    const track = $('.mq-track');
+    track.innerHTML += track.innerHTML;
+    const tw = gsap.to(track, { xPercent: -50, duration: 32, ease: 'none', repeat: -1 });
+    track.addEventListener('mouseenter', () => gsap.to(tw, { timeScale: .2, duration: .6 }));
+    track.addEventListener('mouseleave', () => gsap.to(tw, { timeScale: 1, duration: .6 }));
+  })();
+
+  /* ---------- example: pinned dashboard ---------- */
+  (() => {
+    const items = $$('.steps li'), views = $$('.pop-v'), dec = $('.p-dec'), stat = $('.p-stat');
+    const decs = [['—', ''], ['—', ''], ['Replace', 'p-amber'], ['Replace', 'p-amber']];
+    const stats = [['Received', 'p-grey'], ['Order pulled', 'p-grey'], ['Decided', 'p-amber'], ['Replied · 0.2 s', 'p-green']];
+    let cur = -1;
+    function set(k) {
+      if (k === cur) return;
+      const prev = cur; cur = k;
+      items.forEach((li, i) => li.classList.toggle('on', i === k));
+      if (prev >= 0) {
+        const from = views[prev];
+        gsap.to(from, { autoAlpha: 0, y: -8, duration: .25, onComplete: () => from.classList.remove('on') });
+      }
+      const to = views[k];
+      to.classList.add('on');
+      gsap.fromTo(to, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: .5, delay: prev >= 0 ? .2 : 0, ease: 'power3.out' });
+      gsap.fromTo('.pop', { scale: .97 }, { scale: 1, duration: .5, ease: 'back.out(3)' });
+      dec.textContent = decs[k][0]; dec.className = 'pill p-dec ' + decs[k][1];
+      stat.textContent = stats[k][0]; stat.className = 'pill p-stat ' + stats[k][1];
+      gsap.fromTo([dec, stat], { scale: .8 }, { scale: 1, duration: .45, ease: 'back.out(3)' });
+    }
+    set(0);
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 961px)', () => {
+      ScrollTrigger.create({
+        trigger: '.ex-pin', start: 'top top', end: () => '+=' + innerHeight * 3, pin: true,
+        onUpdate: self => set(Math.min(3, Math.floor(self.progress * 4)))
+      });
+    });
+    mm.add('(max-width: 960px)', () => {
+      let i = 0;
+      const id = setInterval(() => { if (ScrollTrigger.isInViewport('.ex-pin')) set(i = (i + 1) % 4); }, 3600);
+      items.forEach((li, j) => li.addEventListener('click', () => set(i = j)));
+      return () => clearInterval(id);
+    });
+    ScrollTrigger.create({ trigger: '.dash', start: 'top 75%', once: true, onEnter: () => gsap.to('.meter u', { width: '86%', duration: 1.6, ease: 'expo.out' }) });
+  })();
+
+  /* ---------- kullback art: big translucent panels with parallax ---------- */
+  (() => {
+    const g = $('.kb-panels');
+    const cols = ['#7FA894', '#4F7A66', '#A9C7B8', '#3E6B57', '#C3DACE', '#5A8873', '#2F5A47', '#93B8A6'];
+    const panels = cols.map((c, i) => {
+      const p = document.createElementNS(NS, 'polygon');
+      const x = 60 + i * 66, top = 120 + (i % 3) * 60 + i * 20;
+      p.setAttribute('points', `${x},900 ${x},${top} ${x + 150},${top + 85} ${x + 150},900`);
+      p.setAttribute('fill', c); p.setAttribute('opacity', (.22 + (i % 3) * .1).toFixed(2));
+      g.append(p); return p;
+    });
+    panels.forEach((p, i) => gsap.fromTo(p, { y: 120 + i * 30 }, { y: -60 - i * 20, ease: 'none', scrollTrigger: { trigger: '.kb', start: 'top bottom', end: 'bottom top', scrub: true } }));
+    gsap.from('.ilist li', { y: 30, opacity: 0, duration: 1, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '.ilist', start: 'top 80%' } });
+  })();
+
+  /* ---------- standard: accordion + eval bars ---------- */
+  $$('.acc-i').forEach(item => {
+    $('button', item).addEventListener('click', () => {
+      $$('.acc-i').forEach(o => {
+        const b = $('.acc-b', o);
+        if (o === item && !o.classList.contains('open')) { o.classList.add('open'); gsap.fromTo(b, { height: 0 }, { height: 'auto', duration: .6, ease: 'power3.inOut' }); }
+        else if (o !== item && o.classList.contains('open')) gsap.fromTo(b, { height: b.offsetHeight }, { height: 0, duration: .6, ease: 'power3.inOut', onComplete: () => o.classList.remove('open') });
+      });
+    });
+  });
+  gsap.from('.sheet', { x: 60, y: 40, opacity: 0, duration: 1.3, stagger: -.12, ease: 'expo.out', scrollTrigger: { trigger: '.std-ui', start: 'top 75%' } });
+  ScrollTrigger.create({ trigger: '.std-ui', start: 'top 70%', once: true, onEnter: () => $$('.ev').forEach((ev, i) => gsap.to($('u', ev), { width: ev.dataset.v + '%', duration: 1.4, delay: .5 + i * .12, ease: 'power3.out' })) });
+
+  /* ---------- faq ---------- */
+  $$('.faq details').forEach(d => {
+    const p = $('p', d);
+    $('summary', d).addEventListener('click', e => {
+      e.preventDefault();
+      if (d.open) gsap.to(p, { height: 0, opacity: 0, duration: .45, ease: 'power3.inOut', onComplete: () => { d.open = false; gsap.set(p, { clearProps: 'all' }); } });
+      else { d.open = true; gsap.from(p, { height: 0, opacity: 0, duration: .6, ease: 'power3.out' }); }
+    });
+  });
+
+  /* ---------- closing pyramid ---------- */
+  (() => {
+    const g = $('.pyramid .tiers'), N = 15, tiers = [];
+    for (let k = 0; k < N; k++) {
+      const w = 340 - k * 21, h = w * .5, cy = 400 - k * 17;
+      const p = document.createElementNS(NS, 'polygon');
+      p.setAttribute('points', `${360 - w},${cy} 360,${cy - h} ${360 + w},${cy} 360,${cy + h}`);
+      p.setAttribute('fill', '#8CCBA8'); p.setAttribute('opacity', '.09');
+      g.append(p); tiers.push(p);
+    }
+    gsap.from(tiers, { y: 80, opacity: 0, duration: 1.4, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.close', start: 'top 70%' } });
+    if (!reduce) {
+      gsap.to(tiers, { opacity: .2, duration: .9, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: { each: .12, repeat: -1, yoyo: true }, delay: 2 });
+      gsap.to('.glow', { opacity: .55, scale: 1.08, transformOrigin: '50% 50%', duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    }
+    gsap.from('.close-copy > *', { y: 30, opacity: 0, duration: 1.2, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '.close', start: 'top 60%' } });
+  })();
+
+  /* ---------- generic reveals ---------- */
+  const sel = '.bottom .eyebrow, .bottom .sub, .col h3, .col p, .bottom .btn, .trusted h2, .trusted .lede, .ex-head > *, .kb-copy > .eyebrow, .kb-copy > h2, .kb .lede, .quotes .wrap > *, .qcard, .std-copy > .eyebrow, .std-copy > h2, .std .lede, .std-copy > .btn, .acc-i, .faq > .eyebrow, .faq > h2, details, .foot-top > *, .foot-bot';
+  gsap.set(sel, { opacity: 0 });
+  ScrollTrigger.batch(sel, { start: 'top 90%', once: true, onEnter: els => gsap.fromTo(els, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: .07, ease: 'expo.out' }) });
+
+  ScrollTrigger.refresh();
+  navTone();
+  document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
 })();
 </script>
 </body>
