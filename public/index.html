@@ -7,7 +7,7 @@
 <meta name="description" content="leibler is a data lab. We post-train small models on your data that beat the frontier on speed, cost and accuracy.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <link rel="canonical" href="https://www.leibler.dev/">
-<meta name="theme-color" content="#121417">
+<meta name="theme-color" content="#090909">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="leibler">
 <meta property="og:title" content="leibler · A model trained on your agent's workflow">
@@ -21,13 +21,13 @@
 <meta name="twitter:title" content="leibler · A model trained on your agent's workflow">
 <meta name="twitter:description" content="leibler is a data lab. We post-train small models on your data that beat the frontier on speed, cost and accuracy.">
 <meta name="twitter:image" content="https://www.leibler.dev/assets/img/og.png?v=4">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-1%20-1%207%2010%22%20shape-rendering%3D%22crispEdges%22%3E%3Crect%20x%3D%22-1%22%20y%3D%22-1%22%20width%3D%227%22%20height%3D%2210%22%20fill%3D%22%23090909%22/%3E%3Crect%20x%3D%221%22%20y%3D%223%22%20width%3D%222%22%20height%3D%221%22%20fill%3D%22%23E8EFEA%22/%3E%3Crect%20x%3D%222%22%20y%3D%224%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23E8EFEA%22/%3E%3Crect%20x%3D%222%22%20y%3D%225%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23E8EFEA%22/%3E%3Crect%20x%3D%222%22%20y%3D%226%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23E8EFEA%22/%3E%3Crect%20x%3D%222%22%20y%3D%227%22%20width%3D%222%22%20height%3D%221%22%20fill%3D%22%23E8EFEA%22/%3E%3Crect%20x%3D%222%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%230054FF%22/%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%223%22%20height%3D%221%22%20fill%3D%22%230054FF%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site/site.css?v=7">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"https://www.leibler.dev/#org","name":"leibler","url":"https://www.leibler.dev/","logo":{"@type":"ImageObject","url":"https://www.leibler.dev/assets/img/logo/logo-mark.png"},"email":"krrish@leibler.dev","description":"leibler is a data lab. We post-train small models on your data that beat the frontier on speed, cost and accuracy.","sameAs":["https://github.com/leiblerdev","https://huggingface.co/leibler"],"founder":{"@id":"https://www.leibler.dev/#krrish"}},
@@ -44,942 +44,204 @@
 {"@type":"Question","name":"Who is behind leibler?","acceptedAnswer":{"@type":"Answer","text":"Krrish Agarwalla, a post-training researcher at Stanford and LMU Munich."}}]}
 ]}
 </script>
-<style>
-:root{
-  --terra:#E8461E;
-  --terra-2:#B8320F;
-  --cream:#EDEAE3;
-  --cream-2:#FAF8F4;
-  --paper:#121417;
-  --brown:#EDEAE3;
-  --ink:#121417;
-  --surface:#1A1D21;
-  --surface-2:#23272C;
-  --brown-2:#9A9EA4;
-  --choc:#121417;
-  --red:#CC3A14;
-  --peach:#DDD8CE;
-  --gold:#E2DDD3;
-  --rose:#C9C3B7;
-  --shadow:#CC3A14;
-  --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;
-  --serif:'Fraunces',Georgia,serif;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --gutter:clamp(16px,3vw,42px);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto!important}
-body{font-family:var(--sans);background:var(--paper);color:var(--brown);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
-pre,code,input,svg text{font-family:var(--sans)}
-::selection{background:var(--terra);color:var(--cream)}
-.wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
-.center{text-align:center;margin-left:auto;margin-right:auto}
-.ul{text-decoration:underline;text-underline-offset:3px}
-.muted{opacity:.55}
-
-/* paper grain */
-.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:screen;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .2  0 0 0 0 .15  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-/* tones */
-.tone-terra{background:var(--paper);color:var(--brown)}
-.tone-cream{background:transparent}
-.tone-choc{background:var(--choc);color:var(--cream)}
-
-/* type */
-.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:13.5px;font-weight:400;margin-bottom:14px}
-h1,h2,h3,h4,.acc-i button{font-family:var(--serif);font-weight:300;font-optical-sizing:auto}
-h1,h2{letter-spacing:-.02em;line-height:1.06}
-h2{font-size:clamp(34px,3.7vw,54px);margin-bottom:18px}
-h2.big{font-size:clamp(40px,4.6vw,66px)}
-.ln{display:block;overflow:hidden;padding-bottom:.06em}
-.ln > span{display:inline-block}
-.sub,.lede{font-size:18px;max-width:34em}
-.sub.center{margin-bottom:56px}
-
-/* buttons: square, tracked caps */
-.btn{display:inline-flex;align-items:center;justify-content:center;height:58px;padding:0 30px;font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
-  position:relative;isolation:isolate;overflow:hidden;transition:color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
-.btn:hover::before{transform:scaleX(1);transform-origin:left}
-.btn-cream{background:var(--cream-2);color:var(--ink)}
-.btn-cream::before{background:#fff}
-.btn-red{background:var(--red);color:var(--cream-2)}
-.btn-red::before{background:var(--terra-2)}
-.btn-ghost{color:var(--brown);box-shadow:inset 0 0 0 1px rgba(237,234,227,.35)}
-.btn-ghost::before{background:rgba(237,234,227,.06)}
-.btn:hover{transform:translateY(-2px)}
-.btns{display:flex;gap:14px;flex-wrap:wrap}
-
-/* announce + nav */
-.announce{display:block;text-align:center;background:var(--surface);color:var(--cream);border-bottom:1px solid rgba(237,234,227,.08);font-size:16px;font-weight:500;padding:13px 16px;position:relative;z-index:61}
-.announce:hover{text-decoration:underline;text-underline-offset:3px}
-.nav{position:sticky;top:0;z-index:60;height:98px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);margin-bottom:-98px;
-  color:var(--cream);transition:color .4s,background-color .4s,height .4s var(--ease)}
-.nav.scrolled{height:78px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.nav[data-tone="dark"].scrolled{background:rgba(18,20,23,.86);box-shadow:0 1px 0 rgba(237,234,227,.08)}
-.nav[data-tone="choc"].scrolled{background:rgba(18,20,23,.86);box-shadow:0 1px 0 rgba(237,234,227,.08)}
-.nav[data-tone="light"]{color:var(--brown)}
-.nav[data-tone="light"].scrolled{background:rgba(246,244,239,.88);box-shadow:0 1px 0 rgba(237,234,227,.08)}
-.brand{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:400;letter-spacing:-.04em}
-.brand svg{width:30px;height:30px}
-.brand .brand-l{fill:var(--terra);transition:fill .4s}
-.nav[data-tone="light"] .brand .brand-l{fill:var(--cream)}
-.nav-links{display:flex;gap:44px;font-size:18px;font-weight:500}
-.nav-links a{position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-.btn-nav{background:var(--red);color:var(--cream-2);transition:background-color .4s,color .4s,transform .4s var(--ease)}
-.btn-nav::before{background:var(--terra-2)}
-.nav[data-tone="light"] .btn-nav{background:var(--red);color:var(--cream-2)}
-.nav[data-tone="light"] .btn-nav::before{background:var(--brown)}
-
-/* hero */
-.hero{position:relative;min-height:calc(100vh - 50px);display:flex;align-items:flex-end;padding:160px var(--gutter) 84px;overflow:hidden;isolation:isolate}
-.ridges{position:absolute;inset:0;width:100%;height:100%;z-index:0;
-  -webkit-mask-image:linear-gradient(90deg,transparent 12%,#000 62%),linear-gradient(180deg,transparent 0%,#000 18%);mask-image:linear-gradient(90deg,transparent 12%,#000 62%),linear-gradient(180deg,transparent 0%,#000 18%);
-  -webkit-mask-composite:source-in;mask-composite:intersect}
-.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:22%;background:linear-gradient(180deg,transparent,var(--paper));z-index:1;pointer-events:none}
-.hero-inner{position:relative;z-index:2;max-width:760px}
-.hero-title{font-size:clamp(50px,6.4vw,104px);margin-bottom:28px;letter-spacing:-.03em;line-height:1}
-.hero-title .ln{padding-bottom:.16em;margin-bottom:-.1em}
-.hero-title em{font-style:normal;color:var(--terra)}
-.hero-legend{position:absolute;right:var(--gutter);bottom:84px;z-index:2;display:flex;gap:22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2)}
-.hero-legend span{display:flex;align-items:center;gap:8px}
-.hero-legend i{display:block;width:18px;height:1.5px;background:#7C8086}
-.hero-legend i.lg-y{background:var(--terra);box-shadow:0 0 8px rgba(232,70,30,.8)}
-.hero-sub{font-size:19px;max-width:36em;margin-bottom:34px}
-
-/* glance */
-.glance{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:110px var(--gutter) 150px}
-.glance-art{position:relative;max-width:440px;margin:0 auto;width:100%}
-.glance-art svg{width:100%;overflow:visible}
-.gl-label{position:absolute;left:24%;top:-4px;text-transform:uppercase;letter-spacing:.16em;font-size:15px}
-.glance-copy p:not(.eyebrow){font-size:18px;max-width:34em}
-.glance-copy p + p{margin-top:16px}
-
-/* bottom line */
-.bottom{padding:150px var(--gutter) 120px}
-.bottom .eyebrow{margin-bottom:16px}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1240px;margin:0 auto 60px}
-.col{text-align:center}
-.iso-ill{width:220px;height:150px;margin:0 auto 34px;display:block;overflow:visible}
-.col h3{font-size:30px;letter-spacing:-.01em;margin-bottom:12px}
-.col p{max-width:24em;margin:0 auto}
-
-/* marquee tiles */
-.trusted{padding:90px 0 130px}
-.trusted .lede{margin-bottom:56px}
-.mq{overflow:hidden;padding:4px 0 14px}
-.mq-track{display:flex;gap:16px;width:max-content;will-change:transform}
-.tile{width:184px;height:88px;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:8px 8px 0 var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.tile:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--shadow)}
-.tile small{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-2)}
-.tile b{font-size:30px;font-weight:400;letter-spacing:-.03em}
-.tile.bar b{color:var(--brown)}
-.tile.ours{background:var(--red);color:var(--cream-2);box-shadow:8px 8px 0 #7A240C}
-.tile.ours small{color:var(--cream)}
-
-/* example pinned */
-.example{padding-top:120px}
-.ex-head{padding:0 var(--gutter);margin-bottom:20px}
-.ex-head .sub.center{margin-bottom:40px}
-.ex-kpis{display:grid;grid-template-columns:repeat(4,1fr);max-width:980px;margin:0 auto;border-top:1px solid rgba(232,70,30,.45);border-bottom:1px solid rgba(237,234,227,.1)}
-.ex-kpis div{padding:22px 20px;text-align:center}
-.ex-kpis div + div{border-left:1px solid rgba(237,234,227,.1)}
-.ex-kpis dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
-.ex-kpis dd{font-family:var(--serif);font-weight:300;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.02em;color:var(--terra)}
-.ex-kpis s{font-family:var(--sans);font-size:15px;color:var(--brown-2);margin-right:6px;text-decoration-color:rgba(237,234,227,.5);vertical-align:middle}
-.ex-pin{height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:90px var(--gutter) 40px}
-.dash{position:relative;background:#1E2125;padding:0 0 0 18px;border:1px solid rgba(232,70,30,.35);box-shadow:14px 14px 0 var(--red)}
-.dash-bar{display:flex;align-items:center;gap:6px;height:38px;margin:0 0 16px -18px;padding:0 16px;border-bottom:1px solid rgba(237,234,227,.08);font-size:12px;color:var(--brown-2)}
-.dash-bar i{width:9px;height:9px;border-radius:50%;background:#33373C}
-.dash-bar span{margin-left:10px;letter-spacing:.04em}
-.dash-bar em{margin-left:auto;font-style:normal;display:flex;align-items:center;gap:6px;color:var(--terra);letter-spacing:.12em;text-transform:uppercase;font-size:11px}
-.dash-bar em::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(232,70,30,.6);animation:live 1.8s infinite}
-@keyframes live{70%{box-shadow:0 0 0 7px rgba(232,70,30,0)}100%{box-shadow:0 0 0 0 rgba(232,70,30,0)}}
-.dash-top{padding:0 18px 16px 0}
-.dash h4{font-size:24px;letter-spacing:-.01em;margin-bottom:12px}
-.stats{display:flex;gap:10px}
-.stat{border:1px solid rgba(237,234,227,.2);padding:10px 12px}
-.stat.grow{flex:1}
-.stat small{font-size:12px;font-weight:500;display:block;margin-bottom:4px}
-.stat div{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
-.stat b{font-size:22px;font-weight:500;letter-spacing:-.02em}
-.stat span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-right:8px}
-.meter{flex:1;min-width:60px;height:10px;background:rgba(237,234,227,.12);position:relative;align-self:center}
-.meter u{position:absolute;inset:0;right:auto;width:0;background:#E8461E}
-.table{background:var(--surface);font-size:13px}
-.tr{display:grid;grid-template-columns:70px 1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 16px;height:40px;border-bottom:1px solid #23272C;transition:background-color .4s}
-.th{background:#2A2D31;color:#fff;font-size:11.5px;height:30px}
-.tr.ghost span{height:7px;background:#2C3035;border-radius:2px}
-.tr.ghost span:nth-child(2){width:70%}
-.tr.hot{background:rgba(232,70,30,.14)}
-.pill{justify-self:start;color:var(--ink);font-size:11px;padding:2px 8px;border-radius:3px;background:#EEE;white-space:nowrap}
-.p-amber{background:#FBEFC4;color:#8A6410}
-.p-green{background:#D9F1D9;color:#2E6B33}
-.p-red{background:#F8D4D0;color:#9B2C22}
-.p-grey{background:#E7E3DF;color:#6B625D}
-.p-dec,.p-stat{background:#E7E3DF;transition:background-color .4s,color .4s}
-.pop{position:absolute;right:-30px;bottom:-34px;width:300px;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:8px 8px 0 var(--shadow);padding:16px 18px;min-height:132px}
-.pop-v{position:absolute;inset:16px 18px;opacity:0;visibility:hidden}
-.pop-v.on{position:relative;inset:auto;opacity:1;visibility:visible}
-.pop small{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);margin-bottom:8px}
-.pop p{font-size:16px;line-height:1.4}
-.pop .opt{display:inline-block;font-size:13px;padding:4px 10px;margin:4px 6px 0 0;border:1px solid rgba(237,234,227,.25)}
-.pop .opt.on{background:var(--red);color:var(--cream-2);border-color:var(--red)}
-.race{display:grid;grid-template-columns:62px 1fr 34px;gap:6px 10px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(237,234,227,.1);font-size:11px;color:var(--brown-2)}
-.race i{height:4px;background:rgba(237,234,227,.08);position:relative}
-.race u{position:absolute;left:0;top:0;bottom:0}
-.race u.y{width:5%;background:var(--terra);box-shadow:0 0 8px rgba(232,70,30,.8)}
-.race u.f{width:100%;background:#6B7076}
-.race b{font-weight:500;color:var(--brown);text-align:right}
-.flow{max-width:520px}
-.flow-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;margin-bottom:10px;border-bottom:1px solid rgba(237,234,227,.1);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-2)}
-.flow-head b{font-family:ui-monospace,Menlo,monospace;font-weight:400;letter-spacing:0;color:var(--terra);font-size:13px;margin-left:6px}
-.steps{list-style:none;position:relative;display:flex;flex-direction:column;--y:0px}
-.steps::before,.steps::after{content:"";position:absolute;left:4px;top:28px;width:1px}
-.steps::before{bottom:28px;background:rgba(237,234,227,.12)}
-.steps::after{height:var(--y);background:linear-gradient(180deg,rgba(232,70,30,.15),var(--terra));box-shadow:0 0 10px rgba(232,70,30,.55);transition:height .8s var(--ease)}
-.steps li{position:relative;display:grid;grid-template-columns:30px 1fr;padding:16px 0}
-.node{position:relative;z-index:1;width:9px;height:9px;margin-top:12px;border-radius:50%;border:1px solid rgba(237,234,227,.35);background:var(--paper);transition:background-color .4s,border-color .4s,box-shadow .5s}
-.steps li.done .node{background:var(--terra);border-color:var(--terra)}
-.steps li.on .node{background:var(--terra);border-color:var(--terra);box-shadow:0 0 0 5px rgba(232,70,30,.16),0 0 16px rgba(232,70,30,.9)}
-.sn{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;color:var(--brown-2);margin-bottom:4px;transition:color .4s}
-.steps li.on .sn{color:var(--terra)}
-.steps h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;line-height:1.12;opacity:.32;transition:opacity .5s var(--ease)}
-.steps li.done h3{opacity:.55}
-.steps li.on h3{opacity:1}
-.sb{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--ease),opacity .5s}
-.steps li.on .sb{max-height:260px;opacity:1}
-.sb p{margin-top:10px;color:var(--brown-2)}
-.trace{margin-top:16px;background:var(--surface);border:1px solid rgba(232,70,30,.28);border-left:2px solid var(--terra);padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.5}
-.trace .call{display:flex;justify-content:space-between;gap:14px}
-.trace code{font:inherit;color:var(--brown)}
-.trace code b{font-weight:400;color:var(--terra)}
-.trace code i{font-style:normal;color:#A9A49A}
-.trace .ms{color:var(--brown-2);white-space:nowrap}
-.trace .out{margin-top:6px;color:var(--brown-2)}
-.trace .out em{font-style:normal;color:var(--terra)}
-
-/* kullback */
-.kb{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:150px var(--gutter) 130px;overflow:hidden}
-.kb-copy{position:relative;z-index:2}
-.kb .lede{margin-bottom:44px}
-.ilist{list-style:none;display:flex;flex-direction:column;gap:30px;max-width:36em}
-.ilist li{display:grid;grid-template-columns:44px 1fr;gap:22px;align-items:center}
-.ic svg{width:42px;height:42px;fill:none;stroke:var(--terra);stroke-width:1.6}
-.ic svg rect:first-child{fill:rgba(232,70,30,.1)}
-.kb-art{position:absolute;right:0;top:0;width:55%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 96%);mask-image:linear-gradient(180deg,#000 55%,transparent 96%)}
-
-/* how it works: loop */
-.loop{padding:40px var(--gutter) 140px}
-.loop-head{max-width:820px;margin-bottom:56px}
-.inputs{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.inputs li{font-size:14px;padding:8px 14px;background:var(--surface);border:1px solid rgba(237,234,227,.18)}
-.inputs small{opacity:.6;margin-left:4px}
-.loop-body{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.roles{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(237,234,227,.2)}
-.roles li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid rgba(237,234,227,.2)}
-.roles b{font-weight:500;font-size:14px;letter-spacing:.12em;color:var(--brown-2);padding-top:8px}
-.roles h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;margin-bottom:6px}
-.roles p{max-width:30em}
-.task{background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:12px 12px 0 var(--shadow);padding:26px 28px}
-.task-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.task-top small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2)}
-.task-ask{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.3;letter-spacing:-.01em;margin-bottom:20px}
-.task dl{display:grid;grid-template-columns:120px 1fr;gap:14px 18px;font-size:14.5px;border-top:1px solid #23272C;padding-top:18px}
-.task dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-2);padding-top:2px}
-.task code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#2A2E33;padding:1px 5px}
-.chk{display:block;position:relative;padding-left:22px}
-.chk + .chk{margin-top:6px}
-.chk::before{content:"";position:absolute;left:2px;top:.35em;width:10px;height:6px;border-left:1.6px solid var(--terra);border-bottom:1.6px solid var(--terra);transform:rotate(-45deg)}
-
-/* quotes */
-.quotes{padding:40px 0 130px}
-.quotes .lede{margin-bottom:50px}
-.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.qcard{background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:12px 12px 0 var(--shadow);padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:270px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.qcard:hover{transform:translate(-4px,-4px);box-shadow:16px 16px 0 var(--shadow)}
-.qcard blockquote{font-size:24px;line-height:1.35;font-weight:300;letter-spacing:-.015em}
-.qcard figcaption{display:flex;align-items:center;gap:14px;font-size:14px}
-.qcard b{font-weight:500;display:block}
-.qcard small{opacity:.7}
-.av{width:44px;height:44px;display:grid;place-items:center;background:#23272C;border:1px solid rgba(232,70,30,.35);font-weight:500}
-.av.k{background:var(--red);color:var(--cream-2)}
-
-/* standard */
-.std{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:80px var(--gutter) 140px;align-items:center}
-.std .lede{margin-bottom:28px}
-.acc{margin-top:56px}
-.acc-i{position:relative;padding-left:26px;margin-bottom:18px}
-.acc-i::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:6px;background:currentColor;transform:skewY(-30deg)}
-.acc-i button{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.015em;opacity:.4;transition:opacity .4s;line-height:1.2}
-.acc-i.open button,.acc-i button:hover{opacity:1}
-.acc-b{height:0;overflow:hidden}
-.acc-i.open .acc-b{height:auto}
-.acc-b p{padding:12px 0 6px;max-width:32em}
-.std-ui{position:relative;height:460px}
-.sheet{position:absolute;background:var(--surface);border:1px solid rgba(232,70,30,.35);box-shadow:10px 10px 0 var(--shadow)}
-.sheet.s3{box-shadow:none;inset:0 40px 60px 120px;opacity:.5}
-.sheet.s2{box-shadow:none;inset:30px 20px 30px 60px;opacity:.75}
-.sheet.s1{inset:60px 0 0 0;padding:26px 28px;display:flex;flex-direction:column;gap:12px}
-.s1 h4{font-size:26px;letter-spacing:-.01em}
-.s1 > small{opacity:.75;margin-bottom:10px}
-.ev{display:grid;grid-template-columns:130px 1fr 32px;gap:14px;align-items:center;font-size:14.5px}
-.ev i{position:relative;height:12px;background:#23272C}
-.ev i::after{content:"";position:absolute;left:80%;top:-5px;bottom:-5px;width:2px;background:var(--brown)}
-.ev u{position:absolute;left:0;top:0;bottom:0;width:0;background:#6B7076}
-.ev b{text-align:right;font-weight:500}
-.ev.ours u{background:var(--terra)}
-.ev.ours b{color:var(--terra)}
-
-/* faq */
-.faq{padding:40px var(--gutter) 150px}
-.faq h2{margin-bottom:46px}
-.faq-list{max-width:900px;margin:0 auto;border-top:1px solid rgba(237,234,227,.2)}
-details{border-bottom:1px solid rgba(237,234,227,.2)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:23px;font-weight:300;letter-spacing:-.02em}
-summary::-webkit-details-marker{display:none}
-summary i{width:14px;height:14px;position:relative;flex:none;transition:transform .45s var(--ease)}
-summary i::before,summary i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:currentColor}
-summary i::after{transform:rotate(90deg)}
-details[open] summary i{transform:rotate(45deg)}
-details p{padding:0 0 26px;max-width:44em;overflow:hidden}
-
-/* closing */
-.close{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:100vh;padding:120px var(--gutter) 80px;overflow:hidden}
-.pyramid{width:100%;max-width:720px;overflow:visible}
-.close-copy h2{font-size:clamp(40px,4.4vw,66px)}
-.close-copy .lede{margin-bottom:32px;opacity:.9}
-
-/* footer */
-.foot{padding:20px var(--gutter) 40px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:46px}
-.giant{display:flex;align-items:center;gap:.14em;font-size:clamp(90px,12vw,170px);font-weight:400;letter-spacing:-.06em;line-height:.9}
-.giant svg{width:.82em;height:.82em}
-.foot-cols{display:flex;gap:120px;font-size:19px;font-weight:500}
-.foot-cols div{display:flex;flex-direction:column;gap:18px}
-.foot-cols a:hover,.foot-bot a:hover{text-decoration:underline;text-underline-offset:3px}
-.foot-bot{display:flex;justify-content:space-between;font-size:15px;border-top:1px solid rgba(237,234,227,.18);padding-top:22px}
-
-/* responsive */
-@media (max-width:960px){
-  .nav-links{display:none}
-  .nav{height:76px;margin-bottom:-76px}
-  .brand{font-size:24px}.brand svg{width:24px;height:24px}
-  .btn-nav{height:44px;padding:0 16px;font-size:12px}
-  .announce{font-size:13.5px}
-  .hero{min-height:88vh;padding-top:120px}
-  .ridges{-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 78%);mask-image:linear-gradient(180deg,#000 30%,transparent 78%);opacity:.9}
-  .hero-legend{display:none}
-  .glance,.std,.close,.kb{grid-template-columns:1fr}
-  .glance{padding:70px var(--gutter) 100px}
-  .three,.q-grid,.loop-body{grid-template-columns:1fr}
-  .task dl{grid-template-columns:1fr;gap:6px}
-  .task dd{margin-bottom:10px}
-  .ex-pin{grid-template-columns:1fr;gap:24px;padding-top:86px;align-content:start;height:auto;min-height:100vh}
-  .pop{right:8px;top:auto;bottom:-20px;width:min(300px,80%)}
-  .tr{grid-template-columns:52px 1fr 80px;font-size:12px}
-  .ex-kpis{grid-template-columns:repeat(2,1fr)}
-  .ex-kpis div:nth-child(3){border-left:0}
-  .ex-kpis div:nth-child(n+3){border-top:1px solid rgba(237,234,227,.1)}
-  .dash{box-shadow:8px 8px 0 var(--red);margin-bottom:56px}
-  .tr span:nth-child(4){display:none}
-  .stats{flex-wrap:wrap}
-  .kb-art{opacity:.35;width:100%}
-  .std-ui{height:420px}
-  .ev{grid-template-columns:100px 1fr 28px;font-size:13px}
-  .close{min-height:auto;padding-top:100px}
-  .foot-cols{gap:60px}
-}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.001ms!important}}
-</style>
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
-
-<a class="announce" href="https://github.com/leiblerdev/kullback">Kullback, the agent behind leibler, is open source. Read the code on GitHub →</a>
-
-<header class="nav" data-tone="dark">
-  <a class="brand" href="/" aria-label="leibler home">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" class="brand-l"/><rect x="42" y="38" width="7" height="7" class="brand-l"/></svg>
-    <span>leibler</span>
-  </a>
-  <nav class="nav-links">
-    <a href="#glance">Product</a>
-    <a href="#example">Example</a>
-    <a href="#kullback">Kullback</a>
-    <a href="#how">How it works</a>
-    <a href="#faq">Questions</a>
-    <a href="/team">Team</a>
-  </nav>
-  <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-nav">Book a call</a>
-</header>
-
-<main>
-
-<!-- HERO -->
-<section class="hero tone-terra" data-tone="dark">
-  <canvas class="ridges" aria-hidden="true"></canvas>
-  <div class="hero-inner">
-    <p class="eyebrow r-up">Frontier models are trained for everyone.</p>
-    <h1 class="hero-title"><span class="ln"><span>Own your</span></span><span class="ln"><span><em>intelligence</em></span></span></h1>
-    <p class="hero-sub r-up">We post-train small models on your data. Faster, cheaper and more accurate than the frontier on your tasks.</p>
-    <div class="btns r-up">
-      <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-red">Book a call</a>
-      <a href="#example" class="btn btn-ghost">See it work</a>
-    </div>
-  </div>
-  <p class="hero-legend r-up" aria-hidden="true"><span><i class="lg-f"></i>Frontier · broad</span><span><i class="lg-y"></i>Yours · sharp</span></p>
-</section>
-
-<!-- AT A GLANCE -->
-<section class="glance tone-terra" id="glance" data-tone="dark">
-  <div class="glance-art">
-    <svg viewBox="0 0 420 340" aria-hidden="true">
-      <g class="gl-panels">
-        <polygon points="40,330 40,140 150,80 150,270" fill="#B8320F" opacity=".28"/>
-        <polygon points="86,330 86,120 196,60 196,270" fill="#5A1E0E" opacity=".38"/>
-        <polygon points="134,330 134,140 244,80 244,270" fill="#CC3A14" opacity=".35"/>
-        <polygon points="178,330 178,120 288,60 288,270" fill="#5A1E0E" opacity=".45"/>
-        <polygon points="224,330 224,140 334,80 334,270" fill="#B8320F" opacity=".32"/>
-        <polygon points="62,214 62,196 120,164 120,182" fill="#E8461E" opacity=".8" class="gl-chip"/>
-      </g>
-      <line x1="92" y1="10" x2="92" y2="200" stroke="#EDEAE3" stroke-width="1.2" class="gl-line"/>
-    </svg>
-    <span class="gl-label">In your account</span>
-  </div>
-  <div class="glance-copy">
-    <p class="eyebrow">Why your own model</p>
-    <h2>The frontier is built for everyone. Not for you.</h2>
-    <p>General models leave accuracy on the table. A model post-trained on your data and your real tasks picks it up.</p>
-    <p>Kullback does the work: eval, training data, training, hosting. Your data stays in your account.</p>
-  </div>
-</section>
-
-<!-- BOTTOM LINE -->
-<section class="bottom tone-cream" data-tone="dark">
-  <p class="eyebrow center">The bottom line</p>
-  <h2 class="center big"><span class="ln"><span>1/10th the cost.</span></span><span class="ln"><span>1/20th the latency.</span></span></h2>
-  <p class="center sub">And 35% more accurate. A 9B model against the frontier, on the example below.</p>
-  <div class="three">
-    <div class="col">
-      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="20,95 110,50 200,95 110,140" fill="#8F2A10" opacity=".9"/><polygon points="40,90 110,55 180,90 110,125" fill="#CC3A14" opacity=".7"/></g>
-        <g class="f2"><polygon points="70,40 150,0 170,10 90,50" fill="#8F2A10" opacity=".85"/></g>
-        <g class="f3"><polygon points="20,95 20,85 110,40 110,50" fill="#B8320F" opacity=".9"/></g>
-      </svg>
-      <h3>Cut the bill</h3>
-      <p>$4,800 a month, not $48,000.</p>
-    </div>
-    <div class="col">
-      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="70,140 70,40 120,15 120,115" fill="#5A1E0E" opacity=".55"/></g>
-        <g class="f2"><polygon points="84,146 84,46 134,21 134,121" fill="#CC3A14" opacity=".75"/></g>
-        <g class="f3"><polygon points="98,140 98,40 148,15 148,115" fill="#8F2A10" opacity=".6"/><polygon points="120,30 150,15 150,22 120,37" fill="#B8320F"/></g>
-      </svg>
-      <h3>Reply in 0.2 seconds</h3>
-      <p>Not 4.0. Smaller models run faster.</p>
-    </div>
-    <div class="col">
-      <svg class="iso-ill" viewBox="0 0 220 150" aria-hidden="true">
-        <g class="f1"><polygon points="30,60 30,40 100,5 100,25" fill="#8F2A10" opacity=".9"/><polygon points="30,60 100,25 100,95 30,130" fill="#8F2A10" opacity=".35"/></g>
-        <g class="f2"><polygon points="70,70 140,35 210,70 140,105" fill="#E8461E" opacity=".8"/></g>
-        <g class="f3"><polygon points="70,105 140,70 210,105 140,140" fill="#E8461E" opacity=".6"/></g>
-      </svg>
-      <h3>Score 86 of 100</h3>
-      <p>The frontier scores 64 on the same tickets.</p>
-    </div>
-  </div>
-  <div class="center"><a href="#example" class="btn btn-red">See the example</a></div>
-</section>
-
-<!-- MODEL MARQUEE -->
-<section class="trusted tone-cream" data-tone="dark">
+<div class="rails" aria-hidden="true"></div>
+<header class="nav">
   <div class="wrap">
-    <h2>Graded on your tickets</h2>
-    <p class="lede">Every model, the same 312 cases. Your bar: 80.</p>
+    <a class="logo" href="/" aria-label="leibler home"><svg viewBox="0 0 31 8" shape-rendering="crispEdges" role="img" aria-label="leibler"><rect x="0" y="0" width="2" height="1" fill="#E8EFEA"/><rect x="13" y="0" width="1" height="1" fill="#E8EFEA"/><rect x="18" y="0" width="2" height="1" fill="#E8EFEA"/><rect x="1" y="1" width="1" height="1" fill="#E8EFEA"/><rect x="13" y="1" width="1" height="1" fill="#E8EFEA"/><rect x="19" y="1" width="1" height="1" fill="#E8EFEA"/><rect x="1" y="2" width="1" height="1" fill="#E8EFEA"/><rect x="13" y="2" width="1" height="1" fill="#E8EFEA"/><rect x="19" y="2" width="1" height="1" fill="#E8EFEA"/><rect x="1" y="3" width="1" height="1" fill="#E8EFEA"/><rect x="5" y="3" width="2" height="1" fill="#E8EFEA"/><rect x="9" y="3" width="2" height="1" fill="#E8EFEA"/><rect x="13" y="3" width="3" height="1" fill="#E8EFEA"/><rect x="19" y="3" width="1" height="1" fill="#E8EFEA"/><rect x="23" y="3" width="2" height="1" fill="#E8EFEA"/><rect x="27" y="3" width="1" height="1" fill="#E8EFEA"/><rect x="29" y="3" width="2" height="1" fill="#E8EFEA"/><rect x="1" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="4" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="7" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="10" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="13" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="16" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="19" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="22" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="25" y="4" width="1" height="1" fill="#E8EFEA"/><rect x="27" y="4" width="2" height="1" fill="#E8EFEA"/><rect x="1" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="4" y="5" width="4" height="1" fill="#E8EFEA"/><rect x="10" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="13" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="16" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="19" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="22" y="5" width="4" height="1" fill="#E8EFEA"/><rect x="27" y="5" width="1" height="1" fill="#E8EFEA"/><rect x="1" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="4" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="10" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="13" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="16" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="19" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="22" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="27" y="6" width="1" height="1" fill="#E8EFEA"/><rect x="1" y="7" width="2" height="1" fill="#E8EFEA"/><rect x="5" y="7" width="3" height="1" fill="#E8EFEA"/><rect x="10" y="7" width="2" height="1" fill="#E8EFEA"/><rect x="13" y="7" width="3" height="1" fill="#E8EFEA"/><rect x="19" y="7" width="2" height="1" fill="#E8EFEA"/><rect x="23" y="7" width="3" height="1" fill="#E8EFEA"/><rect x="27" y="7" width="1" height="1" fill="#E8EFEA"/><rect x="10" y="0" width="1" height="1" fill="#0054FF"/><rect x="9" y="1" width="3" height="1" fill="#0054FF"/></svg></a>
+    <nav class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/#results">Results</a>
+      <a href="/kullback">Kullback</a>
+      <a href="/team">Team</a>
+    </nav>
+    <div class="nav-cta"><a class="pill pill-line pill-sm" href="https://github.com/leiblerdev/kullback"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill pill-blue pill-sm" href="https://cal.com/krrish-agarwalla/30min">Book a call</a></div>
   </div>
-  <div class="mq"><div class="mq-track">
-    <div class="tile"><small>GPT-6 Sol</small><b>64</b></div>
-    <div class="tile"><small>Claude Opus 5.5</small><b>66</b></div>
-    <div class="tile"><small>Gemini 3.8 Flash</small><b>61</b></div>
-    <div class="tile"><small>9B base, untrained</small><b>38</b></div>
-    <div class="tile bar"><small>Your bar</small><b>80</b></div>
-    <div class="tile ours"><small>refund-v1</small><b>86</b></div>
-    <div class="tile"><small>Time · refund-v1</small><b>0.2 s</b></div>
-    <div class="tile"><small>Cost per ticket</small><b>$0.0048</b></div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-frame">
+      <canvas class="px" data-scene="duel" data-px="4" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        
+        <h1>A smaller AI model<br>built for <em>your</em> job</h1>
+        <p class="lede">Big AI models are built to do everything. We train a small one that does your task better, faster, and for a tenth of the cost.</p>
+        <div class="btns"><a class="pill pill-blue" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="pill pill-line" href="#how">See how it works <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="mq">
+    <span class="caps">Scores on a real support task, out of 100</span>
+    <div class="mq-mask"><div class="mq-track"><span>GPT-6 Sol · 64</span><span>Claude Opus 5.5 · 66</span><span>Gemini 3.8 Flash · 61</span><span>A small model, untrained · 38</span><span><b>Your model · 86</b></span><span>GPT-6 Sol · 64</span><span>Claude Opus 5.5 · 66</span><span>Gemini 3.8 Flash · 61</span><span>A small model, untrained · 38</span><span><b>Your model · 86</b></span><span>GPT-6 Sol · 64</span><span>Claude Opus 5.5 · 66</span><span>Gemini 3.8 Flash · 61</span><span>A small model, untrained · 38</span><span><b>Your model · 86</b></span><span>GPT-6 Sol · 64</span><span>Claude Opus 5.5 · 66</span><span>Gemini 3.8 Flash · 61</span><span>A small model, untrained · 38</span><span><b>Your model · 86</b></span></div></div>
   </div></div>
 </section>
+<div class="wrap pxdiv" aria-hidden="true"><svg viewBox="0 0 180 14"><rect x="75" y="6" width="2" height="2" transform="rotate(45 76 7)"/><rect x="103" y="6" width="2" height="2" transform="rotate(45 104 7)"/><rect x="61" y="6" width="2" height="2" transform="rotate(45 62 7)"/><rect x="117" y="6" width="2" height="2" transform="rotate(45 118 7)"/><rect x="46" y="5" width="4" height="4" transform="rotate(45 48 7)"/><rect x="130" y="5" width="4" height="4" transform="rotate(45 132 7)"/><rect x="32" y="5" width="4" height="4" transform="rotate(45 34 7)"/><rect x="144" y="5" width="4" height="4" transform="rotate(45 146 7)"/><rect x="17" y="4" width="6" height="6" transform="rotate(45 20 7)"/><rect x="157" y="4" width="6" height="6" transform="rotate(45 160 7)"/><rect x="85" y="2" width="10" height="10" transform="rotate(45 90 7)"/></svg></div>
 
-<!-- EXAMPLE: pinned dashboard + step list -->
-<section class="example tone-cream" id="example" data-tone="dark">
-  <div class="ex-head">
-    <p class="eyebrow center">Case study</p>
-    <h2 class="center">A support agent for a furniture shop</h2>
-    <p class="center sub">Follow one ticket through four steps.</p>
-    <dl class="ex-kpis">
-      <div><dt>Emails a month</dt><dd>1M</dd></div>
-      <div><dt>Monthly cost</dt><dd><s>$48k</s> $4.8k</dd></div>
-      <div><dt>Reply time</dt><dd><s>4.0 s</s> 0.2 s</dd></div>
-      <div><dt>Accuracy</dt><dd><s>64</s> 86</dd></div>
-    </dl>
-  </div>
-  <div class="ex-pin">
-    <div class="dash">
-      <div class="dash-bar"><i></i><i></i><i></i><span>support / refund-agent</span><em>Live</em></div>
-      <div class="dash-top">
-        <h4>Refund agent · activity</h4>
-        <div class="stats">
-          <div class="stat"><small>Tickets</small><div><b>1,240</b><span>last 30 days</span></div></div>
-          <div class="stat"><small>Eval</small><div><b>312</b><span>cases</span><b>4</b><span>rules</span></div></div>
-          <div class="stat grow"><small>Accuracy</small><div><b>86</b><span>refund-v1</span><b class="muted">64</b><span>GPT-6 Sol</span><i class="meter"><u></u></i></div></div>
+<!-- HOW IT WORKS -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head center"><span class="caps">How it works</span><h2>Four steps<br>About one week</h2></div>
+    <div class="frame">
+      <div class="tabs">
+        <button type="button"><b>01</b>Share<i></i></button>
+        <button type="button"><b>02</b>Test<i></i></button>
+        <button type="button"><b>03</b>Train<i></i></button>
+        <button type="button"><b>04</b>Use<i></i></button>
+      </div>
+      <div class="stage">
+        <canvas class="px" data-scene="steps" data-px="4" data-fps="20" aria-hidden="true"></canvas>
+        <div class="scene">
+          <div class="card prompt"><div class="prompt-in">
+            <p data-text="We have a support agent that answers refund emails. Make it cheaper and faster."></p>
+            <div class="chips">Sharing <span class="chip" style="--c:var(--blue)"><i></i>Agent logs</span><span class="chip" style="--c:var(--peri)"><i></i>Help docs</span><span class="chip" style="--c:var(--ink)"><i></i>Code, if you like</span></div>
+          </div></div>
+          <p class="scene-cap">You share what your AI agent already does. Nothing new to build.</p>
+        </div>
+        <div class="scene">
+          <div class="card eval">
+            <div class="eval-h"><b>How well each model does your task</b><span class="caps">goal 80</span></div>
+            <div class="ev" data-v="64"><span>GPT-6 Sol</span><i><u></u></i><b>64</b></div>
+            <div class="ev" data-v="66"><span>Claude Opus 5.5</span><i><u></u></i><b>66</b></div>
+            <div class="ev" data-v="61"><span>Gemini 3.8 Flash</span><i><u></u></i><b>61</b></div>
+            <div class="ev" data-v="38"><span>Small, untrained</span><i><u></u></i><b>38</b></div>
+            <p class="ev-note">None of them reach your goal. So we train one that does.</p>
+          </div>
+          <p class="scene-cap">We test today's top models on your real tasks. Free, in 48 hours.</p>
+        </div>
+        <div class="scene">
+          <div class="card train">
+            <div class="score"><span>38</span><small>Your model's score</small></div>
+            <svg class="spark" viewBox="0 0 400 160" aria-hidden="true">
+  <defs><linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0054FF" stop-opacity=".35"/><stop offset="1" stop-color="#0054FF" stop-opacity="0"/></linearGradient></defs>
+  <line class="bar" x1="0" y1="35.0" x2="400" y2="35.0"/><text x="0" y="27.0">your goal · 80</text>
+  <path class="area" d="M20 131.6 L140 78.7 L260 41.9 L380 21.2 L380 155 L20 155Z"/>
+  <path class="ln" d="M20 131.6 L140 78.7 L260 41.9 L380 21.2"/>
+  <rect x="375" y="16.2" width="10" height="10"/>
+  <text x="6" y="158">try 1</text><text x="126" y="158">try 2</text><text x="246" y="158">try 3</text><text x="366" y="158">try 4</text>
+</svg>
+          </div>
+          <p class="scene-cap">We train a small model on your task until it beats your goal.</p>
+        </div>
+        <div class="scene">
+          <div class="card host">
+            <div class="eval-h"><b>Your model, live</b><span class="caps">switching over</span></div>
+            <div class="split"><div class="y"><span>Your model · 5%</span></div><div class="f">Old model</div></div>
+            <div class="host-kv"><div><small>Reply time</small><b>0.2 s</b></div><div><small>Cost a month</small><b>$4,800</b></div><div><small>Score</small><b>86</b></div></div>
+          </div>
+          <p class="scene-cap">It runs in your own account. It starts small, then takes over.</p>
         </div>
       </div>
-      <div class="table">
-        <div class="tr th"><span>Ticket</span><span>Message</span><span>Decision</span><span>Status</span></div>
-        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
-        <div class="tr hot"><span>48213</span><span>Chair arrived with a cracked leg</span><span class="pill p-dec">—</span><span class="pill p-stat">Received</span></div>
-        <div class="tr"><span>48377</span><span>Die Lampe ist kaputt gegangen</span><span class="pill p-amber">Replace</span><span class="pill p-green">Replied in German</span></div>
-        <div class="tr"><span>48102</span><span>Sofa scratched, ninth order</span><span class="pill p-green">Refund now</span><span class="pill p-green">Loyal · instant</span></div>
-        <div class="tr"><span>48290</span><span>Courier damaged my door frame</span><span class="pill p-red">Escalate</span><span class="pill p-grey">Human</span></div>
-        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
-        <div class="tr ghost"><span></span><span></span><span></span><span></span></div>
-      </div>
-      <div class="pop">
-        <div class="pop-v on"><small>Inbound email · #48213</small><p>“The chair arrived with a cracked leg. I want my money back.”</p></div>
-        <div class="pop-v"><small>Customer and order</small><p><b>First-time customer</b><br>Oak chair · $149 · delivered three days ago</p></div>
-        <div class="pop-v"><small>Decision · not a repeat customer</small><p><span class="opt">Refund now</span><span class="opt on">Replace first</span><span class="opt">Escalate</span></p></div>
-        <div class="pop-v"><small>refund-v1 replies · 0.2 s</small><p>Sorry about the chair. Want a free replacement today? Or we'll refund the full $149.</p><div class="race"><span>refund-v1</span><i><u class="y"></u></i><b>0.2 s</b><span>Frontier</span><i><u class="f"></u></i><b>4.0 s</b></div></div>
-      </div>
-    </div>
-    <div class="flow">
-      <div class="flow-head"><span>Agent trace · #48213</span><span>Elapsed <b class="elapsed">0.008 s</b></span></div>
-      <ol class="steps">
-      <li class="on"><span class="node"></span><div><small class="sn">01</small><h3>Email arrives</h3><div class="sb"><p>A chair arrived broken. The customer wants to cancel.</p><div class="trace"><div class="call"><code><b>inbox.read</b>(<i>"#48213"</i>)</code><span class="ms">8 ms</span></div><div class="out">→ “The chair arrived with a cracked leg. I want my money back.”</div></div></div></div></li>
-      <li><span class="node"></span><div><small class="sn">02</small><h3>Look up the customer</h3><div class="sb"><p>Did they actually order it? What did they pay?</p><div class="trace"><div class="call"><code><b>orders.find</b>(<i>customer: 20931</i>)</code><span class="ms">14 ms</span></div><div class="out">→ 1 order · oak chair · $149 · delivered 3 days ago</div></div></div></div></li>
-      <li><span class="node"></span><div><small class="sn">03</small><h3>Read the situation</h3><div class="sb"><p>Loyal customer: refund now. Anyone else: offer a replacement first.</p><div class="trace"><div class="call"><code><b>policy.check</b>(<i>order: 77812</i>)</code><span class="ms">6 ms</span></div><div class="out">→ first order · not loyal yet · <em>replace first</em></div></div></div></div></li>
-      <li><span class="node"></span><div><small class="sn">04</small><h3>Draft the reply</h3><div class="sb"><p>refund-v1 writes it, replacement first, refund ready.</p><div class="trace"><div class="call"><code><b>refund-v1.reply</b>()</code><span class="ms">200 ms</span></div><div class="out">→ reply sent · 0.2 s instead of 4.0 s</div></div></div></div></li>
-      </ol>
     </div>
   </div>
 </section>
 
-<!-- KULLBACK icon list -->
-<section class="kb tone-cream" id="kullback" data-tone="dark">
-  <div class="kb-copy">
-    <p class="eyebrow">Meet Kullback</p>
-    <h2>The agent that builds it</h2>
-    <p class="lede">Our open source agent. You describe a behavior; it builds the model.</p>
-    <ul class="ilist">
-      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M14 18h16M14 23h10M14 28h13"/></svg></span><p>Reads your traces, knowledge graph and, with permission, your agent's code.</p></li>
-      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M15 22l4 4 8-9"/></svg></span><p>Turns the behavior you type into eval tasks, then grades every frontier model.</p></li>
-      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><rect x="13" y="13" width="8" height="8"/><rect x="23" y="13" width="8" height="8"/><rect x="13" y="23" width="8" height="8"/></svg></span><p>Generates training data for the same scenarios. You review samples first.</p></li>
-      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M13 30l6-8 4 3 8-11"/></svg></span><p>Post-trains a 9B to 27B model with RL until it clears your bar.</p></li>
-      <li><span class="ic"><svg viewBox="0 0 40 40"><rect x="4" y="4" width="28" height="28"/><rect x="8" y="8" width="28" height="28"/><path d="M14 31V20M20 31V15M26 31V23M14 18l6-5 6 6"/></svg></span><p>Hosts it, and re-runs the eval when a new frontier model ships.</p></li>
-    </ul>
-  </div>
-  <svg class="kb-art" viewBox="0 0 600 800" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><g class="kb-panels"></g></svg>
-</section>
-
-<!-- HOW IT WORKS: synthetic environment + loop -->
-<section class="loop tone-cream" id="how" data-tone="dark">
-  <div class="loop-head">
-    <p class="eyebrow">How it works</p>
-    <h2>Synthetic data that matches production</h2>
-    <p class="lede">Kullback rebuilds your agent's world from these inputs. Then three agents harden every task.</p>
-    <ul class="inputs">
-      <li>Your traces</li>
-      <li>Business knowledge graph</li>
-      <li>Your request</li>
-      <li>GitHub and agent harness <small>with permission</small></li>
-    </ul>
-  </div>
-  <div class="loop-body">
-    <ol class="roles">
-      <li><b>01</b><div><h3>Builder</h3><p>Rebuilds your agent's environment: data, tools, rules, users.</p></div></li>
-      <li><b>02</b><div><h3>Examiner</h3><p>Writes a check for each task and sends fixes back to the Builder.</p></div></li>
-      <li><b>03</b><div><h3>Writer</h3><p>Turns passing runs into eval and training data you can read.</p></div></li>
-    </ol>
-    <figure class="task">
-      <div class="task-top"><small>Eval task · E-0147</small><span class="pill p-green">Hardened</span></div>
-      <p class="task-ask">“Offer a replacement before a refund.”</p>
-      <dl>
-        <dt>Context</dt>
-        <dd>Customer #20931 · maya@example.com<br>Order #77812 · oak chair, $149, delivered three days ago<br>“The leg is cracked. I want to cancel.”</dd>
-        <dt>Requirements</dt>
-        <dd>Set <code>orders.77812.status</code> to <code>replacement_offered</code><br>Issue no refund before the customer replies</dd>
-        <dt>Judges</dt>
-        <dd><span class="chk">Did the agent verify the order exists?</span><span class="chk">Did it offer a replacement before a refund?</span><span class="chk">Did it update the order row?</span></dd>
-      </dl>
-    </figure>
-  </div>
-</section>
-
-<!-- FROM THE DEMO cards -->
-<section class="quotes tone-cream" data-tone="dark">
+<!-- KULLBACK -->
+<section class="sec" style="padding-top:20px">
   <div class="wrap">
-    <p class="eyebrow">From the live demo</p>
-    <h2>A conversation, not a project</h2>
-    <p class="lede">Three messages to a trained model.</p>
-  </div>
-  <div class="q-grid wrap">
-    <figure class="qcard"><blockquote>“Offer a replacement before a refund.”</blockquote><figcaption><span class="av">Y</span><div><b>You</b><small>Message 1</small></div></figcaption></figure>
-    <figure class="qcard"><blockquote>“312 tasks written. No frontier model clears 80. Training now.”</blockquote><figcaption><span class="av k">K</span><div><b>Kullback</b><small>After the eval</small></div></figcaption></figure>
-    <figure class="qcard"><blockquote>“refund-v1 scores 86. It's live.”</blockquote><figcaption><span class="av k">K</span><div><b>Kullback</b><small>After training</small></div></figcaption></figure>
-  </div>
-</section>
-
-<!-- DATA / OPEN SOURCE -->
-<section class="std tone-cream" data-tone="dark">
-  <div class="std-copy">
-    <p class="eyebrow">Built to be yours</p>
-    <h2>A new standard for agent models</h2>
-    <p class="lede">Eval in 48 hours. A hosted model in about a week.</p>
-    <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-red">Book a call</a>
-    <div class="acc">
-      <div class="acc-i open"><button>Your data stays yours</button><div class="acc-b"><p>Training never leaves your account. The model is yours.</p></div></div>
-      <div class="acc-i"><button>Kullback is open source</button><div class="acc-b"><p>Apache-2.0, on GitHub. <a href="https://github.com/leiblerdev/kullback" class="ul">See the code</a></p></div></div>
-      <div class="acc-i"><button>No GPUs, no ML team</button><div class="acc-b"><p>Describe the behavior. Kullback does the rest.</p></div></div>
-      <div class="acc-i"><button>Bring one workflow</button><div class="acc-b"><p>We evaluate it against the frontier for free.</p></div></div>
+    <div class="split-head">
+      <div><span class="caps">Under the hood</span><h2>Kullback does the work</h2><p class="lede" style="margin-top:14px">Our open-source agent handles every step. No GPUs, no ML team.</p></div>
+      <a class="pill pill-line" href="/kullback">Meet Kullback <span class="arr">→</span></a>
     </div>
-  </div>
-  <div class="std-ui">
-    <div class="sheet s3"></div><div class="sheet s2"></div>
-    <div class="sheet s1">
-      <h4>Eval results</h4>
-      <small>Accuracy on the 312 cases. The line marks your bar at 80.</small>
-      <div class="ev" data-v="64"><span>GPT-6 Sol</span><i><u></u></i><b>64</b></div>
-      <div class="ev" data-v="66"><span>Claude Opus 5.5</span><i><u></u></i><b>66</b></div>
-      <div class="ev" data-v="61"><span>Gemini 3.8 Flash</span><i><u></u></i><b>61</b></div>
-      <div class="ev" data-v="38"><span>9B base</span><i><u></u></i><b>38</b></div>
-      <div class="ev ours" data-v="86"><span>refund-v1</span><i><u></u></i><b>86</b></div>
+    <div class="hacc">
+      <div class="hp on" style="--c1:rgba(0,84,255,.55);--c2:rgba(158,158,255,.4)">
+        <span class="n">01</span><span class="vt">Copy</span><span class="plus">+</span>
+        <div class="hp-body"><small>01</small><h3>Copies your setup</h3><p>It rebuilds your agent's world from its logs: the data, the tools and the rules.</p>
+          <div class="hp-art"><canvas class="px" data-scene="build" data-px="4" data-fps="20" aria-hidden="true"></canvas><div class="card mini"><div class="row"><span>Orders, refunds, customers</span><span class="tagp">copied</span></div><div class="row"><span>6 tools, 4 rules</span><span class="tagp">copied</span></div><div class="row"><span>A pretend customer</span><span class="tagp">ready</span></div></div></div></div>
+      </div>
+      <div class="hp" style="--c1:rgba(158,158,255,.45);--c2:rgba(0,84,255,.4)">
+        <span class="n">02</span><span class="vt">Test</span><span class="plus">+</span>
+        <div class="hp-body"><small>02</small><h3>Writes the exam</h3><p>It turns real tasks into tests, then scores every model on them.</p>
+          <div class="hp-art"><canvas class="px" data-scene="exam" data-px="4" data-fps="20" aria-hidden="true"></canvas><div class="card mini"><div class="row"><span>Tests written</span><b>312</b></div><div class="row"><span>GPT-6 Sol</span><b>64</b></div><div class="row"><span>Claude Opus 5.5</span><b>66</b></div></div></div></div>
+      </div>
+      <div class="hp" style="--c1:rgba(0,84,255,.6);--c2:rgba(232,239,234,.16)">
+        <span class="n">03</span><span class="vt">Train</span><span class="plus">+</span>
+        <div class="hp-body"><small>03</small><h3>Trains your model</h3><p>It practices on the tasks it gets right, until it beats your goal.</p>
+          <div class="hp-art"><canvas class="px" data-scene="climb" data-px="4" data-fps="20" aria-hidden="true"></canvas><div class="card mini"><div class="row"><span>Practice examples</span><span class="tagp w">you can read them</span></div><div class="row"><span>After 4 tries</span><b>86</b></div><div class="row"><span>Your goal</span><b>80</b></div></div></div></div>
+      </div>
+      <div class="hp" style="--c1:rgba(232,239,234,.14);--c2:rgba(0,84,255,.5)">
+        <span class="n">04</span><span class="vt">Watch</span><span class="plus">+</span>
+        <div class="hp-body"><small>04</small><h3>Keeps checking</h3><p>When a new top model comes out, it tests again and tells you.</p>
+          <div class="hp-art"><canvas class="px" data-scene="radar" data-px="4" data-fps="20" aria-hidden="true"></canvas><div class="card mini"><div class="row"><span>New top model released</span><span class="tagp">tested</span></div><div class="row"><span>Yours is still ahead</span><span class="tagp w">86 vs 67</span></div><div class="row"><span>Next check</span><span>on the next release</span></div></div></div></div>
+      </div>
     </div>
   </div>
 </section>
+<div class="wrap pxdiv" aria-hidden="true"><svg viewBox="0 0 180 14"><rect x="75" y="6" width="2" height="2" transform="rotate(45 76 7)"/><rect x="103" y="6" width="2" height="2" transform="rotate(45 104 7)"/><rect x="61" y="6" width="2" height="2" transform="rotate(45 62 7)"/><rect x="117" y="6" width="2" height="2" transform="rotate(45 118 7)"/><rect x="46" y="5" width="4" height="4" transform="rotate(45 48 7)"/><rect x="130" y="5" width="4" height="4" transform="rotate(45 132 7)"/><rect x="32" y="5" width="4" height="4" transform="rotate(45 34 7)"/><rect x="144" y="5" width="4" height="4" transform="rotate(45 146 7)"/><rect x="17" y="4" width="6" height="6" transform="rotate(45 20 7)"/><rect x="157" y="4" width="6" height="6" transform="rotate(45 160 7)"/><rect x="85" y="2" width="10" height="10" transform="rotate(45 90 7)"/></svg></div>
 
-<!-- FAQ -->
-<section class="faq tone-cream" id="faq" data-tone="dark">
-  <p class="eyebrow center">Questions</p>
-  <h2 class="center">What people ask</h2>
-  <div class="faq-list">
-    <details><summary>What is leibler?<i></i></summary><p>A data lab. We post-train small models on your data that beat the frontier on your tasks.</p></details>
-    <details><summary>Why not just use a frontier model?<i></i></summary><p>It's built for everyone. Yours is 10 to 100 times smaller, so it's cheaper, faster and more accurate on your work.</p></details>
-    <details><summary>What is Kullback?<i></i></summary><p>Our open source agent. It writes the eval, generates the training data and trains the model. Apache-2.0.</p></details>
-    <details><summary>Why trust synthetic data?<i></i></summary><p>It's built from your traces, knowledge graph and agent code, and every task is checked before it's used.</p></details>
-    <details><summary>Does my data leave my account?<i></i></summary><p>No. The model is yours to keep.</p></details>
-    <details><summary>How long does it take?<i></i></summary><p>Eval in 48 hours. A hosted model in about a week.</p></details>
-    <details><summary>Who is behind leibler?<i></i></summary><p>Krrish Agarwalla, a post-training researcher at Stanford and LMU Munich.</p></details>
+<!-- RESULTS -->
+<section class="sec" id="results">
+  <div class="wrap">
+    <div class="sec-head center"><span class="caps">Results</span><h2>Same work<br><em>Smaller</em> bill</h2></div>
+    <div class="gcards">
+      <article class="gcard"><div class="gart"><canvas class="px" data-scene="bars" data-px="4" aria-hidden="true"></canvas><b>10×</b></div><h3>Cheaper</h3><p>Small models cost far less to run.</p>
+        <div class="kv-list"><div><span>Big model</span><b>$48,000 a month</b></div><div><span>Your model</span><b class="y">$4,800 a month</b></div></div></article>
+      <article class="gcard"><div class="gart"><canvas class="px" data-scene="streaks" data-px="4" aria-hidden="true"></canvas><b>20×</b></div><h3>Faster</h3><p>Answers come back almost instantly.</p>
+        <div class="kv-list"><div><span>Big model</span><b>4 seconds</b></div><div><span>Your model</span><b class="y">0.2 seconds</b></div></div></article>
+      <article class="gcard"><div class="gart"><canvas class="px" data-scene="target" data-px="4" aria-hidden="true"></canvas><b>+35%</b></div><h3>More accurate</h3><p>Trained on your task, so it gets it right more often.</p>
+        <div class="kv-list"><div><span>Big model</span><b>64 out of 100</b></div><div><span>Your model</span><b class="y">86 out of 100</b></div></div></article>
+    </div>
+    <p class="gnote">Example: a support agent answering one million refund emails a month.</p>
   </div>
 </section>
 
-<!-- CLOSING -->
-<section class="close tone-choc" data-tone="dark">
-  <svg class="pyramid" viewBox="0 0 720 620" aria-hidden="true"><defs><radialGradient id="glow" cx=".5" cy=".55" r=".5"><stop offset="0" stop-color="#E8461E" stop-opacity=".55"/><stop offset="1" stop-color="#E8461E" stop-opacity="0"/></radialGradient></defs><ellipse cx="360" cy="330" rx="300" ry="240" fill="url(#glow)" class="glow"/><g class="tiers"></g></svg>
-  <div class="close-copy">
-    <p class="eyebrow">Get started</p>
-    <h2>Beat the frontier on speed, cost and accuracy</h2>
-    <p class="lede">Bring one workflow. Free eval in 48 hours.</p>
-    <a href="https://cal.com/krrish-agarwalla/30min" class="btn btn-cream">Book a call</a>
+<!-- YOURS -->
+<section class="sec" style="padding-top:10px">
+  <div class="wrap">
+    <div class="yours">
+      <div class="ill"><canvas class="px" data-scene="curves" data-px="4" aria-hidden="true"></canvas>
+        <div class="ill-cap"><span><i style="background:#E8EFEA"></i>Big model: good at everything</span><span><i style="background:#0054FF"></i>Yours: great at one thing</span></div></div>
+      <div>
+        <div class="sec-head" style="margin-bottom:34px"><span class="caps">Yours to keep</span><h2>It's <em>your</em> model</h2></div>
+        <ul class="feats">
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 0h4v8h8v4h-8v8H8v-8H0V8h8z" fill="#E8EFEA"/></svg><div><h3>Your data stays with you</h3><p>Training happens in your own account.</p></div></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 0h4v8h8v4h-8v8H8v-8H0V8h8z" fill="#0054FF"/></svg><div><h3>You own the model</h3><p>Download it, or run it anywhere you like.</p></div></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 0h4v8h8v4h-8v8H8v-8H0V8h8z" fill="#3DDC84"/></svg><div><h3>Nothing hidden</h3><p>Kullback is open source. Read every line on GitHub.</p></div></li>
+        </ul>
+        <a class="pill pill-blue pill-wide" href="https://cal.com/krrish-agarwalla/30min">Test one task for free</a>
+      </div>
+    </div>
   </div>
 </section>
-
 </main>
-
-<footer class="foot tone-choc" data-tone="dark">
-  <div class="foot-top">
-    <a class="giant" href="/" aria-label="leibler">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="currentColor"/><path transform="translate(20.561 45)" d="M11.856 -7.533Q11.856 -5.232 12.701 -4.063Q13.545 -2.895 15.196 -2.895H19.186V0H14.862Q11.801 0 10.122 -1.967Q8.442 -3.934 8.442 -7.533V-26.403H2.969V-29.075H11.856Z" fill="#121417"/><rect x="42" y="38" width="7" height="7" fill="#121417"/></svg>
-      <span>leibler</span>
-    </a>
-    <div class="foot-cols">
-      <div><a href="#glance">Product</a><a href="#example">Example</a><a href="#kullback">Kullback</a><a href="#how">How it works</a></div>
-      <div><a href="/team">Team</a><a href="https://github.com/leiblerdev/kullback">GitHub</a><a href="/llms.txt">llms.txt</a></div>
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta">
+      <canvas class="px" data-scene="field" data-px="6" data-fps="20" aria-hidden="true"></canvas>
+      <h2>Start with <em>one</em> task</h2>
+      <p>Free results in 48 hours. Your own model in about a week.</p>
+      <div class="btns"><a class="pill pill-blue" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="pill pill-line" href="https://github.com/leiblerdev/kullback"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>See the code</a></div>
     </div>
   </div>
-  <div class="foot-bot"><span>leibler.dev · San Francisco</span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a></div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <p class="foot-say">Own your <em>intelligence</em></p>
+        <div class="btns"><a class="pill pill-blue" href="https://cal.com/krrish-agarwalla/30min">Book a call</a><a class="pill pill-line" href="https://github.com/leiblerdev/kullback"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Star on GitHub</a></div>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h4>Product</h4><a href="/#how">How it works</a><a href="/#results">Results</a><a href="https://cal.com/krrish-agarwalla/30min">Free test</a></div>
+        <div><h4>Kullback</h4><a href="/kullback">Overview</a><a href="https://github.com/leiblerdev/kullback">GitHub</a><a href="https://huggingface.co/leibler">Hugging Face</a></div>
+        <div><h4>Company</h4><a href="/team">Team</a><a href="mailto:krrish@leibler.dev">Email us</a><a href="/llms.txt">llms.txt</a></div>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span><i class="dot"></i>San Francisco · <b class="sf-time">--:--</b></span>
+      <span>Kullback is open source under Apache-2.0</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+  <div class="foot-mark"><canvas class="px" data-scene="wordmark" data-px="5" data-fps="20" aria-hidden="true"></canvas></div>
+  <div class="wrap foot-legal"><span>© 2026 leibler</span><a href="mailto:krrish@leibler.dev">krrish@leibler.dev</a></div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-(() => {
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const NS = 'http://www.w3.org/2000/svg';
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  gsap.registerPlugin(ScrollTrigger);
-
-  /* ---------- smooth scroll ---------- */
-  let lenis = null;
-  if (!reduce && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.1 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    const t = $(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    lenis ? lenis.scrollTo(t, { duration: 1.4, offset: -40 }) : t.scrollIntoView({ behavior: 'smooth' });
-  }));
-
-  /* ---------- nav tone follows the section under it ---------- */
-  const nav = $('.nav'), toned = $$('main [data-tone], footer[data-tone]');
-  function navTone() {
-    nav.classList.toggle('scrolled', scrollY > 60);
-    const y = nav.getBoundingClientRect().bottom - 10;
-    for (const s of toned) {
-      const host = s.parentElement.classList.contains('pin-spacer') ? s.parentElement : s;
-      const r = host.getBoundingClientRect();
-      if (r.top <= y && r.bottom > y) {
-        const tone = s.classList.contains('tone-choc') ? 'choc' : s.dataset.tone;
-        if (nav.dataset.tone !== tone) nav.dataset.tone = tone;
-        return;
-      }
-    }
-  }
-  addEventListener('scroll', navTone, { passive: true });
-
-  /* ---------- hero ridgelines: a broad "frontier" distribution, with a band that sharpens into "yours" ---------- */
-  (() => {
-    const cv = $('.ridges'), ctx = cv.getContext('2d'), hero = $('.hero');
-    const N = 44, PTS = 180, BG = '#121417', RED = '232,70,30';
-    const st = { sharp: 0, mx: 0, intro: reduce ? 1 : 0, peak: reduce ? 1 : 0 };
-    let W = 0, H = 0, dpr = 1, t0 = performance.now(), visible = true;
-    function size() {
-      dpr = Math.min(devicePixelRatio || 1, 2);
-      W = cv.clientWidth; H = cv.clientHeight;
-      cv.width = W * dpr; cv.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (reduce) draw(0);
-    }
-    const gauss = (x, m, s) => Math.exp(-((x - m) * (x - m)) / (2 * s * s));
-    const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
-    function draw(time) {
-      const t = time / 1000;
-      ctx.clearRect(0, 0, W, H);
-      const mobile = W < 700;
-      const x0 = -W * .06, x1 = mobile ? W * 1.1 : W * 1.02;
-      const top = H * (mobile ? .1 : .16), bot = H * (mobile ? .62 : .9);
-      const gap = (bot - top) / N, A = gap * 11;
-      const c = (mobile ? .62 : .7) + st.mx * .04, s = .075 - .04 * st.sharp, band = N * .64;
-      let label = null;
-      for (let i = 0; i < N; i++) {
-        const base = top + (i + 1) * gap;
-        const w = gauss(i, band, N * .11) * st.peak;
-        const amp = ease((st.intro * 2.2) - i * .028);
-        const ph = i * .53;
-        const ys = new Float32Array(PTS + 1);
-        let maxH = 0;
-        for (let k = 0; k <= PTS; k++) {
-          const u = k / PTS;
-          const env = gauss(u, .56, .2);
-          const n = .55 * Math.sin(u * 13 + ph + t * .45) + .3 * Math.sin(u * 29 - ph * 1.7 + t * .8) + .2 * Math.sin(u * 51 + ph * 2.3 - t * .3);
-          const broad = gauss(u, .5, .19) * .42 + env * n * .16;
-          const h = A * amp * (broad * (1 - .55 * w) + w * 1.2 * gauss(u, c, s));
-          ys[k] = base - Math.max(0, h);
-          if (h > maxH) maxH = h;
-        }
-        ctx.beginPath();
-        ctx.moveTo(x0, base);
-        for (let k = 0; k <= PTS; k++) ctx.lineTo(x0 + (x1 - x0) * k / PTS, ys[k]);
-        ctx.lineTo(x1, base + gap * 2); ctx.lineTo(x0, base + gap * 2); ctx.closePath();
-        ctx.fillStyle = BG; ctx.fill();
-        ctx.beginPath();
-        for (let k = 0; k <= PTS; k++) { const x = x0 + (x1 - x0) * k / PTS; k ? ctx.lineTo(x, ys[k]) : ctx.moveTo(x, ys[k]); }
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = `rgba(237,234,227,${(.1 + .32 * (i / N)) * (1 - .6 * w)})`;
-        ctx.stroke();
-        if (w > .04) {
-          const cx = x0 + (x1 - x0) * c, half = (x1 - x0) * s * 3.2;
-          const g = ctx.createLinearGradient(cx - half, 0, cx + half, 0);
-          g.addColorStop(0, `rgba(${RED},0)`); g.addColorStop(.5, `rgba(${RED},${Math.min(1, w * 1.1)})`); g.addColorStop(1, `rgba(${RED},0)`);
-          ctx.strokeStyle = g; ctx.lineWidth = 1.4;
-          ctx.shadowColor = `rgba(${RED},.9)`; ctx.shadowBlur = 14 * w;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-          if (Math.abs(i - Math.round(band)) < .5) label = { x: cx, y: base - maxH };
-        }
-      }
-      if (label && st.peak > .6 && !mobile) {
-        const a = Math.min(1, (st.peak - .6) / .4);
-        ctx.globalAlpha = a;
-        ctx.strokeStyle = `rgba(${RED},.7)`; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(label.x, label.y - 10); ctx.lineTo(label.x, label.y - 54); ctx.lineTo(label.x + 16, label.y - 54); ctx.stroke();
-        ctx.fillStyle = `rgb(${RED})`;
-        ctx.beginPath(); ctx.arc(label.x, label.y - 6, 2.5, 0, Math.PI * 2); ctx.fill();
-        ctx.font = '500 11px "Inter Tight", sans-serif';
-        ctx.fillText('YOUR MODEL', label.x + 22, label.y - 50);
-        ctx.globalAlpha = 1;
-      }
-    }
-    size();
-    addEventListener('resize', size);
-    if (reduce) return;
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
-    gsap.ticker.add(() => { if (visible) draw(performance.now() - t0); });
-    gsap.to(st, { intro: 1, duration: 2.4, ease: 'power2.out', delay: .1 });
-    gsap.to(st, { peak: 1, duration: 2, ease: 'expo.out', delay: 1.1 });
-    gsap.to(st, { sharp: 1, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 1 } });
-    hero.addEventListener('mousemove', e => {
-      const r = hero.getBoundingClientRect();
-      gsap.to(st, { mx: (e.clientX - r.left) / r.width - .5, duration: 1.4, ease: 'power3' });
-    });
-  })();
-
-  /* ---------- hero copy ---------- */
-  gsap.timeline({ defaults: { ease: 'expo.out' } })
-    .from('.announce', { yPercent: -100, duration: 1 })
-    .from('.brand, .nav-links', { y: -16, opacity: 0, duration: 1, stagger: .08 }, .1)
-    .from('.btn-nav', { opacity: 0, duration: 1 }, .25)
-    .from('.hero .eyebrow', { y: 16, opacity: 0, duration: 1 }, .3)
-    .from('.hero-title .ln > span', { yPercent: 110, duration: 1.3, stagger: .1 }, .35)
-    .from('.hero-sub, .hero .btns, .hero-legend', { y: 20, opacity: 0, duration: 1.1, stagger: .1 }, .6);
-
-  /* ---------- glance art ---------- */
-  gsap.timeline({ scrollTrigger: { trigger: '.glance', start: 'top 70%' }, defaults: { ease: 'expo.out' } })
-    .from('.gl-panels polygon:not(.gl-chip)', { x: -60, y: 30, opacity: 0, duration: 1.4, stagger: .1 })
-    .from('.gl-line', { attr: { y2: 10 }, duration: 1 }, .4)
-    .from('.gl-label', { opacity: 0, x: -10, duration: .8 }, .7)
-    .from('.gl-chip', { opacity: 0, x: -30, duration: 1 }, .8)
-    .from('.glance-copy > *', { y: 30, opacity: 0, duration: 1.2, stagger: .1 }, .2);
-  if (!reduce) gsap.to('.gl-chip', { y: -12, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 });
-
-  /* ---------- line reveals ---------- */
-  gsap.from('.bottom .ln > span', { yPercent: 110, duration: 1.3, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.bottom h2', start: 'top 85%' } });
-
-  /* ---------- floating isometric illustrations ---------- */
-  $$('.iso-ill').forEach((svg, k) => {
-    const parts = $$('g', svg);
-    gsap.from(parts, { y: -40, opacity: 0, duration: 1.2, stagger: .15, ease: 'expo.out', scrollTrigger: { trigger: svg, start: 'top 85%' } });
-    if (!reduce) parts.forEach((p, i) => gsap.to(p, { y: i % 2 ? 6 : -8, duration: 2.6 + i * .4 + k * .2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.4 + i * .3 }));
-  });
-
-  /* ---------- marquee ---------- */
-  (() => {
-    const track = $('.mq-track');
-    track.innerHTML += track.innerHTML;
-    const tw = gsap.to(track, { xPercent: -50, duration: 32, ease: 'none', repeat: -1 });
-    track.addEventListener('mouseenter', () => gsap.to(tw, { timeScale: .2, duration: .6 }));
-    track.addEventListener('mouseleave', () => gsap.to(tw, { timeScale: 1, duration: .6 }));
-  })();
-
-  /* ---------- example: pinned dashboard ---------- */
-  (() => {
-    const items = $$('.steps li'), views = $$('.pop-v'), dec = $('.p-dec'), stat = $('.p-stat');
-    const decs = [['—', ''], ['—', ''], ['Replace first', 'p-amber'], ['Replace first', 'p-amber']];
-    const stats = [['Received', 'p-grey'], ['Customer checked', 'p-grey'], ['Decided', 'p-amber'], ['Replied · 0.2 s', 'p-green']];
-    let cur = -1;
-    function set(k) {
-      if (k === cur) return;
-      const prev = cur; cur = k;
-      items.forEach((li, i) => { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); });
-      const rail = () => $('.steps').style.setProperty('--y', (items[k].offsetTop + 4) + 'px');
-      rail(); setTimeout(rail, 750);
-      const el = $('.elapsed'), from = { v: parseFloat(el.textContent) * 1000 || 0 };
-      gsap.to(from, { v: [8, 22, 28, 228][k], duration: .9, ease: 'power2.out', onUpdate: () => { el.textContent = (from.v / 1000).toFixed(3) + ' s'; } });
-      gsap.fromTo($('.out', items[k]), { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: .6, delay: .35, ease: 'power3.out' });
-      if (prev >= 0) {
-        const from = views[prev];
-        gsap.to(from, { autoAlpha: 0, y: -8, duration: .25, onComplete: () => from.classList.remove('on') });
-      }
-      const to = views[k];
-      to.classList.add('on');
-      gsap.fromTo(to, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: .5, delay: prev >= 0 ? .2 : 0, ease: 'power3.out' });
-      gsap.fromTo('.pop', { scale: .97 }, { scale: 1, duration: .5, ease: 'back.out(3)' });
-      dec.textContent = decs[k][0]; dec.className = 'pill p-dec ' + decs[k][1];
-      stat.textContent = stats[k][0]; stat.className = 'pill p-stat ' + stats[k][1];
-      gsap.fromTo([dec, stat], { scale: .8 }, { scale: 1, duration: .45, ease: 'back.out(3)' });
-    }
-    set(0);
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 961px)', () => {
-      ScrollTrigger.create({
-        trigger: '.ex-pin', start: 'top top', end: () => '+=' + innerHeight * 3, pin: true,
-        onUpdate: self => set(Math.min(3, Math.floor(self.progress * 4)))
-      });
-    });
-    mm.add('(max-width: 960px)', () => {
-      let i = 0;
-      const id = setInterval(() => { if (ScrollTrigger.isInViewport('.ex-pin')) set(i = (i + 1) % 4); }, 3600);
-      items.forEach((li, j) => li.addEventListener('click', () => set(i = j)));
-      return () => clearInterval(id);
-    });
-    ScrollTrigger.create({ trigger: '.dash', start: 'top 75%', once: true, onEnter: () => gsap.to('.meter u', { width: '86%', duration: 1.6, ease: 'expo.out' }) });
-  })();
-
-  /* ---------- kullback art: big translucent panels with parallax ---------- */
-  (() => {
-    const g = $('.kb-panels');
-    const cols = ['#5A1E0E', '#B8320F', '#3A160A', '#E8461E', '#8F2A10', '#CC3A14', '#F07A55', '#6E230C'];
-    const panels = cols.map((c, i) => {
-      const p = document.createElementNS(NS, 'polygon');
-      const x = 60 + i * 66, top = 120 + (i % 3) * 60 + i * 20;
-      p.setAttribute('points', `${x},900 ${x},${top} ${x + 150},${top + 85} ${x + 150},900`);
-      p.setAttribute('fill', c); p.setAttribute('opacity', (.22 + (i % 3) * .1).toFixed(2));
-      g.append(p); return p;
-    });
-    panels.forEach((p, i) => gsap.fromTo(p, { y: 120 + i * 30 }, { y: -60 - i * 20, ease: 'none', scrollTrigger: { trigger: '.kb', start: 'top bottom', end: 'bottom top', scrub: true } }));
-    gsap.from('.ilist li', { y: 30, opacity: 0, duration: 1, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '.ilist', start: 'top 80%' } });
-  })();
-
-  /* ---------- standard: accordion + eval bars ---------- */
-  $$('.acc-i').forEach(item => {
-    $('button', item).addEventListener('click', () => {
-      $$('.acc-i').forEach(o => {
-        const b = $('.acc-b', o);
-        if (o === item && !o.classList.contains('open')) { o.classList.add('open'); gsap.fromTo(b, { height: 0 }, { height: 'auto', duration: .6, ease: 'power3.inOut' }); }
-        else if (o !== item && o.classList.contains('open')) gsap.fromTo(b, { height: b.offsetHeight }, { height: 0, duration: .6, ease: 'power3.inOut', onComplete: () => o.classList.remove('open') });
-      });
-    });
-  });
-  gsap.from('.sheet', { x: 60, y: 40, opacity: 0, duration: 1.3, stagger: -.12, ease: 'expo.out', scrollTrigger: { trigger: '.std-ui', start: 'top 75%' } });
-  ScrollTrigger.create({ trigger: '.std-ui', start: 'top 70%', once: true, onEnter: () => $$('.ev').forEach((ev, i) => gsap.to($('u', ev), { width: ev.dataset.v + '%', duration: 1.4, delay: .5 + i * .12, ease: 'power3.out' })) });
-
-  /* ---------- faq ---------- */
-  $$('.faq details').forEach(d => {
-    const p = $('p', d);
-    $('summary', d).addEventListener('click', e => {
-      e.preventDefault();
-      if (d.open) gsap.to(p, { height: 0, opacity: 0, duration: .45, ease: 'power3.inOut', onComplete: () => { d.open = false; gsap.set(p, { clearProps: 'all' }); } });
-      else { d.open = true; gsap.from(p, { height: 0, opacity: 0, duration: .6, ease: 'power3.out' }); }
-    });
-  });
-
-  /* ---------- closing pyramid ---------- */
-  (() => {
-    const g = $('.pyramid .tiers'), N = 15, tiers = [];
-    for (let k = 0; k < N; k++) {
-      const w = 340 - k * 21, h = w * .5, cy = 400 - k * 17;
-      const p = document.createElementNS(NS, 'polygon');
-      p.setAttribute('points', `${360 - w},${cy} 360,${cy - h} ${360 + w},${cy} 360,${cy + h}`);
-      p.setAttribute('fill', '#E8461E'); p.setAttribute('opacity', '.09');
-      g.append(p); tiers.push(p);
-    }
-    gsap.from(tiers, { y: 80, opacity: 0, duration: 1.4, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.close', start: 'top 70%' } });
-    if (!reduce) {
-      gsap.to(tiers, { opacity: .2, duration: .9, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: { each: .12, repeat: -1, yoyo: true }, delay: 2 });
-      gsap.to('.glow', { opacity: .55, scale: 1.08, transformOrigin: '50% 50%', duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-    }
-    gsap.from('.close-copy > *', { y: 30, opacity: 0, duration: 1.2, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '.close', start: 'top 60%' } });
-  })();
-
-  /* ---------- generic reveals ---------- */
-  const sel = '.bottom .eyebrow, .bottom .sub, .col h3, .col p, .bottom .btn, .trusted h2, .trusted .lede, .ex-head > *, .ex-kpis div, .kb-copy > .eyebrow, .kb-copy > h2, .kb .lede, .loop-head > *, .roles li, .task, .quotes .wrap > *, .qcard, .std-copy > .eyebrow, .std-copy > h2, .std .lede, .std-copy > .btn, .acc-i, .faq > .eyebrow, .faq > h2, details, .foot-top > *, .foot-bot';
-  gsap.set(sel, { opacity: 0 });
-  ScrollTrigger.batch(sel, { start: 'top 90%', once: true, onEnter: els => gsap.fromTo(els, { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: .07, ease: 'expo.out' }) });
-
-  ScrollTrigger.refresh();
-  navTone();
-  document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
-})();
-</script>
+<script src="/assets/site/site.js?v=7"></script>
 </body>
 </html>
