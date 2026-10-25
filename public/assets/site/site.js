@@ -21,6 +21,11 @@
   }));
   const nav = $('.nav');
   const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
+  const burger = $('.burger');
+  if (burger) {
+    burger.addEventListener('click', () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    $$('.menu a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+  }
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* =====================================================================
